@@ -29,12 +29,11 @@ const App = () => {
   };
 
   const updateData = (updatedRecord) => {
-    const newData = [];
-    data.forEach((record) => {
+    const newData = data.map((record) => {
       if (record.id === updatedRecord.id) {
-        newData.push(updatedRecord);
+        return updatedRecord;
       } else {
-        newData.push(record);
+        return record;
       }
     });
     setData(newData);
@@ -56,21 +55,17 @@ const App = () => {
           <span className={remoteColor}>{remoteName}</span>
         </h1>
         <section>
-          <span>
-            <ColorPicker
-              name={localName}
-              color={localColor}
-              updateColor={updateColor}
-            />
-          </span>
+          <ColorPicker
+            name={localName}
+            color={localColor}
+            updateColor={updateColor}
+          />
           <span>{countLikes()} ❤️s</span>
-          <span>
-            <ColorPicker
-              name={remoteName}
-              color={remoteColor}
-              updateColor={updateColor}
-            />
-          </span>
+          <ColorPicker
+            name={remoteName}
+            color={remoteColor}
+            updateColor={updateColor}
+          />
         </section>
       </header>
       <main>

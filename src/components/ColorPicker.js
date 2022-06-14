@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 const ColorPicker = ({ updateColor, color, name }) => {
   return (
-    <div>
+    <span>
       <p className={color}>{name}'s color:</p>
       <p>
         <button onClick={() => updateColor('red', name)}>🔴</button>
@@ -12,7 +12,7 @@ const ColorPicker = ({ updateColor, color, name }) => {
         <button onClick={() => updateColor('blue', name)}>🔵</button>
         <button onClick={() => updateColor('purple', name)}>🟣</button>
       </p>
-    </div>
+    </span>
   );
 };
 

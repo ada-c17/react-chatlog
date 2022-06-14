@@ -14,7 +14,7 @@ const ChatEntry = ({
   remoteColor,
   onUpdate,
 }) => {
-  const updateLiked = () => {
+  const toggleLiked = () => {
     const updatedEntry = {
       sender,
       body,
@@ -36,7 +36,7 @@ const ChatEntry = ({
         <p className="entry-time">
           <TimeStamp time={timeStamp} />
         </p>
-        <button className="like" onClick={updateLiked}>
+        <button className="like" onClick={toggleLiked}>
           {liked ? '❤️' : '🤍'}
         </button>
       </section>
