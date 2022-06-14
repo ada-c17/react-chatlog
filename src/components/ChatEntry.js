@@ -3,7 +3,17 @@ import './ChatEntry.css';
 import TimeStamp from './TimeStamp';
 import PropTypes from 'prop-types';
 
-const ChatEntry = ({ sender, body, timeStamp, id, liked, onUpdate }) => {
+const ChatEntry = ({
+  sender,
+  body,
+  timeStamp,
+  id,
+  liked,
+  localName,
+  localColor,
+  remoteColor,
+  onUpdate,
+}) => {
   const updateLiked = () => {
     const updatedEntry = {
       sender,
@@ -15,13 +25,14 @@ const ChatEntry = ({ sender, body, timeStamp, id, liked, onUpdate }) => {
     onUpdate(updatedEntry);
   };
 
-  const senderClass = sender === 'Vladimir' ? 'local' : 'remote';
+  const senderClass = sender === localName ? 'local' : 'remote';
+  const colorClass = sender === localName ? localColor : remoteColor;
 
   return (
     <div className={`chat-entry ${senderClass}`}>
       <h2 className="entry-name">{sender}</h2>
       <section className="entry-bubble">
-        <p>{body}</p>
+        <p className={colorClass}>{body}</p>
         <p className="entry-time">
           <TimeStamp time={timeStamp} />
         </p>
@@ -39,6 +50,9 @@ ChatEntry.propTypes = {
   timeStamp: PropTypes.string,
   id: PropTypes.number.isRequired,
   liked: PropTypes.bool.isRequired,
+  localName: PropTypes.string,
+  localColor: PropTypes.string,
+  remoteColor: PropTypes.string,
   onUpdate: PropTypes.func.isRequired,
 };
 

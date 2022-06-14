@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import ChatEntry from './ChatEntry';
 
-const ChatLog = ({ entries, onUpdate }) => {
+const ChatLog = ({ entries, onUpdate, localName, localColor, remoteColor }) => {
   return entries.map((entry) => {
     return (
       <ChatEntry
@@ -11,6 +11,9 @@ const ChatLog = ({ entries, onUpdate }) => {
         body={entry.body}
         timeStamp={entry.timeStamp}
         liked={entry.liked}
+        localName={localName}
+        localColor={localColor}
+        remoteColor={remoteColor}
         onUpdate={onUpdate}
       />
     );
@@ -27,6 +30,9 @@ ChatLog.propTypes = {
       liked: PropTypes.bool.isRequired,
     })
   ),
+  localName: PropTypes.string,
+  localColor: PropTypes.string,
+  remoteColor: PropTypes.string,
   onUpdate: PropTypes.func.isRequired,
 };
 
