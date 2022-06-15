@@ -1,7 +1,7 @@
 import ChatEntry from './ChatEntry';
 
-const ChatLog = (props) => {
-  const chatEntries = props.data.map((chatEntry) => (
+const ChatLog = ({ entries }) => {
+  const chatEntries = entries.map((chatEntry) => (
     <ChatEntry
       key={chatEntry.id}
       sender={chatEntry.sender}
