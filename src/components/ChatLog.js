@@ -2,10 +2,10 @@ import PropTypes from 'prop-types';
 import ChatEntry from './ChatEntry';
 
 const ChatLog = ({ entries, onUpdate, localName, localColor, remoteColor }) => {
-  return entries.map((entry) => {
+  return entries.map((entry, index) => {
     return (
       <ChatEntry
-        key={entry.id}
+        key={index}
         id={entry.id}
         sender={entry.sender}
         body={entry.body}
