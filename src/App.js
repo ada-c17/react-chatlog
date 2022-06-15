@@ -2,6 +2,10 @@ import React from 'react';
 import './App.css';
 import chatMessages from './data/messages.json';
 
+// the tests hint what names 
+// you should give some of your props so read the 
+// test files carefully first!
+
 const App = () => {
   return (
     <div id="App">
