@@ -1,16 +1,12 @@
 import React from 'react';
 import './App.css';
 import chatMessages from './data/messages.json';
-import ChatEntry from './components/ChatEntry';
+import ChatLog from './components/ChatLog';
 
 const App = () => {
-  const ChatEntryComponents = chatMessages.map((chat) => (
-    <ChatEntry
-      sender={chat.sender}
-      body={chat.body}
-      timeStamp={chat.timeStamp}
-    />
-  ));
+  // const ChatComponents = chatMessages.map((chat) => (
+  //   <ChatLog sender={chat.sender} body={chat.body} timeStamp={chat.timeStamp} />
+  // ));
 
   return (
     <div id="App">
@@ -18,7 +14,7 @@ const App = () => {
         <h1>Application title</h1>
       </header>
       <main>
-        {ChatEntryComponents}
+        <ChatLog chatMessages={chatMessages} />
         {/* Wave 01: Render one ChatEntry component Wave 02: Render ChatLog
         component */}
       </main>
