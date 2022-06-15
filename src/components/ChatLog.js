@@ -1,10 +1,11 @@
 import React from 'react';
 import './ChatLog.css';
+import ChatEntry from './ChatEntry';
 import PropTypes from 'prop-types';
 
 const ChatLog = (props) => {
   const chats = props.entries.map((chat) => {
-    return <chatEntry info={chat} />;
+    return <ChatEntry info={chat} />;
   });
   return (
     <div>
