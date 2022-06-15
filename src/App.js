@@ -5,7 +5,6 @@ import ChatEntry from './components/ChatEntry';
 import ChatLog from './components/ChatLog';
 
 const App = () => {
-  const firstEntry = chatMessages[0];
   return (
     <div id="App">
       <header>

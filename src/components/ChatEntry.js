@@ -16,16 +16,32 @@ const ChatEntry = (props) => {
   // console.log(chatDateObject.getFullYear());
   // console.log(years);
 
-  return (
-    <div className="chat-entry local">
-      <h2 className="entry-name">{sender}</h2>
-      <section className="entry-bubble">
-        <p>{body}</p>
-        <p className="entry-time">{years} years ago</p>
-        <button className="like">🤍</button>
-      </section>
-    </div>
-  );
+  // if chat entry is local (sender= Vladimir)
+  if (sender === 'Vladimir') {
+    return (
+      <div className="chat-entry local">
+        <h2 className="entry-name">{sender}</h2>
+        <section className="entry-bubble">
+          <p>{body}</p>
+          <p className="entry-time">{years} years ago</p>
+          <button className="like">🤍</button>
+        </section>
+      </div>
+    );
+  }
+  // if chat entry is remote (sender = Estragon)
+  else if (sender === 'Estragon') {
+    return (
+      <div className="chat-entry remote">
+        <h2 className="entry-name">{sender}</h2>
+        <section className="entry-bubble">
+          <p>{body}</p>
+          <p className="entry-time">{years} years ago</p>
+          <button className="like">🤍</button>
+        </section>
+      </div>
+    );
+  }
 };
 
 ChatEntry.propTypes = {
