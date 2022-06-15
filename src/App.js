@@ -5,9 +5,9 @@ import ChatEntry from './components/ChatEntry';
 
 const App = () => {
   console.log(chatMessages);
-  const messages = chatMessages.map((message, index) => {
+  const messages = chatMessages.map((message) => {
     return (
-      <ChatEntry key={index} sender={message.sender} body={message.body} timeStamp={message.timeStamp}></ChatEntry>
+      <ChatEntry id={message.id} sender={message.sender} body={message.body} timeStamp={message.timeStamp}></ChatEntry>
     )
   })
   return (
