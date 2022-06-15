@@ -17,8 +17,17 @@ const App = () => {
   );
 };
 
-// const addRemoteClass = () => {
+const addRemoteClass = () => {
+  const remoteMessages = document.querySelectorAll('div.chat-entry');
+  for (const message of remoteMessages) {
+    const senderName = message.querySelector('h2');
+    console.log(senderName.textContent);
+    if (senderName.textContent === 'Estragon') {
+      message.className = 'chat-entry remote';
+    }
+  }
+};
 
-// }
+document.addEventListener('DOMContentLoaded', addRemoteClass);
 
 export default App;
