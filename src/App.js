@@ -1,14 +1,22 @@
 import React from 'react';
 import './App.css';
 import chatMessages from './data/messages.json';
+import ChatEntry from './components/ChatEntry';
 
 const App = () => {
+  console.log(chatMessages);
+  const messages = chatMessages.map((message, index) => {
+    return (
+      <ChatEntry key={index} sender={message.sender} body={message.body} timeStamp={message.timeStamp}></ChatEntry>
+    )
+  })
   return (
     <div id="App">
       <header>
         <h1>Application title</h1>
       </header>
       <main>
+        {messages}
         {/* Wave 01: Render one ChatEntry component
         Wave 02: Render ChatLog component */}
       </main>
