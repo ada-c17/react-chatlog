@@ -12,7 +12,7 @@ const ChatEntry = (props) => {
   }
 
   return (
-    <div className={className}>
+    <div className={className} key={props.id}>
       <h2 className="entry-name">{props.sender}</h2>
       <section className="entry-bubble">
         <p>{props.body}</p>
