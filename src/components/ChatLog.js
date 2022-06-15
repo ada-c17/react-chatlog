@@ -10,6 +10,8 @@ const ChatLog = (props) => {
         sender={chat.sender}
         body={chat.body}
         timeStamp={chat.timeStamp}
+        key={chat.id}
+        liked={chat.liked}
       />
     );
   });
@@ -17,7 +19,7 @@ const ChatLog = (props) => {
 };
 
 ChatLog.propTypes = {
-  //Fill with correct proptypes
+  entries: PropTypes.array.isRequired,
 };
 
 export default ChatLog;
