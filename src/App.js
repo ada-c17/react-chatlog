@@ -4,12 +4,12 @@ import chatMessages from './data/messages.json';
 import ChatEntry from './components/ChatEntry';
 
 const App = () => {
-  const chatComponents = chatMessages.map((message) => {
+  const chatComponents = chatMessages.map((chatMessage) => {
     return (
       <ChatEntry
-        sender={message.sender}
-        body={message.body}
-        timeStamp={message.timeStamp}
+        sender={chatMessage.sender}
+        body={chatMessage.body}
+        timeStamp={chatMessage.timeStamp}
       />
     );
   });

@@ -1,11 +1,11 @@
 import React from 'react';
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
+import TimeStamp from './TimeStamp';
 
 const ChatEntry = (props) => {
-  const sender = props.sender;
   let className;
-  if (sender === 'Estragon') {
+  if (props.sender === 'Estragon') {
     className = 'chat-entry local';
   } else {
     className = 'chat-entry remote';
@@ -13,10 +13,10 @@ const ChatEntry = (props) => {
 
   return (
     <div className={className}>
-      <h2 className="entry-name">{sender}</h2>
+      <h2 className="entry-name">{props.sender}</h2>
       <section className="entry-bubble">
         <p>{props.body}</p>
-        <p className="entry-time">{props.timeStamp}</p>
+        <TimeStamp className="entry-time" time={props.timeStamp} />
         <button className="like">🤍</button>
       </section>
     </div>
@@ -25,8 +25,8 @@ const ChatEntry = (props) => {
 
 ChatEntry.propTypes = {
   sender: PropTypes.string.isRequired,
-  body: PropTypes.string,
-  timeStamp: PropTypes.instanceOf(Date),
+  body: PropTypes.string.isRequired,
+  timeStamp: PropTypes.string.isRequired,
 };
 
 export default ChatEntry;
