@@ -7,15 +7,20 @@ const ChatLog = (props) => {
   const ChatEntries = props.entries.map((entry) => {
     return (
       <ChatEntry
-        key={entry.id}
+        id={entry.id}
         sender={entry.sender}
         body={entry.body}
-        time={entry.timeStamp}
+        timeStamp={entry.timeStamp}
+        liked={entry.liked}
       />
     );
   });
 
   return <section>{ChatEntries}</section>;
 };
+
+// ChatLog.propTypes = {
+//   entries: PropTypes.arrayOf
+// }
 
 export default ChatLog;
