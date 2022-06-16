@@ -12,6 +12,7 @@ const ChatLog = (props) => {
       body={chat.body}
       timeStamp={chat.timeStamp}
       localUser={props.localUser}
+      onHeartChange={props.onHeartChange}
     />
   ));
   return <div>{ChatComponents}</div>;
@@ -20,5 +21,6 @@ const ChatLog = (props) => {
 ChatLog.propTypes = {
   entries: PropTypes.array.isRequired,
   localUser: PropTypes.string.isRequired,
+  onHeartChange: PropTypes.func.isRequired,
 };
 export default ChatLog;

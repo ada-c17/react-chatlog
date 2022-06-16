@@ -2,12 +2,24 @@ import React from 'react';
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp';
+import { useState } from 'react';
 
 const ChatEntry = (props) => {
   //const timeStampObj = new Date(props.timeStamp);
   //const now = new Date();
   //const year = now.getFullYear() - timeStampObj.getFullYear();
 
+  const [heart, setHeart] = useState('🤍');
+
+  const changeHeart = () => {
+    if (heart === '🤍') {
+      setHeart('❤️');
+      props.onHeartChange(true);
+    } else {
+      setHeart('🤍');
+      props.onHeartChange(false);
+    }
+  };
   return (
     <div
       className={
@@ -23,7 +35,9 @@ const ChatEntry = (props) => {
           //<p className="entry-time">{year} years ago</p>
         }
         <TimeStamp time={props.timeStamp} />
-        <button className="like">🤍</button>
+        <button onClick={changeHeart} className="like">
+          {heart}
+        </button>
       </section>
     </div>
   );
@@ -35,6 +49,8 @@ ChatEntry.propTypes = {
   sender: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   timeStamp: PropTypes.string.isRequired,
+  localUser: PropTypes.string.isRequired,
+  onChangeHeart: PropTypes.func.isRequired,
 };
 
 export default ChatEntry;
