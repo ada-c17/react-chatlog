@@ -5,12 +5,17 @@ import TimeStamp from './TimeStamp';
 
 const ChatEntry = (props) => {
   return (
-    <div className="chat-entry local">
+    // <div className="chat-entry local">
+    <div
+      className={
+        props.sender === 'Vladimir' ? 'chat-entry local' : 'chat-entry remote'
+      }
+    >
       <h2 className="entry-name">{props.sender}</h2>
       <section className="entry-bubble">
         <p>{props.body}</p>
         <p className="entry-time">
-          <TimeStamp time={props.timestamp} />
+          <TimeStamp time={props.timeStamp} />
         </p>
         <button className="like">🤍</button>
       </section>
