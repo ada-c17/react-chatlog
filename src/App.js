@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-// import chatMessages from './data/messages.json';
+import chatMessages from './data/messages.json';
 import ChatEntry from './components/ChatEntry';
 
 const App = () => {
