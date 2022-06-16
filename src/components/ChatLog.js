@@ -5,17 +5,17 @@ import PropTypes from 'prop-types';
 const ChatLog = (props) => {
   const chatEntries = props.entries.map((chatEntry) => {
     return (
-      <li key={chatEntry.id}>
+      <section key={chatEntry.id}>
         <ChatEntry
           sender={chatEntry.sender}
           body={chatEntry.body}
           timeStamp={chatEntry.timeStamp}
         />
-      </li>
+      </section>
     );
   });
 
-  return <section>{chatEntries}</section>;
+  return <section className="chat-log">{chatEntries}</section>;
 };
 
 ChatLog.propTypes = {

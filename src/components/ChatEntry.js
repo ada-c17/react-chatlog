@@ -4,8 +4,15 @@ import TimeStamp from './TimeStamp';
 import PropTypes from 'prop-types';
 
 const ChatEntry = (props) => {
+  let entryClassName = '';
+  if (props.sender === 'Vladimir') {
+    entryClassName = 'chat-entry local';
+  } else {
+    entryClassName = 'chat-entry remote';
+  }
+
   return (
-    <div className="chat-entry local">
+    <div className={entryClassName}>
       <h2 className="entry-name">{props.sender}</h2>
       <section className="entry-bubble">
         <p>{props.body}</p>
