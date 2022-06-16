@@ -3,8 +3,8 @@ import './ChatLog.css';
 import ChatEntry from './ChatEntry';
 import PropTypes from 'prop-types';
 
-const ChatLog = ({ chatData }) => {
-  const entries = chatData.map((entry) => (
+const ChatLog = ({ entries }) => {
+  const chatData = entries.map((entry) => (
     <ChatEntry
       key={entry.id}
       sender={entry.sender}
@@ -14,7 +14,7 @@ const ChatLog = ({ chatData }) => {
     />
   ));
 
-  return <div className="chat-log">{entries}</div>;
+  return <div className="chat-log">{chatData}</div>;
 };
 
 ChatLog.propTypes = {

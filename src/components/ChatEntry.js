@@ -10,7 +10,11 @@ const ChatEntry = (props) => {
   const chatTimeStamp = timeStamp.toRelative();
 
   return (
-    <div className="chat-entry local">
+    <div
+      className={
+        chatSender === 'Vladimir' ? 'chat-entry local' : 'chat-entry remote'
+      }
+    >
       <h2 className="entry-name">{chatSender}</h2>
       <section className="entry-bubble">
         <p>{chatMessage}</p>
@@ -25,7 +29,7 @@ ChatEntry.propTypes = {
   //Fill with correct proptypes
   sender: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
-  timestamp: PropTypes.instanceOf(Date).isRequired,
+  timeStamp: PropTypes.string.isRequired,
   liked: PropTypes.bool.isRequired,
 };
 
