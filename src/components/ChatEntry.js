@@ -3,14 +3,6 @@ import './ChatEntry.css';
 import TimeStamp from './TimeStamp';
 import PropTypes from 'prop-types';
 
-const messageMap = {
-  id: 1,
-  sender: 'Vladimir',
-  body: 'why are you arguing with me',
-  timeStamp: '2018-05-29T22:49:06+00:00',
-  liked: false,
-};
-
 const ChatEntry = (props) => {
   return (
     <div className="chat-entry local">
