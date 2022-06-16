@@ -16,8 +16,11 @@ import { useState } from 'react';
 
 const ChatEntry = (props) => {
   const [isLiked, setIsLiked] = useState('🤍');
+  const [likeCount, setLikeCount] = useState(0); //maybe not how to do this
+
   const toggleLiked = () => {
     setIsLiked(!isLiked);
+    setLikeCount(likeCount + 1); //where should likeCount get displayed??
   };
   const heartColor = isLiked ? '❤️' : '🤍';
 
