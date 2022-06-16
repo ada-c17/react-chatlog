@@ -1,5 +1,6 @@
 import React from 'react';
 import './ChatEntry.css';
+import TimeStamp from './TimeStamp';
 import PropTypes from 'prop-types';
 
 const ChatEntry = (props) => {
@@ -12,7 +13,9 @@ const ChatEntry = (props) => {
       <h2 className="entry-name">{chatSender}</h2>
       <section className="entry-bubble">
         <p>{chatBody}</p>
-        <p className="entry-time">{chatTimeStamp}</p>
+        <p className="entry-time">
+          <TimeStamp time={chatTimeStamp}></TimeStamp>
+        </p>
         <button className="like">🤍</button>
       </section>
     </div>
