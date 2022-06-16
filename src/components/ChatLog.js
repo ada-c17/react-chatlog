@@ -19,7 +19,7 @@ const ChatLog = ({ entries }) => {
 };
 
 ChatLog.propTypes = {
-  //Fill with correct proptypes
+  message: PropTypes.object.isRequired,
 };
 
 export default ChatLog;
