@@ -3,7 +3,7 @@ import '@testing-library/jest-dom/extend-expect';
 import ChatEntry from './ChatEntry';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 
-describe.skip('Wave 01: ChatEntry', () => {
+describe('Wave 01: ChatEntry', () => {
   beforeEach(() => {
     render(
       <ChatEntry

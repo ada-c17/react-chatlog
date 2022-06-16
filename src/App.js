@@ -4,7 +4,10 @@ import chatMessages from './data/messages.json';
 import ChatEntry from './components/ChatEntry';
 
 const App = () => {
-  const sender = chatMessages[0].sender;
+  const senderData = chatMessages[0].sender;
+  const bodyData = chatMessages[0].body;
+  const timeStampData = chatMessages[0].timeStamp;
+
   return (
     <div id="App">
       <header>
@@ -12,7 +15,11 @@ const App = () => {
       </header>
       <main>
         {/* Wave 01: Render one ChatEntry component*/}
-        <ChatEntry sender={sender}></ChatEntry>
+        <ChatEntry
+          sender={senderData}
+          body={bodyData}
+          timestamp={timeStampData}
+        ></ChatEntry>
         {/* Wave 02: Render ChatLog component */}
       </main>
     </div>
