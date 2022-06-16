@@ -1,8 +1,18 @@
 import React from 'react';
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 
 const ChatEntry = ({ sender, timeStamp, body }) => {
+  const [isLiked, setIsLiked] = useState('🤍');
+
+  const updateLikes = () => {
+    if (isLiked === '🤍') {
+      setIsLiked('❤️');
+    } else {
+      setIsLiked('🤍');
+    }
+  };
   const chatTimeStamp =
     new Date(new Date() - new Date(timeStamp)).getFullYear() - 1970;
 
@@ -12,7 +22,9 @@ const ChatEntry = ({ sender, timeStamp, body }) => {
       <section className="entry-bubble">
         <p>{body}</p>
         <p className="entry-time">{chatTimeStamp} years ago</p>
-        <button className="like">🤍</button>
+        <button className="like" onClick={updateLikes}>
+          {isLiked}
+        </button>
       </section>
     </div>
   );
