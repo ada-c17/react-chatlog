@@ -1,6 +1,6 @@
 import ChatEntry from './ChatEntry';
 
-const ChatLog = ({ entries, incrementLikes }) => {
+const ChatLog = ({ entries, incrementLikes, decrementLikes }) => {
   const chatEntries = entries.map((chatEntry) => (
     <ChatEntry
       key={chatEntry.id}
@@ -8,6 +8,7 @@ const ChatLog = ({ entries, incrementLikes }) => {
       timeStamp={chatEntry.timeStamp}
       body={chatEntry.body}
       incrementLikes={incrementLikes}
+      decrementLikes={decrementLikes}
     />
   ));
   return <div>{chatEntries}</div>;

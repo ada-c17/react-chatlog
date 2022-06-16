@@ -9,6 +9,9 @@ const App = () => {
   const incrementLikes = () => {
     setLikes(likes + 1);
   };
+  const decrementLikes = () => {
+    setLikes(likes - 1);
+  };
 
   return (
     <div id="App">
@@ -18,8 +21,12 @@ const App = () => {
       <main>
         {/* Wave 01: Render one ChatEntry component
         Wave 02: Render ChatLog component */}
-        <h3>{likes}</h3>
-        <ChatLog entries={chatMessages} incrementLikes={incrementLikes} />
+        <h3>{likes} ❤️s</h3>
+        <ChatLog
+          entries={chatMessages}
+          incrementLikes={incrementLikes}
+          decrementLikes={decrementLikes}
+        />
       </main>
     </div>
   );
