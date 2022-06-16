@@ -31,7 +31,7 @@ const LOG = [
   },
 ];
 
-describe.skip('Wave 02: ChatLog', () => {
+describe('Wave 02: ChatLog', () => {
   beforeEach(() => {
     render(<ChatLog entries={LOG} />);
   });

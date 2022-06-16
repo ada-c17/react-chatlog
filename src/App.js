@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import chatMessages from './data/messages.json';
 import ChatEntry from './components/ChatEntry';
+import ChatLog from './components/ChatLog';
 
 const App = () => {
   const senderData = chatMessages[0].sender;
@@ -18,7 +19,7 @@ const App = () => {
         <ChatEntry
           sender={senderData}
           body={bodyData}
-          timestamp={timeStampData}
+          timeStamp={timeStampData}
         ></ChatEntry>
         {/* Wave 02: Render ChatLog component */}
       </main>
