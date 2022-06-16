@@ -2,33 +2,41 @@ import React from 'react';
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
 
-const describeRelativeTime = (timeSince) => {
-  const daysSince = timeSince / 86400000;
+const setUnit = (daysSince) => {
   if (daysSince >= 365) {
-    return `${Math.round(daysSince / 365)} years ago`;
+    return ['years', 365];
   }
   if (daysSince >= 30) {
-    return `${Math.round(daysSince / 30)} months ago`;
+    return ['months', 30];
   }
   if (daysSince >= 7) {
-    return `${Math.round(daysSince / 7)} weeks ago`;
+    return ['weeks', 7];
   }
   if (daysSince >= 1) {
-    return `${Math.round(daysSince)} days ago`;
+    return ['days', 1];
   }
   if (daysSince * 24 >= 1) {
-    return `${Math.round(daysSince * 24)} hours ago`;
+    return ['hours', 1 / 24];
   }
   if (daysSince * 1440 >= 1) {
-    return `${Math.round(daysSince * 1440)} minutes ago`;
+    return ['minutes', 1 / 1440];
   }
-  return 'Just now';
+  return ['seconds', 1 / 86400];
+};
+
+const describeRelativeTime = (timeSince) => {
+  const daysSince = timeSince / 86400000;
+  const unit = setUnit(daysSince);
+  return unit[0] === 'seconds'
+    ? 'Just now'
+    : `${Math.round(daysSince / unit[1])} ${unit[0]} ago`;
 };
 
 const ChatEntry = ({ sender, body, timeStamp }) => {
   const timeString = describeRelativeTime(new Date() - new Date(timeStamp));
+  const srcClass = sender === 'Vladimir' ? 'local' : 'remote';
   return (
-    <div className="chat-entry local">
+    <div className={`chat-entry ${srcClass}`}>
       <h2 className="entry-name">{sender}</h2>
       <section className="entry-bubble">
         <p>{body}</p>
@@ -40,9 +48,9 @@ const ChatEntry = ({ sender, body, timeStamp }) => {
 };
 
 ChatEntry.propTypes = {
-  sender: PropTypes.string,
-  body: PropTypes.string,
-  timeStamp: PropTypes.string,
+  sender: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  timeStamp: PropTypes.string.isRequired,
 };
 
 export default ChatEntry;
