@@ -4,12 +4,8 @@ import TimeStamp from './TimeStamp';
 import PropTypes from 'prop-types';
 
 const ChatEntry = (props) => {
-  let entryClassName = '';
-  if (props.sender === 'Vladimir') {
-    entryClassName = 'chat-entry local';
-  } else {
-    entryClassName = 'chat-entry remote';
-  }
+  const entryClassName =
+    props.sender === 'Vladimir' ? 'chat-entry local' : 'chat-entry remote';
 
   return (
     <div className={entryClassName}>
