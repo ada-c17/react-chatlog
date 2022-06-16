@@ -17,7 +17,7 @@ const ChatLog = ({entries, onUpdateChatData}) => {
 }
 
 ChatLog.propTypes = {
-  entries: PropTypes.object.isRequired,
+  entries: PropTypes.array.isRequired,
   onUpdateChatData: PropTypes.func.isRequired
 };
 
