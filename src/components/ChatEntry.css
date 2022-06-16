@@ -60,7 +60,7 @@ button {
 
 .chat-entry.local .entry-time {
   text-align: right;
-}
+color:black;}
 
 .chat-entry.local .entry-bubble::before {
   background-color: #ffffe0;
