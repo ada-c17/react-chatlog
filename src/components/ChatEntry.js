@@ -3,6 +3,7 @@ import './ChatEntry.css';
 import PropTypes from 'prop-types';
 import '../data/messages.json';
 
+
 const ChatEntry = (props) => {
   return (
     <div className="chat-entry local">
@@ -16,11 +17,11 @@ const ChatEntry = (props) => {
   );
 };
 
-ChatEntry.propTypes = {
+ChatEntry.propType = {
   //Fill with correct proptypes
-  sender : PropTypes.string.isRequired,
-  body : PropTypes.string.isRequired,
-  timeStamp: PropTypes.string.isRequired
+  sender: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  timeStamp: PropTypes.string.isRequired,
 };
 
 export default ChatEntry;
