@@ -3,16 +3,14 @@ import './ChatEntry.css';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
-const ChatEntry = ({ sender, timeStamp, body }) => {
+const ChatEntry = ({ sender, timeStamp, body, incrementLikes }) => {
   const [isLiked, setIsLiked] = useState('🤍');
 
   const updateLikes = () => {
-    if (isLiked === '🤍') {
-      setIsLiked('❤️');
-    } else {
-      setIsLiked('🤍');
-    }
+    isLiked === '🤍' ? setIsLiked('❤️') : setIsLiked('🤍');
+    incrementLikes();
   };
+
   const chatTimeStamp =
     new Date(new Date() - new Date(timeStamp)).getFullYear() - 1970;
 
@@ -35,6 +33,7 @@ ChatEntry.propTypes = {
   sender: PropTypes.string.isRequired,
   timeStamp: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
+  incrementLikes: PropTypes.func.isRequired,
 };
 
 export default ChatEntry;

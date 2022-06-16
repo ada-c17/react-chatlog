@@ -6,6 +6,9 @@ import { useState } from 'react';
 
 const App = () => {
   const [likes, setLikes] = useState(0);
+  const incrementLikes = () => {
+    setLikes(likes + 1);
+  };
 
   return (
     <div id="App">
@@ -15,7 +18,8 @@ const App = () => {
       <main>
         {/* Wave 01: Render one ChatEntry component
         Wave 02: Render ChatLog component */}
-        <ChatLog entries={chatMessages} />
+        <h3>{likes}</h3>
+        <ChatLog entries={chatMessages} incrementLikes={incrementLikes} />
       </main>
     </div>
   );
