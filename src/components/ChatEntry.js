@@ -1,14 +1,20 @@
 import React from 'react';
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
+import { DateTime } from 'luxon';
 
 const ChatEntry = (props) => {
+  const chatSender = props.sender;
+  const chatMessage = props.body;
+  const timeStamp = DateTime.fromISO(props.timeStamp);
+  const chatTimeStamp = timeStamp.toRelative();
+
   return (
     <div className="chat-entry local">
-      <h2 className="entry-name">Replace with name of sender</h2>
+      <h2 className="entry-name">{chatSender}</h2>
       <section className="entry-bubble">
-        <p>Replace with body of ChatEntry</p>
-        <p className="entry-time">Replace with TimeStamp component</p>
+        <p>{chatMessage}</p>
+        <p className="entry-time">{chatTimeStamp}</p>
         <button className="like">🤍</button>
       </section>
     </div>
@@ -17,6 +23,10 @@ const ChatEntry = (props) => {
 
 ChatEntry.propTypes = {
   //Fill with correct proptypes
+  sender: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  timestamp: PropTypes.instanceOf(Date).isRequired,
+  liked: PropTypes.bool.isRequired,
 };
 
 export default ChatEntry;
