@@ -16,8 +16,8 @@ const ChatEntry = (props) => {
   // console.log(chatDateObject.getFullYear());
   // console.log(years);
 
-  // if chat entry is local (sender= Vladimir)
-  if (sender === 'Vladimir') {
+  // if chat entry is local (sender= Vladimir, or Joe Biden)
+  if (sender === 'Estragon' || sender === 'Joe Biden') {
     return (
       <div className="chat-entry local">
         <h2 className="entry-name">{sender}</h2>
@@ -30,7 +30,7 @@ const ChatEntry = (props) => {
     );
   }
   // if chat entry is remote (sender = Estragon)
-  else if (sender === 'Estragon') {
+  else if (sender === 'Vladimir') {
     return (
       <div className="chat-entry remote">
         <h2 className="entry-name">{sender}</h2>
