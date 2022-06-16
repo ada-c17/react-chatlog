@@ -1,0 +1,8 @@
+.color-choice {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sender1, .sender2 {
+    font-size: 1.5rem;
+}
