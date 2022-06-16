@@ -18,4 +18,8 @@ const ChatLog = (props) => {
   return <section>{chatComponents};</section>;
 };
 
+ChatLog.propTypes = {
+  id: PropTypes.number.isRequired,
+};
+
 export default ChatLog;
