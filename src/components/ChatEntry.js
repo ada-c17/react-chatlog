@@ -47,13 +47,13 @@ const ChatEntry = ({
 ChatEntry.propTypes = {
   sender: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
-  timeStamp: PropTypes.string,
-  id: PropTypes.number.isRequired,
-  liked: PropTypes.bool.isRequired,
+  timeStamp: PropTypes.string.isRequired,
+  id: PropTypes.number,
+  liked: PropTypes.bool,
   localName: PropTypes.string,
   localColor: PropTypes.string,
   remoteColor: PropTypes.string,
-  onUpdate: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func,
 };
 
 export default ChatEntry;
