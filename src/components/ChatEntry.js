@@ -1,16 +1,34 @@
 import React from 'react';
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
+import { useState } from 'react';
+
+// We will now need to update the ChatEntry component to use the liked field.
+// When we click a heart, the state of the entries will need to update in our App
+// so that it can report the number of likes (❤️s).
+// Consider implementing a helper function to calculate the number of likes (❤️s).
+// Consider using a ternary to display a 🤍 or a ❤️ as needed.
+
+// const [isPresent, setIsPresent] = useState(false);
+// const togglePresence = () => {
+//   setIsPresent(!isPresent);
+// };
 
 const ChatEntry = (props) => {
+  const [isLiked, setIsLiked] = useState('🤍');
+  const toggleLiked = () => {
+    setIsLiked(!isLiked);
+  };
+  const heartColor = isLiked ? '❤️' : '🤍';
+
   const sender = props.sender;
   const body = props.body;
   const chatDate = props.timeStamp;
-  // let yearsDiff =  date2.getFullYear - date1.getFullYear;
   const today = new Date();
   // console.log('today is', today);
   // console.log('timestamp is', chatDate);
   const chatDateObject = new Date(chatDate);
+  // let yearsDiff =  date2.getFullYear - date1.getFullYear;
   const years = today.getFullYear() - chatDateObject.getFullYear();
   // console.log(today.getFullYear());
   // console.log(chatDateObject.getFullYear());
@@ -24,7 +42,9 @@ const ChatEntry = (props) => {
         <section className="entry-bubble">
           <p>{body}</p>
           <p className="entry-time">{years} years ago</p>
-          <button className="like">🤍</button>
+          <button onClick={toggleLiked} className="like">
+            {heartColor}
+          </button>
         </section>
       </div>
     );
@@ -37,7 +57,10 @@ const ChatEntry = (props) => {
         <section className="entry-bubble">
           <p>{body}</p>
           <p className="entry-time">{years} years ago</p>
-          <button className="like">🤍</button>
+          <button onClick={toggleLiked} className="like">
+            {heartColor}
+          </button>
+          {/* <button className="like">🤍</button> */}
         </section>
       </div>
     );
