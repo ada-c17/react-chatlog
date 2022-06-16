@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import ChatEntry from './components/ChatEntry';
 import ChatLog from './components/ChatLog';
 import chatMessages from './data/messages.json';
 
@@ -28,14 +27,18 @@ const testData = [
   },
 ];
 
+// const testConvo = chatMessages;
+
 const App = () => {
   return (
     <div id="App">
       <header>
-        <h1>Application title</h1>
+        <h1>Fly on the Wall</h1>
+        <p>Their convo, for your eyes</p>
       </header>
       <main>
-        <ChatLog entries={testData}></ChatLog>
+        {/* <ChatLog entries={testData}></ChatLog> */}
+        <ChatLog entries={chatMessages}></ChatLog>
         {/* <ChatEntry
           sender={testData.sender}
           body={testData.body}

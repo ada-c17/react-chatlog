@@ -10,6 +10,7 @@ const ChatLog = (props) => {
   const entryLog = entries.map((entry) => {
     return (
       <ChatEntry
+        key={entry.id ? entry.id : `${entry.sender}_${entry.timeStamp}`}
         sender={entry.sender}
         body={entry.body}
         timeStamp={entry.timeStamp}
@@ -21,6 +22,14 @@ const ChatLog = (props) => {
   return <div className="chat-log">{entryLog}</div>;
 };
 
-// ChatLog.propTypes = {};
+ChatLog.propTypes = {
+  entries: PropTypes.arrayOf(
+    PropTypes.shape({
+      sender: PropTypes.string.isRequired,
+      body: PropTypes.string.isRequired,
+      timeStamp: PropTypes.string.isRequired,
+    })
+  ),
+};
 
 export default ChatLog;
