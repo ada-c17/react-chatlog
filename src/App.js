@@ -13,10 +13,14 @@ const App = () => {
     setLikes(likes - 1);
   };
 
+  const sender1 = chatMessages[0].sender;
+
   return (
     <div id="App">
       <header>
-        <h1>Application title</h1>
+        <h1>
+          Chat between {chatMessages[0].sender} and {chatMessages[1].sender}
+        </h1>
       </header>
       <main>
         {/* Wave 01: Render one ChatEntry component
@@ -26,6 +30,7 @@ const App = () => {
           entries={chatMessages}
           incrementLikes={incrementLikes}
           decrementLikes={decrementLikes}
+          sender1={sender1}
         />
       </main>
     </div>

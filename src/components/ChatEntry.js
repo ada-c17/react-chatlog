@@ -10,6 +10,7 @@ const ChatEntry = ({
   body,
   incrementLikes,
   decrementLikes,
+  sender1,
 }) => {
   const [isLiked, setIsLiked] = useState('🤍');
 
@@ -23,8 +24,15 @@ const ChatEntry = ({
     }
   };
 
+  let updatedClassName = 'chat-entry';
+  if (sender === sender1) {
+    updatedClassName += ' local';
+  } else {
+    updatedClassName += ' remote';
+  }
+
   return (
-    <div className="chat-entry local">
+    <div className={updatedClassName}>
       <h2 className="entry-name">{sender}</h2>
       <section className="entry-bubble">
         <p>{body}</p>
@@ -46,6 +54,7 @@ ChatEntry.propTypes = {
   body: PropTypes.string.isRequired,
   incrementLikes: PropTypes.func.isRequired,
   decrementLikes: PropTypes.func.isRequired,
+  sender1: PropTypes.string.isRequired,
 };
 
 export default ChatEntry;
