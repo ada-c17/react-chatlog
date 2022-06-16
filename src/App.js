@@ -6,6 +6,13 @@ import { useState } from 'react';
 
 const App = () => {
   const localUser = chatMessages[0].sender;
+  let remoteUser;
+  for (const chat of chatMessages) {
+    if (chat.sender !== localUser) {
+      remoteUser = chat.sender;
+      break;
+    }
+  }
   const [numHeart, setNumHeart] = useState(0);
 
   const onHeartChange = (isHeartTurnedOn) => {
@@ -15,7 +22,9 @@ const App = () => {
   return (
     <div id="App">
       <header>
-        <h1>Chat between Vladimir and Estragon</h1>
+        <h1>
+          Chat between {localUser} and {remoteUser}
+        </h1>
         <p>{numHeart} ❤️s</p>
       </header>
 
