@@ -27,7 +27,8 @@ const App = () => {
     for (let i = 0; i < participants.length - 1; i++) {
       chatTitle += ` ${participants[i]} and`;
     }
-    const chatTitleString = chatTitle + ` ${participants.at(-1)}`;
+    const chatTitleString =
+      chatTitle + ` ${participants[participants.length - 1]}`;
     return chatTitleString;
   };
 
