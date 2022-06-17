@@ -5,9 +5,10 @@ import PropTypes from 'prop-types';
 const ColorChoice = (props) => {
   return (
     <div className="color-choice">
-      <p> {props.sender}'s color: </p>
+      <p className={props.color}> {props.sender}'s color: </p>
       <div className="color-selection">
         <button
+          className="red"
           onClick={() => {
             props.setColorCallback('red');
           }}
@@ -15,6 +16,7 @@ const ColorChoice = (props) => {
           🟥
         </button>
         <button
+          className="orange"
           onClick={() => {
             props.setColorCallback('orange');
           }}
@@ -22,6 +24,7 @@ const ColorChoice = (props) => {
           🟧
         </button>
         <button
+          className="yellow"
           onClick={() => {
             props.setColorCallback('yellow');
           }}
@@ -29,6 +32,7 @@ const ColorChoice = (props) => {
           🟨{' '}
         </button>
         <button
+          className="green"
           onClick={() => {
             props.setColorCallback('green');
           }}
@@ -36,6 +40,7 @@ const ColorChoice = (props) => {
           🟩
         </button>
         <button
+          className="blue"
           onClick={() => {
             props.setColorCallback('blue');
           }}
@@ -43,18 +48,12 @@ const ColorChoice = (props) => {
           🟦{' '}
         </button>
         <button
+          className="purple"
           onClick={() => {
             props.setColorCallback('purple');
           }}
         >
           🟪
-        </button>
-        <button
-          onClick={() => {
-            props.setColorCallback('grey');
-          }}
-        >
-          🟫
         </button>
       </div>
     </div>

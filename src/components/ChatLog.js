@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 const ChatLog = (props) => {
   const entries = props.entries;
 
-  const entryComponents = entries.map((entry) => {
+  const entryComponents = entries.map((entry, i) => {
     return (
       <div className="chat-log" key={entry.id}>
         <ChatEntry
@@ -16,6 +16,9 @@ const ChatLog = (props) => {
           timeStamp={entry.timeStamp}
           liked={entry.liked}
           onUpdateHeart={props.onUpdateHeart}
+          odd={i % 2}
+          colorForSender1={props.colorForSender1}
+          colorForSender2={props.colorForSender2}
         ></ChatEntry>
       </div>
     );

@@ -20,11 +20,16 @@ const ChatEntry = (props) => {
 
   const heartColor = like === true ? '❤️' : '🤍';
 
+  const localRemote =
+    props.odd === 0 ? 'chat-entry local' : 'chat-entry remote';
+
+  const color = props.odd === 0 ? props.colorForSender1 : props.colorForSender2;
+
   return (
-    <div className="chat-entry local">
+    <div className={localRemote}>
       <h2 className="entry-name">{props.sender}</h2>
       <section className="entry-bubble">
-        <p>{props.body}</p>
+        <p className={color}>{props.body}</p>
         <p className="entry-time">
           <TimeStamp time={props.timeStamp} />
         </p>

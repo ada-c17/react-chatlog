@@ -68,7 +68,12 @@ const App = () => {
         </section>
       </header>
       <main>
-        <ChatLog entries={entriesData} onUpdateHeart={onUpdateHeart} />
+        <ChatLog
+          entries={entriesData}
+          onUpdateHeart={onUpdateHeart}
+          colorForSender1={sender1Color}
+          colorForSender2={sender2Color}
+        />
       </main>
     </div>
   );
