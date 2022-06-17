@@ -7,7 +7,7 @@ import chatMessages from './data/messages.json';
 const App = () => {
   const [entriesData, setEntriesData] = useState(chatMessages);
 
-  const updateHeart = (updatedEntry) => {
+  const onUpdateHeart = (updatedEntry) => {
     const entries = entriesData.map((entry) => {
       if (entry.id === updatedEntry.id) {
         return updatedEntry;
@@ -25,7 +25,7 @@ const App = () => {
         total += 1;
       }
     }
-    
+    console.log(total);
     return total;
   };
 
@@ -33,15 +33,15 @@ const App = () => {
     <div id="App">
       <header>
         <h1>
-          Chat between <span id="sender1">{chatMessages[0].sender}</span> and{' '}
-          <span id="sender2">{chatMessages[1].sender}</span>
+          Chat between <span id="sender1">{entriesData[0].sender}</span> and{' '}
+          <span id="sender2">{entriesData[1].sender}</span>
         </h1>
         <h2>
-          <span id="heartLikes"> {numberOfHearts}</span> 💙s
+          <span id="heartLikes">{numberOfHearts()} ❤️s</span>
         </h2>
       </header>
       <main>
-        <ChatLog entries={entriesData} onUpdateHeart={updateHeart} />
+        <ChatLog entries={entriesData} onUpdateHeart={onUpdateHeart} />
       </main>
     </div>
   );

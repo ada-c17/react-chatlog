@@ -15,7 +15,7 @@ const ChatLog = (props) => {
           body={entry.body}
           timeStamp={entry.timeStamp}
           liked={entry.liked}
-          onUpdate={props.onUpdateHeart}
+          onUpdateHeart={props.onUpdateHeart}
         ></ChatEntry>
       </div>
     );

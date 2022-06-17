@@ -4,17 +4,17 @@ import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp';
 
 const ChatEntry = (props) => {
-  const [like, setLike] = useState(props.heart);
+  const [like, setLike] = useState(props.liked);
 
-  const changeHeartColor = () => {
-    const updatedEntry = {
+  const toggleHeartLike = () => {
+    const updatedHeartEntry = {
       id: props.id,
       sender: props.sender,
       body: props.body,
       timeStamp: props.timeStamp,
-      liked: !props.Liked,
+      liked: !props.liked,
     };
-    props.onUpdate(updatedEntry);
+    props.onUpdateHeart(updatedHeartEntry);
     setLike(!like);
   };
 
@@ -28,7 +28,7 @@ const ChatEntry = (props) => {
         <p className="entry-time">
           <TimeStamp time={props.timeStamp} />
         </p>
-        <button onClick={changeHeartColor} id="like">
+        <button onClick={toggleHeartLike} id="like">
           {heartColor}
         </button>
       </section>
@@ -41,7 +41,7 @@ ChatEntry.propTypes = {
   sender: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   timeStamp: PropTypes.instanceOf(Date).isRequired,
-  isliked: PropTypes.bool,
+  liked: PropTypes.bool,
   onUpdate: PropTypes.func.isRequired,
 };
 
