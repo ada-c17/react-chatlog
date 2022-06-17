@@ -20,6 +20,7 @@ const ChatEntry = (props) => {
       props.onHeartChange(false);
     }
   };
+
   return (
     <div
       className={
@@ -30,7 +31,17 @@ const ChatEntry = (props) => {
     >
       <h2 className="entry-name">{props.sender}</h2>
       <section className="entry-bubble">
-        <p>{props.body}</p>
+        <p
+          className={
+            props.userColors
+              ? props.sender === props.localUser
+                ? `${props.userColors.localUser}`
+                : `${props.userColors.remoteUser}`
+              : ''
+          }
+        >
+          {props.body}
+        </p>
         {
           //<p className="entry-time">{year} years ago</p>
         }
@@ -44,13 +55,12 @@ const ChatEntry = (props) => {
 };
 
 ChatEntry.propTypes = {
-  //Fill with correct proptypes
-  //id: PropTypes.number.isRequired,
   sender: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   timeStamp: PropTypes.string.isRequired,
   localUser: PropTypes.string.isRequired,
   onChangeHeart: PropTypes.func.isRequired,
+  userColors: PropTypes.object,
 };
 
 export default ChatEntry;
