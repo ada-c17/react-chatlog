@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import chatMessages from './data/messages.json';
-import ChatEntry from './components/ChatEntry';
 import ChatLog from './components/ChatLog';
 
 const App = () => {
-  // const senderData = chatMessages[0].sender;
-  // const bodyData = chatMessages[0].body;
-  // const timeStampData = chatMessages[0].timeStamp;
-  const messageData = chatMessages;
+  const [messages, setMessages] = useState(chatMessages);
 
+  const toggleLiked = (id) => {
+    const newMessages = [];
+    for (const message of messages) {
+      if (message.id === id) {
+        message.liked = !message.liked;
+      }
+      newMessages.push(message);
+    }
+    setMessages(newMessages);
+    console.log('toggleLiked called');
+  };
   return (
     <div id="App">
       <header>
@@ -23,7 +30,7 @@ const App = () => {
           timeStamp={timeStampData}
         ></ChatEntry> */}
         {/* Wave 02: Render ChatLog component */}
-        <ChatLog entries={messageData}></ChatLog>
+        <ChatLog entries={messages} likedCallback={toggleLiked}></ChatLog>
       </main>
     </div>
   );
