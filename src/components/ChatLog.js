@@ -11,6 +11,7 @@ const ChatLog = (props) => {
           body={entry.body}
           timeStamp={entry.timeStamp}
           liked={entry.liked}
+          evenOdd={(entry.id-1) % 2}
         />
       </div>
     );

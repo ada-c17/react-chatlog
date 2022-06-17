@@ -4,8 +4,12 @@ import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp';
 
 const ChatEntry = (props) => {
+  const localRemote =
+    props.evenOdd === 0 ? 'chat-entry local' : 'chat-entry remote';
+  
+
   return (
-    <div className="chat-entry local">
+    <div className={localRemote}>
       <h2 className="entry-name">{props.sender}</h2>
       <section className="entry-bubble">
         <p>{props.body}</p>
