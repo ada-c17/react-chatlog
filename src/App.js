@@ -5,6 +5,9 @@ import ChatLog from './components/ChatLog';
 import chatMessages from './data/messages.json';
 
 const App = () => {
+
+
+
   const [entriesData, setEntriesData] = useState(chatMessages);
 
   const onUpdateHeart = (updatedEntry) => {
