@@ -3,12 +3,12 @@ import './App.css';
 // import ChatEntry from './components/ChatEntry';
 import ChatLog from './components/ChatLog';
 import chatMessages from './data/messages.json';
+import ColorChoice from './components/ColorChoice';
 
 const App = () => {
-
-
-
   const [entriesData, setEntriesData] = useState(chatMessages);
+  const [sender1Color, setSender1Color] = useState('blue');
+  const [sender2Color, setSender2Color] = useState('blue');
 
   const onUpdateHeart = (updatedEntry) => {
     const entries = entriesData.map((entry) => {
@@ -28,20 +28,44 @@ const App = () => {
         total += 1;
       }
     }
-    console.log(total);
     return total;
+  };
+
+  const sender1 = entriesData[0].sender;
+  const sender2 = entriesData[1].sender;
+
+  const updateSender1Color = (newColor) => {
+    setSender1Color(newColor);
+    console.log(`sender 1's color {newColor}`);
+  };
+
+  const updateSender2Color = (newColor) => {
+    setSender2Color(newColor);
+    console.log(`sender 2's color {newColor}`);
   };
 
   return (
     <div id="App">
       <header>
         <h1>
-          Chat between <span id="sender1">{entriesData[0].sender}</span> and{' '}
-          <span id="sender2">{entriesData[1].sender}</span>
+          Chat between <span id="sender1">{sender1}</span> and{' '}
+          <span id="sender2">{sender2}</span>
         </h1>
-        <h2>
-          <span id="heartLikes">{numberOfHearts()} ❤️s</span>
-        </h2>
+        <section>
+          <ColorChoice
+            sender={sender1}
+            setColorCallback={updateSender1Color}
+            color={sender1Color}
+          />
+          <h2>
+            <span id="heartLikes">{numberOfHearts()} ❤️s</span>
+          </h2>
+          <ColorChoice
+            sender={sender2}
+            setColorCallback={updateSender2Color}
+            color={sender2Color}
+          />
+        </section>
       </header>
       <main>
         <ChatLog entries={entriesData} onUpdateHeart={onUpdateHeart} />
