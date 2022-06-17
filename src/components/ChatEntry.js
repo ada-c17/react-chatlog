@@ -12,7 +12,6 @@ const ChatEntry = (props) => {
       timeStamp: props.timeStamp,
       liked: !props.liked,
     };
-    console.log(updatedMessage.liked);
     props.onUpdate(updatedMessage);
   };
 

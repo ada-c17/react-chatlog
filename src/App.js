@@ -32,8 +32,6 @@ const App = () => {
   };
 
   const updateChatData = (updatedMessage) => {
-    console.log('in updateChatData');
-    console.log(updatedMessage.id);
     const messages = chatMessageData.map((message) => {
       if (message.id === updatedMessage.id) {
         return updatedMessage;
