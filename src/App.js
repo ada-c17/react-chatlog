@@ -31,7 +31,10 @@ const App = () => {
   return (
     <div id="App">
       <header>
-        <h1>Chat Log</h1>
+        <h1>
+          Chat between {chatMessageData[0].sender} and{' '}
+          {chatMessageData[1].sender}
+        </h1>
         <h2>{heartCount} ❤️s</h2>
       </header>
       <main>
