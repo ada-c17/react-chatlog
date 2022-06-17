@@ -35,6 +35,10 @@ button {
   margin-bottom: 0.5rem;
 }
 
+/* .chat-entry:nth-child(even) {
+  margin-left: 40rem;
+} */
+
 .chat-entry .entry-time {
   color: #bbb;
   font-size: x-small;
