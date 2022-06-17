@@ -11,13 +11,11 @@ const ChatEntry = (props) => {
     <div className="chat-entry local" key={props.id}>
       <h2 className="entry-name">
         {props.sender}
-        {/*firstLog.sender}*/}
         {/*Replace with name of sender*/}
       </h2>
       <section className="entry-bubble">
         <p>
           {props.body}
-          {/*firstLog.body*/}
           {/*Replace with body of ChatEntry*/}
         </p>
         <p className="entry-time">

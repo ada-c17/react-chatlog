@@ -18,9 +18,8 @@ const App = () => {
           sender={chatMessages[0]['sender']}
           body={chatMessages[0]['body']}
           timeStamp={chatMessages[0]['timeStamp']}
-        ></ChatEntry>
+        />
         <ChatLog entries={chatMessages} />
-        {/*<ChatEntry Log={chatMessages[0]}></ChatEntry>*/}
       </main>
     </div>
   );
