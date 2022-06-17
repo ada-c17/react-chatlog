@@ -1,6 +1,13 @@
 import ChatEntry from './ChatEntry';
 import PropTypes from 'prop-types';
-const ChatLog = ({ entries, incrementLikes, decrementLikes, sender1 }) => {
+const ChatLog = ({
+  entries,
+  incrementLikes,
+  decrementLikes,
+  sender1,
+  sender1Color,
+  sender2Color,
+}) => {
   const chatEntries = entries.map((chatEntry) => (
     <ChatEntry
       key={chatEntry.id}
@@ -10,6 +17,8 @@ const ChatLog = ({ entries, incrementLikes, decrementLikes, sender1 }) => {
       incrementLikes={incrementLikes}
       decrementLikes={decrementLikes}
       sender1={sender1}
+      sender1Color={sender1Color}
+      sender2Color={sender2Color}
     />
   ));
   return <div>{chatEntries}</div>;

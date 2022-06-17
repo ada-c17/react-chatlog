@@ -11,6 +11,8 @@ const ChatEntry = ({
   incrementLikes,
   decrementLikes,
   sender1,
+  sender1Color,
+  sender2Color,
 }) => {
   const [isLiked, setIsLiked] = useState('🤍');
 
@@ -31,11 +33,20 @@ const ChatEntry = ({
     updatedClassName += ' remote';
   }
 
+  let currentColor;
+  if (sender === sender1) {
+    currentColor = sender1Color;
+  } else {
+    currentColor = sender2Color;
+  }
+
   return (
     <div className={updatedClassName}>
       <h2 className="entry-name">{sender}</h2>
       <section className="entry-bubble">
-        <p>{body}</p>
+        <p className="text-color" style={{ color: currentColor }}>
+          {body}
+        </p>
         <p className="entry-time">
           <TimeStamp time={timeStamp} />
         </p>
@@ -55,6 +66,8 @@ ChatEntry.propTypes = {
   incrementLikes: PropTypes.func.isRequired,
   decrementLikes: PropTypes.func.isRequired,
   sender1: PropTypes.string.isRequired,
+  sender1Color: PropTypes.string.isRequired,
+  sender2Color: PropTypes.string.isRequired,
 };
 
 export default ChatEntry;
