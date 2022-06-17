@@ -98,3 +98,8 @@ button {
 .chat-entry.remote .entry-bubble:hover::before {
   background-color: #a9f6f6;
 }
+
+.chat-entry .like {
+  border-color: tomato;
+  border-radius: 5px;
+}
