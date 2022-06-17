@@ -15,6 +15,22 @@ const App = () => {
     return hearts;
   }, 0);
 
+  const participants = chatMessageData.reduce((participantsArray, message) => {
+    if (!participantsArray.includes(message.sender)) {
+      participantsArray.push(message.sender);
+    }
+    return participantsArray;
+  }, []);
+
+  const participantsString = (participants) => {
+    let chatTitle = 'Chat between';
+    for (let i = 0; i < participants.length - 1; i++) {
+      chatTitle += ` ${participants[i]} and`;
+    }
+    const chatTitleString = chatTitle + ` ${participants.at(-1)}`;
+    return chatTitleString;
+  };
+
   const updateChatData = (updatedMessage) => {
     console.log('in updateChatData');
     console.log(updatedMessage.id);
@@ -31,10 +47,7 @@ const App = () => {
   return (
     <div id="App">
       <header>
-        <h1>
-          Chat between {chatMessageData[0].sender} and{' '}
-          {chatMessageData[1].sender}
-        </h1>
+        <h1>{participantsString(participants)}</h1>
         <h2>{heartCount} ❤️s</h2>
       </header>
       <main>
