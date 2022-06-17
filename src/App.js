@@ -28,7 +28,7 @@ const App = () => {
         <h1>Chat Log</h1>
       </header>
       <main>
-        <ChatLog entries={chatMessages} onUpdateChat={updateMessages} />
+        <ChatLog entries={messageData} onUpdateChat={updateMessages} />
       </main>
     </div>
   );
