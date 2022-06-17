@@ -2,7 +2,7 @@ import React from 'react';
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
 
-const setUnit = (daysSince) => {
+const setTimeStringUnit = (daysSince) => {
   if (daysSince >= 365) {
     return ['years', 365];
   }
@@ -26,13 +26,13 @@ const setUnit = (daysSince) => {
 
 const describeRelativeTime = (timeSince) => {
   const daysSince = timeSince / 86400000;
-  const unit = setUnit(daysSince);
+  const unit = setTimeStringUnit(daysSince);
   return unit[0] === 'seconds'
     ? 'Just now'
     : `${Math.round(daysSince / unit[1])} ${unit[0]} ago`;
 };
 
-const ChatEntry = ({ sender, body, timeStamp }) => {
+const ChatEntry = ({ id, sender, body, timeStamp, liked, updateMessage }) => {
   const timeString = describeRelativeTime(new Date() - new Date(timeStamp));
   const srcClass = sender === 'Vladimir' ? 'local' : 'remote';
   return (
@@ -41,16 +41,32 @@ const ChatEntry = ({ sender, body, timeStamp }) => {
       <section className="entry-bubble">
         <p>{body}</p>
         <p className="entry-time">{timeString}</p>
-        <button className="like">🤍</button>
+        <button
+          className="like"
+          onClick={() => {
+            updateMessage({
+              id: id,
+              sender: sender,
+              body: body,
+              timeStamp: timeStamp,
+              liked: !liked,
+            });
+          }}
+        >
+          {liked ? '❤️' : '🤍'}
+        </button>
       </section>
     </div>
   );
 };
 
 ChatEntry.propTypes = {
+  id: PropTypes.number.isRequired,
   sender: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   timeStamp: PropTypes.string.isRequired,
+  liked: PropTypes.bool.isRequired,
+  updateMessage: PropTypes.func.isRequired,
 };
 
 export default ChatEntry;
