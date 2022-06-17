@@ -2,12 +2,20 @@ import React from 'react';
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
 import { DateTime } from 'luxon';
+import { useState } from 'react';
 
 const ChatEntry = (props) => {
   const chatSender = props.sender;
   const chatMessage = props.body;
+
   const timeStamp = DateTime.fromISO(props.timeStamp);
   const chatTimeStamp = timeStamp.toRelative();
+
+  const [likedState, setLikedState] = useState('❤️');
+  const toggleLikes = () => {
+    setLikedState(!likedState);
+  };
+  const likes = likedState ? '🤍' : '❤️';
 
   return (
     <div
@@ -19,7 +27,9 @@ const ChatEntry = (props) => {
       <section className="entry-bubble">
         <p>{chatMessage}</p>
         <p className="entry-time">{chatTimeStamp}</p>
-        <button className="like">🤍</button>
+        <button className="like" onClick={toggleLikes}>
+          {likes}
+        </button>
       </section>
     </div>
   );
