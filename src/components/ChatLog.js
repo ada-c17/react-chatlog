@@ -8,9 +8,12 @@ const ChatLog = (props) => {
     return (
       <div key={entry.id} className="chat-log">
         <ChatEntry
+          id={entry.id}
           sender={entry.sender}
           body={entry.body}
           timeStamp={entry.timeStamp}
+          liked={entry.liked}
+          onUpdate={props.onUpdateHeart}
         />
       </div>
     );
@@ -19,7 +22,16 @@ const ChatLog = (props) => {
 };
 
 ChatLog.propTypes = {
-  id: PropTypes.number.isRequired,
+  entries: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      sender: PropTypes.string.isRequired,
+      body: PropTypes.string.isRequired,
+      timeStamp: PropTypes.string.isRequired,
+      liked: PropTypes.bool,
+    })
+  ),
+  onUpdateHeart: PropTypes.func.isRequired,
 };
 
 export default ChatLog;
