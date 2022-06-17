@@ -5,8 +5,10 @@ import moment from 'moment';
 
 const ChatEntry = (props) => {
   const timeAgo = moment(props.timeStamp).fromNow();
+  let entrySide =
+    props.sender === 'Vladimir' ? 'chat-entry local' : 'chat-entry remote';
   return (
-    <div className="chat-entry local">
+    <div className={entrySide}>
       <h2 className="entry-name">{props.sender}</h2>
       <section className="entry-bubble">
         <p>{props.body}</p>
