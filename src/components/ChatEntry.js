@@ -20,11 +20,11 @@ const ChatEntry = ({id, sender, body, timeStamp, liked, onUpdateChatData}) => {
 };
 
 ChatEntry.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.number,
   sender: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   timeStamp: PropTypes.string.isRequired,
-  liked: PropTypes.bool.isRequired,
+  liked: PropTypes.bool,
   onUpdateChatData: PropTypes.func
 };
 
