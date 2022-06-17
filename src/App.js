@@ -25,7 +25,9 @@ const App = () => {
       <header>
         <h1>Chat between Vladimir and Estragon</h1>
         <section>
-          <div className="widget">{countHeart} ❤️s</div>
+          <div className="widget" id="heartWidget">
+            {countHeart} ❤️s
+          </div>
         </section>
       </header>
       <main>
