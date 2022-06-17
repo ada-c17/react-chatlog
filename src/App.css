@@ -31,13 +31,8 @@
 }
 
 #App .widget {
-  display: inline-block;
-  line-height: 0.5em;
-  border-radius: 10px;
+  background-color: #a9f6f6;
   color: black;
-  font-size:0.8em;
-  padding-left: 1em;
-  padding-right: 1em;
 }
 
 #App #heartWidget {
