@@ -13,7 +13,7 @@ const ChatEntry = (props) => {
           {' '}
           <TimeStamp time={props.timeStamp} />{' '}
         </p>
-        <button className="like">🤍</button>
+        <button className="like"> {liked ? 🤍 :❤️} </button>
       </section>
     </div>
   );
@@ -23,8 +23,8 @@ ChatEntry.propTypes = {
   sender: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   timeStamp: PropTypes.string.isRequired,
-  //liked: PropTypes.bool.isRequired,
-  //id: PropTypes.number.isRequired,
+  liked: PropTypes.bool.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 export default ChatEntry;

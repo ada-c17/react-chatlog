@@ -3,7 +3,7 @@ import ChatEntry from './ChatEntry';
 import PropTypes from 'prop-types';
 
 const ChatLog = (props) => {
-  console.log(props);
+  //console.log(props);
   const chatLogComponents = [];
   for (let object of props.entries) {
     chatLogComponents.push(
@@ -11,6 +11,8 @@ const ChatLog = (props) => {
         sender={object.sender}
         body={object.body}
         timeStamp={object.timeStamp}
+        id={object.id}
+        liked = {object.liked}
       />
     );
   }
