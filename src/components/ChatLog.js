@@ -22,4 +22,16 @@ const ChatLog = ({ entries }) => {
   return getChatLogJSX(entries);
 };
 
+ChatLog.propTypes = {
+  entries: PropTypes.arrayOf(
+    PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        sender: PropTypes.string,
+        body: PropTypes.string,
+        timeStamp: PropTypes.string,
+        liked: PropTypes.bool,
+      })
+  ).isRequired
+}
+
 export default ChatLog;
