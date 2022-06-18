@@ -27,6 +27,7 @@ ChatEntry.propTypes = {
       sender: PropTypes.string.isRequired,
       body: PropTypes.string.isRequired,
       timeStamp: PropTypes.string.isRequired,
+      onLikeClick: PropTypes.func.isRequired,
     }).isRequired
   ),
 };
