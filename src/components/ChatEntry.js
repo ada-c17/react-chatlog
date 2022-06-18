@@ -15,6 +15,8 @@ const ChatEntry = (props) => {
     props.onUpdate(updatedMessage);
   };
 
+  // props.onUpdate triggers components to be rerendered, so that when
+  // heart is set here, the isLiked value has switched?
   const heart = props.isLiked ? '❤️' : '🤍';
 
   return (
@@ -34,12 +36,12 @@ const ChatEntry = (props) => {
 };
 
 ChatEntry.propTypes = {
+  id: PropTypes.number.isRequired,
   sender: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   timeStamp: PropTypes.string.isRequired,
+  isLiked: PropTypes.bool.isRequired,
   onUpdate: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
-  isLiked: PropTypes.bool,
 };
 
 export default ChatEntry;
