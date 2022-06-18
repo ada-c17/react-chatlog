@@ -4,15 +4,25 @@ import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp';
 
 const ChatEntry = (props) => {
+  const styleChat =
+    props.sender === 'Vladimir' ? 'chat-entry local' : 'chat-entry remote';
+  const heart = props.liked === true ? '❤️' : '🤍';
+
+  const likeMe = () => {
+    props.heartCallback(props.id);
+  };
+
   return (
-    <div className="chat-entry local">
+    <div className={styleChat}>
       <h2 className="entry-name">{props.sender}</h2>
       <section className="entry-bubble">
         <p>{props.body}</p>
         <p className="entry-time">
           <TimeStamp time={props.timeStamp} />
         </p>
-        <button className="like">🤍</button>
+        <button className="like" onClick={likeMe}>
+          {heart}
+        </button>
       </section>
     </div>
   );
