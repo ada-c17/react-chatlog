@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './ChatLog.css';
 
 const ChatLog = (props) => {
-  const chatComponents = props.entries.map((chatEntry, index) => {
+  const chatComponents = props.entries.map((chatEntry) => {
     return (
       <section>
         <ChatEntry

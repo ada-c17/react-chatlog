@@ -1,6 +1,7 @@
 import React from 'react';
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
+import TimeStamp from './TimeStamp';
 
 const ChatEntry = (props) => {
   const onLikeButtonClick = () => {
@@ -22,7 +23,12 @@ const ChatEntry = (props) => {
         <h2 className="entry-name"> {props.sender} </h2>
         <section className="entry-bubble">
           <p> {props.body} </p>
-          <p className="entry-time"> {props.timeStamp} </p>
+          <p className="entry-time">
+            <TimeStamp
+              time={props.timeStamp}
+              className="entry-time"
+            ></TimeStamp>
+          </p>
           <button className="like" onClick={onLikeButtonClick}>
             {heart}
           </button>
@@ -35,7 +41,12 @@ const ChatEntry = (props) => {
         <h2 className="entry-name"> {props.sender} </h2>
         <section className="entry-bubble">
           <p> {props.body} </p>
-          <p className="entry-time"> {props.timeStamp} </p>
+          <p className="entry-time">
+            <TimeStamp
+              time={props.timeStamp}
+              className="entry-time"
+            ></TimeStamp>
+          </p>
           <button className="like" onClick={onLikeButtonClick}>
             {heart}
           </button>
