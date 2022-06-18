@@ -7,21 +7,34 @@ import { useState } from 'react';
 const App = () => {
   const [entries, setEntries] = useState(chatMessages);
 
+  const countLikes = () => {
+    let total = 0;
+    for (let entry of entries) {
+      if (entry.liked === true) {
+        total += 1;
+      }
+    }
+    return total;
+  };
+
   const heartMessage = (id) => {
-    // const newEntries = [];
-    // for (const entry in entries) {
-    //   if (entry.id === id) {
-    //     entry.liked = !entry.liked;
-    //   }
-    //   newEntries.push(entry);
-    // }
-    // setEntries(newEntries);
-    console.log(id, 'liked');
+    const newEntries = [...entries];
+    for (let entry of newEntries) {
+      if (entry.id === id) {
+        entry.liked = !entry.liked;
+      }
+    }
+    setEntries(newEntries);
   };
   return (
     <div id="App">
       <header>
         <h1>Application title</h1>
+        <section>
+          <h2 id="heartWidget" className="widget">
+            Like count: {countLikes()} ❤️s
+          </h2>
+        </section>
       </header>
       <main>
         <ChatLog entries={entries} heartCallback={heartMessage}></ChatLog>

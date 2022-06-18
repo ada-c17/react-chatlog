@@ -6,7 +6,6 @@ import TimeStamp from './TimeStamp';
 const ChatEntry = (props) => {
   const styleChat =
     props.sender === 'Vladimir' ? 'chat-entry local' : 'chat-entry remote';
-  const heart = props.liked === true ? '❤️' : '🤍';
 
   const likeMe = () => {
     props.heartCallback(props.id);
@@ -21,7 +20,7 @@ const ChatEntry = (props) => {
           <TimeStamp time={props.timeStamp} />
         </p>
         <button className="like" onClick={likeMe}>
-          {heart}
+          {props.liked === true ? '❤️' : '🤍'}
         </button>
       </section>
     </div>
