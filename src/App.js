@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import chatMessages from './data/messages.json';
 import ChatLog from './components/ChatLog';
+import ColorChoice from './components/ColorChoice';
 import { useState } from 'react';
 
 const App = () => {
@@ -35,13 +36,28 @@ const App = () => {
   // set local as Vladimir to match ReadMe photos
   // pass it down to ChatLog to ChatEntry
   const localUser = chatMessages[0].sender;
+  // to be used for colors
+  const remoteUser = chatMessages[1].sender;
+
+  const [color, setColor] = useState('black');
+  const selectColor = (chatColor) => {
+    setColor(chatColor);
+  };
 
   return (
-    <div id="App">
+    <div id="App" className={color}>
       <header>
         <h1>Application title</h1>
         <section>
+          <div>
+            <h2>{localUser}</h2>
+            <ColorChoice setColorCallback={selectColor}></ColorChoice>
+          </div>
           <p id="heartWidget">{numHearts} ❤️s</p>
+          <div>
+            <h2>{remoteUser}</h2>
+            <ColorChoice setColorCallback={selectColor}></ColorChoice>
+          </div>
         </section>
       </header>
       <main>

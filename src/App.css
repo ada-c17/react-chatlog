@@ -4,7 +4,7 @@
 
 #App header {
   background-color: #222;
-  color: #fff;
+  
   padding-bottom: 0.5rem;
   position: fixed;
   width: 100%;
@@ -24,6 +24,7 @@
   font-size: 1.5em;
   text-align: center;
   display: inline-block;
+  color: #fff;
 }
 
 #App header section {
@@ -42,7 +43,14 @@
 
 #App #heartWidget {
   font-size: 1.5em;
-  margin: 1em
+  margin: 1em;
+  color: black;
+}
+
+#App section {
+  display: flex;
+  justify-content: space-around;
+  
 }
 
 #App span {
