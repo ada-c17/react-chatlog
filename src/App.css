@@ -72,3 +72,12 @@
 .purple {
   color: purple
 }
+
+.local{
+    text-align: left;
+  
+}
+.remote{
+  text-align: right;
+
+}
