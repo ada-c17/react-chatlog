@@ -4,8 +4,15 @@ import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp';
 
 const ChatEntry = ({ sender, body, timeStamp }) => {
+  let remoteSenderClass = 'chat-entry remote';
+  if (sender === 'Estragon') {
+    remoteSenderClass = 'chat-entry remote';
+  } else {
+    remoteSenderClass = 'chat-entry local';
+  }
+
   return (
-    <div className="chat-entry local">
+    <div className={remoteSenderClass}>
       <h2 className="entry-name">{sender}</h2>
       <section className="entry-bubble">
         <p>{body}</p>
@@ -19,11 +26,11 @@ const ChatEntry = ({ sender, body, timeStamp }) => {
 };
 
 ChatEntry.propTypes = {
-  messageData: PropTypes.arrayOf(
+  messageData: PropTypes.objectOf(
     PropTypes.shape({
       sender: PropTypes.string.isRequired,
       body: PropTypes.string.isRequired,
-      // timeStamp: PropTypes.string.isRequired,
+      timeStamp: PropTypes.string.isRequired,
     }).isRequired
   ),
 };
