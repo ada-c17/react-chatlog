@@ -3,14 +3,17 @@ import './ChatLog.css';
 import PropTypes from 'prop-types';
 import ChatEntry from './ChatEntry';
 
-const ChatLog = ({ entries }) => {
+const ChatLog = ({ entries, heartsCount, onLikeClick }) => {
   const ChatLogComponent = entries.map((entry) => {
     return (
       <div key={entry.id}>
         <ChatEntry
+          id={entry.id}
           sender={entry.sender}
           body={entry.body}
           timeStamp={entry.timeStamp}
+          liked={entry.liked}
+          onLikeClick={onLikeClick}
         />
       </div>
     );

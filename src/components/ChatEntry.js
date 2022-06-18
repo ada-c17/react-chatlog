@@ -3,7 +3,7 @@ import './ChatEntry.css';
 import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp';
 
-const ChatEntry = ({ sender, body, timeStamp }) => {
+const ChatEntry = ({ id, sender, body, timeStamp, liked, onLikeClick }) => {
   let remoteSenderClass = 'chat-entry remote';
   if (sender === 'Estragon') {
     remoteSenderClass = 'chat-entry remote';
@@ -11,6 +11,7 @@ const ChatEntry = ({ sender, body, timeStamp }) => {
     remoteSenderClass = 'chat-entry local';
   }
 
+  const heart = liked ? '❤️' : '🤍';
   return (
     <div className={remoteSenderClass}>
       <h2 className="entry-name">{sender}</h2>
@@ -19,7 +20,9 @@ const ChatEntry = ({ sender, body, timeStamp }) => {
         <p className="entry-time">
           <TimeStamp time={timeStamp} />
         </p>
-        <button className="like">🤍</button>
+        <button onClick={() => onLikeClick(id)} className="like">
+          {heart}
+        </button>
       </section>
     </div>
   );
