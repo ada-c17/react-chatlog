@@ -1,18 +1,35 @@
 import React from 'react';
 import './ChatLog.css';
 import ChatEntry from './ChatEntry';
+import PropTypes from 'prop-types';
 
-const ChatLog = (props) => {
-  //console.log(props);
-  const chatEntriesData = props.entries.map((chat) => (
+const ChatLog = ({ entries, onUpdateMessage }) => {
+  const chatEntriesData = entries.map((chat) => (
     <ChatEntry
       key={chat.id}
+      id={chat.id}
       sender={chat.sender}
       body={chat.body}
       timeStamp={chat.timeStamp}
+      isLiked={chat.liked}
+      onUpdate={onUpdateMessage}
     ></ChatEntry>
   ));
+
   return <div>{chatEntriesData}</div>;
+};
+
+ChatLog.propTypes = {
+  entries: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      sender: PropTypes.string.isRequired,
+      body: PropTypes.string.isRequired,
+      timeStamp: PropTypes.string.isRequired,
+      liked: PropTypes.bool.isRequired,
+    })
+  ),
+  onUpdateMessage: PropTypes.func.isRequired,
 };
 
 export default ChatLog;
