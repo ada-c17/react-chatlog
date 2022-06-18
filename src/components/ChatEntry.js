@@ -19,8 +19,13 @@ const ChatEntry = (props) => {
   // heart is set here, the isLiked value has switched?
   const heart = props.isLiked ? '❤️' : '🤍';
 
+  // added 'chat-entry' class here as well
+  // couldn't figure out how to do className='chat-entry {localOrRemote}'
+  const localOrRemote =
+    props.sender === props.local ? 'chat-entry local' : 'chat-entry remote';
+
   return (
-    <div className="chat-entry local">
+    <div className={localOrRemote}>
       <h2 className="entry-name">{props.sender}</h2>
       <section className="entry-bubble">
         <p>{props.body}</p>
@@ -42,6 +47,7 @@ ChatEntry.propTypes = {
   timeStamp: PropTypes.string.isRequired,
   isLiked: PropTypes.bool.isRequired,
   onUpdate: PropTypes.func.isRequired,
+  local: PropTypes.string.isRequired,
 };
 
 export default ChatEntry;

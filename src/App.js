@@ -32,16 +32,23 @@ const App = () => {
   };
   let numHearts = countHearts();
 
+  // set local as Vladimir to match ReadMe photos
+  // pass it down to ChatLog to ChatEntry
+  const localUser = chatMessages[0].sender;
+
   return (
     <div id="App">
       <header>
         <h1>Application title</h1>
-        <section>{numHearts} ❤️s</section>
+        <section>
+          <p id="heartWidget">{numHearts} ❤️s</p>
+        </section>
       </header>
       <main>
         <ChatLog
           entries={messageData} // send state variable as value
           onUpdateMessage={updateMessageData}
+          local={localUser}
         ></ChatLog>
       </main>
     </div>
