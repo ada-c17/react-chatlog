@@ -4,15 +4,20 @@ import ChatEntry from './ChatEntry';
 const ChatLog = (props) => {
   const chatLogComponent = props.entries.map((log) => {
     return (
-      <ChatEntry
-        key={log.id}
-        sender={log.sender}
-        body={log.body}
-        timeStamp={log.timeStamp}
-      />
+      <div key={log.id}>
+        <ChatEntry
+          key={log.id}
+          id={log.id}
+          sender={log.sender}
+          body={log.body}
+          timeStamp={log.timeStamp}
+          liked={log.liked}
+          likedCallBack={props.likedCallBack}
+        />
+      </div>
     );
   });
-  return <dive>{chatLogComponent}</dive>;
+  return chatLogComponent;
 };
 
 export default ChatLog;

@@ -26,9 +26,10 @@ describe('Wave 03: clicking like button and rendering App', () => {
     const lastButton = buttons[buttons.length - 1];
 
     // Act-Assert
-
+    //screen.debug();
     // click the first button
     fireEvent.click(firstButton);
+    //screen.debug();
     expect(firstButton.innerHTML).toEqual('❤️');
 
     // check that all other buttons haven't changed
