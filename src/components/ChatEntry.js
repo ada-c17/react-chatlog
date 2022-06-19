@@ -5,23 +5,8 @@ import TimeStamp from './TimeStamp';
 
 
 const ChatEntry = (props) => {
-
-  // const chatFormat = (props) => {
-  // //   if props.sender == 'Estragon', make css header .chat-entry.remote
-  //   if (props.sender === 'Estragon') {
-  //     return <div className="chat-entry remote"></div>;
-  //   }
-  //   else {
-  //     return <div className="chat-entry local"></div>;
-  //   }
-  // };
-
-  // const chatFormat = () => (
-  //   <div 
-  //     className={`chat-entry ${props.sender === 'Estragon' ? 'remote' : 'local'}`}></div>);
   
   return (
-    // <div className={chatFormat}>
     <div className={`chat-entry ${props.sender === 'Estragon' ? 'remote' : 'local'}`}>
       <h2 className="entry-name">{props.sender}</h2>
       <section className="entry-bubble">
