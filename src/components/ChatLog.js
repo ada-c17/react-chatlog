@@ -14,8 +14,10 @@ const ChatLog = (props) => {
       liked={entry.liked} 
       likedEvent={props.likedEvent}
       countLikesFunc={props.countLikesFunc}
+      // setColorFunc={props.setColorFunc}
       />)
    )
+
 
    return (
      <div>
@@ -35,7 +37,8 @@ ChatLog.propTypes = {
     })
   ).isRequired,
   likedEvent: PropTypes.func.isRequired,
-  countLikesFunc: PropTypes.func.isRequired
+  countLikesFunc: PropTypes.func.isRequired,
+  // setColorFunc: PropTypes.func.isRequired
   };
 
 export default ChatLog;

@@ -1,0 +1,35 @@
+header .first-header {
+    width: 70%;
+    /* border: 2px solid greenyellow; */
+    margin: auto;
+}
+
+
+.head-info{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.head-info .head-text{
+    margin: 0 10px 0 10px;
+}
+
+.head-info.likes {
+    justify-content: space-around;    
+}
+
+
+.first-sender{
+    color: rgb(16, 209, 67);
+}
+
+.second-sender {
+    color: rgb(253, 85, 7);
+}
+
+.second-header {
+    background-color: #b1ddf8;
+    padding: 10px;
+}

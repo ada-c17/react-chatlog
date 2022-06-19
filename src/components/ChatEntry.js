@@ -15,6 +15,7 @@ const ChatEntry = (props) => {
   let like = '🤍';
   like = !props.liked ? '🤍' : '❤️';
   let leftRight = (sender === 'Vladimir') ? 'local' : 'remote';
+  
   const counter = () => {
     props.likedEvent(props.id);
     console.log('start call countLikesFunc');
@@ -25,7 +26,7 @@ const ChatEntry = (props) => {
     <div className={`chat-entry ${leftRight}`}>
       <h2 className="entry-name">{sender}</h2>
       <section className="entry-bubble">
-        <p>{body}</p>
+        <p className='msg-by-sender'>{body}</p>
         <p className="entry-time"><TimeStamp time={timeStamp} /></p>
         <button onClick={counter}>{like}</button>
       </section>
@@ -41,6 +42,7 @@ ChatEntry.propTypes = {
   timeStamp: PropTypes.string.isRequired,
   likedEvent: PropTypes.func.isRequired,
   countLikesFunc: PropTypes.func.isRequired,
+  // setColorFunc: PropTypes.func.isRequired
 };
 
 export default ChatEntry;

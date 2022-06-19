@@ -60,8 +60,12 @@ button {
 /* "local" messages are shown on the left side */
 .chat-entry.local {
   text-align: left;
+
 }
 
+.chat-entry.local .msg-by-sender{
+  color: rgb(16, 209, 67);
+}
 .chat-entry.local .entry-time {
   text-align: right;
 }
@@ -78,6 +82,10 @@ button {
 /* "remote" messages are shown on the right side, in blue */
 .chat-entry.remote {
   text-align: right;
+}
+
+.chat-entry.remote .msg-by-sender{
+  color: rgb(253, 85, 7);
 }
 
 .chat-entry.remote .entry-bubble {
