@@ -14,6 +14,12 @@ const App = () => {
     setHearts(hearts - 1);
   };
 
+  const senderOne = chatMessages[0].sender;
+  console.log(`first: ${senderOne}`);
+
+  const senderTwo = chatMessages[1].sender;
+  console.log(`two: ${senderTwo}`);
+
   return (
     <div id="App">
       <header>
@@ -25,6 +31,7 @@ const App = () => {
           entries={chatMessages}
           addLikesCallback={addLikes}
           removeLikesCallback={removeLikes}
+          senderOne={senderOne}
         />
       </main>
     </div>

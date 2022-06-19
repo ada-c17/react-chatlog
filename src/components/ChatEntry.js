@@ -5,6 +5,13 @@ import TimeStamp from './TimeStamp.js';
 import { useState } from 'react';
 
 const ChatEntry = (props) => {
+  let bubbleSender = 'chat-entry';
+  if (props.sender === props.senderOne) {
+    bubbleSender += ' local';
+  } else {
+    bubbleSender += ' remote';
+  }
+
   const [likeStatus, setLikeStatus] = useState('🤍');
 
   const updateLikes = () => {
@@ -18,7 +25,7 @@ const ChatEntry = (props) => {
   };
 
   return (
-    <div className="chat-entry local">
+    <div className={bubbleSender}>
       <h2 className="entry-name">{props.sender}</h2>
       <section className="entry-bubble">
         <p>{props.body}</p>
