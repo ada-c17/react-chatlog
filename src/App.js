@@ -9,7 +9,7 @@ let countHeart = 0;
 
 const App = () => {
   const [chatData, setChatData] = useState(chatMessages);
-  const [color, setColor] = useState({ local: 'black', remote: 'black' });
+  const [color, setColor] = useState({ local: 'orange', remote: 'orange' });
 
   console.log(color);
 
@@ -45,25 +45,32 @@ const App = () => {
           <span className={color.remote}>Estragon</span>
         </h1>
         <section>
-          <span className={color.local}>Vladimir's color</span>
-          <span>
-            <ColorChoice colorCallback={colorLocalCallback} />
-          </span>
+          <div className="verticalWidget">
+            <span className={color.local}>Vladimir's color</span>
+            <br></br>
+            <span>
+              <ColorChoice colorCallback={colorLocalCallback} />
+            </span>
+          </div>
+
           <div className="widget" id="heartWidget">
             {countHeart} ❤️s
           </div>
-          <span className={color.remote}>Estragon's color</span>
-          <span>
-            <ColorChoice colorCallback={colorRemoteCallback} />
-          </span>
+
+          <div className="verticalWidget">
+            <span className={color.remote}>Estragon's color</span>
+            <br></br>
+            <span>
+              <ColorChoice colorCallback={colorRemoteCallback} />
+            </span>
+          </div>
         </section>
       </header>
       <main>
         <ChatLog
           entries={chatData}
           onUpdateHeart={updateChatData}
-          colorLocal={color.local}
-          colorRemote={color.remote}
+          color={color}
         />
       </main>
     </div>
