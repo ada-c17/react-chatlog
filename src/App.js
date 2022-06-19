@@ -9,9 +9,12 @@ let countHeart = 0;
 
 const App = () => {
   const [chatData, setChatData] = useState(chatMessages);
-  const [color, setColor] = useState({ local: 'orange', remote: 'orange' });
+  const [colorLocal, setColorLocal] = useState('orange');
+  const [colorRemote, setColorRemote] = useState('orange');
+  // !clean here
 
-  console.log(color);
+  // console.log(colorLocal);
+  // console.log(colorRemote);
 
   const updateChatData = (updatedMessage) => {
     const messages = chatData.map((message) => {
@@ -25,31 +28,34 @@ const App = () => {
     countHeart = updatedMessage.liked ? countHeart + 1 : countHeart - 1;
   };
 
-  const colorLocalCallback = (c) => {
-    const newColor1 = { local: c, remote: color.remote };
-    setColor(newColor1);
-    console.log('left');
-  };
-
-  const colorRemoteCallback = (d) => {
-    const newColor2 = { local: color.local, remote: d };
-    setColor(newColor2);
-    console.log('right');
-  };
+  // const colorLocalCallBack = (c) => {
+  //   setColorLocal(c);
+  //   console.log('left');
+  // };
+  // // !clean here
+  // const colorRemoteCallBack = (d) => {
+  //   setColorRemote(d);
+  //   console.log('right');
+  // };
 
   return (
     <div id="App">
       <header>
         <h1>
-          Chat between <span className={color.local}>Vladimir</span> and
-          <span className={color.remote}>Estragon</span>
+          Chat between <span className={colorLocal}>Vladimir</span> and
+          <span className={colorRemote}>Estragon</span>
         </h1>
         <section>
           <div className="verticalWidget">
-            <span className={color.local}>Vladimir's color</span>
+            <span className={colorLocal}>Vladimir's color</span>
             <br></br>
             <span>
-              <ColorChoice colorCallback={colorLocalCallback} />
+              <ColorChoice
+                colorCallback={(c) => {
+                  setColorLocal(c);
+                }}
+                id="0"
+              />
             </span>
           </div>
 
@@ -58,10 +64,15 @@ const App = () => {
           </div>
 
           <div className="verticalWidget">
-            <span className={color.remote}>Estragon's color</span>
+            <span className={colorRemote}>Estragon's color</span>
             <br></br>
             <span>
-              <ColorChoice colorCallback={colorRemoteCallback} />
+              <ColorChoice
+                colorCallback={(d) => {
+                  setColorRemote(d);
+                }}
+                id="1"
+              />
             </span>
           </div>
         </section>
@@ -70,7 +81,8 @@ const App = () => {
         <ChatLog
           entries={chatData}
           onUpdateHeart={updateChatData}
-          color={color}
+          colorLocal={colorLocal}
+          colorRemote={colorRemote}
         />
       </main>
     </div>

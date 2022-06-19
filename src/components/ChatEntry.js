@@ -18,7 +18,7 @@ const ChatEntry = (props) => {
   const printHeart = props.liked ? '❤️' : '🤍';
   const classLocalRemote = props.sender === 'Vladimir' ? 'local' : 'remote';
   const colorBody =
-    props.sender === 'Vladimir' ? props.color.local : props.color.remote;
+    props.sender === 'Vladimir' ? props.colorLocal : props.colorRemote;
 
   return (
     <div className={`chat-entry ${classLocalRemote}`}>
@@ -43,7 +43,8 @@ ChatEntry.propTypes = {
   timeStamp: PropTypes.string.isRequired,
   onUpdate: PropTypes.func.isRequired,
   liked: PropTypes.bool,
-  color: PropTypes.object,
+  colorLocal: PropTypes.string.isRequired,
+  colorRemote: PropTypes.string.isRequired,
 };
 
 export default ChatEntry;
