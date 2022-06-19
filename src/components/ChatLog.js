@@ -3,7 +3,13 @@ import './ChatLog.css';
 import ChatEntry from './ChatEntry';
 import PropTypes from 'prop-types';
 
-const ChatLog = ({ entries, onUpdateMessage, local }) => {
+const ChatLog = ({
+  entries,
+  onUpdateMessage,
+  local,
+  localColor,
+  remoteColor,
+}) => {
   const chatEntriesData = entries.map((chat) => (
     <ChatEntry
       key={chat.id}
@@ -14,6 +20,8 @@ const ChatLog = ({ entries, onUpdateMessage, local }) => {
       isLiked={chat.liked}
       onUpdate={onUpdateMessage}
       local={local}
+      localColor={localColor}
+      remoteColor={remoteColor}
     ></ChatEntry>
   ));
 

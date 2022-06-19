@@ -39,24 +39,32 @@ const App = () => {
   // to be used for colors
   const remoteUser = chatMessages[1].sender;
 
-  const [color, setColor] = useState('black');
-  const selectColor = (chatColor) => {
-    setColor(chatColor);
+  const [localColor, setLColor] = useState('black');
+  const [remoteColor, setRColor] = useState('black');
+  const setLocalColor = (chatColor) => {
+    setLColor(chatColor);
+  };
+
+  const setRemoteColor = (chatColor) => {
+    setRColor(chatColor);
   };
 
   return (
-    <div id="App" className={color}>
+    <div id="App">
       <header>
-        <h1>Application title</h1>
+        <h1>
+          <span className={localColor}>{localUser}</span> and{' '}
+          <span className={remoteColor}>{remoteUser}</span> chat
+        </h1>
         <section>
           <div>
-            <h2>{localUser}</h2>
-            <ColorChoice setColorCallback={selectColor}></ColorChoice>
+            <h2 className={localColor}>{localUser}</h2>
+            <ColorChoice setColorCallback={setLocalColor}></ColorChoice>
           </div>
           <p id="heartWidget">{numHearts} ❤️s</p>
           <div>
-            <h2>{remoteUser}</h2>
-            <ColorChoice setColorCallback={selectColor}></ColorChoice>
+            <h2 className={remoteColor}>{remoteUser}</h2>
+            <ColorChoice setColorCallback={setRemoteColor}></ColorChoice>
           </div>
         </section>
       </header>
@@ -65,6 +73,8 @@ const App = () => {
           entries={messageData} // send state variable as value
           onUpdateMessage={updateMessageData}
           local={localUser}
+          localColor={localColor}
+          remoteColor={remoteColor}
         ></ChatLog>
       </main>
     </div>
