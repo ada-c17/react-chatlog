@@ -10,22 +10,32 @@ const App = () => {
   const updateMessages = (updatedData) => {
     const changedMessages = messageData.map((message) => {
       if (message.id === updatedData.id) {
-        console.log('This is message', message);
-        console.log('This is updatedData', updatedData);
         return updatedData;
       } else {
         return message;
       }
     });
 
-    // console.log('This is the value of changedMessages:', changedMessages);
     setMessages(changedMessages);
   };
+
+  const countLikes = (messages) => {
+    let count = 0;
+    messages.forEach((message) => {
+      if (message.liked) {
+        count += 1;
+      }
+    });
+    return count;
+  };
+
+  let numOfLikes = countLikes(messageData);
 
   return (
     <div id="App">
       <header>
         <h1>Chat Log</h1>
+        <section>{numOfLikes} ❤️s</section>
       </header>
       <main>
         <ChatLog entries={messageData} onUpdateChat={updateMessages} />

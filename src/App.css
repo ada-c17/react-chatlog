@@ -11,6 +11,7 @@
   z-index: 100;
   text-align: center;
   align-items: center;
+  font-weight: bold;
 }
 
 #App main {
@@ -28,6 +29,8 @@
 
 #App header section {
   background-color: #e0ffff;
+  color: #222;
+  font-size: 1.5em
 }
 
 #App .widget {
