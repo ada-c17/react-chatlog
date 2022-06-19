@@ -47,6 +47,10 @@
 
 #App span {
   display: inline-block
+  
+}
+.black {
+  color: black
 }
 
 .red {
@@ -73,11 +77,3 @@
   color: purple
 }
 
-.local{
-    text-align: left;
-  
-}
-.remote{
-  text-align: right;
-
-}

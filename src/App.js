@@ -9,7 +9,9 @@ let countHeart = 0;
 
 const App = () => {
   const [chatData, setChatData] = useState(chatMessages);
-  const [color, setColor] = useState('');
+  const [color, setColor] = useState({ local: 'black', remote: 'black' });
+
+  console.log(color);
 
   const updateChatData = (updatedMessage) => {
     const messages = chatData.map((message) => {
@@ -23,30 +25,46 @@ const App = () => {
     countHeart = updatedMessage.liked ? countHeart + 1 : countHeart - 1;
   };
 
-  const colorCallback = (color) => {
-    setColor(color);
+  const colorLocalCallback = (c) => {
+    const newColor1 = { local: c, remote: color.remote };
+    setColor(newColor1);
+    console.log('left');
   };
 
-  console.log(color);
+  const colorRemoteCallback = (d) => {
+    const newColor2 = { local: color.local, remote: d };
+    setColor(newColor2);
+    console.log('right');
+  };
 
   return (
     <div id="App">
       <header>
-        <h1>Chat between Vladimir and Estragon</h1>
+        <h1>
+          Chat between <span className={color.local}>Vladimir</span> and
+          <span className={color.remote}>Estragon</span>
+        </h1>
         <section>
+          <span className={color.local}>Vladimir's color</span>
           <span>
-            <ColorChoice colorCallback={colorCallback} />
+            <ColorChoice colorCallback={colorLocalCallback} />
           </span>
           <div className="widget" id="heartWidget">
             {countHeart} ❤️s
           </div>
+          <span className={color.remote}>Estragon's color</span>
           <span>
-            <ColorChoice colorCallback={colorCallback} />
+            <ColorChoice colorCallback={colorRemoteCallback} />
           </span>
         </section>
       </header>
       <main>
-        <ChatLog entries={chatData} onUpdateHeart={updateChatData} />
+        <ChatLog
+          entries={chatData}
+          onUpdateHeart={updateChatData}
+          colorLocal={color.local}
+          colorRemote={color.remote}
+        />
       </main>
     </div>
   );

@@ -13,6 +13,8 @@ const ChatLog = (props) => {
           body={entry.body}
           timeStamp={entry.timeStamp}
           liked={entry.liked}
+          colorLocal={props.colorLocal}
+          colorRemote={props.colorRemote}
           onUpdate={props.onUpdateHeart}
         />
       </div>
@@ -29,6 +31,8 @@ ChatLog.propTypes = {
       body: PropTypes.string.isRequired,
       timeStamp: PropTypes.string.isRequired,
       liked: PropTypes.bool,
+      colorLocal: PropTypes.string.isRequired,
+      colorRemote: PropTypes.string.isRequired,
     })
   ),
   onUpdateHeart: PropTypes.func.isRequired,

@@ -6,6 +6,8 @@ const ColorChoice = (props) => {
     event.preventDefault();
     props.colorCallback(event.target.value);
   };
+  console.log(props.colorCallback);
+  console.log(props.print);
 
   return (
     <div>
