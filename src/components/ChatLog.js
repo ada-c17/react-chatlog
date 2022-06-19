@@ -5,18 +5,17 @@ import ChatEntry from './ChatEntry';
 const ChatLog = (props) => {
   const createChat = (message) => {
     return (
-      <li key={message.id}>
-        <ChatEntry
-          id={message.id}
-          sender={message.sender}
-          body={message.body}
-          timeStamp={message.timeStamp}
-          liked={message.liked}
-          totalLikes={props.totalLikes}
-          updateTotalLikes={props.updateTotalLikes}
-          updateMessageInfo={props.updateMessageInfo}
-        />
-      </li>
+      <ChatEntry
+        key={message.id}
+        id={message.id}
+        sender={message.sender}
+        body={message.body}
+        timeStamp={message.timeStamp}
+        liked={message.liked}
+        totalLikes={props.totalLikes}
+        updateTotalLikes={props.updateTotalLikes}
+        updateMessageInfo={props.updateMessageInfo}
+      />
     );
   };
   return (
