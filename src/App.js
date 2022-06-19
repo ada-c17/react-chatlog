@@ -7,10 +7,10 @@ import ColorChoice from './components/ColorChoice';
 
 const App = () => {
   const [entriesData, setEntriesData] = useState(chatMessages);
-  const [sender1Color, setSender1Color] = useState('blue');
-  const [sender2Color, setSender2Color] = useState('blue');
+  const [sender1Color, setSender1Color] = useState('white');
+  const [sender2Color, setSender2Color] = useState('white');
 
-  const onUpdateHeart = (updatedEntry) => {
+  const updateHeartColor = (updatedEntry) => {
     const entries = entriesData.map((entry) => {
       if (entry.id === updatedEntry.id) {
         return updatedEntry;
@@ -48,32 +48,36 @@ const App = () => {
     <div id="App">
       <header>
         <h1>
-          Chat between <span id="sender1">{sender1}</span> and{' '}
-          <span id="sender2">{sender2}</span>
+          Chat between <span className={sender1Color}>{sender1}</span> and{' '}
+          <span className={sender2Color}>{sender2}</span>
         </h1>
-        <section>
+        <div className="color-section">
           <ColorChoice
+            className="first-sender"
             sender={sender1}
             setColorCallback={updateSender1Color}
             color={sender1Color}
           />
           <h2>
-            <span id="heartLikes">{numberOfHearts()} ❤️s</span>
+            <span id="heart-likes">{numberOfHearts()} ❤️s</span>
           </h2>
           <ColorChoice
+            className="second-sender"
             sender={sender2}
             setColorCallback={updateSender2Color}
             color={sender2Color}
           />
-        </section>
+        </div>
       </header>
-      <main>
-        <ChatLog
-          entries={entriesData}
-          onUpdateHeart={onUpdateHeart}
-          colorForSender1={sender1Color}
-          colorForSender2={sender2Color}
-        />
+      <main className="chat-log-section">
+        <section className="chat-log-body">
+          <ChatLog
+            entries={entriesData}
+            updateHeartColorCallback={updateHeartColor}
+            colorForSender1={sender1Color}
+            colorForSender2={sender2Color}
+          />
+        </section>
       </main>
     </div>
   );

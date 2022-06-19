@@ -15,11 +15,11 @@ const ChatLog = (props) => {
           body={entry.body}
           timeStamp={entry.timeStamp}
           liked={entry.liked}
-          onUpdateHeart={props.onUpdateHeart}
+          updateHeartColorCallback={props.updateHeartColorCallback}
           odd={i % 2}
           colorForSender1={props.colorForSender1}
           colorForSender2={props.colorForSender2}
-        ></ChatEntry>
+        />
       </div>
     );
   });
@@ -37,6 +37,6 @@ ChatEntry.propTypes = {
       liked: PropTypes.bool.isRequired,
     })
   ),
-  onUpdateHeart: PropTypes.func.isRequired,
+  updateHeartColorCallback: PropTypes.func.isRequired,
 };
 export default ChatLog;

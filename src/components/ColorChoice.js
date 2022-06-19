@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './ColorChoice.css';
 import PropTypes from 'prop-types';
 
 const ColorChoice = (props) => {

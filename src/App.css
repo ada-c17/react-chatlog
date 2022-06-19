@@ -1,5 +1,8 @@
 #App {
   background-color: #87cefa;
+  position: relative;
+  justify-content: center;
+  align-items: center;
 }
 
 #App header {
@@ -72,4 +75,17 @@
 .purple {
   color: purple
 }
+
+#heart-likes {
+  color: black
+}
+
+.color-section {
+  display: flex;
+  text-align: -webkit-match-parent;
+  flex-wrap: wrap;
+  align-content: space-evenly;
+  align-items: inherit;
+  justify-content: center;
+} 
 
