@@ -11,10 +11,6 @@ const App = () => {
   const [chatData, setChatData] = useState(chatMessages);
   const [colorLocal, setColorLocal] = useState('orange');
   const [colorRemote, setColorRemote] = useState('orange');
-  // !clean here
-
-  // console.log(colorLocal);
-  // console.log(colorRemote);
 
   const updateChatData = (updatedMessage) => {
     const messages = chatData.map((message) => {
@@ -27,16 +23,6 @@ const App = () => {
     setChatData(messages);
     countHeart = updatedMessage.liked ? countHeart + 1 : countHeart - 1;
   };
-
-  // const colorLocalCallBack = (c) => {
-  //   setColorLocal(c);
-  //   console.log('left');
-  // };
-  // // !clean here
-  // const colorRemoteCallBack = (d) => {
-  //   setColorRemote(d);
-  //   console.log('right');
-  // };
 
   return (
     <div id="App">
@@ -54,7 +40,7 @@ const App = () => {
                 colorCallback={(c) => {
                   setColorLocal(c);
                 }}
-                id="0"
+                id="local"
               />
             </span>
           </div>
@@ -71,7 +57,7 @@ const App = () => {
                 colorCallback={(d) => {
                   setColorRemote(d);
                 }}
-                id="1"
+                id="remote"
               />
             </span>
           </div>

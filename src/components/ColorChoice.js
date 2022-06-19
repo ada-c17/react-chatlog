@@ -1,17 +1,12 @@
 import React from 'react';
 import './ColorChoice.css';
-import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const ColorChoice = ({ colorCallback, id }) => {
-  const [color, setColor] = useState('orange');
-
   const onFormSubmit = (event) => {
     event.preventDefault();
-    setColor(event.target.value);
+    colorCallback(event.target.value);
   };
-  colorCallback(color);
-  console.log(color);
-  console.log(colorCallback);
 
   return (
     <div>
@@ -67,6 +62,10 @@ const ColorChoice = ({ colorCallback, id }) => {
       </span>
     </div>
   );
+};
+ColorChoice.propTypes = {
+  id: PropTypes.string.isRequired,
+  colorCallback: PropTypes.func.isRequired,
 };
 
 export default ColorChoice;
