@@ -10,15 +10,19 @@ const ChatLog = (props) => {
         key={entry.id}
         sender={entry.sender}
         body={entry.body}
-        time={entry.timeStamp}
-        liked={entry.liked}
+        timeStamp={entry.timeStamp}
+        addLikesCallback={props.addLikesCallback}
+        removeLikesCallback={props.removeLikesCallback}
       />
     );
   });
+
   return <div>{chatComponents}</div>;
 };
 
 ChatLog.propTypes = {
   entries: PropTypes.array.isRequired,
+  addLikesCallback: PropTypes.func.isRequired,
+  removeLikesCallback: PropTypes.func.isRequired,
 };
 export default ChatLog;
