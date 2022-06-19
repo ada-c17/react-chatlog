@@ -12,6 +12,10 @@ const ChatLog = (props) => {
           sender={entry.sender}
           body={entry.body}
           timeStamp={entry.timeStamp}
+          liked={entry.liked}
+          onToggleLike={() => {
+            props.onEntryToggleLike(entry.id);
+          }}
         />
       ))}
     </div>
@@ -20,6 +24,7 @@ const ChatLog = (props) => {
 
 ChatLog.propTypes = {
   entries: PropTypes.array.isRequired,
+  onEntryToggleLike: PropTypes.func,
 };
 
 export default ChatLog;
