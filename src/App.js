@@ -9,6 +9,7 @@ const testEntry = {
   sender: 'Miss Kitty',
   body: 'meow~',
   timeStamp: '2010-05-29T22:49:06+00:00',
+  liked: true,
 };
 
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
           sender={testEntry.sender}
           body={testEntry.body}
           timeStamp={testEntry.timeStamp}
+          liked={testEntry.liked}
         />
 
         {/* Wave 02: Render ChatLog component */}
