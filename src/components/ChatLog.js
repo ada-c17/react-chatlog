@@ -12,7 +12,7 @@ const ChatLog = (props) => {
         body={object.body}
         timeStamp={object.timeStamp}
         id={object.id}
-        liked = {object.liked}
+        liked={object.liked}
       />
     );
   }

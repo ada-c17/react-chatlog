@@ -13,7 +13,7 @@ const ChatEntry = (props) => {
           {' '}
           <TimeStamp time={props.timeStamp} />{' '}
         </p>
-        <button className="like"> {liked ? 🤍 :❤️} </button>
+        <button className="like"> {props.liked ? '🤍 ' : '❤️'} </button>
       </section>
     </div>
   );
