@@ -17,8 +17,6 @@ const ChatLog = ({entries, onUpdateChatData}) => {
     )
   })
 
-  console.log(messagesData);
-
   return (
     <section className="chat-log">
       {messagesData}
