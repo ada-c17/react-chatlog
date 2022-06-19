@@ -48,7 +48,6 @@ button {
   height: 22px;
   width: 44px;
   clip-path: polygon(100% 0, 0 0, 50% 100%);
-
   position: absolute;
   top: 0;
 }
