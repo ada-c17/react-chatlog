@@ -12,6 +12,7 @@ const ChatLog = ({ entries }) => {
             sender={entry.sender}
             body={entry.body}
             timeStamp={entry.timeStamp}
+            key={entry.id}
           />
         );
       })}
