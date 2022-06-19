@@ -26,19 +26,22 @@ const App = () => {
 
   }
 
-  const countLikesFunc = () => {
+  const countLikesFunc = (id) => {
     console.log('countLikesFunc in App.js');
     for (let i of newChats){
       if (i.liked === true){
         countLikes += 1;
       }
     }
+    console.log(countLikes); //print updated number
     }
+
+    // console.log(countLikes); print 0
   return (
     <div id="App">
       <header>
         <h1>React ChatLog</h1>
-        <p>{countLikes} ❤️ </p>
+        <p>{countLikes} ❤️s </p>
       </header>
       <main>
         {/* Wave 01: Render one ChatEntry component
