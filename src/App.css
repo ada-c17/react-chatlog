@@ -1,3 +1,7 @@
+:root {
+  font-size: calc(12px + 0.3vw);
+}
+
 #App {
   background-color: #87cefa;
 }
@@ -21,9 +25,13 @@
 }
 
 #App h1 {
-  font-size: 1.5em;
+  font-size: 1.5rem;
   text-align: center;
   display: inline-block;
+}
+
+#App #likeCount {
+  min-width: 60px;
 }
 
 #App header section {
