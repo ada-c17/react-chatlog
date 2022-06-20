@@ -8,17 +8,18 @@ const ChatEntry = (props) => {
     props.heartCallback(props.id);
   };
 
+  const localRemote =
+    props.sender === props.localSender
+      ? 'chat-entry local'
+      : 'chat-entry remote';
+  const color =
+    props.sender === props.localSender ? props.colorLocal : props.colorRemote;
+
   return (
-    <div
-      className={
-        props.sender === props.localSender
-          ? 'chat-entry local'
-          : 'chat-entry remote'
-      }
-    >
+    <div className={localRemote}>
       <h2 className="entry-name">{props.sender}</h2>
       <section className="entry-bubble">
-        <p>{props.body}</p>
+        <p className={color}>{props.body}</p>
         <p className="entry-time">
           <TimeStamp time={props.timeStamp} />
         </p>

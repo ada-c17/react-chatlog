@@ -14,6 +14,8 @@ const ChatLog = (props) => {
         liked={entry.liked}
         heartCallback={props.heartCallback}
         localSender={props.localSender}
+        colorLocal={props.colorLocal}
+        colorRemote={props.colorRemote}
       ></ChatEntry>
     );
   });
