@@ -6,6 +6,7 @@ import ColorPicker from './components/ColorPicker';
 import ChatDescription from './components/ChatDescription';
 
 const App = () => {
+  // State setup
   const [chatData, setChatData] = useState(chatJSON.messages);
   const [numLikes, setNumLikes] = useState(
     chatJSON.messages.reduce((prev, msg) => {
@@ -16,6 +17,7 @@ const App = () => {
     local: '🟠',
     remote: '🟣',
   });
+  // Event handlers passed down to components
   const updateMessage = (updatedChat) => {
     const chats = chatData.map((chatEntry) => {
       return chatEntry.id === updatedChat.id ? updatedChat : chatEntry;

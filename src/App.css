@@ -30,6 +30,14 @@
   display: inline-block;
 }
 
+#App .menubar {
+  background-color: darkslategray;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
 #App #likeCount {
   min-width: 60px;
 }
@@ -79,12 +87,4 @@
 
 .🟣 {
   color: purple
-}
-
-.menubar {
-  background-color: darkslategray;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-around;
-  align-items: center;
 }
