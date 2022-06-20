@@ -10,6 +10,7 @@ const App = () => {
   const [likes, setTotalLikes] = useState(0);
   const changeLikeButton = (id) => {
     for (const message of messages) {
+      // console.log('made it in change like button');
       // console.log(message);
       if (message.id === id) {
         message.liked = !message.liked;
@@ -28,9 +29,10 @@ const App = () => {
   return (
     <div id="App">
       <header>
-        <h1 className="like">{likes} ❤️s</h1>
+        <h1>Application</h1>
       </header>
       <main>
+        <h1 className="like">{likes} ❤️s</h1>
         {/* Wave 01: Render one ChatEntry component
         Wave 02: Render ChatLog component */}
         <ChatLog
