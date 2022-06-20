@@ -29,7 +29,7 @@ ChatLog.propTypes = {
       sender: PropTypes.string.isRequired,
       body: PropTypes.string.isRequired,
       timeStamp: PropTypes.string.isRequired,
-      liked: PropTypes.bool.isRequired,
+      liked: PropTypes.bool,
     })
   ).isRequired,
   local: PropTypes.string.isRequired,
@@ -38,6 +38,24 @@ ChatLog.propTypes = {
     remote: PropTypes.string,
   }).isRequired,
   updateMessage: PropTypes.func.isRequired,
+};
+
+ChatLog.defaultProps = {
+  entries: [
+    {
+      id: 0,
+      sender: 'No one speaking',
+      body: 'Nothing to say',
+      timeStamp: '2022-03-07T09:30:00:00+07:00',
+      liked: false,
+    },
+  ],
+  local: 'User',
+  colorClasses: {
+    local: 'User',
+    remote: 'Someone else',
+  },
+  updateMessage: () => console.log('Only ok during tests.'),
 };
 
 export default ChatLog;

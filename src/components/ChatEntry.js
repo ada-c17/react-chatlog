@@ -51,4 +51,15 @@ ChatEntry.propTypes = {
   updateMessage: PropTypes.func.isRequired,
 };
 
+ChatEntry.defaultProps = {
+  id: 0,
+  sender: 'No one speaking',
+  source: 'local',
+  color: '⚫️',
+  body: 'Nothing to say',
+  timeStamp: '2022-03-07T09:30:00:00+07:00',
+  liked: false,
+  updateMessage: () => console.log('Only ok during tests.'),
+};
+
 export default ChatEntry;
