@@ -17,7 +17,7 @@ const ChatEntry = ({
 
   let colorClass;
   if (textColor) {
-    // asynchronous process, otherwise the test will fail.
+    // asynchronous process, textColor could be undefined
     colorClass =
       sender === 'Estragon' ? textColor['localUser'] : textColor['remoteUser'];
   }
