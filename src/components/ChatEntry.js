@@ -35,6 +35,7 @@ ChatEntry.propTypes = {
   body: PropTypes.string,
   timeStamp: PropTypes.string,
   liked: PropTypes.bool,
+  onUpdate: PropTypes.func,
 };
 
 export default ChatEntry;
