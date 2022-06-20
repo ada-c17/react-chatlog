@@ -13,6 +13,7 @@ const ChatLog = (props) => {
         timeStamp={entry.timeStamp}
         liked={entry.liked}
         heartCallback={props.heartCallback}
+        localSender={props.localSender}
       ></ChatEntry>
     );
   });

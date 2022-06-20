@@ -7,6 +7,15 @@ import { useState } from 'react';
 const App = () => {
   const [entries, setEntries] = useState(chatMessages);
 
+  const localSender = entries[0].sender;
+  let remoteSender;
+  for (let entry of entries) {
+    if (entry.sender !== localSender) {
+      remoteSender = entry.sender;
+      break;
+    }
+  }
+
   const countLikes = () => {
     let total = 0;
     for (let entry of entries) {
@@ -29,7 +38,9 @@ const App = () => {
   return (
     <div id="App">
       <header>
-        <h1>Application title</h1>
+        <h1>
+          Chat between {localSender} and {remoteSender}
+        </h1>
         <section>
           <h2 id="heartWidget" className="widget">
             Like count: {countLikes()} ❤️s
@@ -37,7 +48,11 @@ const App = () => {
         </section>
       </header>
       <main>
-        <ChatLog entries={entries} heartCallback={heartMessage}></ChatLog>
+        <ChatLog
+          entries={entries}
+          heartCallback={heartMessage}
+          localSender={localSender}
+        ></ChatLog>
       </main>
     </div>
   );
