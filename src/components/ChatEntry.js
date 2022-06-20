@@ -32,14 +32,22 @@ const describeRelativeTime = (timeSince) => {
     : `${Math.round(daysSince / unit[1])} ${unit[0]} ago`;
 };
 
-const ChatEntry = ({ id, sender, body, timeStamp, liked, updateMessage }) => {
+const ChatEntry = ({
+  id,
+  sender,
+  source,
+  color,
+  body,
+  timeStamp,
+  liked,
+  updateMessage,
+}) => {
   const timeString = describeRelativeTime(new Date() - new Date(timeStamp));
-  const srcClass = sender === 'Vladimir' ? 'local' : 'remote';
   return (
-    <div className={`chat-entry ${srcClass}`}>
+    <div className={`chat-entry ${source}`}>
       <h2 className="entry-name">{sender}</h2>
       <section className="entry-bubble">
-        <p>{body}</p>
+        <p className={color}>{body}</p>
         <p className="entry-time">{timeString}</p>
         <button
           className="like"
@@ -63,6 +71,8 @@ const ChatEntry = ({ id, sender, body, timeStamp, liked, updateMessage }) => {
 ChatEntry.propTypes = {
   id: PropTypes.number.isRequired,
   sender: PropTypes.string.isRequired,
+  source: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   timeStamp: PropTypes.string.isRequired,
   liked: PropTypes.bool.isRequired,

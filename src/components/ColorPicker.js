@@ -3,28 +3,16 @@ import './ColorPicker.css';
 import PropTypes from 'prop-types';
 import ColorMenu from './ColorMenu';
 
-const ColorPicker = ({ colorClasses, updateColors }) => {
+const ColorPicker = ({ colorClasses, source, updateColors }) => {
   return (
-    <div className="menubar">
-      <div className="menuContainer">
-        <h3>Local color:</h3>
-        <div className="colorMenu">
-          <ColorMenu
-            colorClasses={colorClasses}
-            updateColors={updateColors}
-            source="local"
-          />
-        </div>
-      </div>
-      <div className="menuContainer">
-        <h3>Remote color:</h3>
-        <div className="colorMenu">
-          <ColorMenu
-            colorClasses={colorClasses}
-            updateColors={updateColors}
-            source="remote"
-          />
-        </div>
+    <div className="menuContainer">
+      <h3>{source} color:</h3>
+      <div className="colorMenu">
+        <ColorMenu
+          colorClasses={colorClasses}
+          updateColors={updateColors}
+          source={source}
+        />
       </div>
     </div>
   );
@@ -35,6 +23,7 @@ ColorPicker.propTypes = {
     local: PropTypes.string.isRequired,
     remote: PropTypes.string.isRequired,
   }).isRequired,
+  source: PropTypes.string.isRequired,
   updateColors: PropTypes.func.isRequired,
 };
 

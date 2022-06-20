@@ -3,12 +3,15 @@ import './ChatLog.css';
 import PropTypes from 'prop-types';
 import ChatEntry from './ChatEntry';
 
-const ChatLog = ({ entries, updateMessage }) => {
+const ChatLog = ({ entries, local, colorClasses, updateMessage }) => {
   return entries.map((entry) => {
+    const source = entry.sender === local ? 'local' : 'remote';
     return (
       <ChatEntry
         id={entry.id}
         sender={entry.sender}
+        source={source}
+        color={colorClasses[source]}
         body={entry.body}
         timeStamp={entry.timeStamp}
         liked={entry.liked}
@@ -29,6 +32,11 @@ ChatLog.propTypes = {
       liked: PropTypes.bool.isRequired,
     })
   ).isRequired,
+  local: PropTypes.string.isRequired,
+  colorClasses: PropTypes.shape({
+    local: PropTypes.string,
+    remote: PropTypes.string,
+  }).isRequired,
   updateMessage: PropTypes.func.isRequired,
 };
 

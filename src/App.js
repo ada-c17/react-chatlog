@@ -1,19 +1,19 @@
 import { React, useState } from 'react';
 import './App.css';
 import ChatLog from './components/ChatLog';
-import chatMessages from './data/messages.json';
+import chatJSON from './data/messages.json';
 import ColorPicker from './components/ColorPicker';
 
 const App = () => {
-  const [chatData, setChatData] = useState(chatMessages);
+  const [chatData, setChatData] = useState(chatJSON.messages);
   const [numLikes, setNumLikes] = useState(
-    chatMessages.reduce((prev, msg) => {
+    chatJSON.messages.reduce((prev, msg) => {
       return msg.liked ? prev++ : prev;
     }, 0)
   );
   const [colorClasses, setColorClasses] = useState({
-    local: '🔴',
-    remote: '🔴',
+    local: '🟠',
+    remote: '🟣',
   });
   const updateMessage = (updatedChat) => {
     const chats = chatData.map((chatEntry) => {
@@ -34,14 +34,30 @@ const App = () => {
       <header>
         <h1>
           Conversation between{' '}
-          <span className={colorClasses.local}>Vladimir</span> and{' '}
-          <span className={colorClasses.remote}>Estragon</span>
+          <span className={colorClasses.local}>{chatJSON.localName}</span> and{' '}
+          <span className={colorClasses.remote}>{chatJSON.remoteNames[0]}</span>
         </h1>
-        <ColorPicker colorClasses={colorClasses} updateColors={updateColors} />
-        <h2>{numLikes} ❤️s</h2>
+        <div className="menubar">
+          <ColorPicker
+            colorClasses={colorClasses}
+            source="local"
+            updateColors={updateColors}
+          />
+          <h2>{numLikes} ❤️s</h2>
+          <ColorPicker
+            colorClasses={colorClasses}
+            source="remote"
+            updateColors={updateColors}
+          />
+        </div>
       </header>
       <main>
-        <ChatLog entries={chatData} updateMessage={updateMessage}></ChatLog>
+        <ChatLog
+          entries={chatData}
+          local={chatJSON.localName}
+          colorClasses={colorClasses}
+          updateMessage={updateMessage}
+        />
       </main>
     </div>
   );
