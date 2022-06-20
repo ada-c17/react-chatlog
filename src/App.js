@@ -5,7 +5,6 @@ import ChatLog from './components/ChatLog';
 import { useState } from 'react';
 
 const App = () => {
-  // let totalLikes = 0;
   const [messages, setMessages] = useState(chatMessages);
   const [likes, setTotalLikes] = useState(0);
   const changeLikeButton = (id) => {
@@ -29,12 +28,10 @@ const App = () => {
   return (
     <div id="App">
       <header>
-        <h1>Application</h1>
+        <h1 className="like">{likes} ❤️s</h1>
       </header>
       <main>
-        <h1 className="like">{likes} ❤️s</h1>
-        {/* Wave 01: Render one ChatEntry component
-        Wave 02: Render ChatLog component */}
+        {/* <h1 className="like">{likes} ❤️s</h1> */}
         <ChatLog
           entries={chatMessages}
           changeLikeButton={changeLikeButton}

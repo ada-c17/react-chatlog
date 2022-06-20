@@ -4,15 +4,6 @@ import PropTypes from 'prop-types';
 import ChatEntry from './ChatEntry.js';
 
 const ChatLog = ({ entries, changeLikeButton }) => {
-  // console.log(messages);
-  // const messageComponents = [
-  //   <ChatEntry
-  //     sender={messages.sender}
-  //     time={messages.timeStamp}
-  //     body={messages.body}
-  //   ></ChatEntry>,
-  // ];
-
   const messageComponents = [];
   for (const message of entries) {
     // console.log(message);
@@ -32,7 +23,18 @@ const ChatLog = ({ entries, changeLikeButton }) => {
 
   return <div>{messageComponents}</div>;
 };
-// };
-// };
+
+ChatLog.propTypes = {
+  entries: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      sender: PropTypes.string.isRequired,
+      timeStamp: PropTypes.string.isRequired,
+      body: PropTypes.string.isRequired,
+      liked: PropTypes.bool.isRequired,
+    })
+  ).isRequired,
+  changeLikeButton: PropTypes.func.isRequired,
+};
 
 export default ChatLog;
