@@ -1,16 +1,22 @@
-import React from 'react';
+import React,{ useState } from 'react';
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp.js';
 
+
 const ChatEntry = (props) => {
+  const [like, setLike] = useState(0);
   return (
     <div className="chat-entry local">
       <h2 className="entry-name">{props.sender}</h2>
       <section className="entry-bubble">
         <p>{props.body}</p>
-        <TimeStamp className='entry-time' time={props.timeStamp}>years ago</TimeStamp>
-        <button className="like">🤍</button>
+        <p className='entry-time'>
+          <TimeStamp time={props.timeStamp}/>
+        </p>
+        <button className="like" onClick={()=> props.updateLikes(like, setLike)}>
+          {like ?'❤️':'🤍'} 
+        </button>
       </section>
     </div>
   );
@@ -18,9 +24,10 @@ const ChatEntry = (props) => {
 
 ChatEntry.propTypes = {
   //Fill with correct proptypes
+  id: PropTypes.number.isRequired,
   sender: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
-  timeStamp: PropTypes.string.isRequired
+  timeStamp: PropTypes.string,
 };
 
 export default ChatEntry;
