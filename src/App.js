@@ -3,6 +3,7 @@ import './App.css';
 import ChatLog from './components/ChatLog';
 import chatJSON from './data/messages.json';
 import ColorPicker from './components/ColorPicker';
+import ChatDescription from './components/ChatDescription';
 
 const App = () => {
   const [chatData, setChatData] = useState(chatJSON.messages);
@@ -32,20 +33,18 @@ const App = () => {
   return (
     <div id="App">
       <header>
-        <h1>
-          Conversation between{' '}
-          <span className={colorClasses.local}>{chatJSON.localName}</span> and{' '}
-          <span className={colorClasses.remote}>
-            {chatJSON.remoteNames.join(', ')}
-          </span>
-        </h1>
+        <ChatDescription
+          colorClasses={colorClasses}
+          localName={chatJSON.localName}
+          remoteNames={chatJSON.remoteNames.join(', ')}
+        />
         <div className="menubar">
           <ColorPicker
             colorClasses={colorClasses}
             source="local"
             updateColors={updateColors}
           />
-          <h2>{numLikes} ❤️s</h2>
+          <h2 id="likeCount">{numLikes} ❤️s</h2>
           <ColorPicker
             colorClasses={colorClasses}
             source="remote"
