@@ -2,8 +2,8 @@ import './ColorChoice.css';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ColorChoice = ({ user, handleTextColor, textColor }) => {
-  const sender = user === 'localUser' ? 'Estragon' : 'Vladimir';
+const ColorChoice = ({ userClassifer, handleTextColor, textColor }) => {
+  const sender = userClassifer === 'localUser' ? 'Estragon' : 'Vladimir';
   let colorClass;
   if (textColor) {
     // asynchronous process, otherwise the test will fail.
@@ -16,17 +16,23 @@ const ColorChoice = ({ user, handleTextColor, textColor }) => {
       <h3 className={colorClass}>{sender}'s Color</h3>
       <div className="button-container">
         <button
-          onClick={() => handleTextColor({ user: { user }, color: 'red' })}
+          onClick={() =>
+            handleTextColor({ user: { userClassifer }, color: 'red' })
+          }
         >
           🔴
         </button>
         <button
-          onClick={() => handleTextColor({ user: { user }, color: 'yellow' })}
+          onClick={() =>
+            handleTextColor({ user: { userClassifer }, color: 'yellow' })
+          }
         >
           🟡
         </button>
         <button
-          onClick={() => handleTextColor({ user: { user }, color: 'blue' })}
+          onClick={() =>
+            handleTextColor({ user: { userClassifer }, color: 'blue' })
+          }
         >
           🔵
         </button>

@@ -5,6 +5,7 @@ import ChatLog from './components/ChatLog';
 import ColorChoice from './components/ColorChoice';
 
 const App = () => {
+  // Like Button
   const [messages, setMessages] = useState(chatMessages);
   const [hearts, setHearts] = useState('0 ❤️s');
   const handleMessage = (Updatedmessage) => {
@@ -24,11 +25,12 @@ const App = () => {
     setHearts(`${likedCount} ❤️s`);
   };
 
+  // Color Picker
   const [textColor, setTextColor] = useState({ localUser: '', remoteUser: '' });
   const handleTextColor = (updatedUserColor) => {
     const updatedTextColor = { ...textColor };
     const { user, color } = updatedUserColor;
-    updatedTextColor[user.user] = color;
+    updatedTextColor[user.userClassifer] = color;
     setTextColor(updatedTextColor);
   };
 
@@ -39,13 +41,13 @@ const App = () => {
 
         <section>
           <ColorChoice
-            user="localUser"
+            userClassifer="localUser"
             handleTextColor={handleTextColor}
             textColor={textColor}
           />
           <h1> {hearts}</h1>
           <ColorChoice
-            user="remoteUser"
+            userClassifer="remoteUser"
             handleTextColor={handleTextColor}
             textColor={textColor}
           />
