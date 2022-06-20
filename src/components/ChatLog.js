@@ -2,16 +2,15 @@ import './ChatLog.css';
 import ChatEntry from './ChatEntry';
 // import PropTypes from 'prop-types';
 
-const ChatLog = (props) => {
-  const chatLogComponents = props.entries.map((chat, id) =>{
+const ChatLog = ({entries}) => {
+  const chatLogComponents = entries.map((chat) =>{
     return (
-      <div key={id}>
         <ChatEntry
+          key={chat.id}
           sender={chat.sender}
           body={chat.body}
           timeStamp={chat.timeStamp}
         />
-      </div>
     );
   });
 
