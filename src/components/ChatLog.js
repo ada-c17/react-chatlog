@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ChatEntry from './ChatEntry';
 
 const ChatLog = (props) => {
-  const createChat = (message) => {
+  const makeMessage = (message) => {
     return (
       <ChatEntry
         key={message.id}
@@ -20,7 +20,7 @@ const ChatLog = (props) => {
   };
   return (
     <div className="chat-log">
-      {props.messages && props.messages.map(createChat)}
+      {props.messages && props.messages.map(makeMessage)}
     </div>
   );
 };

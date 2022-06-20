@@ -20,7 +20,9 @@ const App = () => {
   };
 
   const updateTotalLikes = (numberOfLikes) => {
-    numberOfLikes ? setTotalLikes((totalLikes += 1)) : setTotalLikes((totalLikes -= 1));
+    numberOfLikes
+      ? setTotalLikes((totalLikes += 1))
+      : setTotalLikes((totalLikes -= 1));
   };
 
   return (
