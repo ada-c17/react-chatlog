@@ -35,7 +35,9 @@ const App = () => {
         <h1>
           Conversation between{' '}
           <span className={colorClasses.local}>{chatJSON.localName}</span> and{' '}
-          <span className={colorClasses.remote}>{chatJSON.remoteNames[0]}</span>
+          <span className={colorClasses.remote}>
+            {chatJSON.remoteNames.join(', ')}
+          </span>
         </h1>
         <div className="menubar">
           <ColorPicker
