@@ -1,0 +1,7 @@
+button{
+    border-radius: 50%;
+}
+
+.selected {
+    outline: black solid 2px;
+}

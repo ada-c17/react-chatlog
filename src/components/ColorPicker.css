@@ -1,0 +1,16 @@
+.menubar {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+}
+
+.menuContainer {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.colorMenu {
+    display: flex;
+    flex-flow: row nowrap;
+}
