@@ -3,7 +3,7 @@ import './ChatEntry.css';
 import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp';
 
-const ChatEntry = ({ id, sender, body, timeStamp, liked }) => {
+const ChatEntry = ({ id, sender, body, timeStamp, liked, toggleLike }) => {
   const isLocal = (id) => {
     if (!(id % 2 === 0)) {
       return true;
@@ -14,8 +14,8 @@ const ChatEntry = ({ id, sender, body, timeStamp, liked }) => {
 
   const heartColor = liked ? '❤️' : '🤍';
 
-  const printME = () => {
-    console.log('Clicked!');
+  const handleToggleLike = () => {
+    toggleLike(id);
   };
 
   return (
@@ -28,7 +28,7 @@ const ChatEntry = ({ id, sender, body, timeStamp, liked }) => {
         <p className="entry-time ">
           <TimeStamp time={timeStamp} />
         </p>
-        <button onClick={printME}> {heartColor}</button>
+        <button onClick={handleToggleLike}>{heartColor}</button>
       </section>
     </div>
   );
@@ -41,6 +41,7 @@ ChatEntry.propTypes = {
   timeStamp: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   liked: PropTypes.bool.isRequired,
+  toggleLike: PropTypes.func.isRequired,
 };
 
 export default ChatEntry;
