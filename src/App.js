@@ -26,7 +26,7 @@ setChatData(newChatData)}
     <div id="App">
       <header>
         <h1>Chat between  ♥️</h1>
-        <section>{totalLikes} ❤️s</section>
+        <section id="totalLikes">{totalLikes} ❤️s</section>
       </header>
       <main>
         <ChatLog entries={chatData} toggleLike = {handleToggleLiked}></ChatLog>
