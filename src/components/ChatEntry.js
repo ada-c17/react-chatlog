@@ -1,10 +1,20 @@
 import React from 'react';
+import {useState} from 'react';
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp.js';
 
 
 const ChatEntry = (props) => {
+
+  const [like, setLike] = useState(props.heart);
+  const heartFill = like ? '❤️': '🤍';
+
+  const toggleLike = (id) => {
+    props.updateLikeHeart(id);
+    setLike(!like);
+  };
+
   console.log(props)
   const sender = props.sender;
   const body = props.body;
@@ -18,7 +28,7 @@ const ChatEntry = (props) => {
           <TimeStamp time={timeStamp}/>
         </p>
         
-        <button className="like">🤍</button>
+        <button className="like" onClick={()=> toggleLike(props.id)}>{heartFill}</button>
       </section>
     </div>
   );
