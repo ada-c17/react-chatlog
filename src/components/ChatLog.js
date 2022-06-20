@@ -26,13 +26,14 @@ const ChatLog = ({ entries, onUpdateMessage }) => {
 ChatLog.propTypes = {
   entries: PropTypes.arrayOf(
     PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        sender: PropTypes.string,
-        body: PropTypes.string,
-        timeStamp: PropTypes.string,
-        liked: PropTypes.bool,
-      })
-  ).isRequired
-}
+      id: PropTypes.number.isRequired,
+      sender: PropTypes.string,
+      body: PropTypes.string,
+      timeStamp: PropTypes.string,
+      liked: PropTypes.bool,
+    })
+  ).isRequired,
+  onUpdateMessage: PropTypes.func,
+};
 
 export default ChatLog;
