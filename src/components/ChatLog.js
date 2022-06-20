@@ -1,15 +1,16 @@
 import './ChatLog.css';
 import ChatEntry from './ChatEntry';
 import PropTypes from 'prop-types';
+import React from 'react';
 
-const ChatLog = ({ entries }) => {
+const ChatLog = ({ entries, updateLikes }) => {
   const ChatEntryComponents = entries.map((entry) => (
     <ChatEntry
-      key={entry.id}
+      // key={entry.id}
       sender={entry.sender}
       body={entry.body}
       timeStamp={entry.timeStamp}
-    />
+      updateLikes={updateLikes}/>
   ));
   return <div className="chat-log">{ChatEntryComponents}</div>;
 };
