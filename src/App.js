@@ -1,24 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
-import ChatEntry from './components/ChatEntry';
 import ChatLog from './components/ChatLog';
 import chatMessages from './data/messages.json';
 
 const App = () => {
-  const chatData = {
-    id: 1,
-    sender: 'Vladimir',
-    body: 'why are you arguing with me',
-    timeStamp: '2018-05-29T22:49:06+00:00',
-    liked: false,
+  const [chatData, setChatData] = useState(chatMessages);
+
+  const updateChatData = (updatedEntry) => {
+    const entries = chatData.map((entry) => {
+      if (entry.id === updatedEntry.id) {
+        return updatedEntry;
+      } else {
+        return entry;
+      }
+    });
+    setChatData(entries);
   };
+
+  const totalLikes = chatData.reduce((total, entry) => {
+    if (entry.liked === true) {
+      total += 1;
+    }
+    return total;
+  }, 0);
+
   return (
     <div id="App">
       <header>
-        <h1>Application title</h1>
+        <h1>
+          <div>Chat Log</div>
+          <div>{totalLikes} ❤️s</div>
+        </h1>
       </header>
       <main>
-        <ChatLog entries={chatMessages} />
+        <ChatLog entries={chatData} onUpdateChat={updateChatData} />
       </main>
     </div>
   );
