@@ -13,8 +13,10 @@ const ChatLog = (props) => {
         timeStamp={object.timeStamp}
         id={object.id}
         liked={object.liked}
+        heartCallback = {props.heartCallback}
       />
     );
+    //console.log('Mandy'); successfully load chat entries
   }
 
   return chatLogComponents;
