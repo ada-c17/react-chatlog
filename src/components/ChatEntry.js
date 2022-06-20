@@ -15,18 +15,29 @@ const ChatEntry = (props) => {
       <section className="entry-bubble">
         <p>{props.body}</p>
         <p className="entry-time">{diffTime(props.timeStamp)} years ago</p>
-        <button className="like">🤍</button>
+        <button
+          className="like"
+          onClick={() => {
+            props.flipLiked(props.id);
+            props.increaseLikes();
+          }}
+        >
+          {props.liked ? '❤️' : '🤍'}
+        </button>
       </section>
     </div>
   );
 };
 
 ChatEntry.propTypes = {
-  // id: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired,
   sender: PropTypes.string,
   body: PropTypes.string.isRequired,
   timeStamp: PropTypes.string,
-  // liked: PropTypes.bool
+  liked: PropTypes.bool,
+  flipLiked: PropTypes.func.isRequired,
+  increaseLikes: PropTypes.func.isRequired,
+  likesCount: PropTypes.number.isRequired,
 };
 
 export default ChatEntry;
