@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import ChatEntry from './components/ChatEntry';
+import TimeStamp from './components/TimeStamp'
 import chatMessages from './data/messages.json';
 import { useState } from 'react';
 // import chatJson from './data/messages.json';
@@ -214,7 +215,7 @@ const App = () => {
         <ChatEntry
         sender="Chidi"
         body='meow'
-        timeStamp='03:23 AM'
+        timeStamp={<TimeStamp time='2018-05-18T22:12:03Z'/>}
         ></ChatEntry>
       </main>
     </div>
