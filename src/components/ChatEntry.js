@@ -1,36 +1,7 @@
 import React from 'react';
 import './ChatEntry.css';
+import TimeStamp from './TimeStamp';
 import PropTypes from 'prop-types';
-
-const setTimeStringUnit = (daysSince) => {
-  if (daysSince >= 365) {
-    return ['years', 365];
-  }
-  if (daysSince >= 30) {
-    return ['months', 30];
-  }
-  if (daysSince >= 7) {
-    return ['weeks', 7];
-  }
-  if (daysSince >= 1) {
-    return ['days', 1];
-  }
-  if (daysSince * 24 >= 1) {
-    return ['hours', 1 / 24];
-  }
-  if (daysSince * 1440 >= 1) {
-    return ['minutes', 1 / 1440];
-  }
-  return ['seconds', 1 / 86400];
-};
-
-const describeRelativeTime = (timeSince) => {
-  const daysSince = timeSince / 86400000;
-  const unit = setTimeStringUnit(daysSince);
-  return unit[0] === 'seconds'
-    ? 'Just now'
-    : `${Math.round(daysSince / unit[1])} ${unit[0]} ago`;
-};
 
 const ChatEntry = ({
   id,
@@ -42,13 +13,14 @@ const ChatEntry = ({
   liked,
   updateMessage,
 }) => {
-  const timeString = describeRelativeTime(new Date() - new Date(timeStamp));
   return (
     <div className={`chat-entry ${source}`}>
       <h2 className="entry-name">{sender}</h2>
       <section className="entry-bubble">
         <p className={color}>{body}</p>
-        <p className="entry-time">{timeString}</p>
+        <p className="entry-time">
+          <TimeStamp time={timeStamp} />
+        </p>
         <button
           className="like"
           onClick={() => {
