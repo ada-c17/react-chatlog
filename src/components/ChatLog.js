@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ChatEntry from './ChatEntry.js';
+import { useState } from 'react';
 
 const ChatLog = (props) => {
   const chatEntryComponents = props.entries.map((entry) => {
