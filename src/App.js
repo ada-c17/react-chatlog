@@ -44,7 +44,7 @@ const App = () => {
           entries={messagesData}
           onUpdateLike={onUpdateLikeFx}
           onHeartClicks={onHeartClicks}
-        ></ChatLog>
+        />
       </main>
     </div>
   );
