@@ -26,7 +26,7 @@ const ChatLog = (props) => {
 };
 
 ChatEntry.propTypes = {
-  messages: PropTypes.arrayOf(
+  entries: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
       sender: PropTypes.string.isRequired,
