@@ -3,7 +3,7 @@ import './ChatLog.css';
 import ChatEntry from './ChatEntry';
 import PropTypes from 'prop-types';
 
-const ChatLog = ({ entries, handleMessage }) => {
+const ChatLog = ({ entries, handleMessage, textColor }) => {
   const messagesComponents = entries.map((entry) => {
     return (
       <ChatEntry
@@ -14,6 +14,7 @@ const ChatLog = ({ entries, handleMessage }) => {
         timeStamp={entry.timeStamp}
         liked={entry.liked}
         handleMessage={handleMessage}
+        textColor={textColor}
       />
     );
   });
@@ -31,5 +32,6 @@ ChatLog.propTypes = {
     })
   ),
   handleMessage: PropTypes.func,
+  textColor: PropTypes.object,
 };
 export default ChatLog;

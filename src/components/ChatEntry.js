@@ -3,9 +3,24 @@ import './ChatEntry.css';
 import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp';
 
-const ChatEntry = ({ id, sender, body, timeStamp, liked, handleMessage }) => {
+const ChatEntry = ({
+  id,
+  sender,
+  body,
+  timeStamp,
+  liked,
+  handleMessage,
+  textColor,
+}) => {
   const senderClass =
     sender === 'Estragon' ? 'chat-entry local' : 'chat-entry remote';
+
+  let colorClass;
+  if (textColor) {
+    // asynchronous process, otherwise the test will fail.
+    colorClass =
+      sender === 'Estragon' ? textColor['localUser'] : textColor['remoteUser'];
+  }
 
   const toggleLike = () => {
     const UpdatedMessage = {
@@ -22,7 +37,7 @@ const ChatEntry = ({ id, sender, body, timeStamp, liked, handleMessage }) => {
     <div className={senderClass}>
       <h2 className="entry-name">{sender}</h2>
       <section className="entry-bubble">
-        <p>{body}</p>
+        <p className={colorClass}>{body}</p>
         <TimeStamp className="entry-time" time={timeStamp} />
         <button className="like" onClick={toggleLike}>
           {liked ? '❤️' : '🤍'}
@@ -39,6 +54,7 @@ ChatEntry.propTypes = {
   timeStamp: PropTypes.string.isRequired,
   liked: PropTypes.bool,
   handleMessage: PropTypes.func,
+  textColor: PropTypes.object,
 };
 
 export default ChatEntry;
