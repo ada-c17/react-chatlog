@@ -13,7 +13,7 @@ const ChatLog = ({ entries, onLikeMessage }) => {
           timeStamp={entry.timeStamp}
           isLiked={entry.liked}
           id={entry.id}
-          onLikeMessage={onLikeMessage} // Forward prop from App down to ChatEntry
+          onLikeMessage={onLikeMessage}
         />
       </ul>
     );
