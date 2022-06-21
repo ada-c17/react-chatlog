@@ -99,11 +99,3 @@ button {
   background-color: #a9f6f6;
 }
 
-.like {
-  color: transparent;
-  text-shadow: 0 0 0 red;
-}
-
-.unlike {
-  color: gray;
-}
