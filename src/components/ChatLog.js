@@ -3,7 +3,7 @@ import './ChatLog.css';
 import ChatEntry from './ChatEntry';
 
 const ChatLog = (props) => {
-  const messageComponents = props.messages.map((message, index) => {
+  const chatEntryComponents = props.entries.map((message, index) => {
     return (
       <li key={index}>
         <ChatEntry
@@ -19,7 +19,7 @@ const ChatLog = (props) => {
 
   return (
     <section>
-      <ul>{messageComponents}</ul>
+      <ul>{chatEntryComponents}</ul>
     </section>
   );
 };
