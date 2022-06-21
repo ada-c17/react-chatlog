@@ -6,9 +6,9 @@ import { useState } from 'react';
 
 const App = () => {
 
-  // Need a function to update the like count
   const [entries, setEntries] = useState(chatMessages);
 
+  // Helper function to update the like count
   const updateLike = () => {
     let likeCount = 0;
 
@@ -20,10 +20,12 @@ const App = () => {
     return likeCount;
   };
 
+  // Function to change heart based on liked property
   const toggleHeart = (id) => {
     const newEntries = [];
     
     for (const entry of entries) {
+      // const newEntries = [...entries];
       if (entry.id === id) {
         entry.liked = !entry.liked;
       }
@@ -32,20 +34,11 @@ const App = () => {
     setEntries(newEntries);
   }
 
-  // const [likeCount, setLikeCount] = useState(0);
-
-  // const likeTotal = () => {
-  //   const updateLike = () => {
-  //     console.log('inside the updateLike function!');
-  //     setLikeCount(likeCount + 1);
-  //   }
-  // }
-
   return (
     <div id="App">
       <header>
         <h1>Chat between Vladimir and Estragon</h1> 
-        <h2> {updateLike()} ❤️s</h2>
+        <div> {updateLike()} ❤️s</div>
       </header>
       <main>
         <ChatLog entries={entries} toggleHeartCallback={toggleHeart}/>
