@@ -1,22 +1,60 @@
 import React from 'react';
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
+import TimeStamp from './TimeStamp';
 
-const ChatEntry = (props) => {
+const ChatEntry = ({
+  id,
+  sender,
+  body,
+  timeStamp,
+  liked,
+  handleMessage,
+  textColor,
+}) => {
+  const senderClass =
+    sender === 'Estragon' ? 'chat-entry local' : 'chat-entry remote';
+
+  let colorClass;
+  if (textColor) {
+    // asynchronous process, textColor could be undefined
+    colorClass =
+      sender === 'Estragon' ? textColor['localUser'] : textColor['remoteUser'];
+  }
+
+  const toggleLike = () => {
+    const UpdatedMessage = {
+      id: id,
+      sender: sender,
+      body: body,
+      timeStamp: timeStamp,
+      liked: !liked,
+    };
+    handleMessage(UpdatedMessage);
+  };
+
   return (
-    <div className="chat-entry local">
-      <h2 className="entry-name">Replace with name of sender</h2>
+    <div className={senderClass}>
+      <h2 className="entry-name">{sender}</h2>
       <section className="entry-bubble">
-        <p>Replace with body of ChatEntry</p>
-        <p className="entry-time">Replace with TimeStamp component</p>
-        <button className="like">🤍</button>
+        <p className={colorClass}>{body}</p>
+        <TimeStamp className="entry-time" time={timeStamp} />
+        <button className="like" onClick={toggleLike}>
+          {liked ? '❤️' : '🤍'}
+        </button>
       </section>
     </div>
   );
 };
 
 ChatEntry.propTypes = {
-  //Fill with correct proptypes
+  id: PropTypes.number,
+  sender: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  timeStamp: PropTypes.string.isRequired,
+  liked: PropTypes.bool,
+  handleMessage: PropTypes.func,
+  textColor: PropTypes.object,
 };
 
 export default ChatEntry;
