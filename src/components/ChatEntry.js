@@ -7,7 +7,7 @@ const ChatEntry = (props) => {
     props.likedCallback(props.id);
   };
 
-  const contactsOrientation = props.contactsCallback(props.id);
+  const contactsOrientation = props.contactsCallback(props.sender);
 
   return (
     <div className={`chat-entry ${contactsOrientation}`}>

@@ -6,6 +6,7 @@ import chatMessages from './data/messages.json';
 const App = () => {
   const [entries, setEntries] = useState(chatMessages);
   const [likeCount, setLikes] = useState(0);
+  const contacts = [];
 
   const handleLikes = (id) => {
     const newEntries = [];
@@ -27,11 +28,14 @@ const App = () => {
     }
   };
 
-  const messageOrientation = (id) => {
-    if (id % 2 === 0) {
-      return 'remote';
-    } else {
+  const messageOrientation = (sender) => {
+    if (!contacts.includes(sender)) {
+      contacts.push(sender);
+    }
+    if (sender === contacts[0]) {
       return 'local';
+    } else {
+      return 'remote';
     }
   };
 
