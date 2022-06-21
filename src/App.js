@@ -17,6 +17,16 @@ const App = () => {
     return likeCount;
   };
 
+  const getParticipants = (entriesData) => {
+    let chatMembers = new Set();
+
+    for (const entry of entriesData) {
+      chatMembers.add(entry.sender);
+    }
+
+    return Array.from(chatMembers).join(' and ');
+  };
+
   const updateEntriesData = (updatedEntry) => {
     const entriesList = entriesData.map((entry) => {
       if (entry.id === updatedEntry.id) {
@@ -31,7 +41,12 @@ const App = () => {
   return (
     <div id="App">
       <header>
-        <h1>{calcLikes(entriesData)} ❤️s</h1>
+        <h1>Chat between {getParticipants(entriesData)}</h1>
+        <section>
+          <h1 id="heartWidget" className="widget">
+            {calcLikes(entriesData)} ❤️s
+          </h1>
+        </section>
       </header>
       <main>
         <ChatLog entries={entriesData} onUpdateEntry={updateEntriesData} />
