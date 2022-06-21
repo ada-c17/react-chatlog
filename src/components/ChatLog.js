@@ -1,6 +1,6 @@
 import React from 'react';
 import './ChatLog.css';
-// import PropTypes from 'prop-Types';
+import PropTypes from 'prop-types';
 import ChatEntry from './ChatEntry';
 
 const ChatLog = (props) => {
@@ -8,13 +8,15 @@ const ChatLog = (props) => {
   console.log('here are my entries. start', entries);
   const entryComponents = [];
   for (const entry of entries) {
-    console.log(entry);
     entryComponents.push(
       <ChatEntry
         key={entry.id}
+        id={entry.id}
         sender={entry.sender}
         body={entry.body}
         timeStamp={entry.timeStamp}
+        liked={entry.liked}
+        updateLikedStatus={props.updateLikedStatus}
       ></ChatEntry>
     );
   }
@@ -25,15 +27,7 @@ const ChatLog = (props) => {
 
 export default ChatLog;
 
-// ChatLog.propTypes = {
-//   entries: PropTypes.array.isRequired,
-// };
-
-// class example:
-// Cat.propTypes = {
-//   id: PropTypes.number.isRequired,
-//   name: PropTypes.string.isRequired,
-//   saying: PropTypes.string.isRequired,
-//   age: PropTypes.number.isRequired,
-//   color: PropTypes.string.isRequired,
-// };
+ChatLog.propTypes = {
+  chatData: PropTypes.array.isRequired,
+  updateLikedStatus: PropTypes.func.isRequired,
+};
