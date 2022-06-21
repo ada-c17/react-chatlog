@@ -12,6 +12,9 @@ const ChatLog = (props) => {
         sender={entry.sender}
         body={entry.body}
         timeStamp={entry.timeStamp}
+        liked={entry.liked}
+        toggleLikesCallback={props.toggleLikesCallback}
+        countLikesCallback={props.countLikesCallback}
       />
     );
   }
@@ -21,6 +24,10 @@ const ChatLog = (props) => {
 
 ChatLog.propTypes = {
   entries: PropTypes.array.isRequired,
+  // toggleLikesCallback: PropTypes.func.isRequired,
+  toggleLikesCallback: PropTypes.func,
+  // countLikesCallback: PropTypes.func.isRequired,
+  countLikesCallback: PropTypes.func,
 };
 
 export default ChatLog;
