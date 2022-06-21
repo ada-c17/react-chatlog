@@ -5,7 +5,6 @@ import ChatEntry from './ChatEntry';
 
 const ChatLog = (props) => {
   const entries = props.entries;
-  console.log('here are my entries. start', entries);
   const entryComponents = [];
   for (const entry of entries) {
     entryComponents.push(
@@ -20,7 +19,6 @@ const ChatLog = (props) => {
       ></ChatEntry>
     );
   }
-  console.log('list of entries: ', entryComponents);
 
   return <div>{entryComponents}</div>;
 };

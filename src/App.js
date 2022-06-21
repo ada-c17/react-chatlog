@@ -10,7 +10,6 @@ const App = () => {
 
   const updateChatData = (id) => {
     let currentLikeCount = 0;
-    console.log('in App, in updateChatData Func...');
     const newChatData = chatData.map((entry) => {
       const newEntry = { ...entry }; // this gives a copy of entry object
       if (newEntry.id === id) {
