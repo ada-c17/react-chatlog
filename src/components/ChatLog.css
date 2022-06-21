@@ -2,3 +2,13 @@
   margin: auto;
   max-width: 50rem;
 }
+
+li {
+  list-style-type: none;
+  display: flex;
+}
+
+li:nth-child(even) {
+  justify-content: right;
+}
+

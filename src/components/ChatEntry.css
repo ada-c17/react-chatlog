@@ -43,7 +43,7 @@ button {
 }
 
 /* Chat bubble arrow styling */
-.chat-entry .entry-bubble::before {
+.chat-entry .entry-bubble::before:nth-child(2n) {
   content: '';
   height: 22px;
   width: 44px;
@@ -97,4 +97,11 @@ button {
 
 .chat-entry.remote .entry-bubble:hover::before {
   background-color: #a9f6f6;
+}
+
+/* heart styling */
+
+.red {
+  color:red;
+  /* size: 300px; */
 }
