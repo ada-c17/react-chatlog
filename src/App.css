@@ -40,6 +40,13 @@
   padding-right: 1em;
 }
 
+#App .verticalWidget{
+display: inline-block;
+line-height: 2; 
+font-size:1.3em;
+font-weight: bold;
+}
+
 #App #heartWidget {
   font-size: 1.5em;
   margin: 1em
@@ -47,6 +54,7 @@
 
 #App span {
   display: inline-block
+  
 }
 
 .red {
@@ -72,3 +80,4 @@
 .purple {
   color: purple
 }
+
