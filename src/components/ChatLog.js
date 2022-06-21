@@ -3,7 +3,7 @@ import ChatEntry from './ChatEntry';
 import PropTypes from 'prop-types';
 
 const ChatLog = ({ entries, setLikedCallback }) => {
-  console.log('entrie: ', entries);
+  // console.log('entrie: ', entries);
 
   const chatComponents = entries.map((chat) => {
     return (
@@ -13,7 +13,7 @@ const ChatLog = ({ entries, setLikedCallback }) => {
         sender={chat.sender}
         body={chat.body}
         timeStamp={chat.timeStamp}
-        liked={chat.liked}
+        // liked={chat.liked}
         setLikedCallback={setLikedCallback}
       />
     );

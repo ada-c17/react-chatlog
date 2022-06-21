@@ -5,28 +5,37 @@ import ChatLog from './components/ChatLog';
 import { useState } from 'react';
 
 const App = () => {
-  const [entries, setEntries] = useState(chatMessages);
-  const likeMessage = (id) => {
-    const index = entries.findIndex((each) => each.id === id);
-    const message = entries[index];
-    const nextEntries = [...entries];
-    nextEntries[index].liked = !message.liked;
-    setEntries(nextEntries);
-  };
-  // const likeMessage = (clicked, setClicked) => {
-  //   console.log('inside likeMessage: ');
-  //   setClicked(!clicked);
-  //   !clicked ? setLiked((p) => p + 1) : setLiked((p) => p - 1);
+  // const [entries, setEntries] = useState(chatMessages);
+  const [liked, setLiked] = useState(0);
+  // const likeMessage = (id) => {
+  //   const index = entries.findIndex((each) => each.id === id);
+  //   const message = entries[index];
+  //   const nextEntries = [...entries];
+  //   nextEntries[index].liked = !message.liked;
+  //   const inc = nextEntries[index].liked ? 1 : -1;
+  //   setLiked(liked + inc);
+  //   setEntries(nextEntries);
+  //   console.log(id);
+  // };
 
-  //   // {liked.id}!== id ? '🤍' : '❤️'};
-  //   // const newLiked=[...liked];
-  //   // setLiked(newLiked);
-  const likedCount = () => {
-    return entries.filter((each) => each.liked).length;
+  // const nextEntries = entries.map((item) => [...item]);
+
+  // const nextEntries=[];
+  // for (const entry of entries) {
+  //   const nextEntry=[...entry]
+  //   if (nextEntry.id === id) {
+  //     nextEntry.id=!nextEntry.id
+  //   }
+  // }
+
+  const updateLikeMessageFn = (clicked, setClicked) => {
+    const increaseLike = clicked ? 1 : -1;
+    setLiked((prv) => prv + increaseLike);
+    setClicked((prv) => !prv);
   };
+
   const title = () => {
-    const count = likedCount();
-    return count ? count + '❤️s' : '🤍';
+    return liked ? liked + ' ❤️s' : ' ❤️';
   };
   return (
     <div id="App">
@@ -34,14 +43,9 @@ const App = () => {
         <h1> Chat Room {title()} </h1>
       </header>
       <main>
-        {/* <ChatEntry
-          body={chatMessages[0].body}
-          sender={chatMessages[0].sender}
-          timeStamp={chatMessages[0].timeStamp}
-      />  */}
         <ChatLog
-          entries={entries} /*setLikedCallback={() => {}}*/
-          setLikedCallback={likeMessage}
+          entries={chatMessages}
+          setLikedCallback={updateLikeMessageFn}
         />
       </main>
     </div>

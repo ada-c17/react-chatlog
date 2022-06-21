@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp';
 
 const ChatEntry = (props) => {
-  const { id, sender, body, timeStamp, liked, setLikedCallback } = props;
+  const { sender, body, timeStamp, setLikedCallback } = props;
+  const [clicked, setClicked] = useState(false);
   // const sender = props.sender;
   // const body = props.body;
   // const timeStamp = props.timeStamp;
+  // const likeMessageFunc = props.setLikedCallback;
 
   const likeMessageFunc = () => {
-    setLikedCallback(id);
+    setLikedCallback(!clicked, setClicked);
   };
 
   return (
@@ -22,7 +24,7 @@ const ChatEntry = (props) => {
           <TimeStamp time={timeStamp} />
         </p>
         <button className="like" onClick={likeMessageFunc}>
-          {liked ? '❤️' : '🤍'}
+          {clicked ? '❤️' : '🤍'}
         </button>
       </section>
     </div>
