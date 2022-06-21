@@ -35,12 +35,10 @@ const App = () => {
 
   const updateSender1Color = (newColor) => {
     setSender1Color(newColor);
-    console.log(`sender 1's color {newColor}`);
   };
 
   const updateSender2Color = (newColor) => {
     setSender2Color(newColor);
-    console.log(`sender 2's color {newColor}`);
   };
 
   return (
