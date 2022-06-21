@@ -1,25 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
-import ChatEntry from './components/ChatEntry';
 import chatMessages from './data/messages.json';
-
-const chatMessage = chatMessages[0];
-console.log(chatMessages[0]);
+import ChatLog from './components/ChatLog';
+import './components/ChatLog.css';
 
 const App = () => {
-  // console.log(chatMessages);
+  const [messages, setMessages] = useState(chatMessages);
+
+  const onClickLikeButton = (updatedMessage) => {
+    const newMessages = messages.map((message) => {
+      if (message.id === updatedMessage.id) {
+        return updatedMessage;
+      } else {
+        return message;
+      }
+    });
+    setMessages(newMessages);
+  };
+
+  const adjustLikeButtonCount = (messages) => {
+    console.log({ messages });
+    let likeButtonCount = 0;
+    for (const message of messages) {
+      if (message.liked === true) {
+        likeButtonCount += 1;
+      }
+    }
+
+    console.log(likeButtonCount);
+    return likeButtonCount;
+  };
+
   return (
     <div id="App">
       <header>
         <h1>Chat between Vladimir and Estragon </h1>
+        <section>
+          <h2>{adjustLikeButtonCount(messages)} ❤️s</h2>
+        </section>
       </header>
-      <main>
-        <ChatEntry
-          sender={chatMessage.sender}
-          body={chatMessage.body}
-          timeStamp={chatMessage.timeStamp}
-        ></ChatEntry>
-        {/*Wave 02: Render ChatLog component */}
+      <main className="chat-log">
+        <ChatLog
+          entries={messages}
+          onClickLikeButton={onClickLikeButton}
+        ></ChatLog>
       </main>
     </div>
   );
