@@ -8,58 +8,45 @@ import { useState } from 'react';
 
 const App = () => {
   const chatMsg = chatMessages.length !== 0 ? chatMessages : [];
- 
-  const [liked, setLiked] = useState(chatMsg.liked);
-
-  //handle click liked/unliked event on button
-  const newChats = [...chatMsg];
+  const [chats, setChats] = useState(chatMsg);
+  
+  //update states for new deep copied objects to handle click button event
   const likedEvent = (id) => {
-    // console.log('inside likedEvent in App.js');
-    // const newChats = [...chatMsg];
+     //console.log('inside likedEvent in App.js');
+    // const newChats = [...chatMsg]; //shallow copy
+    const newChats = JSON.parse(JSON.stringify(chats)); //deep copy
     for (let chat of newChats) {
       if (chat.id === id) {
         chat.liked = !chat.liked;
       }
     }
-    // console.log(chatMsg);
-    // console.log(newChats);
-    setLiked(newChats);
+    setChats(newChats);
   };
 
-  //updates #of likes after liked the msg
+  //updates #of ❤️s on top after clicked the ❤️
   let countLikes = 0;
   const countLikesFunc = () => {
-    console.log('countLikesFunc in App.js');
+    //console.log('countLikesFunc in App.js');
+    const newChats = JSON.parse(JSON.stringify(chats)); //deep copy
     for (let i of newChats) {
       if (i.liked === true) {
         countLikes += 1;
       }
     }
     // debugger;
-    // console.log(countLikes); //print updated number locally
     return countLikes;
   };
-  // console.log(countLikes); print 0 didn't update globally
 
-  //updates color based on sender
-  // const setColorFunc = (id) => {
-  //   for (let chat of newChats){
-  //     if (chat.id === id){
-  //       chat.body = '';
-  //     }
-  //   }
-  // }
-  // console.log(chatMsg)
   return (
     <div id="App">
       <header>
         {/* <h1><ColorChoice chatMsg={chatMsg} /></h1> */}
-        <ColorChoice chatMsg={chatMsg} countLikesFunc={countLikesFunc} />
+        <ColorChoice chatMsg={chats} countLikesFunc={countLikesFunc} />
       </header>
       <main>
         {/* Wave 01: Render one ChatEntry component
         Wave 02: Render ChatLog component */}
-        <ChatLog chatMsg={chatMsg} likedEvent={likedEvent} countLikesFunc={countLikesFunc} />
+        <ChatLog entries={chats} likedEvent={likedEvent} countLikesFunc={countLikesFunc} />
       </main>
     </div>
   );

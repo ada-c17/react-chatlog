@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
 import ChatEntry from './ChatEntry';
 const ChatLog = (props) => {
-  const entries = props.chatMsg;
-  // console.log(entries);
+  const entries = props.entries;
   
    const chatLogsComponents = entries.map((entry) => 
    (<ChatEntry 
@@ -13,8 +12,6 @@ const ChatLog = (props) => {
       timeStamp={entry.timeStamp} 
       liked={entry.liked} 
       likedEvent={props.likedEvent}
-      // countLikesFunc={props.countLikesFunc}
-      // setColorFunc={props.setColorFunc}
       />)
    )
 
@@ -27,7 +24,7 @@ const ChatLog = (props) => {
 };
 
 ChatLog.propTypes = {
-  chatMsg: PropTypes.arrayOf(
+  entries: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       sender: PropTypes.string.isRequired,
@@ -37,8 +34,6 @@ ChatLog.propTypes = {
     })
   ).isRequired,
   likedEvent: PropTypes.func.isRequired,
-  // countLikesFunc: PropTypes.func.isRequired,
-  // setColorFunc: PropTypes.func.isRequired
   };
 
 export default ChatLog;
