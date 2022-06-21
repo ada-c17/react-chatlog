@@ -7,6 +7,9 @@ button {
 	cursor: pointer;
 	outline: inherit;
 }
+.like__toggle--liked {
+  text-decoration: line-through;
+}
 
 .chat-entry {
   margin: 1rem;
