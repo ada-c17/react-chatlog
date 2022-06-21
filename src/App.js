@@ -9,10 +9,11 @@ const App = () => {
   const fliplikedState = (id) => {
     const newMessages = messages.map((message) => {
     // use .map here instead of mutating messages
-      if (message.id === id) {
-        message.liked = !message.liked;
+      let newMessage = Object.assign({}, message)
+      if (newMessage.id === id) {
+        newMessage.liked = !newMessage.liked;
       }
-      return message
+      return newMessage
     })
     setMessages(newMessages);
   };
@@ -31,7 +32,7 @@ const App = () => {
         {/* Wave 01: Render one ChatEntry component
         Wave 02: Render ChatLog component */}
         <ChatLog
-          entries={chatMessages}
+          entries={messages}
           flipLiked={fliplikedState}
           increaseLikes={increaseLikes}
           likesCount={likesCount}
