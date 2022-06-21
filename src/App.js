@@ -8,18 +8,20 @@ const App = () => {
   const [entries, setEntries] = useState(chatMessages);
 
   const updateLiked = (id) => {
+    const newEntries = [];
     for (const entry of entries) {
-      if (entry.id === id) {
-        entry.liked = !entry.liked;
+      const newEntry = { ...entry };
+      if (newEntry.id === id) {
+        newEntry.liked = !newEntry.liked;
       }
+      newEntries.push(newEntry);
     }
-    const newEntries = [...entries];
     setEntries(newEntries);
   };
 
   const countLikes = () => {
     let totalHearts = 0;
-    for (const entry of chatMessages) {
+    for (const entry of entries) {
       if (entry.liked === true) {
         totalHearts += 1;
       }
@@ -34,7 +36,9 @@ const App = () => {
           Chat between {chatMessages[0].sender} and {chatMessages[1].sender}
         </h1>
         <section>
-        <h2 className='widget' id='heartWidget'> {countLikes()}❤️s</h2>
+          <h2 className="widget" id="heartWidget">
+            {countLikes()} ❤️s
+          </h2>
         </section>
       </header>
       <main>
