@@ -21,7 +21,7 @@ const ChatEntry = (props) => {
         <p className="entry-time">
           <TimeStamp time={props.timeStamp} />
         </p>
-        <button onClick={flipLiked} >{heartColor}</button>
+        <button onClick={flipLiked} className='like'>{heartColor}</button>
       </section>
     </div>
   );
