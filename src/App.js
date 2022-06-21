@@ -10,7 +10,7 @@ const App = () => {
   const flipHearts = (id) => {
     const newHearts = [];
     for (const entry of entries) {
-      let newEntry = Object.assign({}, entry); // making new copy so does not edit previous state
+      let newEntry = { ...entry }; // making new copy so does not edit previous state
       if (newEntry.id === id) {
         newEntry.liked = !newEntry.liked;
       }
@@ -19,9 +19,9 @@ const App = () => {
     setEntries(newHearts);
   };
 
-
   //helper function to count number of entries liked
   const sumTotalHearts = () => {
+    console.log('Herllooo');
     let count = 0;
     for (const entry of entries) {
       if (entry.liked === true) {
