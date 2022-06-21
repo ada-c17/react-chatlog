@@ -10,9 +10,9 @@ const App = () => {
   const updateLikes = (clicked, setLike) => {
     setLike(!clicked);
     if (!clicked) {
-      setLikes((prev) => prev + 1);
+      setLikes((num) => num + 1);
     } else {
-      setLikes((prev) => prev - 1);
+      setLikes((num) => num - 1);
     }
   };
 
