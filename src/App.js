@@ -1,21 +1,14 @@
 import React, { useState } from 'react';
 import './App.css';
-// import ChatEntry from './components/ChatEntry';
 import ChatLog from './components/ChatLog';
 import chatMessages from './data/messages.json';
 
 const App = () => {
   const [chatEntries, setChatEntries] = useState(chatMessages);
-  const [likeCount, setLikeCount] = useState(0);
 
   const updateChatEntry = (updatedEntry) => {
     const entries = chatEntries.map((entry) => {
       if (entry.id === updatedEntry.id) {
-        if (entry.liked) {
-          setLikeCount(likeCount - 1);
-        } else {
-          setLikeCount(likeCount + 1);
-        }
         return updatedEntry;
       } else {
         return entry;
@@ -24,11 +17,29 @@ const App = () => {
     setChatEntries(entries);
   };
 
+  const getLikeCount = () => {
+    let likeCount = 0;
+    for (const entry of chatEntries) {
+      if (entry.liked === true) {
+        likeCount += 1;
+      }
+    }
+    return likeCount;
+  };
+
+  const getParticipants = () => {
+    const participants = new Set();
+    for (const entry of chatEntries) {
+      participants.add(entry.sender);
+    }
+    return [...participants].join(' and ');
+  };
+
   return (
     <div id="App">
       <header>
-        <h1>Chat between Vladimir and Estragon</h1>
-        <h2>{likeCount} ❤️s</h2>
+        <h1>Chat between {getParticipants()}</h1>
+        <h2>{getLikeCount()} ❤️s</h2>
       </header>
       <main>
         <ChatLog entries={chatEntries} onLike={updateChatEntry} />
