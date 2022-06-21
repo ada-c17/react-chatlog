@@ -39,7 +39,6 @@ const App = () => {
         {/* Wave 01: Render one ChatEntry component
         Wave 02: Render ChatLog component */}
         <h1 className="likes-count">{likes} ❤️s</h1>
-
         <ColorChoice sender={sender1} updateSenderColor={updateSender1Color} />
         <ColorChoice sender={sender2} updateSenderColor={updateSender2Color} />
         <ChatLog
