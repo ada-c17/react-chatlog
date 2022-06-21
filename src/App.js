@@ -29,10 +29,24 @@ const App = () => {
     setMessagesData(newMessages);
   };
 
+  const userOne = messagesData[0]['sender'];
+
+  const findUserTwo = (messagesData) => {
+    for (const message of messagesData) {
+      if (message['sender'] !== userOne) {
+        return message['sender'];
+      }
+    }
+  };
+
+  const userTwo = findUserTwo(messagesData);
+
   return (
     <div id="App">
       <header>
-        <h1>Chat between Vladimir and Estragon</h1>
+        <h1>
+          Chat between {userOne} and {userTwo}
+        </h1>
         <section>
           <h2 className="widget" id="heartWidget">
             {numLiked} ❤️s
