@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
-import TimeStamp from './TimeStamp';
+import TimeStamp from './TimeStamp.js';
 
-const ChatEntry = ({sender, body, timeStamp, updateLikes}) => {
+const ChatEntry = ({ sender, body, timeStamp, updateLikes }) => {
   let senderClass = 'chat-entry local';
   if (sender === 'Estragon') {
     senderClass = 'chat-entry remote';

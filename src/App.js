@@ -21,7 +21,7 @@ const App = () => {
       <header>
         <h1>Chat between Vladimir and Estragon</h1>
         <section>
-          <p>{likes} ❤️ s</p>
+          <p>{likes} ❤️s</p>
         </section>
       </header>
       <main>
