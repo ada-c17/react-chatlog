@@ -22,7 +22,7 @@ const App = () => {
       </header>
       <main>
         <section>
-          <p id="likes">Number of likes: {numLikedHearts} ❤️s</p>
+          <p id="numlikesheart">Number of likes: {numLikedHearts} ❤️s</p>
         </section>
         <ChatLog entries={chatMessages} OnChangedLikes={changeLikes} />
       </main>
