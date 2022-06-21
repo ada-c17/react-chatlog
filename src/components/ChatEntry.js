@@ -2,18 +2,17 @@ import React from 'react';
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp';
-import { useState } from 'react';
+// import { useState } from 'react';
 
 
 const ChatEntry = (props) => {
+  // Passed toggleHeart down though toggleHeartCallback
 
-  const [isLiked, setLiked] = useState(false);
+  const flipHeart = () => {
+    props.toggleHeartCallback(props.id);
+  };
 
-  const toggleHeart = () => {
-    setLiked(!isLiked);
-  }
-
-  const heartColor = isLiked ?  '❤️' : '🤍';
+  // const heartColor = props.liked ?  '❤️' : '🤍';
   
   return (
     <div className={`chat-entry ${props.sender === 'Estragon' ? 'remote' : 'local'}`}>
@@ -21,18 +20,20 @@ const ChatEntry = (props) => {
       <section className="entry-bubble">
         <p>{props.body}</p>
         <p className="entry-time"><TimeStamp time={props.timeStamp}/></p>
-        <button onClick={toggleHeart} className="like">{heartColor}</button>
+        <button onClick={flipHeart} className="like">{props.liked ?  '❤️' : '🤍'}</button>
       </section>
     </div>
   );
 };
 
-ChatEntry.propType = {
+ChatEntry.propTypes = {
+  // key: PropTypes.number.isRequired,
   id: PropTypes.number.isRequired,
   sender: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   timeStamp: PropTypes.string.isRequired,
   liked: PropTypes.bool.isRequired,
+  // flipHeart: PropTypes.func.isRequired,
 };
 
 export default ChatEntry;

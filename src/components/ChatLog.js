@@ -3,7 +3,7 @@ import ChatEntry from './ChatEntry';
 import PropTypes from 'prop-types';
 
 const ChatLog = (props) => {
-    const chatMessageComponents = props.entries.map((entry) => {
+    const chatEntryComponents = props.entries.map((entry) => {
         return (
             <ChatEntry
                 key={entry.id}
@@ -12,12 +12,13 @@ const ChatLog = (props) => {
                 body={entry.body}
                 timeStamp={entry.timeStamp}
                 liked={entry.liked}
-            />
+                toggleHeartCallback={props.toggleHeartCallback}
+            ></ChatEntry>
         );
     });
 
     return(
-        <div>{chatMessageComponents}</div>
+        <div>{chatEntryComponents}</div>
     );
 };
 
