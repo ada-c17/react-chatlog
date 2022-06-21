@@ -2,7 +2,6 @@ import React from 'react';
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp';
-import { useState } from 'react';
 
 const ChatEntry = (props) => {
   const chatClass =
@@ -12,20 +11,10 @@ const ChatEntry = (props) => {
   //  const currentDate = new Date();
   //  const yearsPassed = currentDate.getFullYear() - entryDate.getFullYear();
 
-  const [heart, setHeart] = useState('🤍');
-
   const flipLiked = () => {
-    flipHeart();
     props.likedCallback(props.id);
   };
 
-  const flipHeart = () => {
-    if (heart === '🤍') {
-      setHeart('❤️');
-    } else {
-      setHeart('🤍');
-    }
-  };
   return (
     <div className={chatClass}>
       <h2 className="entry-name">{props.sender}</h2>
@@ -34,10 +23,8 @@ const ChatEntry = (props) => {
         <p className="entry-time">
           <TimeStamp time={props.timeStamp} />
         </p>
-        {/* <button onClick={props.likedCallback(props.id)} className="like"> */}
         <button onClick={flipLiked} className="like">
-          {/* {props.liked ? '❤️' : '🤍'} */}
-          {heart}
+          {props.liked ? '❤️' : '🤍'}
         </button>
       </section>
     </div>
@@ -52,25 +39,3 @@ ChatEntry.propTypes = {
 };
 
 export default ChatEntry;
-
-// Wave 1
-
-// const ChatEntry = (props) => {
-//   const firstMessage = {
-//     "id": 1,
-//     "sender":"Vladimir",
-//     "body":"why are you arguing with me",
-//     "timeStamp":"2018-05-29T22:49:06+00:00",
-//     "liked": false
-//   };
-//   return (
-//     <div className="chat-entry local">
-//       <h2 className="entry-name">{firstMessage.sender}</h2>
-//       <section className="entry-bubble">
-//         <p>{firstMessage.body}</p>
-//         <p className="entry-time">{firstMessage.timeStamp}</p>
-//         <button className="like">{firstMessage.liked ? "❤️": "🤍"}</button>
-//       </section>
-//     </div>
-//   );
-// };
