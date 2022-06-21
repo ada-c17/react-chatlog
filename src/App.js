@@ -25,7 +25,6 @@ const App = () => {
         return chat;
       }
     });
-    console.log(`likedData: ${likedData}`);
     let hearts = '';
     likedData.forEach((like) => {
       hearts += '❤️';
