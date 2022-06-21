@@ -5,7 +5,7 @@ import ChatLog from './components/ChatLog';
 
 const App = () => {
   const [messageInfo, setMessageInfo] = useState(chatMessages);
-  let [totalLikes, setTotalLikes] = useState(0);
+
 
   const updateMessageInfo = (newMessage) => {
     const messages = messageInfo.map((message) => {
@@ -19,24 +19,27 @@ const App = () => {
   };
 
   const updateTotalLikes = (numberOfLikes) => {
-    numberOfLikes
-      ? setTotalLikes((totalLikes += 1))
-      : setTotalLikes((totalLikes -= 1));
+    let count = 0;
+    numberOfLikes.forEach((message) => {
+      if (message.liked) {
+        count += 1;
+      }
+    });
+    return count;
   };
+
+  let totalLikes = updateTotalLikes(messageInfo);
 
   return (
     <div id="App">
       <header>
-        <h1>Chat between Vladimir and Estragon</h1>
-        <h2>{totalLikes > 0 && `${totalLikes} ❤️s`}</h2>
+        <h1>Chat Between Vladimir and Estragon</h1>
+        <section id="header-likes">{totalLikes} ❤️s</section>
       </header>
       <main>
-        <ChatLog
-          messages={messageInfo}
-          updateMessageInfo={updateMessageInfo}
-          totalLikes={totalLikes}
-          setTotalLikes={setTotalLikes}
-          updateTotalLikes={updateTotalLikes}
+        <ChatLog 
+          entries={messageInfo} 
+          updateChat={updateMessageInfo} 
         />
       </main>
     </div>
