@@ -19,13 +19,14 @@ const ChatEntry = (props) => {
   // heart is set here, the isLiked value has switched?
   const heart = props.isLiked ? '❤️' : '🤍';
 
-  // added 'chat-entry' class here as well
   // set all class names for each displayed message
+  // added 'chat-entry' class here as well
   const userAndColor =
     props.sender === props.local
       ? `chat-entry local ${props.localColor}`
       : `chat-entry remote ${props.remoteColor}`;
 
+  // every chat bubble
   return (
     <div className={userAndColor}>
       <h2 className="entry-name">{props.sender}</h2>

@@ -19,7 +19,7 @@ const ChatLog = ({
       timeStamp={chat.timeStamp}
       isLiked={chat.liked}
       onUpdate={onUpdateMessage}
-      local={local}
+      local={local} // to determine local or remote user
       localColor={localColor}
       remoteColor={remoteColor}
     ></ChatEntry>

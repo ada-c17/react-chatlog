@@ -36,15 +36,15 @@ const App = () => {
   // set local as Vladimir to match ReadMe photos
   // pass it down to ChatLog to ChatEntry
   const localUser = chatMessages[0].sender;
-  // to be used for colors
+  // assume remote user is whoever sends the next message
   const remoteUser = chatMessages[1].sender;
 
   const [localColor, setLColor] = useState('black');
   const [remoteColor, setRColor] = useState('black');
+
   const setLocalColor = (chatColor) => {
     setLColor(chatColor);
   };
-
   const setRemoteColor = (chatColor) => {
     setRColor(chatColor);
   };
