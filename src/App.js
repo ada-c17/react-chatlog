@@ -9,7 +9,7 @@ const App = () => {
   console.log('value of chatMessages',chatMessages);
   const [entries, setEntries] = useState(chatMessages);
 
-  const toggleLike = (id) => {
+  const updateLike = (id) => {
     const updateLikes = [...entries];
     for (let entry of updateLikes) {
       if (entry.id === id) {
@@ -44,7 +44,7 @@ const App = () => {
         </h1>
         <section>
           <h2 id= "heartWidget" className="widget"> 
-            <span>{countLikes()}❤️s</span>
+            <span>{countLikes()} {''} ❤️s</span>
           </h2>
         </section>
       </header>
@@ -54,7 +54,7 @@ const App = () => {
         {/* <ChatEntry/> */}
         <ChatLog 
           entries={chatMessages}
-          updateLikeHeart={toggleLike}
+          updateLikeHeart={updateLike}
         />
       </main>
     </div>
