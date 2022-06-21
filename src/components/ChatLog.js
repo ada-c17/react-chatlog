@@ -18,7 +18,6 @@ const ChatLog = (props) => {
       </section>
     );
   });
-  console.log(props.entries);
   return chatConverstion;
 };
 

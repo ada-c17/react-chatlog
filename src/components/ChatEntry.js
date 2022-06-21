@@ -20,7 +20,6 @@ const ChatEntry = (props) => {
       timeStamp: props.timeStamp,
       liked: !props.liked,
     };
-    console.log('Click Heart');
     props.updateFunction(message);
   };
 
