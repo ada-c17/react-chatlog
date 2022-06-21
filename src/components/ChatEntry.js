@@ -6,6 +6,8 @@ import TimeStamp from './TimeStamp.js';
 
 
 const ChatEntry = (props) => {
+  const senderPosition =
+    props.sender === 'Vladimir' ? 'chat-entry local' : 'chat-entry remote';
 
   const [like, setLike] = useState(props.heart);
   const heartFill = like ? '❤️': '🤍';
@@ -20,7 +22,7 @@ const ChatEntry = (props) => {
   const body = props.body;
   const timeStamp = props.timeStamp;
   return (
-    <div className="chat-entry local">
+    <div className={senderPosition}>
       <h2 className="entry-name">{sender}</h2>
       <section className="entry-bubble">
         <p>{body}</p>
