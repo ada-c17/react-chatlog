@@ -6,7 +6,12 @@ import TimeStamp from './TimeStamp';
 const ChatEntry = (props) => {
   const localRemote =
     props.evenOdd === 0 ? 'chat-entry local' : 'chat-entry remote';
-  
+
+  const flipLiked = () => {
+    props.updateLikedCallback(props.id);
+  };
+
+  const heartColor = props.liked === true ? '❤️' : '🤍';
 
   return (
     <div className={localRemote}>
@@ -16,7 +21,7 @@ const ChatEntry = (props) => {
         <p className="entry-time">
           <TimeStamp time={props.timeStamp} />
         </p>
-        <button className="like">🤍</button>
+        <button onClick={flipLiked} >{heartColor}</button>
       </section>
     </div>
   );

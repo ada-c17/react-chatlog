@@ -13,6 +13,7 @@ const ChatLog = (props) => {
           timeStamp={entry.timeStamp}
           liked={entry.liked}
           evenOdd={(entry.id - 1) % 2}
+          updateLikedCallback={props.updateLikedCallback}
         />
       </div>
     );
