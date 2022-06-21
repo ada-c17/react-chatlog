@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp';
 
 const ChatEntry = (props) => {
-  //({sender, body, timeStamp…}) instead of props
+  //({sender, body, timeStamp…}) destructing instead of props
   // const [liked, setLike] = useState(false);
 
   const fillheart = props.liked ? '❤️' : '🤍';

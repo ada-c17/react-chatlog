@@ -5,8 +5,6 @@ import ChatLog from './components/ChatLog';
 import { useState } from 'react';
 
 const App = () => {
-  // const [likeCount, setLikeCount] = useState(0);
-
   const [messageData, setMessageData] = useState(chatMessages);
 
   const updateChatMessage = (newMessageData) => {
@@ -37,13 +35,6 @@ const App = () => {
         <p>{totalHearts} ❤️s</p>
       </header>
       <main>
-        {/* Wave 01: Render one ChatEntry component
-        Wave 02: Render ChatLog component */}
-        {/* <ChatEntry
-          sender="Vladimir"
-          body="why are you arguing with me"
-          timeStamp="2018-05-29T22:49:06+00:00"
-        /> */}
         <ChatLog entries={messageData} updateFunction={updateChatMessage} />
       </main>
     </div>
