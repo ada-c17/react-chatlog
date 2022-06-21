@@ -4,9 +4,9 @@ import ChatEntry from './ChatEntry';
 import PropTypes from 'prop-types';
 
 const ChatLog = (props) => {
-  const chatComponents = props.entries.map((entry) => {
+  const chatComponents = props.entries.map((entry, index) => {
     return (
-      <div key={entry.id} className="chat-log">
+      <div key={index} className="chat-log">
         <ChatEntry
           id={entry.id}
           sender={entry.sender}
