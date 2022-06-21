@@ -3,17 +3,21 @@ import './ChatEntry.css';
 import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp';
 
-const ChatEntry = ({ id, sender, body, liked, timeStamp, countLikes }) => {
+const ChatEntry = ({ sender, body, timeStamp }) => {
   // const [likesCount, setLikesCount] = useState(0);
   const [likeHeart, setLikeHeart] = useState('🤍');
 
   const onClickLike = () => {
+    setLikeHeart(likeHeart === '🤍' ? '❤️' : '🤍');
     // if(likeHeart === '🤍' ) {
     //   setLikeHeart('❤️');
     // }
-    const heartColor = likeHeart === '🤍' ? '❤️' : '🤍';
-    setLikeHeart(heartColor);
   };
+
+  //   const handleLikesChanges = () => {
+
+  //   }
+  // };
 
   return (
     <div className="chat-entry local">
