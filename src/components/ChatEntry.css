@@ -43,7 +43,7 @@ button {
 }
 
 /* Chat bubble arrow styling */
-.chat-entry .entry-bubble::before:nth-child(2n) {
+.chat-entry .entry-bubble::before {
   content: '';
   height: 22px;
   width: 44px;

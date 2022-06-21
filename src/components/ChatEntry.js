@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 
 const ChatEntry = (props) => {
   const heartWasClicked = () => {
-    console.log(props);
-    console.log('onHeartClick activated');
     const updatedMessage = {
       id: props.id,
       sender: props.sender,
@@ -17,10 +15,7 @@ const ChatEntry = (props) => {
     props.onHeartClick(updatedMessage);
   };
 
-  // console.log(props.liked);
   const heartColor = props.liked ? '❤️' : '🤍';
-
-  // console.log(heartColor);
 
   const calculateYearsPassed = () => {
     const thisYear = 2022;
@@ -30,15 +25,15 @@ const ChatEntry = (props) => {
   };
 
   const localOrRemote = () => {
-    if (props.id % 2 === 0) {
-      return 'local';
+    if (parseInt(props.id) % 2 === 0) {
+      return 'chat-entry remote';
     } else {
-      return 'remote';
+      return 'chat-entry local';
     }
   };
 
   return (
-    <div className="chat-entry local">
+    <div className={localOrRemote()}>
       <h2 className="entry-name">{props.sender}</h2>
       <section className="entry-bubble">
         <p>{props.body}</p>
@@ -52,7 +47,11 @@ const ChatEntry = (props) => {
 };
 
 ChatEntry.propTypes = {
-  //Fill with correct proptypes
+  id: PropTypes.number,
+  sender: PropTypes.string,
+  email: PropTypes.string,
+  liked: PropTypes.bool,
+  onHeartClick: PropTypes.func,
 };
 
 export default ChatEntry;

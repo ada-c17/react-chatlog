@@ -18,7 +18,6 @@ const App = () => {
   };
 
   const updateMessageData = (updatedMessage) => {
-    console.log('entered updateMessageData in App');
     const messages = messageData.map((message) => {
       if (message.id === updatedMessage.id) {
         return updatedMessage;
@@ -41,8 +40,6 @@ const App = () => {
           entries={messageData}
           onUpdateMessages={updateMessageData}
         ></ChatLog>
-        {/* Wave 01: Render one ChatEntry component
-        Wave 02: Render ChatLog component */}
       </main>
     </div>
   );

@@ -5,10 +5,6 @@
 
 li {
   list-style-type: none;
-  display: flex;
 }
 
-li:nth-child(even) {
-  justify-content: right;
-}
 
