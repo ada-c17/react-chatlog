@@ -1,27 +1,31 @@
 import React from 'react';
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
-//import TimeStamp from './TimeStamp';
-import { DateTime } from 'luxon';
+import TimeStamp from './TimeStamp';
 
 const ChatEntry = (props) => {
-  const time = DateTime.fromISO(props.timeStamp);
-  const relative = time.toRelative();
-  //const buttonLiked = props.liked ? '❤️' : '🤍';
-  // console.log(props.liked);
-
   const flipliked = () => {
     props.likedCallBack(props.id);
   };
 
+  const likeButton = props.liked ? '❤️' : '🤍';
+
   return (
-    <div className="chat-entry local" key={props.id}>
+    <div
+      className={`chat-entry ${
+        props.sender === 'Vladimir' ? 'local' : 'remote'
+      }`}
+      key={props.id}
+    >
       <h2 className="entry-name">{props.sender}</h2>
       <section className="entry-bubble">
         <p>{props.body}</p>
-        <p className="entry-time">{relative}</p>
+        <p className="entry-time">
+          {props.time}
+          <TimeStamp time={props.timeStamp} />
+        </p>
         <button className="like" onClick={flipliked}>
-          {props.liked ? '❤️' : '🤍'}
+          {likeButton}
         </button>
       </section>
     </div>
@@ -35,6 +39,7 @@ ChatEntry.propTypes = {
   timeStamp: PropTypes.string.isRequired,
   id: PropTypes.number,
   liked: PropTypes.bool,
+  likedCallBack: PropTypes.func,
 };
 
 export default ChatEntry;

@@ -6,21 +6,22 @@ import { useState } from 'react';
 
 const App = () => {
   const [logMessages, setChatMessages] = useState(chatMessages);
+
+  // function to flip the liked in chatMessages
   const fliplike = (id) => {
-    console.log(`flipping ${id}`);
     const newLogMessages = [];
     for (const logMessage of logMessages) {
-      if (logMessage.id === id) {
-        logMessage.liked = !logMessage.liked;
-        console.log(logMessage.liked);
-        console.log(logMessage.id);
+      let newLogMessage = Object.assign({}, logMessage);
+      if (newLogMessage.id === id) {
+        newLogMessage.liked = !newLogMessage.liked;
       }
-      newLogMessages.push(logMessage);
+      newLogMessages.push(newLogMessage);
     }
 
     setChatMessages(newLogMessages);
   };
 
+  // function to count the like when user click
   const countLiked = () => {
     let count = 0;
     for (const logMessage of logMessages) {
@@ -31,12 +32,13 @@ const App = () => {
     return count;
   };
 
-  const numberLiked = countLiked();
   return (
     <div id="App">
       <header>
-        <h1>Chat between Vladimir and Estragon</h1>
-        <div className="heart-count"> {`${numberLiked} ❤️s`} </div>
+        <h1>
+          Chat between {chatMessages[0].sender} and {chatMessages[1].sender}
+        </h1>
+        <div className="heart-count">{`${countLiked()} ❤️s`}</div>
       </header>
 
       <main>
