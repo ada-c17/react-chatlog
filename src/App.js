@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './App.css';
-// import ChatEntry from './components/ChatEntry';
 import ChatLog from './components/ChatLog';
 import chatMessages from './data/messages.json';
 import ColorChoice from './components/ColorChoice';

@@ -12,7 +12,7 @@ const ColorChoice = (props) => {
             props.setColorCallback('red');
           }}
         >
-          🟥
+          🔴
         </button>
         <button
           className="orange"
@@ -20,7 +20,7 @@ const ColorChoice = (props) => {
             props.setColorCallback('orange');
           }}
         >
-          🟧
+          🟠
         </button>
         <button
           className="yellow"
@@ -28,7 +28,7 @@ const ColorChoice = (props) => {
             props.setColorCallback('yellow');
           }}
         >
-          🟨{' '}
+          🟡
         </button>
         <button
           className="green"
@@ -36,7 +36,7 @@ const ColorChoice = (props) => {
             props.setColorCallback('green');
           }}
         >
-          🟩
+          🟢
         </button>
         <button
           className="blue"
@@ -44,7 +44,7 @@ const ColorChoice = (props) => {
             props.setColorCallback('blue');
           }}
         >
-          🟦{' '}
+          🔵
         </button>
         <button
           className="purple"
@@ -52,7 +52,7 @@ const ColorChoice = (props) => {
             props.setColorCallback('purple');
           }}
         >
-          🟪
+          🟣
         </button>
       </div>
     </div>
