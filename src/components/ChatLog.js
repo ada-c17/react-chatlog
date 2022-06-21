@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 const ChatLog = ({ entries }) => {
   return (
     <ul>
-      {entries.map(entry => {
+      {entries.map((entry) => {
         return (
           <ChatEntry
             sender={entry.sender}
@@ -17,6 +17,17 @@ const ChatLog = ({ entries }) => {
       })}
     </ul>
   );
+  // const chatComponents = entries.map((entry) => {
+  //   return (
+  //     <ChatEntry
+  //       sender={entry.sender}
+  //       body={entry.body}
+  //       timeStamp={entry.timeStamp}
+  //       liked={entry.liked}
+  //     />
+  //   );
+  // });
+  // return <ul>{chatComponents}</ul>;
 };
 
 ChatLog.propTypes = {

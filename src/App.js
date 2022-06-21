@@ -4,17 +4,22 @@ import chatMessages from './data/messages.json';
 import ChatLog from './components/ChatLog';
 
 const App = () => {
+  // const [messages, setMessageData] = useState(chatMessages);
+
+  // const onLike = () => {
+  //   // keep count of how many likes are clicked
+  //   // update state of liked from False to True
+  //   // toggle heart
+  //   const updatedMessage =
+  // };
+
   return (
     <div id="App">
       <header>
-        <h1>Application title</h1>
+        <h1>Becoming Sentient AI's</h1>
+        <h2>0 ❤️'s</h2>
       </header>
       <main>
-        {/* <ChatEntry
-          sender={chatMessages[1]['sender']}
-          body={chatMessages[1]['body']}
-          timeStamp={chatMessages[1]['timeStamp']}
-        ></ChatEntry> */}
         <ChatLog entries={chatMessages}></ChatLog>
       </main>
     </div>
