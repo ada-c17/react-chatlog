@@ -8,11 +8,13 @@ const ChatEntry = (props) => {
   const entryClassName =
     props.sender === 'Vladimir' ? 'chat-entry local' : 'chat-entry remote';
 
+  // execute toggleLikeButton function on button click
   const updateLike = () => {
     console.log('You clicked the like button.');
     props.onUpdateMessage(props.id);
   };
 
+  // update heart display based on message 'liked' state
   const likeDisplay = props.liked ? '❤️' : '🤍';
 
   return (

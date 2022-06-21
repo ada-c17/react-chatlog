@@ -5,8 +5,10 @@ import chatMessages from './data/messages.json';
 import ChatLog from './components/ChatLog';
 
 const App = () => {
+  // set initial state for messages
   const [chatData, setChatData] = useState(chatMessages);
 
+  // helper function to change 'liked' state for individual messages by id
   const toggleLikeButton = (id) => {
     const messages = chatData.map((message) => {
       if (message.id === id) {
@@ -16,6 +18,7 @@ const App = () => {
       return message;
     });
 
+    // update state of message data
     setChatData(messages);
   };
 
