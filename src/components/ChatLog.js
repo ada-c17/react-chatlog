@@ -5,9 +5,8 @@ import PropTypes from 'prop-types';
 const ChatLog = (props) => {
   const chatComponents = props.entries.map((message) => {
     return (
-      <li>
+      <li key={message.id}>
         <ChatEntry
-          key={message.id}
           id={message.id}
           sender={message.sender}
           body={message.body}
@@ -22,8 +21,8 @@ const ChatLog = (props) => {
   return <ul>{chatComponents}</ul>;
 };
 
-// ChatLog.propTypes = {
-//   entries: PropTypes.array.isRequired,
-// };
+ChatLog.propTypes = {
+  entries: PropTypes.array.isRequired,
+};
 
 export default ChatLog;

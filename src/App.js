@@ -9,28 +9,19 @@ const App = () => {
 
   const toggleHeart = (id) => {
     let currentLikes = 0;
-    for (const entry of entries) {
-      if (entry.id === id) {
-        entry.liked = !entry.liked;
+    const newEntries = entries.map((entry) => {
+      const newEntry = { ...entry };
+      if (newEntry.id === id) {
+        newEntry.liked = !newEntry.liked;
       }
-      if (entry.liked === true) {
+      if (newEntry.liked === true) {
         currentLikes += 1;
       }
-    }
-    const newEntries = [...entries];
+      return newEntry;
+    });
     setEntries(newEntries);
     setLikes(currentLikes);
   };
-
-  // const countLikes = () => {
-  //   let currentLikes = 0;
-  //   for (const entry of entries) {
-  //     if (entry.liked === true) {
-  //       currentLikes += 1;
-  //     }
-  //   }
-  //   setLikes(currentLikes);
-  // };
 
   return (
     <div id="App">
@@ -39,7 +30,7 @@ const App = () => {
         <h2>{likes} ❤️s</h2>
       </header>
       <main>
-        <ChatLog entries={chatMessages} toggleHeartCallback={toggleHeart} />
+        <ChatLog entries={entries} toggleHeartCallback={toggleHeart} />
       </main>
     </div>
   );
