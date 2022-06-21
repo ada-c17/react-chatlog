@@ -1,19 +1,21 @@
 import React from 'react';
-import ChatEntry from './ChatEntry';
 import PropTypes from 'prop-types';
+import ChatEntry from './ChatEntry';
 
 const ChatLog = (props) => {
-  return props.entries.map((entry) => {
+  const chatEntries = props.entries.map((messge) => {
     return (
       <ChatEntry
-        id={entry.id}
-        body={entry.body}
-        sender={entry.sender}
-        timeStamp={entry.timeStamp}
-        liked={entry.liked}
+        id={messge.id}
+        body={messge.body}
+        sender={messge.sender}
+        timeStamp={messge.timeStamp}
+        liked={messge.liked}
+        updateMessage={props.updateMessage}
       ></ChatEntry>
     );
   });
+  return <div>{chatEntries}</div>;
 };
 
 ChatLog.propTypes = {

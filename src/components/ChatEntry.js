@@ -1,23 +1,19 @@
 import React, { useState } from 'react';
-import './ChatEntry.css';
 import PropTypes from 'prop-types';
+import './ChatEntry.css';
 import TimeStamp from './TimeStamp';
 
-const ChatEntry = ({ sender, body, timeStamp }) => {
-  // const [likesCount, setLikesCount] = useState(0);
-  const [likeHeart, setLikeHeart] = useState('🤍');
-
-  const onClickLike = () => {
-    setLikeHeart(likeHeart === '🤍' ? '❤️' : '🤍');
-    // if(likeHeart === '🤍' ) {
-    //   setLikeHeart('❤️');
-    // }
-  };
-
-  //   const handleLikesChanges = () => {
-
-  //   }
-  // };
+const ChatEntry = ({ id, sender, body, timeStamp, liked, updateMessage }) => {
+  const handleToggleLike = () =>{
+    const updatedMessage = {
+      id: id,
+      body: body,
+      sender: sender,
+      timeStamp: timeStamp,
+      liked: !liked,
+    };
+    updateMessage(updatedMessage);
+  }
 
   return (
     <div className="chat-entry local">
@@ -27,8 +23,8 @@ const ChatEntry = ({ sender, body, timeStamp }) => {
         <p className="entry-time">
           <TimeStamp time={timeStamp}></TimeStamp>
         </p>
-        <button onClick={onClickLike} className="like">
-          {likeHeart}
+        <button onClick={handleToggleLike} className="like">
+          {liked === true ? '❤️' : '🤍'}
         </button>
       </section>
     </div>
@@ -37,6 +33,7 @@ const ChatEntry = ({ sender, body, timeStamp }) => {
 
 ChatEntry.propTypes = {
   //Fill with correct proptypes
+  entries: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default ChatEntry;
