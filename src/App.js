@@ -6,13 +6,24 @@ import ColorChoice from './components/ColorChoice';
 import { useState } from 'react';
 
 const App = () => {
-  const [entries, setEntries] = useState(chatMessages);
+  const [entriesData, setEntries] = useState(chatMessages);
+
+  const updateEntryData = (updatedEntry) => {
+    const entries = entriesData.map((entry) => {
+      if (entry.id === updatedEntry.id) {
+        return updatedEntry;
+      } else {
+        return entry;
+      }
+    });
+    setEntries(entries);
+  };
   const [colorLocal, setColorLocal] = useState('black');
   const [colorRemote, setColorRemote] = useState('black');
 
-  const localSender = entries[0].sender;
+  const localSender = entriesData[0].sender;
   let remoteSender;
-  for (let entry of entries) {
+  for (let entry of entriesData) {
     if (entry.sender !== localSender) {
       remoteSender = entry.sender;
       break;
@@ -29,7 +40,7 @@ const App = () => {
 
   const countLikes = () => {
     let total = 0;
-    for (let entry of entries) {
+    for (let entry of entriesData) {
       if (entry.liked === true) {
         total += 1;
       }
@@ -37,15 +48,6 @@ const App = () => {
     return total;
   };
 
-  const heartMessage = (id) => {
-    const newEntries = [...entries];
-    for (let entry of newEntries) {
-      if (entry.id === id) {
-        entry.liked = !entry.liked;
-      }
-    }
-    setEntries(newEntries);
-  };
   return (
     <div id="App">
       <header>
@@ -72,8 +74,8 @@ const App = () => {
       </header>
       <main>
         <ChatLog
-          entries={entries}
-          heartCallback={heartMessage}
+          entries={entriesData}
+          onUpdateEntry={updateEntryData}
           localSender={localSender}
           colorLocal={colorLocal}
           colorRemote={colorRemote}

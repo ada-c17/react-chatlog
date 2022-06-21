@@ -12,14 +12,14 @@ const ChatLog = (props) => {
         body={entry.body}
         timeStamp={entry.timeStamp}
         liked={entry.liked}
-        heartCallback={props.heartCallback}
+        onUpdateEntry={props.onUpdateEntry}
         localSender={props.localSender}
         colorLocal={props.colorLocal}
         colorRemote={props.colorRemote}
       ></ChatEntry>
     );
   });
-  return <div>{chatEntryComponents}</div>;
+  return <div className="chat-log">{chatEntryComponents}</div>;
 };
 
 ChatLog.propTypes = {

@@ -4,8 +4,15 @@ import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp';
 
 const ChatEntry = (props) => {
-  const likeMe = () => {
-    props.heartCallback(props.id);
+  const onLikeButtonClick = () => {
+    const updatedEntry = {
+      id: props.id,
+      sender: props.sender,
+      body: props.body,
+      timeStamp: props.timeStamp,
+      liked: !props.liked,
+    };
+    props.onUpdateEntry(updatedEntry);
   };
 
   const localRemote =
@@ -23,7 +30,7 @@ const ChatEntry = (props) => {
         <p className="entry-time">
           <TimeStamp time={props.timeStamp} />
         </p>
-        <button className="like" onClick={likeMe}>
+        <button className="like" onClick={onLikeButtonClick}>
           {props.liked === true ? '❤️' : '🤍'}
         </button>
       </section>
