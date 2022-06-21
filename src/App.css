@@ -1,5 +1,6 @@
 #App {
-  background-color: #87cefa;
+  background-image: url(/src/images/robot.jpeg);
+
 }
 
 #App header {
@@ -49,6 +50,14 @@
   display: inline-block
 }
 
+#numlikesheart {
+  text-align: center;
+  font-size: 35pt;
+  background-color: black;
+  color: white;
+  margin-left: 300pt;
+  margin-right: 300pt
+}
 .red {
   color: #b22222
 }
@@ -71,4 +80,9 @@
 
 .purple {
   color: purple
+}
+
+#id {
+  color: blue;
+  text-align: center;
 }

@@ -31,8 +31,13 @@ button {
 }
 
 .chat-entry .entry-name {
-  font-size: medium;
+  font-size: 20pt;
   margin-bottom: 0.5rem;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+  margin-right: 1000pt;
+  text-align: center;
 }
 
 .chat-entry .entry-time {
