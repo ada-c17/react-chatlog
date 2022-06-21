@@ -4,12 +4,11 @@ import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp';
 
 
-// const timeDiff = (props) => {
-//   let currentTime = new Date();
-//   let time = currentTime.getUTCDate();
-//   let newTime = time - props.timeStamp
-//   return newTime
-// };
+// liked boolean prop type needs to be added
+// if liked = true change the state to (❤️)  filled heart
+// else false is empty heart (🤍). which is default
+// count when liked occurs
+
 
 const ChatEntry = (props) => {
   return (
@@ -18,18 +17,20 @@ const ChatEntry = (props) => {
       <section className="entry-bubble">
         <p>{props.body}</p>
         <p className="entry-time"><TimeStamp time={props.timeStamp}/></p>
-        <button className="like">🤍</button>
+        <button className="like" onClick={props.toggleLike}>{props.heart}</button>
       </section>
     </div>
   );
 };
 
-
+// add id to chatEntry
 ChatEntry.propTypes = {
   //Fill with correct proptypes
+  id: PropTypes.number.isRequired,
   sender: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   timeStamp: PropTypes.string.isRequired,
+  liked: PropTypes.bool.isRequired,
 };
 
 export default ChatEntry;

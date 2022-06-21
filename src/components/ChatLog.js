@@ -3,13 +3,15 @@ import ChatEntry from './ChatEntry';
 import PropTypes from 'prop-types';
 
 
-const ChatLog = (entries) => {
-    const chatComponents = entries.chatData.map((chatEntry) => {
+const ChatLog = (props) => {
+    console.log(props)
+    const chatComponents = props.entries.map((entry) => {
         return (
             <ChatEntry
-                sender={chatEntry.sender}
-                body={chatEntry.body}
-                timeStamp={chatEntry.timeStamp}
+                sender={entry.sender}
+                body={entry.body}
+                timeStamp={entry.timeStamp}
+                liked={entry.liked}
             />
         );
     });
@@ -20,7 +22,7 @@ const ChatLog = (entries) => {
 
 
 ChatLog.propTypes = {
-    chatData: PropTypes.arrayOf(PropTypes.object).isRequired,
+    entries: PropTypes.arrayOf(PropTypes.object).isRequired,
 
 };
 
