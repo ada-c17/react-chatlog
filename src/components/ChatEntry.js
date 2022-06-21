@@ -2,9 +2,18 @@ import React from 'react';
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp';
+import { useState } from 'react';
 
 
 const ChatEntry = (props) => {
+
+  const [isLiked, setLiked] = useState(false);
+
+  const toggleHeart = () => {
+    setLiked(!isLiked);
+  }
+
+  const heartColor = isLiked ?  '❤️' : '🤍';
   
   return (
     <div className={`chat-entry ${props.sender === 'Estragon' ? 'remote' : 'local'}`}>
@@ -12,7 +21,7 @@ const ChatEntry = (props) => {
       <section className="entry-bubble">
         <p>{props.body}</p>
         <p className="entry-time"><TimeStamp time={props.timeStamp}/></p>
-        <button className="like">🤍</button>
+        <button onClick={toggleHeart} className="like">{heartColor}</button>
       </section>
     </div>
   );

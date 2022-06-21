@@ -6,6 +6,7 @@ const ChatLog = (props) => {
     const chatMessageComponents = props.entries.map((entry) => {
         return (
             <ChatEntry
+                key={entry.id}
                 id={entry.id}
                 sender={entry.sender}
                 body={entry.body}
@@ -15,10 +16,8 @@ const ChatLog = (props) => {
         );
     });
 
-    return (
-        <div>
-            {chatMessageComponents}
-        </div>
+    return(
+        <div>{chatMessageComponents}</div>
     );
 };
 
