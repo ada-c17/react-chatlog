@@ -10,19 +10,21 @@ const App = () => {
   const flipHearts = (id) => {
     const newHearts = [];
     for (const entry of entries) {
-      if (entry.id === id) {
-        entry.liked = !entry.liked;
+      let newEntry = Object.assign({}, entry); // making new copy so does not edit previous state
+      if (newEntry.id === id) {
+        newEntry.liked = !newEntry.liked;
       }
-      newHearts.push(entry);
+      newHearts.push(newEntry);
     }
     setEntries(newHearts);
   };
+
 
   //helper function to count number of entries liked
   const sumTotalHearts = () => {
     let count = 0;
     for (const entry of entries) {
-      if (entry.liked) {
+      if (entry.liked === true) {
         count += 1;
       }
     }
@@ -35,10 +37,7 @@ const App = () => {
         <div className="heart-count">{sumTotalHearts()} ❤️s </div>
       </header>
       <main>
-        <ChatLog
-          entries={chatMessages}
-          heartCallback={flipHearts}
-        />
+        <ChatLog entries={entries} heartCallback={flipHearts} />
       </main>
     </div>
   );

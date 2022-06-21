@@ -2,14 +2,18 @@ import React from 'react';
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp.js';
-//import { useState } from 'react';
 
 const ChatEntry = (props) => {
   const flipMyHearts = () => {
     props.heartCallback(props.id);
   };
+
   return (
-    <div className={`chat-entry ${props.sender === 'Vladimir' ? 'local' : 'remote'}`}>
+    <div
+      className={`chat-entry ${
+        props.sender === 'Vladimir' ? 'local' : 'remote'
+      }`}
+    >
       <h2 className="entry-name">{props.sender}</h2>
       <section className="entry-bubble">
         <p>{props.body}</p>
