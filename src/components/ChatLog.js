@@ -39,7 +39,6 @@ ChatLog.propTypes = {
     })
   ),
   onUpdateMessage: PropTypes.func.isRequired,
-  local: PropTypes.string.isRequired,
 };
 
 export default ChatLog;
