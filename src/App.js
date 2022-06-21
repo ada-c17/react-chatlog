@@ -7,13 +7,13 @@ import { useState } from 'react';
 const App = () => {
   const [messages, setMessages] = useState(chatMessages);
   const fliplikedState = (id) => {
+    const newMessages = messages.map((message) => {
     // use .map here instead of mutating messages
-    for (const message of messages) {
       if (message.id === id) {
         message.liked = !message.liked;
       }
-    }
-    const newMessages = [...messages];
+      return message
+    })
     setMessages(newMessages);
   };
 
@@ -25,7 +25,7 @@ const App = () => {
   return (
     <div id="App">
       <header>
-        <h1>Application title</h1>
+        <h1> Likes Count: {likesCount} ❤️s </h1>
       </header>
       <main>
         {/* Wave 01: Render one ChatEntry component

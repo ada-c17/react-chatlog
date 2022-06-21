@@ -9,6 +9,7 @@ const diffTime = (time) => {
 };
 
 const ChatEntry = (props) => {
+  const heart = props.liked ? '❤️' : '🤍'
   return (
     <div className="chat-entry local">
       <h2 className="entry-name">{props.sender}</h2>
@@ -22,7 +23,7 @@ const ChatEntry = (props) => {
             props.increaseLikes();
           }}
         >
-          {props.liked ? '❤️' : '🤍'}
+          {heart}
         </button>
       </section>
     </div>
