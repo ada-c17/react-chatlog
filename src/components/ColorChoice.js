@@ -36,6 +36,13 @@ const ColorChoice = ({ userClassifer, handleTextColor, textColor }) => {
         >
           🔵
         </button>
+        <button
+          onClick={() =>
+            handleTextColor({ user: { userClassifer }, color: 'defult' })
+          }
+        >
+          ⚫️
+        </button>
       </div>
     </div>
   );

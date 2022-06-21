@@ -26,7 +26,10 @@ const App = () => {
   };
 
   // Color Picker
-  const [textColor, setTextColor] = useState({ localUser: '', remoteUser: '' });
+  const [textColor, setTextColor] = useState({
+    localUser: 'default',
+    remoteUser: 'default',
+  });
   const handleTextColor = (updatedUserColor) => {
     //updatedUserColor format -> {user:{userClassifer:'localUser'}, color:'red'}
     const { user, color } = updatedUserColor;
