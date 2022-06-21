@@ -1,16 +1,38 @@
 import React from 'react';
+import { useState } from 'react';
 import './App.css';
 import ChatLog from './components/ChatLog';
 import chatMessages from './data/messages.json';
 
 const App = () => {
+  const [chatData, setData] = useState(chatMessages);
+  let [likesCount, setLikesCount] = useState(0);
+
+  const setLike = (id) => {
+    const updatedData = chatData.map((msg) => {
+      const newMsg = { ...msg };
+      if (newMsg.id === id) {
+        newMsg.liked = !newMsg.liked;
+        if (newMsg.liked === true) {
+          likesCount += 1;
+        } else {
+          likesCount -= 1;
+        }
+      }
+      return newMsg;
+    });
+    setData(updatedData);
+    setLikesCount(likesCount);
+  };
+
   return (
     <div id="App">
       <header>
-        <h1>Application title</h1>
+        <h1>Chat between Vladimir and Estragon</h1>
+        <section>{likesCount} ❤️s</section>
       </header>
       <main>
-        <ChatLog entries={chatMessages} />
+        <ChatLog entries={chatData} setLikeCallback={setLike} />
       </main>
     </div>
   );
