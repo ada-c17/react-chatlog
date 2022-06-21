@@ -42,7 +42,7 @@ const ColorChoice = ({ userClassifer, handleTextColor, textColor }) => {
 };
 
 ColorChoice.propTypes = {
-  user: PropTypes.string.isRequired,
+  userClassifer: PropTypes.string.isRequired,
   handleTextColor: PropTypes.func.isRequired,
   textColor: PropTypes.object.isRequired,
 };
