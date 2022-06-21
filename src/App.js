@@ -20,9 +20,9 @@ const App = () => {
         body="open the door or i'm gonna throw rocks at ur window"
         timeStamp={<TimeStamp time='2016-05-18T22:12:03Z'/>}
         ></ChatEntry>
-        <ChatLog>
-
-        </ChatLog>
+        {/* <ChatLog
+        entries={chatJson}
+        ></ChatLog> */}
       </main>
     </div>
   );
