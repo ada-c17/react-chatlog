@@ -7,9 +7,11 @@ const ChatLog = (props) => {
     return (
       <section key={chatEntry.id}>
         <ChatEntry
+          id={chatEntry.id}
           sender={chatEntry.sender}
           body={chatEntry.body}
           timeStamp={chatEntry.timeStamp}
+          liked={chatEntry.liked}
         />
       </section>
     );
