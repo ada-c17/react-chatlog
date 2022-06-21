@@ -8,6 +8,10 @@ const ChatEntry = (props) => {
   // const [liked, setLike] = useState(false);
 
   const fillheart = props.liked ? '❤️' : '🤍';
+
+  const conversationSide =
+    props.id % 2 !== 0 ? 'chat-entry local' : 'chat-entry remote';
+  //props.sender === 'Vladimir ? 'chat-entry local' : 'chat-entry remote';
   const onClickLike = () => {
     const message = {
       id: props.id,
@@ -21,7 +25,7 @@ const ChatEntry = (props) => {
   };
 
   return (
-    <div className="chat-entry local">
+    <div className={conversationSide}>
       <h2 className="entry-name">{props.sender}</h2>
       <section className="entry-bubble">
         <p>{props.body}</p>
