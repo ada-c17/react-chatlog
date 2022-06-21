@@ -6,11 +6,13 @@ import PropTypes from 'prop-types';
 const ChatLog = ({ entries }) => {
   const chatComponents = entries.map((chat) => {
     return (
-      <ChatEntry
-        sender={chat.sender}
-        body={chat.body}
-        timeStamp={chat.timeStamp}
-      />
+      <li key={chat.id}>
+        <ChatEntry
+          sender={chat.sender}
+          body={chat.body}
+          timeStamp={chat.timeStamp}
+        />
+      </li>
     );
   });
 
