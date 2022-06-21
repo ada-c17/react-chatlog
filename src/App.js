@@ -10,25 +10,41 @@ const App = () => {
   const [heartCount, setCount] = useState(0);
 
   const setLikeForId = (id) => {
-    const msgs = [...messages];
     let count = 0;
-    for (let msg in msgs) {
-      if (msgs[msg].id === id) {
-        if (msgs[msg].liked === true) {
-          msgs[msg].liked = false;
-        } else {
-          msgs[msg].liked = true;
-        }
+    const newMessagesData = messages.map((msg) => {
+      const newMessage = { ...msg };
+      if (newMessage.id === id) {
+        newMessage.liked = newMessage.liked ? false : true;
       }
-
-      if (msgs[msg].liked === true) {
+      if (newMessage.liked === true) {
         count++;
       }
-    }
-    console.log(msgs);
-    SetLike(msgs);
+      return newMessage;
+    });
+    SetLike(newMessagesData);
     setCount(count);
   };
+
+  // const setLikeForId = (id) => {
+  //   const msgs = [...messages];
+  //   let count = 0;
+  //   for (let msg in msgs) {
+  //     if (msgs[msg].id === id) {
+  //       if (msgs[msg].liked === true) {
+  //         msgs[msg].liked = false;
+  //       } else {
+  //         msgs[msg].liked = true;
+  //       }
+  //     }
+
+  //     if (msgs[msg].liked === true) {
+  //       count++;
+  //     }
+  //   }
+  //   console.log(msgs);
+  //   SetLike(msgs);
+  //   setCount(count);
+  // };
 
   return (
     <div id="App">
