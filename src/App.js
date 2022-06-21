@@ -7,16 +7,6 @@ import './components/ChatLog.css';
 const App = () => {
   const [messages, setMessages] = useState(chatMessages);
 
-  const [likeButtonCount, setLikeButtonCount] = useState(0);
-
-  const adjustLikeButtonCount = (updatedMessage) => {
-    if (updatedMessage.liked === true) {
-      setLikeButtonCount(likeButtonCount + 1);
-    } else {
-      setLikeButtonCount(likeButtonCount - 1);
-    }
-  };
-
   const onClickLikeButton = (updatedMessage) => {
     const newMessages = messages.map((message) => {
       if (message.id === updatedMessage.id) {
@@ -25,8 +15,20 @@ const App = () => {
         return message;
       }
     });
-    adjustLikeButtonCount(updatedMessage);
     setMessages(newMessages);
+  };
+
+  const adjustLikeButtonCount = (messages) => {
+    console.log({ messages });
+    let likeButtonCount = 0;
+    for (const message of messages) {
+      if (message.liked === true) {
+        likeButtonCount += 1;
+      }
+    }
+
+    console.log(likeButtonCount);
+    return likeButtonCount;
   };
 
   return (
@@ -34,7 +36,7 @@ const App = () => {
       <header>
         <h1>Chat between Vladimir and Estragon </h1>
         <section>
-          <h2>{likeButtonCount} ❤️s</h2>
+          <h2>{adjustLikeButtonCount(messages)} ❤️s</h2>
         </section>
       </header>
       <main className="chat-log">
