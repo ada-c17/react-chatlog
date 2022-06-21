@@ -16,8 +16,8 @@ const ChatEntry = (props) => {
     };
 
     props.updateMessageData(updatedMessage);
-    setLikeButton(updatedMessage.liked ? '❤️' : '🤍');
-    const bool = likeButton === '🤍';
+    props.updateLikeButton(updatedMessage.liked);
+    const bool = props.likeButton === '🤍';
     props.updateTotalLikes(bool);
   };
 
@@ -33,7 +33,7 @@ const ChatEntry = (props) => {
           <TimeStamp time={props.timeStamp} />
         </p>
         <button onClick={onLikedButtonClick} className="like">
-          {likeButton}
+          {props.likeButton}
         </button>
       </section>
     </div>
