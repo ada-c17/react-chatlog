@@ -5,6 +5,7 @@ import TimeStamp from './TimeStamp';
 
 const ChatEntry = (props) => {
   const toggleLikeButton = () => {
+    // recreate message object, but toggle the boolean value for liked
     const updatedMessage = {
       id: props.id,
       sender: props.sender,
@@ -19,14 +20,16 @@ const ChatEntry = (props) => {
   // heart is set here, the isLiked value has switched?
   const heart = props.isLiked ? '❤️' : '🤍';
 
-  // set all class names for each displayed message
-  // added 'chat-entry' class here as well
+  // set all classNames for each displayed message
+  // text color will change for user name and their chat messages
+  // added 'chat-entry' class here but for some reason the format of
+  // my chat bubbles have changed, but they shouldn't have...
   const userAndColor =
     props.sender === props.local
       ? `chat-entry local ${props.localColor}`
       : `chat-entry remote ${props.remoteColor}`;
 
-  // every chat bubble
+  // every chat bubble + sender name
   return (
     <div className={userAndColor}>
       <h2 className="entry-name">{props.sender}</h2>

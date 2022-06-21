@@ -33,15 +33,20 @@ const App = () => {
   };
   let numHearts = countHearts();
 
+  // OPTIONAL: set local and remote users
   // set local as Vladimir to match ReadMe photos
   // pass it down to ChatLog to ChatEntry
   const localUser = chatMessages[0].sender;
   // assume remote user is whoever sends the next message
   const remoteUser = chatMessages[1].sender;
 
+  // OPTIONAL: set text colors for both local user and remote user
+  // by default, the color is black
   const [localColor, setLColor] = useState('black');
   const [remoteColor, setRColor] = useState('black');
 
+  // need two different set state functions (i think) to change the different
+  // state variables for colors
   const setLocalColor = (chatColor) => {
     setLColor(chatColor);
   };
@@ -49,10 +54,13 @@ const App = () => {
     setRColor(chatColor);
   };
 
+  // I changed the header portion layout for the optional parts and
+  // I added in flexbox for part of the header in App.css
   return (
     <div id="App">
       <header>
         <h1>
+          {/* adding className below only changes the color of this h1 heading */}
           <span className={localColor}>{localUser}</span> and{' '}
           <span className={remoteColor}>{remoteUser}</span> chat
         </h1>
