@@ -4,8 +4,15 @@ import TimeStamp from './TimeStamp';
 import PropTypes from 'prop-types';
 
 const ChatEntry = (props) => {
+  let lrAlignment = 'chat-entry local';
+  if (props.sender === 'Vladimir') {
+    lrAlignment = 'chat-entry local';
+  } else {
+    lrAlignment = 'chat-entry remote';
+  }
+
   return (
-    <div className="chat-entry local">
+    <div className={lrAlignment}>
       <h2 className="entry-name">{props.sender}</h2>
       <section className="entry-bubble">
         <p>{props.body}</p>
