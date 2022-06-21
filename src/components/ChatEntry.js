@@ -15,7 +15,7 @@ const ChatEntry = (props) => {
     props.onLike(updatedChatEntry);
   };
 
-  // const heartColor = liked ? 'full' : 'empty';
+  const heart = props.liked ? '❤️' : '🤍';
 
   return (
     <div className="chat-entry local">
@@ -26,7 +26,7 @@ const ChatEntry = (props) => {
           <TimeStamp time={props.timeStamp} />
         </p>
         <button className="like" onClick={onLikeButtonClick}>
-          🤍
+          {heart}
         </button>
       </section>
     </div>
@@ -34,12 +34,11 @@ const ChatEntry = (props) => {
 };
 
 ChatEntry.propTypes = {
-  id: PropTypes.number.isRequired,
+  // id: PropTypes.number.isRequired,
   sender: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   timeStamp: PropTypes.string.isRequired,
-  liked: PropTypes.bool.isRequired,
-  onLike: PropTypes.func.isRequired,
+  // liked: PropTypes.bool.isRequired,
 };
 
 export default ChatEntry;

@@ -11,7 +11,11 @@ const App = () => {
   const updateChatEntry = (updatedEntry) => {
     const entries = chatEntries.map((entry) => {
       if (entry.id === updatedEntry.id) {
-        setLikeCount(likeCount + 1);
+        if (entry.liked) {
+          setLikeCount(likeCount - 1);
+        } else {
+          setLikeCount(likeCount + 1);
+        }
         return updatedEntry;
       } else {
         return entry;
@@ -24,7 +28,7 @@ const App = () => {
     <div id="App">
       <header>
         <h1>Application title</h1>
-        <h2>{likeCount} ❤️</h2>
+        <h2>{likeCount} ❤️s</h2>
       </header>
       <main>
         <ChatLog entries={chatEntries} onLike={updateChatEntry} />
