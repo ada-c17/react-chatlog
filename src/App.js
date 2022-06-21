@@ -32,7 +32,7 @@ const App = () => {
     <div id="App">
       <header>
         <h1>Application title</h1>
-        <p className="heartWidget">{sumTotalHearts()} ❤️s </p>
+        <div className="heart-count">{sumTotalHearts()} ❤️s </div>
       </header>
       <main>
         <ChatLog
