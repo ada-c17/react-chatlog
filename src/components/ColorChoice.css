@@ -1,0 +1,30 @@
+.colorButton button {
+    display: inline-block;
+    line-height: 0.5em;
+    border-radius: 10px;
+    margin-right: 1em;
+}
+
+#red {
+    background-color: #b22222
+}
+
+#orange {
+    background-color: #e6ac00
+}
+
+#yellow {
+    background-color: #e6e600
+}
+
+#green {
+    background-color: green
+}
+
+#blue {
+    background-color: blue
+}
+
+#purple {
+    background-color: purple
+}
