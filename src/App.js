@@ -25,11 +25,14 @@ const App = () => {
     const newEntries = [];
     
     for (const entry of entries) {
-      // const newEntries = [...entries];
-      if (entry.id === id) {
-        entry.liked = !entry.liked;
+      // Need to make deep copy here and add new entries
+      // Looping through entry in chatMessages, made deep copy 
+      // to avoid changing the original data repeatedly
+      const newEntry = { ...entry };
+      if (newEntry.id === id) {
+        newEntry.liked = !newEntry.liked;
       }
-      newEntries.push(entry);
+      newEntries.push(newEntry);
     }
     setEntries(newEntries);
   }
