@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 const ChatLog = (props) => {
     const chatComponents = props.entries.map((chat, index) => {
         return(
-            <li  key={index}>
+            <section  key={index}>
             <ChatEntry 
                 id={chat.id}
                 sender={chat.sender} 
@@ -15,7 +15,7 @@ const ChatLog = (props) => {
                 liked={chat.liked}
                 onUpdate={props.onUpdateChat}
             />
-            </li>
+            </section>
         );
     });
         
