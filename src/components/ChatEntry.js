@@ -1,28 +1,26 @@
 import React from 'react';
 import TimeStamp from './TimeStamp';
-import { useState } from 'react';
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
 
 const ChatEntry = (props) => {
-  const [liked, setLiked] = useState(false);
+  const changeMyLike = () => {
+    props.likedCallback(props.id);
+  };
 
-  function changeLike() {
-    setLiked(!liked);
-  }
-
-  const displayLike = liked ? '❤️' : '🤍';
+  const messageFormat = props.sender === 'Estragon' ? 'remote' : 'local';
+  const likedButton = props.liked ? '❤️' : '🤍';
 
   return (
-    <div className="chat-entry local">
+    <div className={'chat-entry ' + messageFormat}>
       <h2 className="entry-name">{props.sender}</h2>
       <section className="entry-bubble">
         <p>{props.body}</p>
         <p className="entry-time">
           <TimeStamp time={props.timeStamp}></TimeStamp>
         </p>
-        <button className="like" onClick={changeLike}>
-          {displayLike}
+        <button className="like" onClick={changeMyLike}>
+          {likedButton}
         </button>
       </section>
     </div>
