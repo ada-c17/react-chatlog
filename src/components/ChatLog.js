@@ -24,11 +24,11 @@ const ChatLog = (props) => {
 ChatLog.propTypes = {
   entries: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      // id: PropTypes.number.isRequired,
       sender: PropTypes.string.isRequired,
       body: PropTypes.string.isRequired,
       timeStamp: PropTypes.string.isRequired,
-      liked: PropTypes.bool.isRequired,
+      // liked: PropTypes.bool.isRequired,
     })
   ),
 };
