@@ -4,7 +4,7 @@ import ChatEntry from './ChatEntry';
 import './ChatLog.css';
 
 const ChatLog = (props) => {
-  const chatEntries = props.chatData.map((entry) => {
+  const chatEntries = props.entries.map((entry) => {
     return (
       <ChatEntry
         key={entry.id}
@@ -18,7 +18,7 @@ const ChatLog = (props) => {
     );
   });
 
-  return <div>{chatEntries}</div>;
+  return <ul>{chatEntries}</ul>;
 };
 
 // proptypes

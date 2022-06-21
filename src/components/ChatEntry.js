@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp';
 
 const ChatEntry = ({ id, sender, body, timeStamp, liked, toggleLike }) => {
+  //
   const isLocal = (id) => {
     if (!(id % 2 === 0)) {
       return true;
@@ -15,7 +16,14 @@ const ChatEntry = ({ id, sender, body, timeStamp, liked, toggleLike }) => {
   const heartColor = liked ? '❤️' : '🤍';
 
   const handleToggleLike = () => {
-    toggleLike(id);
+    const updatedEntry = {
+      id: id,
+      sender: sender,
+      body: body,
+      timeStamp: timeStamp,
+      liked: !liked,
+    };
+    toggleLike(updatedEntry);
   };
 
   return (
@@ -28,7 +36,9 @@ const ChatEntry = ({ id, sender, body, timeStamp, liked, toggleLike }) => {
         <p className="entry-time ">
           <TimeStamp time={timeStamp} />
         </p>
-        <button onClick={handleToggleLike}>{heartColor}</button>
+        <button className="like" onClick={handleToggleLike}>
+          {heartColor}
+        </button>
       </section>
     </div>
   );
