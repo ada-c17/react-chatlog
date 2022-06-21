@@ -6,7 +6,6 @@ import chatMessages from './data/messages.json';
 
 function App() {
   const [entries, setEntries] = useState(chatMessages);
-
   const likeEntry = (id) => {
     const newEntries = entries.map((entry) => {
       if (entry.id === id) {
@@ -25,10 +24,13 @@ function App() {
     0
   );
 
+  const remotePerson = chatMessages[1].sender;
+
   return (
     <div id="App">
       <header>
-        <h1>{likeCount} ❤️s</h1>
+        <h1>{remotePerson}</h1>
+        <h2>{likeCount} ❤️s</h2>
       </header>
       <main>
         <ChatLog entries={chatMessages} onLike={likeEntry} />

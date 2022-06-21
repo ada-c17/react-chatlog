@@ -7,37 +7,35 @@ const ChatEntry = (props) => {
   const handleLike = () => {
     props.onLike(props.id);
   };
-  if (props.liked === true) {
-    return (
-      <div className="chat-entry local">
-        <h2 className="entry-name">{props.sender}</h2>
-        <section className="entry-bubble">
-          <p>{props.body}</p>
-          <p className="entry-time">
-            <TimeStamp time={props.timeStamp} />
-          </p>
-          <button className="like" onClick={handleLike}>
-            ❤️
-          </button>
-        </section>
-      </div>
-    );
-  } else {
-    return (
-      <div className="chat-entry local">
-        <h2 className="entry-name">{props.sender}</h2>
-        <section className="entry-bubble">
-          <p>{props.body}</p>
-          <p className="entry-time">
-            <TimeStamp time={props.timeStamp} />
-          </p>
-          <button className="like" onClick={handleLike}>
-            🤍
-          </button>
-        </section>
-      </div>
-    );
-  }
+  const assignClass = () => {
+    if (props.sender === 'Vladimir') {
+      return 'local';
+    } else {
+      return 'remote';
+    }
+  };
+  const assignIcon = () => {
+    if (props.liked === true) {
+      return '❤️';
+    } else {
+      return '🤍';
+    }
+  };
+
+  return (
+    <div className={`chat-entry ${assignClass()}`}>
+      <h2 className="entry-name">{props.sender}</h2>
+      <section className="entry-bubble">
+        <p>{props.body}</p>
+        <p className="entry-time">
+          <TimeStamp time={props.timeStamp} />
+        </p>
+        <button className="like" onClick={handleLike}>
+          {assignIcon()}
+        </button>
+      </section>
+    </div>
+  );
 };
 
 ChatEntry.propTypes = {
