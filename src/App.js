@@ -25,10 +25,17 @@ const App = () => {
     setLikesCount(likesCount);
   };
 
+  const localUser = chatData.filter((msg) => msg.sender === 'Vladimir');
+
+  const remoteUser = chatData.filter((msg) => msg.sender === 'Estragon');
+  console.log('remote msg', remoteUser);
+
   return (
     <div id="App">
       <header>
-        <h1>Chat between Vladimir and Estragon</h1>
+        <h1>
+          Chat between {localUser[0].sender} and {remoteUser[0].sender}
+        </h1>
         <section>{likesCount} ❤️s</section>
       </header>
       <main>
