@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './ChatEntry.css';
 import TimeStamp from './TimeStamp';
 import PropTypes from 'prop-types';
@@ -8,11 +8,12 @@ const ChatEntry = (props) => {
   const entryClassName =
     props.sender === 'Vladimir' ? 'chat-entry local' : 'chat-entry remote';
 
-  const [likeButton, setLikeButton] = useState('🤍');
-
-  const toggleLikeButton = () => {
+  const updateLike = () => {
     console.log('You clicked the like button.');
+    props.onUpdateMessage(props.id);
   };
+
+  const likeDisplay = props.liked ? '❤️' : '🤍';
 
   return (
     <div className={entryClassName}>
@@ -20,8 +21,8 @@ const ChatEntry = (props) => {
       <section className="entry-bubble">
         <p>{props.body}</p>
         <TimeStamp time={props.timeStamp} />
-        <button className="like" onClick={toggleLikeButton}>
-          🤍
+        <button className="like" onClick={updateLike}>
+          {likeDisplay}
         </button>
       </section>
     </div>
@@ -35,6 +36,7 @@ ChatEntry.propTypes = {
   // timeStamp proptype will need to be updated to require date, not just string
   timeStamp: PropTypes.string.isRequired,
   liked: PropTypes.bool.isRequired,
+  onUpdateMessage: PropTypes.func.isRequired,
 };
 
 export default ChatEntry;
