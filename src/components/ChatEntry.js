@@ -11,8 +11,6 @@ const ChatEntry = (props) => {
   const flipHeart = () => {
     props.toggleHeartCallback(props.id);
   };
-
-  // const heartColor = props.liked ?  '❤️' : '🤍';
   
   return (
     <div className={`chat-entry ${props.sender === 'Estragon' ? 'remote' : 'local'}`}>
@@ -20,20 +18,20 @@ const ChatEntry = (props) => {
       <section className="entry-bubble">
         <p>{props.body}</p>
         <p className="entry-time"><TimeStamp time={props.timeStamp}/></p>
-        <button onClick={flipHeart} className="like">{props.liked ?  '❤️' : '🤍'}</button>
+        <button onClick={flipHeart} className="like">{props.liked ? '❤️' : '🤍'}</button>
       </section>
     </div>
   );
 };
 
 ChatEntry.propTypes = {
-  // key: PropTypes.number.isRequired,
+  key: PropTypes.number.isRequired,
   id: PropTypes.number.isRequired,
   sender: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   timeStamp: PropTypes.string.isRequired,
   liked: PropTypes.bool.isRequired,
-  // flipHeart: PropTypes.func.isRequired,
+  flipHeart: PropTypes.func.isRequired,
 };
 
 export default ChatEntry;

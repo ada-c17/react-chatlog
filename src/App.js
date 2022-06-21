@@ -5,34 +5,53 @@ import ChatLog from './components/ChatLog';
 import { useState } from 'react';
 
 const App = () => {
-  // const [likeCount, setLikeCount] = useState(0);
 
   // Need a function to update the like count
+  const [entries, setEntries] = useState(chatMessages);
 
-  const [messages, setMessages] = useState(chatMessages);
+  const updateLike = () => {
+    let likeCount = 0;
 
-  const toggleHeart = (id) => {
-
-    for (const message of messages) {
-      if (message.id === id) {
-        message.liked = !message.liked;
+    for (const entry of entries) {
+      if (entry.liked === true) {
+        likeCount += 1;
       }
     }
-    const newMessages = [...messages];
-    setMessages(newMessages);
+    return likeCount;
+  };
+
+  const toggleHeart = (id) => {
+    const newEntries = [];
+    
+    for (const entry of entries) {
+      if (entry.id === id) {
+        entry.liked = !entry.liked;
+      }
+      newEntries.push(entry);
+    }
+    setEntries(newEntries);
   }
+
+  // const [likeCount, setLikeCount] = useState(0);
+
+  // const likeTotal = () => {
+  //   const updateLike = () => {
+  //     console.log('inside the updateLike function!');
+  //     setLikeCount(likeCount + 1);
+  //   }
+  // }
 
   return (
     <div id="App">
       <header>
-        <h1>Chat between Vladimir and Estragon</h1>
-        <h2> Likes go here:</h2>
+        <h1>Chat between Vladimir and Estragon</h1> 
+        <h2> {updateLike()} ❤️s</h2>
       </header>
       <main>
-        <ChatLog entries={chatMessages} toggleHeartCallback={toggleHeart}/>
+        <ChatLog entries={entries} toggleHeartCallback={toggleHeart}/>
       </main>
     </div>
   );
-}
+};
 
 export default App;
