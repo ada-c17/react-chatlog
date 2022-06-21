@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import './ChatEntry.css';
 import TimeStamp from './TimeStamp';
 
 const ChatEntry = ({ id, sender, body, timeStamp, liked, updateMessage }) => {
-  const handleToggleLike = () =>{
+  const handleToggleLike = () => {
     const updatedMessage = {
       id: id,
       body: body,
@@ -13,7 +13,7 @@ const ChatEntry = ({ id, sender, body, timeStamp, liked, updateMessage }) => {
       liked: !liked,
     };
     updateMessage(updatedMessage);
-  }
+  };
 
   return (
     <div className="chat-entry local">
@@ -33,7 +33,12 @@ const ChatEntry = ({ id, sender, body, timeStamp, liked, updateMessage }) => {
 
 ChatEntry.propTypes = {
   //Fill with correct proptypes
-  entries: PropTypes.arrayOf(PropTypes.object).isRequired,
+  id: PropTypes.number.isRequired,
+  sender: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  timeStamp: PropTypes.string.isRequired,
+  liked: PropTypes.bool.isRequired,
+  updateMessage: PropTypes.func.isRequired,
 };
 
 export default ChatEntry;
