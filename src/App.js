@@ -9,11 +9,8 @@ const App = () => {
   let [heartsCount, setHeartsCount] = useState(0);
 
   const flipHearts = (id) => {
-    console.log('function called')
-    const newEntries = [];
-    for (const en of entries){
-      let entry = JSON.parse(JSON.stringify(en)); // deep copy?
-
+    const newEntries = entries.map((entry) => ({...entry}));
+    for (const entry of newEntries){
       if (entry.id === id){
         entry.liked = !entry.liked;
         if (entry.liked){
@@ -22,11 +19,9 @@ const App = () => {
           heartsCount--;
         }
       }
-      newEntries.push(entry);
     }
     setEntries(newEntries)
     setHeartsCount(heartsCount)
-    console.log(heartsCount)
   };
 
   return (
@@ -37,7 +32,7 @@ const App = () => {
       </header>
       <main>
         <ChatLog 
-          entries={messages}
+          entries={entries}
           heartsCallback={flipHearts}>
         </ChatLog>
         {/* Wave 01: Render one ChatEntry component
