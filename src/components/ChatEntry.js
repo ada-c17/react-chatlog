@@ -1,7 +1,7 @@
 import React from 'react';
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
-import moment from 'moment';
+import TimeStamp from './TimeStamp';
 
 const ChatEntry = (props) => {
   return (
@@ -9,7 +9,9 @@ const ChatEntry = (props) => {
       <h2 className="entry-name">{props.sender}</h2>
       <section className="entry-bubble">
         <p>{props.body}</p>
-        <p className="entry-time">{moment(props.timeStamp).fromNow()}</p>
+        <p className="entry-time">
+          <TimeStamp time={props.timeStamp} />
+        </p>
         <button className="like">🤍</button>
       </section>
     </div>
