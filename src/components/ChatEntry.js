@@ -10,7 +10,6 @@ const ChatEntry = (props) => {
 
   // execute toggleLikeButton function on button click
   const updateLike = () => {
-    console.log('You clicked the like button.');
     props.onUpdateMessage(props.id);
   };
 
