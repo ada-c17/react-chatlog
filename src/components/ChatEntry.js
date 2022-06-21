@@ -7,8 +7,10 @@ const ChatEntry = (props) => {
     props.likedCallback(props.id);
   };
 
+  const contactsOrientation = props.contactsCallback(props.id);
+
   return (
-    <div className="chat-entry local">
+    <div className={`chat-entry ${contactsOrientation}`}>
       <h2 className="entry-name">{props.sender}</h2>
       <section className="entry-bubble">
         <p>{props.body}</p>
@@ -30,6 +32,7 @@ ChatEntry.propTypes = {
   timeStamp: PropTypes.any,
   liked: PropTypes.bool,
   likedCallback: PropTypes.func,
+  contactsCallback: PropTypes.func,
 };
 
 export default ChatEntry;
