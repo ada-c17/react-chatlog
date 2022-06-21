@@ -5,15 +5,9 @@ import TimeStamp from './TimeStamp';
 import { useState } from 'react';
 
 const ChatEntry = (props) => {
-  // console.log(props);
-  // console.log(props.timeStamp);
-  // console.log(typeof props.time);
   const sender = props.sender;
   const time = props.timeStamp;
   const body = props.body;
-  // const years = 2022 - parseInt(time.substring(0, 4));
-  // console.log(parseInt(time.substring(0, 4)));
-  // console.log(years);
   const [heart, changeHeart] = useState('🤍');
   const changeLikeButton = () => {
     if (heart === '🤍') {
@@ -23,8 +17,6 @@ const ChatEntry = (props) => {
     }
     props.changeLikeButton(props.id);
   };
-
-  // const heartColor = props.liked ? '❤️' : '🤍';
 
   return (
     <div className="chat-entry local">

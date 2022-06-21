@@ -6,8 +6,6 @@ import ChatEntry from './ChatEntry.js';
 const ChatLog = ({ entries, changeLikeButton }) => {
   const messageComponents = [];
   for (const message of entries) {
-    // console.log(message);
-
     messageComponents.push(
       <ChatEntry
         key={message.id}
