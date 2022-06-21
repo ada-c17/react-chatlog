@@ -19,7 +19,8 @@ const App = () => {
 
   const toggleLiked = (id) => {
     const newMessages = [];
-    for (const message of messages) {
+    const messagesCopy = JSON.parse(JSON.stringify(messages));
+    for (const message of messagesCopy) {
       if (message.id === id) {
         message.liked = !message.liked;
       }
@@ -32,7 +33,9 @@ const App = () => {
   return (
     <div id="App">
       <header>
-        <h1>Application title</h1>
+        <h1>
+          Chat between {chatMessages[0].sender} and {chatMessages[1].sender}
+        </h1>
         <h2> {countLiked()} ❤️s</h2>
       </header>
       <main key={messages.id}>

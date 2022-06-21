@@ -7,13 +7,17 @@ const ChatEntry = (props) => {
   // update the icon using props.liked
   const likeButton = props.liked === true ? '❤️' : '🤍';
 
+  // determine local or remote sender
+  const senderType =
+    props.sender === 'Vladimir' ? 'chat-entry local' : 'chat-entry remote';
+
   // clicking like button will trigger likedCallback
   const toggleLiked = () => {
     props.likedCallback(props.id);
   };
 
   return (
-    <div className="chat-entry local">
+    <div className={senderType}>
       <h2 className="entry-name">{props.sender}</h2>
       <section className="entry-bubble">
         <p>{props.body}</p>
