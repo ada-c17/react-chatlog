@@ -1,31 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import chatMessages from './data/messages.json';
-import ChatEntry from './components/ChatEntry';
 import ChatLog from './components/ChatLog';
 
 const App = () => {
-  const entries = [
-    {
-      id: 1,
-      sender: 'Sinuhe',
-      body: 'Would you like some chips?',
-      timeStamp: '2022-06-03T09:35:31.820Z',
-    },
-    {
-      id: 2,
-      sender: 'Andrea',
-      body: 'Where are you?',
-      timeStamp: '2022-05-03T09:35:31.820Z',
-    },
-  ];
+  const [messages, setMessages] = useState(chatMessages);
+
+  let likeCount = 0;
+  for (let message of messages) {
+    if (message.liked === true) {
+      likeCount += 1;
+    }
+  }
+
+  const togglesLike = (id) => {
+    const copyMessages = [...messages];
+    for (let message of copyMessages) {
+      if (message.id === id) {
+        if (message.liked === true) {
+          message.liked = false;
+        } else {
+          message.liked = true;
+        }
+      }
+    }
+    setMessages(copyMessages);
+  };
+
   return (
     <div id="App">
       <header className="App-header">
         <h1>Our ChatLog</h1>
+        <section className="likes-counter"> {likeCount} ❤️s </section>
       </header>
       <main>
-        <ChatLog entries={chatMessages} />
+        <ChatLog entries={messages} togglesLikeCallback={togglesLike} />
       </main>
     </div>
   );
