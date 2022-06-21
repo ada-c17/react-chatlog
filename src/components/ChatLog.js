@@ -1,9 +1,7 @@
 import ChatEntry from './ChatEntry';
-//import chatMessages from './data/messages.json';
 import PropTypes from 'prop-types';
 
 const ChatLog = (props) => {
-  //console.log(props);
   const chatLogComponents = [];
   for (let object of props.entries) {
     chatLogComponents.push(
@@ -12,11 +10,11 @@ const ChatLog = (props) => {
         body={object.body}
         timeStamp={object.timeStamp}
         id={object.id}
+        key= {object.id} //setting key the same value as id
         liked={object.liked}
-        heartCallback = {props.heartCallback}
+        heartCallback={props.heartCallback}
       />
     );
-    //console.log('Mandy'); successfully load chat entries
   }
 
   return chatLogComponents;
