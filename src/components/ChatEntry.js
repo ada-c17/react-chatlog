@@ -4,11 +4,13 @@ import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp';
 
 const ChatEntry = (props) => {
+  // update the icon using props.liked
+  const likeButton = props.liked === true ? '❤️' : '🤍';
+
+  // clicking like button will trigger likedCallback
   const toggleLiked = () => {
     props.likedCallback(props.id);
   };
-
-  const likeButton = props.liked ? '❤️' : '🤍';
 
   return (
     <div className="chat-entry local">

@@ -6,6 +6,17 @@ import ChatLog from './components/ChatLog';
 const App = () => {
   const [messages, setMessages] = useState(chatMessages);
 
+  const countLiked = () => {
+    let count = 0;
+    for (let message of messages) {
+      if (message.liked === true) {
+        count += 1;
+      }
+    }
+    console.log(count);
+    return count;
+  };
+
   const toggleLiked = (id) => {
     const newMessages = [];
     for (const message of messages) {
@@ -17,12 +28,14 @@ const App = () => {
     setMessages(newMessages);
     console.log('toggleLiked called');
   };
+
   return (
     <div id="App">
       <header>
         <h1>Application title</h1>
+        <h2> {countLiked()} ❤️s</h2>
       </header>
-      <main>
+      <main key={messages.id}>
         {/* Wave 01: Render one ChatEntry component*/}
         {/* <ChatEntry
           sender={senderData}
