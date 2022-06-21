@@ -8,8 +8,27 @@ const ChatEntry = (props) => {
 
   const heartColor = props.liked ? '❤️' : '🤍';
 
+  let side;
+
+  if (props.sender === 'Vladimir') {
+    side = 'local';
+  } else {
+    side = 'remote';
+  }
+
+  // const side = props.name === 'Vladimir' ? 'local' : 'remote';
+  // console.log(side);
+
+  // if(props.sender === 'Vladimir'){
+  //   const side = 'local';
+  // }
+  // else{
+  //   const side = 'remote';
+  // }
+
   return (
-    <div key={props.id} className="chat-entry local">
+    // <div key={props.id} className="chat-entry local">
+    <div key={props.id} className={`chat-entry ${side}`}>
       <h2 className="entry-name">{props.sender}</h2>
       <section className="entry-bubble">
         <p>{props.body}</p>
@@ -28,7 +47,7 @@ const ChatEntry = (props) => {
 ChatEntry.propTypes = {
   //Fill with correct proptypes
   // key: PropTypes.number.isRequired,
-  // id: PropTypes.number.isRequired,
+  id: PropTypes.number,
   sender: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   timeStamp: PropTypes.string.isRequired,
