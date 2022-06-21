@@ -26,6 +26,7 @@ const App = () => {
     <div id="App">
       <header>
         <h1>Chat between Vladimir and Estragon</h1>
+        <section className="likedCountDisplay"># of ❤️s</section>
       </header>
       <main>
         <ChatLog entries={chatData} onUpdateLikeStatus={toggleLikeButton} />
