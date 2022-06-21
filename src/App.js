@@ -12,17 +12,17 @@ const App = () => {
   return (
     <div id="App">
       <header>
-        <h1>Chat between Chidi and Amel 🐈 </h1>
+        <h1>Chat between Vladimir and Estragon 🤖</h1>
       </header>
       <main>
-        <ChatEntry
+        {/* <ChatEntry
         sender="Chidi"
         body="open the door or i'm gonna throw rocks at ur window"
         timeStamp={<TimeStamp time='2016-05-18T22:12:03Z'/>}
-        ></ChatEntry>
-        {/* <ChatLog
+        ></ChatEntry> */}
+        <ChatLog
         entries={chatJson}
-        ></ChatLog> */}
+        ></ChatLog>
       </main>
     </div>
   );

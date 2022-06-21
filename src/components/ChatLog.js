@@ -1,26 +1,29 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 import PropTypes from 'prop-types';
-import ChatEntry from './components/ChatEntry';
+import ChatEntry from './ChatEntry';
+import TimeStamp from './TimeStamp';
 import './ChatLog.css';
 
 const ChatLog = (props) => {
   const entries = props.entries.map(entry => {
     return (
+      <section>
       <ChatEntry
         id={entry.id}
         sender={entry.sender}
         body={entry.body}
-        timeStamp={entry.sender}
+        timeStamp={<TimeStamp time={entry.sender} />}
         liked={entry.liked}
       ></ChatEntry>
+      </section>
       // change this return statement to return formatted jsx
     )
   });
 
   return (
     <section>
-      {/* put chat entries here */}
+      {entries}
     </section>
   );
 };
