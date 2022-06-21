@@ -59,7 +59,7 @@ ChatEntry.propTypes = {
   body: PropTypes.string.isRequired,
   timeStamp: PropTypes.string.isRequired,
   localUser: PropTypes.string.isRequired,
-  onChangeHeart: PropTypes.func.isRequired,
+  onHeartChange: PropTypes.func.isRequired,
   userColors: PropTypes.object,
 };
 
