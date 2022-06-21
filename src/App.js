@@ -21,7 +21,6 @@ const App = () => {
 
   //helper function to count number of entries liked
   const sumTotalHearts = () => {
-    console.log('Herllooo');
     let count = 0;
     for (const entry of entries) {
       if (entry.liked === true) {
