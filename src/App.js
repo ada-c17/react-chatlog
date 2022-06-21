@@ -10,8 +10,6 @@ const App = () => {
 
   const changeLikeButton = (id) => {
     for (const message of messages) {
-      // console.log('made it in change like button');
-      // console.log(message);
       if (message.id === id) {
         message.liked = !message.liked;
         if (message.liked === true) {
