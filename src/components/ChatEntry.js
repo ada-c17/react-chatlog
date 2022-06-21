@@ -1,9 +1,25 @@
-import React from 'react';
+// import React, { useState } from 'react';
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp';
 
 const ChatEntry = (props) => {
+  //({sender, body, timeStamp…}) instead of props
+  // const [liked, setLike] = useState(false);
+
+  const fillheart = props.liked ? '❤️' : '🤍';
+  const onClickLike = () => {
+    const message = {
+      id: props.id,
+      sender: props.sender,
+      body: props.body,
+      timeStamp: props.timeStamp,
+      liked: !props.liked,
+    };
+    console.log('Click Heart');
+    props.updateFunction(message);
+  };
+
   return (
     <div className="chat-entry local">
       <h2 className="entry-name">{props.sender}</h2>
@@ -12,7 +28,9 @@ const ChatEntry = (props) => {
         <p className="entry-time">
           <TimeStamp time={props.timeStamp} />
         </p>
-        <button className="like">🤍</button>
+        <button className="like" onClick={onClickLike}>
+          {fillheart}
+        </button>
       </section>
     </div>
   );
