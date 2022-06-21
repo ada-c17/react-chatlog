@@ -35,7 +35,7 @@ const App = () => {
       newEntries.push(newEntry);
     }
     setEntries(newEntries);
-  }
+  };
 
   return (
     <div id="App">
