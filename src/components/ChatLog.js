@@ -9,6 +9,7 @@ const ChatLog = (props) => {
     <div className="chat-log local">
       {props.entries.map((entry) => (
         <ChatEntry
+          key={entry.id}
           sender={entry.sender}
           body={entry.body}
           timeStamp={entry.timeStamp}
