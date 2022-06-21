@@ -13,7 +13,7 @@ const ChatLog = (props) => {
       timeStamp={entry.timeStamp} 
       liked={entry.liked} 
       likedEvent={props.likedEvent}
-      countLikesFunc={props.countLikesFunc}
+      // countLikesFunc={props.countLikesFunc}
       // setColorFunc={props.setColorFunc}
       />)
    )
@@ -37,7 +37,7 @@ ChatLog.propTypes = {
     })
   ).isRequired,
   likedEvent: PropTypes.func.isRequired,
-  countLikesFunc: PropTypes.func.isRequired,
+  // countLikesFunc: PropTypes.func.isRequired,
   // setColorFunc: PropTypes.func.isRequired
   };
 

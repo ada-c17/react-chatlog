@@ -1,12 +1,12 @@
 import './ColorChoice.css';
 import PropTypes from 'prop-types';
-// import Sender from './Sender';
+//import Sender from './Sender';
 
 const ColorChoice = (props) => {
   const entries = props.chatMsg;
   const sender1 = entries[0].sender;
   const sender2 = entries[1].sender;
-
+  // const totalLieks = props.countLikesFunc();
   // const colorComponents = () => {
   //   <Sender
   //     sender1={sender1}
@@ -29,7 +29,7 @@ const ColorChoice = (props) => {
       <div className='second-header'>
         <ul className='head-info likes'>
           <li className='first-sender'>{sender1}</li>
-          <li>❤️</li>
+          <li>{props.countLikesFunc()} ❤️</li>
           <li className='second-sender'>{sender2}</li>
         </ul>
       </div>
@@ -39,6 +39,7 @@ const ColorChoice = (props) => {
 };
 ColorChoice.propTypes = {
   // id: PropTypes.number.isRequired,
-  sender: PropTypes.string.isRequired,
+  // entries: PropTypes.array.isRequired,
+  countLikesFunc: PropTypes.func.isRequired
 }
 export default ColorChoice;
