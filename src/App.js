@@ -10,13 +10,11 @@ const App = () => {
   const updateLikes = (id) => {
     const newEntries = [];
     for (const entry of entriesData) {
-      const updatedEntry = { ...entry }; // button doesn't change color && last test fail
-      // let updatedEntry = Object.assign({}, entry); // also shallow copy, but doesn't pass last test && heart doesn't change color. Hearts do increment
-      // let updatedEntry = JSON.parse(JSON.stringify(entry)); // deep copy
+      const updatedEntry = { ...entry };
       if (updatedEntry.id === id) {
         updatedEntry.liked = !updatedEntry.liked;
       }
-      newEntries.push(updatedEntry); // if I use this, then last test doesn't pass && website doesn't render. commented out - doesn't pass test, but works on website
+      newEntries.push(updatedEntry);
     }
     setEntries(newEntries);
   };
