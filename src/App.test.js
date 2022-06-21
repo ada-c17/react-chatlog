@@ -3,6 +3,21 @@ import App from './App';
 import { render, screen, fireEvent } from '@testing-library/react';
 
 describe('Wave 03: clicking like button and rendering App', () => {
+  test('that the correct number of likes is printed at the top', () => {
+    // Arrange
+    const { container } = render(<App />);
+    let buttons = container.querySelectorAll('button.like');
+
+    // Act
+    fireEvent.click(buttons[0]);
+    fireEvent.click(buttons[1]);
+    fireEvent.click(buttons[10]);
+
+    // Assert
+    const countScreen = screen.getByText(/3 ❤️s/);
+    expect(countScreen).not.toBeNull();
+  });
+
   test('clicking button toggles heart and does not affect other buttons', () => {
     // Arrange
     const { container } = render(<App />);
@@ -34,20 +49,5 @@ describe('Wave 03: clicking like button and rendering App', () => {
     expect(lastButton.innerHTML).toEqual('❤️');
     fireEvent.click(lastButton);
     expect(lastButton.innerHTML).toEqual('🤍');
-  });
-
-  test('that the correct number of likes is printed at the top', () => {
-    // Arrange
-    const { container } = render(<App />);
-    let buttons = container.querySelectorAll('button.like');
-
-    // Act
-    fireEvent.click(buttons[0]);
-    fireEvent.click(buttons[1]);
-    fireEvent.click(buttons[10]);
-
-    // Assert
-    const countScreen = screen.getByText(/3 ❤️s/);
-    expect(countScreen).not.toBeNull();
   });
 });

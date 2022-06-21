@@ -14,7 +14,7 @@ const App = () => {
   }
 
   const togglesLike = (id) => {
-    const copyMessages = [...messages];
+    const copyMessages = JSON.parse(JSON.stringify(messages));
     for (let message of copyMessages) {
       if (message.id === id) {
         if (message.liked === true) {
