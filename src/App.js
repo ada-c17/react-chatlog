@@ -6,7 +6,7 @@ import ChatLog from './components/ChatLog';
 const App = () => {
   //state
   const [messageData, setMessageData] = useState(chatMessages);
-  let [totalLikes, setTotalLikes] = useState(0);
+  let totalLikes = 0;
 
   const updateMessageData = (updatedMessage) => {
     const messages = messageData.map((message) => {
@@ -17,27 +17,25 @@ const App = () => {
       }
     });
     setMessageData(messages);
-    // console.log(messages);
   };
 
-  const updateTotalLikes = (bool) => {
-    bool ? setTotalLikes((totalLikes += 1)) : setTotalLikes((totalLikes -= 1));
+  const updateTotalLikes = (messages) => {
+    for (let message of messages) {
+      if (message.liked) {
+        totalLikes++;
+      }
+    }
+    return totalLikes;
   };
 
   return (
     <div id="App">
       <header>
         <h1>Vlad and Estragon's Chat</h1>
-        <h2>{totalLikes > 0 && `${totalLikes} ❤️s`}</h2>
+        <h2>{updateTotalLikes(messageData) > 0 && `${totalLikes} ❤️s`}</h2>
       </header>
       <main>
-        <ChatLog
-          messages={messageData}
-          updateMessageData={updateMessageData}
-          totalLikes={totalLikes}
-          setTotalLikes={setTotalLikes}
-          updateTotalLikes={updateTotalLikes}
-        />
+        <ChatLog messages={messageData} updateMessageData={updateMessageData} />
       </main>
     </div>
   );
