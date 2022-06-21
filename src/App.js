@@ -22,11 +22,26 @@ const App = () => {
     setChatData(messages);
   };
 
+  // helper function to count number of liked messages
+  const countLikes = (chatData) => {
+    let likeCount = 0;
+
+    for (const message of chatData) {
+      if (message.liked) {
+        likeCount += 1;
+      }
+    }
+
+    return likeCount;
+  };
+
   return (
     <div id="App">
       <header>
         <h1>Chat between Vladimir and Estragon</h1>
-        <section className="likedCountDisplay"># of ❤️s</section>
+        <section className="likedCountDisplay">
+          {countLikes(chatData)} ❤️s
+        </section>
       </header>
       <main>
         <ChatLog entries={chatData} onUpdateLikeStatus={toggleLikeButton} />
