@@ -47,7 +47,7 @@ const ChatEntry = (props) => {
   const toggleLiked = props.likedCallback;
 
   return (
-    <div className="chat-entry local">
+    <div className={`chat-entry ${props.local ? 'local' : 'remote'}`}>
       <h2 className="entry-name">{props.sender}</h2>
       <section className="entry-bubble">
         <p>{props.body}</p>
@@ -72,6 +72,7 @@ ChatEntry.propTypes = {
   body: PropTypes.string.isRequired,
   timeStamp: PropTypes.string.isRequired,
   likedCallback: PropTypes.func.isRequired,
+  local: PropTypes.bool.isRequired,
 };
 
 export default ChatEntry;

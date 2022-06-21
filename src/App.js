@@ -17,31 +17,32 @@ import chatMessages from './data/messages.json';
 //   timeStamp: '2021-05-15T22:49:06+00:00',
 //   liked: false,
 // };
-const testData = [
-  {
-    id: 1,
-    sender: 'Vladimir',
-    body: 'why are you arguing with me',
-    timeStamp: '2021-05-15T22:49:06+00:00',
-    liked: false,
-  },
-];
+// const testData = [
+//   {
+//     id: 1,
+//     sender: 'Vladimir',
+//     body: 'why are you arguing with me',
+//     timeStamp: '2021-05-15T22:49:06+00:00',
+//     liked: false,
+//   },
+// ];
 
 // const testConvo = chatMessages;
 const App = () => {
+  const local = chatMessages[0].sender;
   const [entries, setEntries] = useState(chatMessages);
   const toggleLiked = (id) => {
     console.log('liking...');
     const newEntries = entries.map((entry) => {
       return entry.id === id
-        ? {
-            id: entry.id,
-            sender: entry.sender,
-            body: entry.body,
-            timeStamp: entry.timeStamp,
-            liked: !entry.liked,
-          }
-        : entry;
+        ? { ...entry, liked: !entry.liked }
+        : //   id: entry.id,
+          //   sender: entry.sender,
+          //   body: entry.body,
+          //   timeStamp: entry.timeStamp,
+          //   liked: !entry.liked,
+          // }
+          entry;
     });
     setEntries(newEntries);
   };
@@ -65,7 +66,11 @@ const App = () => {
       </header>
       <main>
         {/* <ChatLog entries={testData}></ChatLog> */}
-        <ChatLog entries={entries} likedCallback={toggleLiked}></ChatLog>
+        <ChatLog
+          entries={entries}
+          likedCallback={toggleLiked}
+          local={local}
+        ></ChatLog>
         {/* <ChatEntry
           sender={testData.sender}
           body={testData.body}
