@@ -7,14 +7,13 @@ const ChatEntry = ({ sender, body, timeStamp, id, isLiked, onLikeMessage }) => {
     sender === 'Vladimir' ? 'chat-entry local' : 'chat-entry remote';
 
   const onLikeClick = () => {
-    // On click, this function is called, which calls on the prop and passes in student Id
     onLikeMessage({
       sender: sender,
       body: body,
       timeStamp: timeStamp,
       id: id,
       liked: !isLiked,
-    }); // Instead of passing Id, we are passing a new object to represent entry
+    });
   };
 
   const heart = isLiked ? '❤️' : '🤍';
