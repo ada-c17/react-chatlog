@@ -2,7 +2,6 @@ import React from 'react';
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
 import { DateTime } from 'luxon';
-import { useState } from 'react';
 
 const ChatEntry = (props) => {
   const chatSender = props.sender;
@@ -11,11 +10,11 @@ const ChatEntry = (props) => {
   const timeStamp = DateTime.fromISO(props.timeStamp);
   const chatTimeStamp = timeStamp.toRelative();
 
-  const [likedState, setLikedState] = useState('❤️');
+  const liked = props.liked;
+  const likes = liked ? '❤️' : '🤍';
   const toggleLikes = () => {
-    setLikedState(!likedState);
+    props.setLikesCallback(props.id);
   };
-  const likes = likedState ? '🤍' : '❤️';
 
   return (
     <div
@@ -41,6 +40,7 @@ ChatEntry.propTypes = {
   body: PropTypes.string.isRequired,
   timeStamp: PropTypes.string.isRequired,
   liked: PropTypes.bool.isRequired,
+  setLikesCallback: PropTypes.func.isRequired,
 };
 
 export default ChatEntry;
