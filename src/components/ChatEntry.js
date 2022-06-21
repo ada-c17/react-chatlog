@@ -6,6 +6,7 @@ const ChatEntry = (props) => {
   const sender = props.sender;
   const body = props.body;
   const timeStamp = props.timeStamp;
+  console.log(`timeStamp = ${timeStamp}`)
 
   return (
     <div className="chat-entry local">
@@ -21,8 +22,8 @@ const ChatEntry = (props) => {
 
 ChatEntry.propTypes = {
   sender: PropTypes.string.isRequired,
-  body: PropTypes.string,
-  timeStamp: PropTypes.string.isRequired
+  body: PropTypes.string
+  // timeStamp: PropTypes.string.isRequired
 };
 
 export default ChatEntry;
