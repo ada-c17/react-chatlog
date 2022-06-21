@@ -34,6 +34,6 @@ const ChatLog = (props) => {
 
 ChatLog.propTypes = {
   entries: PropTypes.arrayOf(PropTypes.object),
-  onLike: PropTypes.func.isRequired,
+  onLike: PropTypes.func,
 };
 export default ChatLog;
