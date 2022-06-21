@@ -3,31 +3,22 @@ import ChatEntry from './ChatEntry';
 import './ChatLog.css';
 import PropTypes from 'prop-types';
 
-const ChatLog = ({ entries }) => {
-  return (
-    <ul>
-      {entries.map((entry) => {
-        return (
-          <ChatEntry
-            sender={entry.sender}
-            body={entry.body}
-            timeStamp={entry.timeStamp}
-          />
-        );
-      })}
-    </ul>
-  );
-  // const chatComponents = entries.map((entry) => {
-  //   return (
-  //     <ChatEntry
-  //       sender={entry.sender}
-  //       body={entry.body}
-  //       timeStamp={entry.timeStamp}
-  //       liked={entry.liked}
-  //     />
-  //   );
-  // });
-  // return <ul>{chatComponents}</ul>;
+const ChatLog = ({ entries, onLikeMessage }) => {
+  const chatComponents = entries.map((entry) => {
+    return (
+      <ul key={entry.id}>
+        <ChatEntry
+          sender={entry.sender}
+          body={entry.body}
+          timeStamp={entry.timeStamp}
+          isLiked={entry.liked}
+          id={entry.id}
+          onLikeMessage={onLikeMessage} // Forward prop from App down to ChatEntry
+        />
+      </ul>
+    );
+  });
+  return <ul>{chatComponents}</ul>;
 };
 
 ChatLog.propTypes = {
@@ -36,6 +27,9 @@ ChatLog.propTypes = {
       sender: PropTypes.string.isRequired,
       body: PropTypes.string.isRequired,
       timeStamp: PropTypes.string.isRequired,
+      liked: PropTypes.bool.isRequired,
+      id: PropTypes.number.isRequired,
+      onLikeMessage: PropTypes.func.isRequired,
     })
   ),
 };
