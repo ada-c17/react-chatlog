@@ -11,6 +11,10 @@ const ChatEntry = (props) => {
     lrAlignment = 'chat-entry remote';
   }
 
+  const likeMe = () => {
+    props.likeCallback(props.id);
+  };
+
   return (
     <div className={lrAlignment}>
       <h2 className="entry-name">{props.sender}</h2>
@@ -19,7 +23,9 @@ const ChatEntry = (props) => {
         <p className="entry-time">
           <TimeStamp time={props.timeStamp} />
         </p>
-        <button className="like">🤍</button>
+        <button className="like" onClick={likeMe}>
+          {props.liked ? '❤️' : '🤍'}
+        </button>
       </section>
     </div>
   );
@@ -30,6 +36,7 @@ ChatEntry.propTypes = {
   sender: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   timeStamp: PropTypes.string.isRequired,
+  likeCallback: PropTypes.func.isRequired,
 };
 
 export default ChatEntry;
