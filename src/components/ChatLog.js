@@ -7,7 +7,7 @@ const ChatLog = (props) => {
     return (
       <div key={entry.id}>
         <ChatEntry
-          key={entry.id}
+          // key={entry.id}
           id={entry.id}
           sender={entry.sender}
           body={entry.body}
@@ -18,7 +18,7 @@ const ChatLog = (props) => {
       </div>
     );
   });
-  return <div>{chatEntryComponents}</div>;
+  return chatEntryComponents;
 };
 
 ChatLog.propTypes = {
