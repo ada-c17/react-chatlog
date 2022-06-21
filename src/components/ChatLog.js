@@ -5,17 +5,18 @@ import ChatEntry from './ChatEntry';
 
 const ChatLog = ({ entries, onUpdateMessage }) => {
   const getChatLogJSX = (entries) => {
-    return entries.map((entry) => {
+    return entries.map((entry, index) => {
       return (
-        <ChatEntry
-          key={entry.id}
-          id={entry.id}
-          sender={entry.sender}
-          body={entry.body}
-          timeStamp={entry.timeStamp}
-          liked={entry.liked}
-          onUpdate={onUpdateMessage}
-        />
+        <div key={index}>
+          <ChatEntry
+            id={entry.id}
+            sender={entry.sender}
+            body={entry.body}
+            timeStamp={entry.timeStamp}
+            liked={entry.liked}
+            onUpdate={onUpdateMessage}
+          />
+        </div>
       );
     });
   };
