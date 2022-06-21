@@ -4,9 +4,14 @@ import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp';
 
 const ChatEntry = (props) => {
-  const sender = props.sender;
-  const body = props.body;
-  const timeStamp = props.timeStamp;
+  const { id, sender, body, timeStamp, liked, setLikedCallback } = props;
+  // const sender = props.sender;
+  // const body = props.body;
+  // const timeStamp = props.timeStamp;
+
+  const likeMessageFunc = () => {
+    setLikedCallback(id);
+  };
 
   return (
     <div className="chat-entry local">
@@ -16,7 +21,9 @@ const ChatEntry = (props) => {
         <p className="entry-time">
           <TimeStamp time={timeStamp} />
         </p>
-        <button className="like">🤍</button>
+        <button className="like" onClick={likeMessageFunc}>
+          {liked ? '❤️' : '🤍'}
+        </button>
       </section>
     </div>
   );
@@ -27,6 +34,8 @@ ChatEntry.propTypes = {
   sender: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   timeStamp: PropTypes.string.isRequired,
+  setLikedCallback: PropTypes.func.isRequired,
+  // liked: PropTypes.bool,
   //Fill with correct proptypes
 };
 
