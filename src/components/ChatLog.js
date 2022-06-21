@@ -13,11 +13,6 @@ const ChatLog = (props) => {
         timeStamp={message.timeStamp}
         key={index}
         updateMessageData={props.updateMessageData}
-        totalLikes={props.totalLikes}
-        updateTotalLikes={props.updateTotalLikes}
-        likeButton={props.likeButton}
-        setLikeButton={props.setLikeButton}
-        updateLikeButton={props.updateLikeButton}
       />
     );
   };
@@ -39,8 +34,6 @@ ChatEntry.propTypes = {
     })
   ),
   updateMessageData: PropTypes.func,
-  totalLikes: PropTypes.number,
-  updateTotalLikes: PropTypes.func,
 };
 
 export default ChatLog;

@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp';
 
 const ChatEntry = (props) => {
-  const [likeButton, setLikeButton] = useState('🤍');
-
   const onLikedButtonClick = () => {
     const updatedMessage = {
       id: props.id,
@@ -16,9 +14,6 @@ const ChatEntry = (props) => {
     };
 
     props.updateMessageData(updatedMessage);
-    props.updateLikeButton(updatedMessage.liked);
-    const bool = props.likeButton === '🤍';
-    props.updateTotalLikes(bool);
   };
 
   const localRemote =
@@ -33,7 +28,7 @@ const ChatEntry = (props) => {
           <TimeStamp time={props.timeStamp} />
         </p>
         <button onClick={onLikedButtonClick} className="like">
-          {props.likeButton}
+          {props.liked ? '❤️' : '🤍'}
         </button>
       </section>
     </div>
@@ -47,9 +42,7 @@ ChatEntry.propTypes = {
   body: PropTypes.string.isRequired,
   liked: PropTypes.bool,
   timeStamp: PropTypes.string.isRequired,
-  totalLikes: PropTypes.number,
   updateMessageData: PropTypes.func,
-  updateTotalLikes: PropTypes.func,
 };
 
 export default ChatEntry;
