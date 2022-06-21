@@ -2,20 +2,10 @@ import React from 'react';
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp.js';
-// import chatMessages from './data/messages.json';
-import { useState } from 'react';
 
 const ChatEntry = (props) => {
-  const [likeCount, setLikeCount] = useState(0);
-  const [likeStatus, setLikeStatus] = useState(props.liked);
-  const changeLikes = () => {
-    if (likeStatus) {
-      setLikeCount(likeCount - 1);
-      setLikeStatus(false);
-    } else {
-      setLikeCount(likeCount + 1);
-      setLikeStatus(true);
-    }
+  const toggleLike = () => {
+    props.toggleLikeCallback(props.id);
   };
   return (
     <div className="chat-entry local">
@@ -25,8 +15,8 @@ const ChatEntry = (props) => {
         <p className="entry-time">
           <TimeStamp time={props.timeStamp} />
         </p>
-        <button className="like" onClick={changeLikes}>
-          {likeStatus ? '❤️' : '🤍'} {likeCount}
+        <button className="like" onClick={toggleLike}>
+          {props.liked ? '❤️' : '🤍'}
         </button>
       </section>
     </div>
@@ -39,6 +29,7 @@ ChatEntry.propTypes = {
   body: PropTypes.string.isRequired,
   timeStamp: PropTypes.string.isRequired,
   liked: PropTypes.bool.isRequired,
+  toggleLikeCallback: PropTypes.func.isRequired,
 };
 
 export default ChatEntry;

@@ -1,17 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ChatEntry from './ChatEntry.js';
-import { useState } from 'react';
 
 const ChatLog = (props) => {
   const chatEntryComponents = props.entries.map((entry) => {
     return (
       <ChatEntry
+        key={entry.id}
         id={entry.id}
-        body={entry.body}
         sender={entry.sender}
+        body={entry.body}
         timeStamp={entry.timeStamp}
         liked={entry.liked}
+        toggleLikeCallback={props.toggleLikeCallback}
       />
     );
   });
