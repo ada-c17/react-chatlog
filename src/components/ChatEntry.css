@@ -98,3 +98,10 @@ button {
 .chat-entry.remote .entry-bubble:hover::before {
   background-color: #a9f6f6;
 }
+
+/* heart styling */
+
+.red {
+  color:red;
+  /* size: 300px; */
+}
