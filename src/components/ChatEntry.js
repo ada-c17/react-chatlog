@@ -1,31 +1,19 @@
 import React from 'react';
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
 import TimeStamp from './TimeStamp';
 
 const ChatEntry = ({
+  id,
   sender,
   timeStamp,
   body,
-  incrementLikes,
-  decrementLikes,
   sender1,
   sender1Color,
   sender2Color,
+  liked,
+  updateLikes,
 }) => {
-  const [isLiked, setIsLiked] = useState('🤍');
-
-  const updateLikes = () => {
-    if (isLiked === '🤍') {
-      setIsLiked('❤️');
-      incrementLikes();
-    } else {
-      setIsLiked('🤍');
-      decrementLikes();
-    }
-  };
-
   let updatedClassName = 'chat-entry';
   if (sender === sender1) {
     updatedClassName += ' local';
@@ -50,8 +38,8 @@ const ChatEntry = ({
         <p className="entry-time">
           <TimeStamp time={timeStamp} />
         </p>
-        <button className="like" onClick={updateLikes}>
-          {isLiked}
+        <button className="like" onClick={() => updateLikes(id)}>
+          {liked ? '❤️' : '🤍'}
         </button>
       </section>
     </div>
@@ -60,14 +48,15 @@ const ChatEntry = ({
 
 ChatEntry.propTypes = {
   //Fill with correct proptypes
+  id: PropTypes.number.isRequired,
   sender: PropTypes.string.isRequired,
   timeStamp: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
-  incrementLikes: PropTypes.func.isRequired,
-  decrementLikes: PropTypes.func.isRequired,
   sender1: PropTypes.string.isRequired,
   sender1Color: PropTypes.string.isRequired,
   sender2Color: PropTypes.string.isRequired,
+  liked: PropTypes.bool.isRequired,
+  updateLikes: PropTypes.func.isRequired,
 };
 
 export default ChatEntry;
