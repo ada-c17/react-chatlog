@@ -23,8 +23,8 @@ const ChatLog = (props) => {
 
 ChatLog.propTypes = {
   entries: PropTypes.array.isRequired,
-  setLikeCallback: PropTypes.func.isRequired,
-  localColor: PropTypes.string.isRequired,
-  remoteColor: PropTypes.string.isRequired,
+  setLikeCallback: PropTypes.func,
+  localColor: PropTypes.string,
+  remoteColor: PropTypes.string,
 };
 export default ChatLog;
