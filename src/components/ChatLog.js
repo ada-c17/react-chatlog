@@ -13,7 +13,8 @@ function ChatLog(props) {
         liked={entry.liked}
         timeStamp={entry.timeStamp}
         likedCallback={props.likedCallback}
-        // likes={props.likes}
+        remoteColor={props.remoteColor}
+        localColor={props.localColor}
       />
     );
   });

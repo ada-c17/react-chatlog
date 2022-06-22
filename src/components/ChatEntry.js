@@ -15,11 +15,14 @@ const ChatEntry = (props) => {
     props.likedCallback(props.id);
   };
 
+  const color =
+    props.sender === 'Estragon' ? props.remoteColor : props.localColor;
+
   return (
     <div className={chatClass}>
       <h2 className="entry-name">{props.sender}</h2>
       <section className="entry-bubble">
-        <p>{props.body}</p>
+        <p className={color}>{props.body}</p>
         <p className="entry-time">
           <TimeStamp time={props.timeStamp} />
         </p>
