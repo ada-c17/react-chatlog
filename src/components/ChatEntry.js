@@ -9,15 +9,18 @@ import TimeStamp from './TimeStamp';
 // else false is empty heart (🤍). which is default
 // count when liked occurs
 
+ //  '🤍' : '❤️';
 
 const ChatEntry = (props) => {
+  const heartIcon =  (props.liked) ? '❤️' : '🤍';
+  const messageAlign = (props.sender === 'Vladimir') ? 'remote' : 'local';
   return (
-    <div className="chat-entry local">
+    <div className={`chat-entry ${messageAlign}`}>
       <h2 className="entry-name">{props.sender}</h2>
       <section className="entry-bubble">
         <p>{props.body}</p>
         <p className="entry-time"><TimeStamp time={props.timeStamp}/></p>
-        <button className="like" onClick={props.toggleLike}>{props.heart}</button>
+        <button className="like" onClick={() => {props.setLiked(props.id)}}>{heartIcon}</button>
       </section>
     </div>
   );
