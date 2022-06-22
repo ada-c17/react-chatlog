@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp';
 
 const ChatEntry = (props) => {
-  // const [clicked, setClicked] = useState(false);
-
   const sender = props.sender;
   const body = props.body;
   const timeStamp = props.timeStamp;
@@ -42,8 +40,6 @@ ChatEntry.propTypes = {
   body: PropTypes.string.isRequired,
   timeStamp: PropTypes.string.isRequired,
   setLikedCallback: PropTypes.func.isRequired,
-  // liked: PropTypes.bool,
-  //Fill with correct proptypes
 };
 
 export default ChatEntry;
