@@ -33,21 +33,10 @@ const ChatEntry = (props) => {
   const today = new Date();
   const daysSinceMsg = convertMsToDays(today - msgTime);
 
-  // const [liked, setLiked] = useState(false);
-
-  // const toggleLiked = () => {
-  //   switch (liked) {
-  //     case true:
-  //       setLiked(false);
-  //       break;
-  //     default:
-  //       setLiked(true);
-  //   }
-  // };
   const toggleLiked = props.likedCallback;
 
   return (
-    <div className={`chat-entry ${props.local ? 'local' : 'remote'}`}>
+    <div className={`chat-entry ${props.isLocal ? 'local' : 'remote'}`}>
       <h2 className="entry-name">{props.sender}</h2>
       <section className="entry-bubble">
         <p>{props.body}</p>
@@ -72,7 +61,7 @@ ChatEntry.propTypes = {
   body: PropTypes.string.isRequired,
   timeStamp: PropTypes.string.isRequired,
   likedCallback: PropTypes.func.isRequired,
-  local: PropTypes.bool.isRequired,
+  isLocal: PropTypes.bool,
 };
 
 export default ChatEntry;

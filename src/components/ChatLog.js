@@ -16,7 +16,7 @@ const ChatLog = (props) => {
         timeStamp={entry.timeStamp}
         liked={entry.liked}
         likedCallback={props.likedCallback}
-        local={entry.sender === props.local}
+        isLocal={entry.sender === props.localSender}
       ></ChatEntry>
     );
   });
@@ -33,7 +33,7 @@ ChatLog.propTypes = {
     })
   ),
   likedCallback: PropTypes.func.isRequired,
-  local: PropTypes.string.isRequired,
+  localSender: PropTypes.string,
 };
 
 export default ChatLog;

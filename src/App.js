@@ -29,20 +29,12 @@ import chatMessages from './data/messages.json';
 
 // const testConvo = chatMessages;
 const App = () => {
-  const local = chatMessages[0].sender;
+  const localSender = chatMessages[0].sender;
   const [entries, setEntries] = useState(chatMessages);
   const toggleLiked = (id) => {
     console.log('liking...');
     const newEntries = entries.map((entry) => {
-      return entry.id === id
-        ? { ...entry, liked: !entry.liked }
-        : //   id: entry.id,
-          //   sender: entry.sender,
-          //   body: entry.body,
-          //   timeStamp: entry.timeStamp,
-          //   liked: !entry.liked,
-          // }
-          entry;
+      return entry.id === id ? { ...entry, liked: !entry.liked } : entry;
     });
     setEntries(newEntries);
   };
@@ -69,7 +61,7 @@ const App = () => {
         <ChatLog
           entries={entries}
           likedCallback={toggleLiked}
-          local={local}
+          localSender={localSender}
         ></ChatLog>
         {/* <ChatEntry
           sender={testData.sender}
