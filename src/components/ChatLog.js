@@ -13,6 +13,9 @@ const ChatLog = (props) => {
           timeStamp={log.timeStamp}
           liked={log.liked}
           likedCallBack={props.likedCallBack}
+          userLocal={props.userLocal}
+          userState={props.userState}
+          displayColor={props.displayColor}
         />
       </div>
     );
@@ -31,6 +34,7 @@ ChatLog.protoTypes = {
     })
   ).isRequired,
   likedCallBack: PropTypes.func.isRequired,
+  userLocal: PropTypes.func.isRequired,
 };
 
 export default ChatLog;

@@ -10,16 +10,22 @@ const ChatEntry = (props) => {
 
   const likeButton = props.liked ? '❤️' : '🤍';
 
+  // set user state to true or false
+  let userState = false;
+  if (props.sender === props.userState) {
+    userState = true;
+  }
+
   return (
     <div
       className={`chat-entry ${
-        props.sender === 'Vladimir' ? 'local' : 'remote'
+        props.sender === props.userLocal ? 'local' : 'remote'
       }`}
       key={props.id}
     >
       <h2 className="entry-name">{props.sender}</h2>
       <section className="entry-bubble">
-        <p>{props.body}</p>
+        <p className={userState ? `${props.displayColor}` : ''}>{props.body}</p>
         <p className="entry-time">
           {props.time}
           <TimeStamp time={props.timeStamp} />
