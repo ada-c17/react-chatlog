@@ -1,9 +1,9 @@
 #App {
-  background-color: #87cefa;
+  background-color: #a3d5f4;
 }
 
 #App header {
-  background-color: #222;
+  background-color: rgb(143, 142, 142);
   color: #fff;
   padding-bottom: 0.5rem;
   position: fixed;
@@ -12,6 +12,14 @@
   text-align: center;
   align-items: center;
 }
+
+#App h1{
+  font-size: 60px;
+}
+
+/* #App h4{
+  padding:10px;
+} */
 
 #App main {
   padding-left: 2em;
