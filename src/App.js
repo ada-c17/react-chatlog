@@ -1,27 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import chatMessages from './data/messages.json';
-// import ChatEntry from './components/ChatEntry';
-// import TimeStamp from './components/TimeStamp';
 import ChatLog from './components/ChatLog';
 
 const App = () => {
+  const [messageData, setMessages] = useState(chatMessages);
+
+  const countHearts = () => {
+    let totalHearts = 0;
+    for (let message of messageData) {
+      if (message.liked === true) {
+        totalHearts += 1;
+      }
+    }
+    return totalHearts;
+  };
+
+  const flipHeart = (id) => {
+    const newMessages = [];
+    for (const message of messageData) {
+      if (message.id === id) {
+        message.liked = !message.liked;
+      }
+      newMessages.push(message);
+    }
+    setMessages(newMessages);
+  };
+
   return (
     <div id="App">
       <header>
-        <h1>Chat between Vladimir and Estragon</h1>
+        <h1>
+          Chat between {chatMessages[0]['sender']} and
+          {chatMessages[1]['sender']}
+        </h1>
+        <section id="heartWidget">{countHearts()} ❤️s</section>
       </header>
       <main>
-        <ChatLog entries={chatMessages}></ChatLog>
-        {/* <ChatEntry
-          sender={chatMessages[0]['sender']}
-          body={chatMessages[0]['body']}
-          timeStamp={chatMessages[0]['timeStamp']}
-        ></ChatEntry> */}
-
-        {/* Wave 01: Render one ChatEntry component
-        Wave 02: Render ChatLog component */}
-        {/* <TimeStamp></TimeStamp> */}
+        <ChatLog entries={chatMessages} heartCallback={flipHeart}></ChatLog>
       </main>
     </div>
   );

@@ -7,19 +7,16 @@ const ChatLog = (props) => {
     return (
       <div className="chat-log" key={entry.id}>
         <ChatEntry
+          id={entry.id}
           sender={entry.sender}
           body={entry.body}
           timeStamp={entry.timeStamp}
+          liked={entry.liked}
+          heartCallback={props.heartCallback}
         />
       </div>
     );
   });
-
-  // const resultArray = [];
-  // for (entry in entries) {
-  //   let entryJsx = <ChatEntry sender={entry.sender} />
-  //   resultArray.push(entryJsx)
-  // }
 
   return entryArr;
 };
