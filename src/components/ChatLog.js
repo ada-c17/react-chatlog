@@ -8,9 +8,8 @@ const ChatLog = (props) => {
 
   const entryComponents = entries.map((entry, i) => {
     return (
-      <div className="chat-log">
+      <div className="chat-log" key={entry.id}>
         <ChatEntry
-          key={entry.id}
           id={entry.id}
           sender={entry.sender}
           body={entry.body}
@@ -31,6 +30,7 @@ const ChatLog = (props) => {
 ChatEntry.propTypes = {
   entries: PropTypes.arrayOf(
     PropTypes.shape({
+      key: PropTypes.number,
       id: PropTypes.number,
       sender: PropTypes.string.isRequired,
       body: PropTypes.string.isRequired,
