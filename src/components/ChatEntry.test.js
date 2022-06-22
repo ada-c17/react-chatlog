@@ -10,6 +10,7 @@ describe('Wave 01: ChatEntry', () => {
         sender="Joe Biden"
         body="Get out by 8am.  I'll count the silverware"
         timeStamp="2018-05-18T22:12:03Z"
+        // contacts="Joe Biden"
       />
     );
   });

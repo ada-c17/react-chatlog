@@ -13,7 +13,7 @@ const ChatLog = (props) => {
         timeStamp={entry.timeStamp}
         liked={entry.liked}
         likedCallback={props.likedCallback}
-        contactsCallback={props.contactsCallback}
+        // contacts={props.contacts}
       />
     );
   });

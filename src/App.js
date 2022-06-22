@@ -6,7 +6,13 @@ import chatMessages from './data/messages.json';
 const App = () => {
   const [entries, setEntries] = useState(chatMessages);
   const [likeCount, setLikes] = useState(0);
-  const contacts = [];
+  // const contacts = [];
+
+  // for (const entry of entries) {
+  //   if (!contacts.includes(entry.sender)) {
+  //     contacts.push(entry.sender);
+  //   }
+  // }
 
   const handleLikes = (id) => {
     const newEntries = [];
@@ -28,28 +34,19 @@ const App = () => {
     }
   };
 
-  const messageOrientation = (sender) => {
-    if (!contacts.includes(sender)) {
-      contacts.push(sender);
-    }
-    if (sender === contacts[0]) {
-      return 'local';
-    } else {
-      return 'remote';
-    }
-  };
-
   return (
     <div id="App">
       <header>
-        <h1>Chat Log</h1>
+        <h1>
+          Chat Log Between {entries[0].sender} and {entries[1].sender}
+        </h1>
         <h2>{likeCount} ❤️s</h2>
       </header>
       <main>
         <ChatLog
           entries={entries}
           likedCallback={handleLikes}
-          contactsCallback={messageOrientation}
+          // contacts={contacts}
         />
       </main>
     </div>
