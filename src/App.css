@@ -1,5 +1,6 @@
 #App {
   background-color: #87cefa;
+  display: flex;
 }
 
 #App header {
@@ -26,6 +27,10 @@
   display: inline-block;
 }
 
+#App h2 {
+color: black;
+}
+
 #App header section {
   background-color: #e0ffff;
 }
@@ -48,6 +53,15 @@
 #App span {
   display: inline-block
 }
+
+.heart-count{
+width: 100%;
+margin:0;
+padding: 0;
+background-color: rgb(179, 207, 250);
+}
+
+
 
 .red {
   color: #b22222
