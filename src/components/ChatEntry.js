@@ -16,7 +16,11 @@ const ChatEntry = ({ id, sender, body, timeStamp, liked, updateMessage }) => {
   };
 
   return (
-    <div className="chat-entry local">
+    <div
+      className={`${
+        sender === 'Estragon' ? 'chat-entry remote' : 'chat-entry local'
+      }`}
+    >
       <h2 className="entry-name">{sender}</h2>
       <section className="entry-bubble">
         <p>{body}</p>
@@ -24,7 +28,7 @@ const ChatEntry = ({ id, sender, body, timeStamp, liked, updateMessage }) => {
           <TimeStamp time={timeStamp}></TimeStamp>
         </p>
         <button onClick={handleToggleLike} className="like">
-          {liked === true ? '❤️' : '🤍'}
+          {liked ? '❤️' : '🤍'}
         </button>
       </section>
     </div>

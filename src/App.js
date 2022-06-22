@@ -4,10 +4,8 @@ import chatMessages from './data/messages.json';
 import ChatLog from './components/ChatLog';
 
 const App = () => {
-  // set a variable to a new state
   const [newChatMessages, setNewChatMessages] = useState(chatMessages);
 
-  // create a func
   const createNewMessage = (updatedMessage) => {
     const newChatData = newChatMessages.map((message) => {
       if (message.id === updatedMessage.id) {
