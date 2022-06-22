@@ -4,11 +4,18 @@ import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp';
 import { useState } from 'react';
 
-const ChatEntry = ({ sender, body, timeStamp, liked }) => {
+const ChatEntry = ({
+  id,
+  sender,
+  body,
+  timeStamp,
+  liked,
+  likesCountCallBack,
+}) => {
   const [isLiked, setIsLiked] = useState(liked);
 
-  const updateLiked = () => {
-    console.log('Is it updating?');
+  const updateLiked = (id) => {
+    likesCountCallBack(id);
     setIsLiked(!isLiked);
   };
 
@@ -22,7 +29,7 @@ const ChatEntry = ({ sender, body, timeStamp, liked }) => {
         <p className="entry-time">
           <TimeStamp time={timeStamp} />
         </p>
-        <button className="like" onClick={updateLiked}>
+        <button className="like" onClick={() => updateLiked(id)}>
           {heartColor}
         </button>
       </section>
@@ -36,6 +43,7 @@ ChatEntry.propTypes = {
   body: PropTypes.string.isRequired,
   timeStamp: PropTypes.string.isRequired,
   liked: PropTypes.bool.isRequired,
+  likesCountCallBack: PropTypes.func.isRequired,
 };
 
 export default ChatEntry;
