@@ -72,3 +72,8 @@
 .purple {
   color: purple
 }
+
+.colorContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
