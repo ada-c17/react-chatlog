@@ -2,22 +2,28 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ChatEntry from './ChatEntry';
 
+// const ChatLog = ({ entries, newEntry }) =>
 const ChatLog = (props) => {
-  return props.entries.map((entry) => {
+  // return entries.map((entry))
+  const chatEntries = props.entries.map((entry) => {
     return (
       <ChatEntry
+        key={entry.id}
         id={entry.id}
         sender={entry.sender}
         body={entry.body}
         timeStamp={entry.timeStamp}
         liked={entry.liked}
+        newEntry={props.newEntry}
       ></ChatEntry>
     );
   });
+  return <div>{chatEntries}</div>;
 };
 
 ChatLog.propTypes = {
   entries: PropTypes.arrayOf(PropTypes.object).isRequired,
+  newEntry: PropTypes.func.isRequired,
 };
 
 // CanvasPattern.propTypes = {
