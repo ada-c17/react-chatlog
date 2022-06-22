@@ -1,21 +1,25 @@
 #App {
-  background-color: #87cefa;
+  background-color: white;
 }
 
 #App header {
   background-color: #222;
   color: #fff;
-  padding-bottom: 0.5rem;
+  /* padding-bottom: 0.5rem; */
   position: fixed;
-  width: 100%;
+  width: 34.05%;
   z-index: 100;
   text-align: center;
   align-items: center;
+  left: 33.05%;
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
 }
 
+
 #App main {
-  padding-left: 2em;
-  padding-right: 2em;
+  padding-left: 3em;
+  padding-right: 3em;
   padding-bottom: 5rem;
   padding-top: 10rem;
 }
@@ -24,25 +28,30 @@
   font-size: 1.5em;
   text-align: center;
   display: inline-block;
+  
 }
 
-#App header section {
+#App header h2 {
   background-color: #e0ffff;
+  color: black;
 }
 
 #App .widget {
+  position: absolute;
   display: inline-block;
-  line-height: 0.5em;
-  border-radius: 10px;
   color: black;
   font-size:0.8em;
-  padding-left: 1em;
-  padding-right: 1em;
+  margin-left: 33.05%;
+  width: 30%;
+  background-color: #87cefa;
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
 }
 
 #App #heartWidget {
   font-size: 1.5em;
-  margin: 1em
+  margin: 1em;
+  justify-content: right;
 }
 
 #App span {
