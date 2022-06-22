@@ -6,17 +6,19 @@ const ChatLog = (props) => {
   const entryComponents = [];
   for (const entry of props.entries) {
     entryComponents.push(
-      <ChatEntry
-        key={entry.id}
-        id={entry.id}
-        sender={entry.sender}
-        body={entry.body}
-        timeStamp={entry.timeStamp}
-        liked={entry.liked}
-        toggleLikesCallback={props.toggleLikesCallback}
-        countLikesCallback={props.countLikesCallback}
-        colors={props.colors}
-      />
+      <li key={entry.id}>
+        <ChatEntry
+          // key={entry.id}
+          id={entry.id}
+          sender={entry.sender}
+          body={entry.body}
+          timeStamp={entry.timeStamp}
+          liked={entry.liked}
+          toggleLikesCallback={props.toggleLikesCallback}
+          countLikesCallback={props.countLikesCallback}
+          colors={props.colors}
+        />
+      </li>
     );
   }
 
