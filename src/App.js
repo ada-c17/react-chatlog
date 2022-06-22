@@ -19,15 +19,12 @@ const App = () => {
   };
 
   const adjustLikeButtonCount = (messages) => {
-    console.log({ messages });
     let likeButtonCount = 0;
     for (const message of messages) {
       if (message.liked === true) {
         likeButtonCount += 1;
       }
     }
-
-    console.log(likeButtonCount);
     return likeButtonCount;
   };
 
