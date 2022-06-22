@@ -23,12 +23,20 @@ const ChatEntry = (props) => {
 };
 
 ChatEntry.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.number,
   sender: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   timeStamp: PropTypes.string.isRequired,
-  liked: PropTypes.bool.isRequired,
-  toggleHeartCallback: PropTypes.func.isRequired,
+  liked: PropTypes.bool,
+  toggleHeartCallback: PropTypes.func,
 };
+
+// Avoiding console.error messages when running 'yarn test' about id 
+// and toggleHeartCallback being undefined in the test.js files
+// TA Matt suggested to set a default prop and to keep liked, id, and toggleHeartCallback as optional
+
+ChatEntry.defaultProps = {
+  toggleHeartCallback: () => {}
+}
 
 export default ChatEntry;

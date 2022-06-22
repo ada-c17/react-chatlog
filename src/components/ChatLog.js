@@ -17,7 +17,7 @@ const ChatLog = (props) => {
         );
     });
 
-    return(
+    return (
         <div>{chatEntryComponents}</div>
     );
 };
