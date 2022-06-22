@@ -4,7 +4,6 @@ import chatMessages from './data/messages.json';
 import ChatLog from './components/ChatLog';
 import {useState} from 'react';
 
-
 const App = () => {
 
   const [updateLike, setUpdateLike] = useState(chatMessages);
@@ -12,8 +11,7 @@ const App = () => {
   const [likeCount, setLikeCount] = useState(0);
 
   const setLikeUpdateFn = (id) => {
-    console.log('todo: update heart for id', id);
-
+    
     let likeCount = 0;
 
     const newLikeData = updateLike.map((entry) => {
@@ -28,7 +26,6 @@ const App = () => {
       return newLikes;
     })
 
-    console.log(likeCount);
     setLikeCount(likeCount);
 
     setUpdateLike(newLikeData);
@@ -38,7 +35,7 @@ const App = () => {
     <div id="App">
       <header>
         <h1>Chat between Vladimir and Estragon</h1>
-        <p>{likeCount} ❤️s</p>
+        <section><p>{likeCount} ❤️s</p></section>
       </header>
       <main>
         {/* Wave 01: Render one ChatEntry component

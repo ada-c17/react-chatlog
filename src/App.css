@@ -3,8 +3,8 @@
 }
 
 #App header {
-  background-color: rgb(189, 242, 255);
-  color: rgb(14, 11, 11);
+  background-color: rgb(7, 7, 7);
+  color: white;
   padding-bottom: 0.5rem;
   position: fixed;
   width: 100%;
@@ -29,6 +29,14 @@
 
 #App header section {
   background-color: #e0ffff;
+  width: auto;
+  height: 50px;
+}
+
+p {
+  color: black;
+  font-size: 20px;
+  padding-top: 0.5rem;
 }
 
 #App .widget {
@@ -50,7 +58,7 @@
   display: inline-block
 }
 
-.red {
+/* .red {
   color: #b22222
 }
 
@@ -72,4 +80,4 @@
 
 .purple {
   color: purple
-}
+} */
