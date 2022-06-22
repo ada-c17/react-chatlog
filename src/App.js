@@ -51,28 +51,23 @@ const App = () => {
   const localUser = logMessages[0].sender;
   const remoteUser = logMessages[1].sender;
 
-  // set user state to true or false
-  let userState = false;
-  if (user === localUser) {
-    userState = true;
-  }
   return (
     <div id="App">
       <header>
         <h1>
           Chat between{' '}
-          <span className={userState ? `${colorSelection}` : ''}>
+          <span className={user === localUser ? `${colorSelection}` : ''}>
             {localUser}{' '}
           </span>{' '}
           and{' '}
-          <span className={!userState ? `${colorSelection}` : ''}>
+          <span className={user !== localUser ? `${colorSelection}` : ''}>
             {remoteUser}
           </span>
         </h1>
         <div className="heart-count">
           <div>
             <div
-              className={userState ? `${colorSelection}` : ''}
+              className={user === localUser ? `${colorSelection}` : ''}
             >{`${localUser}'s color:`}</div>
             <div className="button-color">
               <ColorChoice
@@ -118,7 +113,7 @@ const App = () => {
 
           <div>
             <div
-              className={!userState ? `${colorSelection}` : ''}
+              className={user !== localUser ? `${colorSelection}` : ''}
             >{`${remoteUser}'s color:`}</div>
             <div className="button-color">
               <ColorChoice
