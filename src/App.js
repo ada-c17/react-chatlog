@@ -10,12 +10,25 @@ const App = () => {
   const [entries, setEntries] = useState(chatMessages);
 
   const updateLike = (id) => {
+    // loop solution1
     const updateLikes = [...entries];
     for (let entry of updateLikes) {
       if (entry.id === id) {
         entry.heart = !entry.heart;
       }
     }
+
+    // loop solution2
+    //   const updateLikes = [];
+    //   for (const entry of entries) {
+    //     const newEntry = {...entry};
+    //     if (newEntry.id === id) {
+    //       entry.heart = !entry.heart;
+    //   }
+    //   updateLikes.push(newEntry)
+
+    // }
+    
     setEntries(updateLikes);
   };
 
