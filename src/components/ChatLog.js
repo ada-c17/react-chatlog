@@ -8,8 +8,9 @@ const ChatLog = (props) => {
 
   const entryComponents = entries.map((entry, i) => {
     return (
-      <div className="chat-log" key={entry.id}>
+      <div className="chat-log">
         <ChatEntry
+          key={entry.id}
           id={entry.id}
           sender={entry.sender}
           body={entry.body}
