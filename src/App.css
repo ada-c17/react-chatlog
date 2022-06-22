@@ -2,6 +2,10 @@
   background-color: #87cefa;
 }
 
+.likes-count {
+  color: black;
+}
+
 #App header {
   background-color: #222;
   color: #fff;
@@ -17,7 +21,7 @@
   padding-left: 2em;
   padding-right: 2em;
   padding-bottom: 5rem;
-  padding-top: 10rem;
+  padding-top: 5rem;
 }
 
 #App h1 {
@@ -71,4 +75,9 @@
 
 .purple {
   color: purple
+}
+
+.color-component {
+  display: flex;
+  justify-content: space-between;
 }
