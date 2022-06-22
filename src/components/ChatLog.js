@@ -25,9 +25,9 @@ const ChatLog = (props) => {
 
 ChatLog.propTypes = {
   entries: PropTypes.array.isRequired,
-  colors: PropTypes.array.isRequired,
-  toggleLikesCallback: PropTypes.func.isRequired,
-  countLikesCallback: PropTypes.func.isRequired,
+  colors: PropTypes.array,
+  toggleLikesCallback: PropTypes.func,
+  countLikesCallback: PropTypes.func,
 };
 
 export default ChatLog;

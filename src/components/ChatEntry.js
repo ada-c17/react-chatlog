@@ -19,7 +19,12 @@ const ChatEntry = (props) => {
     colorId = 1;
   }
 
-  const color = props.colors[colorId];
+  let color;
+  if (props.colors) {
+    color = props.colors[colorId];
+  } else {
+    color = 'black';
+  }
 
   const messageColor = { color: color };
 
