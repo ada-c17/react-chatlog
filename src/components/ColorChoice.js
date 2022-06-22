@@ -8,28 +8,25 @@ const ColorChoice = (props) => {
       props.onUpdateRemote(event.currentTarget.id);
     }
   };
-  return (
-    <div>
-      <button id="red" onClick={setColorCallback}>
-        🔴
-      </button>
-      <button id="yellow" onClick={setColorCallback}>
-        🟡
-      </button>
-      <button id="purple" onClick={setColorCallback}>
-        🟣
-      </button>
-      <button id="green" onClick={setColorCallback}>
-        🟢
-      </button>
-      <button id="orange" onClick={setColorCallback}>
-        🟠
-      </button>
-      <button id="blue" onClick={setColorCallback}>
-        🔵
-      </button>
-    </div>
-  );
+
+  const getButtonsMap = () => {
+    const colors = {
+      red: '🔴',
+      yellow: '🟡',
+      purple: '🟣',
+      green: '🟢',
+      orange: '🟠',
+      blue: '🔵',
+    };
+    return Object.entries(colors).map(([key, value]) => {
+      return (
+        <button onClick={setColorCallback} key={key} id={key}>
+          {value}
+        </button>
+      );
+    });
+  };
+  return <div>{getButtonsMap()}</div>;
 };
 
 export default ColorChoice;
