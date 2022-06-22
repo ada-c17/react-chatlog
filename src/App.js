@@ -30,8 +30,8 @@ const App = () => {
   return (
     <div id="App">
       <header>
-        <h1>Application title</h1>
-        <section>{countLikes()} ❤️s</section>
+        <h1>Chat between <span className="green">Vladimir</span> and <span className="blue">Estragon</span></h1>
+        <section><span id="heartWidget" className="widget">{countLikes()} ❤️s</span></section>
       </header>
       <main>
         <ChatLog entries={chatMessagesData} onUpdateChatMessages={updateChatMessagesData}></ChatLog>
