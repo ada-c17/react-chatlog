@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import './App.css';
 import ChatLog from './components/ChatLog';
 import chatMessages from './data/messages.json';
+import ColorChoice from './components/ColorChoice';
 
 const App = () => {
   const [chatData, setChatData] = useState(chatMessages);
+  const [localTextColor, setLocalTextColor] = useState('black');
+  const [remoteTextColor, setRemoteTextColor] = useState('black');
 
   const updateChatData = (updatedEntry) => {
     const entries = chatData.map((entry) => {
@@ -31,9 +34,25 @@ const App = () => {
           <div>Chat Log</div>
           <div>{totalLikes} ❤️s</div>
         </h1>
+        <section className="colorChoice">
+          <div>
+            <h3 className={localTextColor}>Vladimir's color</h3>
+            <ColorChoice onUpdateLocal={setLocalTextColor} />
+          </div>
+          <div>
+            <h3 className={remoteTextColor}>Estragon's color</h3>
+            <ColorChoice onUpdateRemote={setRemoteTextColor} />
+          </div>
+        </section>
       </header>
+
       <main>
-        <ChatLog entries={chatData} onUpdateChat={updateChatData} />
+        <ChatLog
+          entries={chatData}
+          onUpdateChat={updateChatData}
+          onUpdateLocal={localTextColor}
+          onUpdateRemote={remoteTextColor}
+        />
       </main>
     </div>
   );

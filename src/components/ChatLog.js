@@ -12,6 +12,8 @@ const ChatLog = (props) => {
         timeStamp={entry.timeStamp}
         liked={entry.liked}
         onUpdate={props.onUpdateChat}
+        localTextColor={props.onUpdateLocal}
+        remoteTextColor={props.onUpdateRemote}
       ></ChatEntry>
     );
   });

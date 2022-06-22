@@ -1,13 +1,15 @@
 import React from 'react';
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
-import moment from 'moment';
+import TimeStamp from './TimeStamp';
 
 const ChatEntry = (props) => {
-  const timeAgo = moment(props.timeStamp).fromNow();
   const heartStatus = props.liked ? '❤️' : '🤍';
   let entrySide =
     props.sender === 'Vladimir' ? 'chat-entry local' : 'chat-entry remote';
+
+  let color =
+    props.sender === 'Vladimir' ? props.localTextColor : props.remoteTextColor;
 
   const handleLike = () => {
     const updatedEntry = {
@@ -15,6 +17,7 @@ const ChatEntry = (props) => {
       sender: props.sender,
       body: props.body,
       liked: !props.liked,
+      timeStamp: props.timeStamp,
     };
     props.onUpdate(updatedEntry);
   };
@@ -23,8 +26,10 @@ const ChatEntry = (props) => {
     <div className={entrySide}>
       <h2 className="entry-name">{props.sender}</h2>
       <section className="entry-bubble">
-        <p>{props.body}</p>
-        <p className="entry-time">{timeAgo}</p>
+        <p className={color}>{props.body}</p>
+        <p className="entry-time">
+          <TimeStamp time={props.timeStamp} />
+        </p>
         <button className="like" onClick={handleLike}>
           {heartStatus}
         </button>
