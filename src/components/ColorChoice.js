@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const ColorChoice = (props) => {
   const setColorCallback = (event) => {
@@ -27,6 +28,11 @@ const ColorChoice = (props) => {
     });
   };
   return <div>{getButtonsMap()}</div>;
+};
+
+ColorChoice.propTypes = {
+  onUpdateLocal: PropTypes.func,
+  onUpdateRemote: PropTypes.func,
 };
 
 export default ColorChoice;
