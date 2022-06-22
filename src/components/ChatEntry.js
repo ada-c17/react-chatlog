@@ -20,9 +20,9 @@ const ChatEntry = (props) => {
     props.updateLikesCallback(props.id);
     console.log('inside emoji');
     if (props.liked === true) {
-      updateEmojiRed();
-    } else {
       updateEmojiWhite();
+    } else {
+      updateEmojiRed();
     }
     console.log(props.liked);
   };
