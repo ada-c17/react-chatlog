@@ -1,10 +1,9 @@
 import React from 'react';
 import {useState} from 'react';
 import './App.css';
-// import ChatEntry from './components/ChatEntry';
 import chatMessages from './data/messages.json';
 import ChatLog from './components/ChatLog';
-import TimeStamp from './components/TimeStamp';
+
 
 const App = () => {
   console.log('value of chatMessages',chatMessages);

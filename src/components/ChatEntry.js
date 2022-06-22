@@ -13,8 +13,6 @@ const ChatEntry = (props) => {
   const toggleLike = (id) => {
     props.updateLikeHeart(id);
   };
-
-  console.log(props)
   const sender = props.sender;
   const body = props.body;
   const timeStamp = props.timeStamp;
