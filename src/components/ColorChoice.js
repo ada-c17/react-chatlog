@@ -1,4 +1,6 @@
 import './ColorChoice.css';
+import PropTypes from 'prop-types';
+
 const ColorChoice = ({ sender, updateSenderColor }) => {
   return (
     <div className="sender color-choice">
@@ -25,6 +27,11 @@ const ColorChoice = ({ sender, updateSenderColor }) => {
       </div>
     </div>
   );
+};
+
+ColorChoice.propTypes = {
+  sender: PropTypes.string.isRequired,
+  updateSenderColor: PropTypes.func.isRequired,
 };
 
 export default ColorChoice;

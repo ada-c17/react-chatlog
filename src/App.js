@@ -7,13 +7,7 @@ import ColorChoice from './components/ColorChoice';
 
 const App = () => {
   const [likes, setLikes] = useState(0);
-  const incrementLikes = () => {
-    setLikes(likes + 1);
-  };
-  const decrementLikes = () => {
-    setLikes(likes - 1);
-  };
-
+  const [entries, setEntries] = useState(chatMessages);
   const [sender1Color, setSender1Color] = useState('black');
   const [sender2Color, setSender2Color] = useState('black');
 
@@ -26,6 +20,33 @@ const App = () => {
 
   const updateSender2Color = (color) => {
     setSender2Color(color);
+  };
+
+  const incrementLikes = () => {
+    setLikes(likes + 1);
+  };
+
+  const decrementLikes = () => {
+    setLikes(likes - 1);
+  };
+
+  const updateLikes = (id) => {
+    const newChatMessages = entries.map((chatMessage) => {
+      const newChatMessage = { ...chatMessage };
+
+      if (newChatMessage.id === id) {
+        if (newChatMessage.liked) {
+          decrementLikes();
+          newChatMessage.liked = !newChatMessage.liked;
+        } else {
+          incrementLikes();
+          newChatMessage.liked = !newChatMessage.liked;
+        }
+      }
+      return newChatMessage;
+    });
+
+    setEntries(newChatMessages);
   };
 
   return (
@@ -42,12 +63,11 @@ const App = () => {
         <ColorChoice sender={sender1} updateSenderColor={updateSender1Color} />
         <ColorChoice sender={sender2} updateSenderColor={updateSender2Color} />
         <ChatLog
-          entries={chatMessages}
-          incrementLikes={incrementLikes}
-          decrementLikes={decrementLikes}
+          entries={entries}
           sender1={sender1}
           sender1Color={sender1Color}
           sender2Color={sender2Color}
+          updateLikes={updateLikes}
         />
       </main>
     </div>
