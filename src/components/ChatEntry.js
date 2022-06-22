@@ -2,21 +2,32 @@ import React from 'react';
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
 
-const ChatEntry = (props) => {
+const ChatEntry = ({id, sender, body, timeStamp, liked, onUpdate}) => {
+  const upDate=()=>{
+    onUpdate(id)
+  }
+  const like= liked? '❤️': '🤍';
+  //const passTime= 2022 - timeStamp.getYear();
   return (
-    <div className="chat-entry local">
-      <h2 className="entry-name">Replace with name of sender</h2>
+    <div className="chat-entry local" key={id}>
+      <h2 className="entry-name">{sender}</h2>
       <section className="entry-bubble">
-        <p>Replace with body of ChatEntry</p>
-        <p className="entry-time">Replace with TimeStamp component</p>
-        <button className="like">🤍</button>
+        <p>
+          {body}
+        </p>
+        <p className="entry-time">{2022-timeStamp.getYear} years ago</p>
+        <button className='like' onClick={upDate}>{like}</button>
       </section>
     </div>
   );
 };
 
 ChatEntry.propTypes = {
-  //Fill with correct proptypes
+  sender: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  timeStamp: PropTypes.string.isRequired,
+  liked: PropTypes.bool,
+  onUpdate: PropTypes.func,
 };
 
 export default ChatEntry;
