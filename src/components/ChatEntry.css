@@ -63,7 +63,7 @@ button {
 }
 
 .chat-entry.local .entry-bubble::before {
-  background-color: #ffffe0;
+  background-color: #ffefe0;
   left: -18px;
 }
 
