@@ -11,16 +11,19 @@ const ChatEntry = (props) => {
       body: props.body,
       timeStamp: props.timeStamp,
       liked: !props.liked,
+      color: props.color,
     };
     props.onUpdate(updatedChatEntry);
   };
   const buttonText = props.liked ? '❤️' : '🤍';
+  const defineClass =
+    props.sender === 'Vladimir' ? 'chat-entry local' : 'chat-entry remote';
 
   return (
-    <div className="chat-entry local">
+    <div className={defineClass}>
       <h2 className="entry-name">{props.sender}</h2>
       <section className="entry-bubble">
-        <p>{props.body}</p>
+        <p className={props.color}> {props.body}</p>
         <TimeStamp className="entry-time" time={props.timeStamp}></TimeStamp>
         <button onClick={changeLikeButtonState} className="like">
           {buttonText}
@@ -31,9 +34,11 @@ const ChatEntry = (props) => {
 };
 
 ChatEntry.propTypes = {
+  id: PropTypes.number,
   sender: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   timeStamp: PropTypes.string.isRequired,
   liked: PropTypes.bool,
+  color: PropTypes.string,
 };
 export default ChatEntry;
