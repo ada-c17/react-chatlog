@@ -1,22 +1,38 @@
 import React from 'react';
 import './ChatEntry.css';
-import PropTypes from 'prop-types';
+
 
 const ChatEntry = (props) => {
+  const onButtonClick = (id) => {
+    console.log('onButtonClick')
+    const updatedChat = {
+      id: props.id,
+      sender: props.sender,
+      body: props.body,
+      liked: !props.liked,
+      likeCount: props.likeCount 
+    };
+    props.onUpdateChat(updatedChat);
+  };
+  const displayLikes = props.liked ? '💜' : '🤍';
+
   return (
     <div className="chat-entry local">
-      <h2 className="entry-name">Replace with name of sender</h2>
+      <h5>{props.likeCount}</h5>
+      <h2 className="entry-name">{props.sender}</h2>
       <section className="entry-bubble">
-        <p>Replace with body of ChatEntry</p>
-        <p className="entry-time">Replace with TimeStamp component</p>
-        <button className="like">🤍</button>
+        <p>{props.body} ?</p>
+          
+        <p className="entry-time">{props.timeStamp}</p>
+        
+        <button onClick= {() => onButtonClick(props.id)} className="like">
+            {displayLikes}
+        </button>
+      
       </section>
+     
     </div>
   );
-};
-
-ChatEntry.propTypes = {
-  //Fill with correct proptypes
 };
 
 export default ChatEntry;
