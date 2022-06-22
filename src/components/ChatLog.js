@@ -6,19 +6,18 @@ import ChatEntry from './ChatEntry';
 const ChatLog = ({ entries, heartsCount, onLikeClick }) => {
   const ChatLogComponent = entries.map((entry) => {
     return (
-      <div key={entry.id}>
-        <ChatEntry
-          id={entry.id}
-          sender={entry.sender}
-          body={entry.body}
-          timeStamp={entry.timeStamp}
-          liked={entry.liked}
-          onLikeClick={onLikeClick}
-        />
-      </div>
+      <ChatEntry
+        key={entry.id}
+        id={entry.id}
+        sender={entry.sender}
+        body={entry.body}
+        timeStamp={entry.timeStamp}
+        liked={entry.liked}
+        onLikeClick={onLikeClick}
+      />
     );
   });
-  return <div>{ChatLogComponent}</div>;
+  return <div className="component">{ChatLogComponent}</div>;
 };
 
 ChatEntry.propTypes = {
