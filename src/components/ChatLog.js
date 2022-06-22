@@ -28,7 +28,6 @@ const ChatLog = ({ entries, setLikedCallback, localSender }) => {
 
 ChatLog.propTypes = {
   entries: PropTypes.array.isRequired,
-  setLikedCallback: PropTypes.func.isRequired,
 };
 
 export default ChatLog;
