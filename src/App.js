@@ -4,38 +4,27 @@ import './App.css';
 // import ChatEntry from './components/ChatEntry';
 import chatMessages from './data/messages.json';
 import ChatLog from './components/ChatLog';
+import TimeStamp from './components/TimeStamp';
 
 const App = () => {
   console.log('value of chatMessages',chatMessages);
   const [entries, setEntries] = useState(chatMessages);
 
   const updateLike = (id) => {
-    // loop solution1
-    const updateLikes = [...entries];
-    for (let entry of updateLikes) {
-      if (entry.id === id) {
-        entry.heart = !entry.heart;
+    const updateLikes = entries.map((entry) => {
+      const newEntry = {...entry};
+      if (newEntry.id === id) {
+        newEntry.liked = !newEntry.liked;
       }
-    }
-
-    // loop solution2
-    //   const updateLikes = [];
-    //   for (const entry of entries) {
-    //     const newEntry = {...entry};
-    //     if (newEntry.id === id) {
-    //       entry.heart = !entry.heart;
-    //   }
-    //   updateLikes.push(newEntry)
-
-    // }
-    
+      return newEntry;
+    });
     setEntries(updateLikes);
   };
 
   const countLikes = () => {
     let count = 0;
-    for (let entry of chatMessages) {
-      if (entry.heart === true) {
+    for (let entry of entries) {
+      if (entry.liked === true) {
         count += 1;
       }
     }
@@ -46,14 +35,7 @@ const App = () => {
     <div id="App">
       <header>
         <h1>
-          Chat between {''}
-          <span id='sender1'>
-            {chatMessages[0].sender}
-          </span>
-          {''} and {''}
-          <span id='sender2'>
-            {chatMessages[1].sender}
-          </span>
+          Chat between {chatMessages[0].sender} and {chatMessages[1].sender}
         </h1>
         <section>
           <h2 id= "heartWidget" className="widget"> 
@@ -62,13 +44,9 @@ const App = () => {
         </section>
       </header>
       <main>
-        {/* Wave 01: Render one ChatEntry component
-        Wave 02: Render ChatLog component */}
-        {/* <ChatEntry/> */}
         <ChatLog 
-          entries={chatMessages}
-          updateLikeHeart={updateLike}
-        />
+          entries={entries}
+          updateLikeHeart={updateLike} />
       </main>
     </div>
   );

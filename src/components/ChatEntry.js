@@ -1,5 +1,4 @@
 import React from 'react';
-import {useState} from 'react';
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp.js';
@@ -9,12 +8,10 @@ const ChatEntry = (props) => {
   const senderPosition =
     props.sender === 'Vladimir' ? 'chat-entry local' : 'chat-entry remote';
 
-  const [like, setLike] = useState(props.heart);
-  const heartFill = like ? '❤️': '🤍';
+  const heartFill = props.liked ? '❤️': '🤍';
 
   const toggleLike = (id) => {
     props.updateLikeHeart(id);
-    setLike(!like);
   };
 
   console.log(props)

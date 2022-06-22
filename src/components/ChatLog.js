@@ -3,14 +3,15 @@ import ChatEntry from './ChatEntry';
 import PropTypes from 'prop-types';
 
 const ChatLog = ({entries, updateLikeHeart}) => {
-  const chatLogComponents = entries.map((chat) =>{
+  const chatLogComponents = entries.map((entry) =>{
     return (
         <ChatEntry
-          key={chat.id}
-          id={chat.id}
-          sender={chat.sender}
-          body={chat.body}
-          timeStamp={chat.timeStamp}
+          key={entry.id}
+          id={entry.id}
+          sender={entry.sender}
+          body={entry.body}
+          timeStamp={entry.timeStamp}
+          liked={entry.liked}
           updateLikeHeart={updateLikeHeart}
 
         />
@@ -25,7 +26,8 @@ const ChatLog = ({entries, updateLikeHeart}) => {
 };
 
 ChatLog.propTypes={
-  entries: PropTypes.array.isRequired
+  entries: PropTypes.array.isRequired,
+  updateLikeHeart: PropTypes.func.isRequired 
 };
 
 export default ChatLog;
