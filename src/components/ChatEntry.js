@@ -2,18 +2,8 @@ import React from 'react';
 import './ChatEntry.css';
 import TimeStamp from './TimeStamp';
 import PropTypes from 'prop-types';
-// import { useState } from 'react';
 
 const ChatEntry = (props) => {
-  // const [likeCount, setLikeCount] = useState(0);
-
-  // const updateLikes = () => {
-  //   setLikeCount(likeCount + 1);
-  // };
-
-  // const toggleLikes = () => {
-  //   toggleLikes(id);
-  // };
   const id = props.id;
   const chatSender = props.sender;
   const chatBody = props.body;
@@ -23,13 +13,6 @@ const ChatEntry = (props) => {
 
   const heart = liked ? '❤️' : '🤍';
 
-  // const likeClick = (event) => {
-  //   console.log("Hello! We're in printMessage!");
-  //   console.log('This event object contains details about the event:', event);
-  //   props.setLikeClick(props.id);
-  //   setChatEntry();
-  // };
-
   return (
     <div className="chat-entry local">
       <h2 className="entry-name">{chatSender}</h2>
@@ -38,7 +21,6 @@ const ChatEntry = (props) => {
         <p className="entry-time">
           <TimeStamp time={chatTimeStamp}></TimeStamp>
         </p>
-        {/* <p> You have {likeCount} likes</p> */}
         <button className="like" onClick={() => toggleLikes(id)}>
           {heart}
         </button>
@@ -48,9 +30,12 @@ const ChatEntry = (props) => {
 };
 
 ChatEntry.propTypes = {
+  id: PropTypes.number.isRequired,
   sender: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   timeStamp: PropTypes.string.isRequired,
+  liked: PropTypes.bool.isRequired,
+  toggleLikes: PropTypes.func.isRequired,
 };
 
 export default ChatEntry;

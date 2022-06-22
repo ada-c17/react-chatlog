@@ -2,47 +2,39 @@ import React, { useState } from 'react';
 import './App.css';
 import chatMessages from './data/messages.json';
 import ChatLog from './components/ChatLog';
-// import { useState } from 'react';
 
 const App = () => {
   const chatData = chatMessages;
 
   const [likes, setLikes] = useState(chatData);
+  const [likeCount, setLikeCount] = useState(0);
 
-  const toggleLikes = (id) => {
-    // console.log('toggled', id);
-
-    const updatedChatData = chatData.map((like) => {
+  const toggleLikesFn = (id) => {
+    const updatedChatData = likes.map((like) => {
       const updatedChat = { ...like };
-      if (updatedChat.id === id) {
-        like.liked = !like.liked;
+      if (like.id === id) {
+        updatedChat.liked = !like.liked;
+        if (updatedChat.liked === true) {
+          setLikeCount(likeCount + 1);
+        } else {
+          setLikeCount(likeCount - 1);
+        }
       }
+
       return updatedChat;
     });
 
     setLikes(updatedChatData);
-
-    // const updatedChatData = [...likes];
-
-    // for (let like of updatedChatData) {
-    //   if (like.id === id) {
-    //     like.liked = !like.liked;
-    //     // console.log('working');
-    //   }
-    // }
-    // setLikes(updatedChatData);
   };
 
   return (
     <div id="App">
       <header>
         <h1>Chat between Vladimir and Estragon</h1>
-        {/* <p> You have {updateLikes} likes</p> */}
+        <p id="likeCount"> {likeCount} ❤️s</p>
       </header>
       <main>
-        {/* Wave 01: Render one ChatEntry component
-        Wave 02: Render ChatLog component */}
-        <ChatLog entries={likes} toggleLikes={toggleLikes}></ChatLog>
+        <ChatLog entries={likes} toggleLikes={toggleLikesFn}></ChatLog>
       </main>
     </div>
   );
