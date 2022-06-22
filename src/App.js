@@ -4,7 +4,7 @@ import chatMessages from './data/messages.json';
 import ChatLog from './components/ChatLog';
 
 const App = () => {
-  const [likes, setLikes] = useState(0);
+  const [likes, setLikes] = useState(false);
 
   const updateLikes = (clicked, setClicked) => {
     setClicked(!clicked);

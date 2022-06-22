@@ -5,6 +5,7 @@ import TimeStamp from './TimeStamp.js';
 
 
 const ChatEntry = (props) => {
+
   const [like, setLike] = useState(0);
   return (
     <div className="chat-entry local">
