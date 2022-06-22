@@ -4,18 +4,20 @@ import PropTypes from 'prop-types';
 import ChatEntry from './ChatEntry';
 
 const ChatLog = (props) => {
-    return props.entries.map((entry) => {
+    const entryComponents = props.entries.map((entry) => {
             return (
-                <section className="chat-log">
                 <ChatEntry
+                key={entry.id}
                 id={entry.id}
                 sender={entry.sender}
                 body={entry.body}
                 timeStamp={entry.timeStamp}
-                liked={entry.liked} />
-                </section>
+                liked={entry.liked} 
+                toggleLike={props.toggleLike}
+                />
             );
-        })
+        });
+    return <section className="chat-log">{entryComponents}</section>
 };
 
 ChatLog.propTypes = {
@@ -25,9 +27,11 @@ ChatLog.propTypes = {
             sender: PropTypes.string.isRequired,
             body: PropTypes.string.isRequired,
             timeStamp: PropTypes.string.isRequired,
-            // liked: PropTypes.bool.isRequired,
+            liked: PropTypes.bool.isRequired,
         })
     ).isRequired,
+
+    toggleLike : PropTypes.func.isRequired,
 };
 
 export default ChatLog;
