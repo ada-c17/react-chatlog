@@ -55,13 +55,24 @@ const App = () => {
         <h1>
           Chat between {chatMessages[0].sender} and {chatMessages[1].sender}
         </h1>
+        <section>
+          <h1 className="likes-count">{likes} ❤️s</h1>
+        </section>
       </header>
       <main>
         {/* Wave 01: Render one ChatEntry component
         Wave 02: Render ChatLog component */}
-        <h1 className="likes-count">{likes} ❤️s</h1>
-        <ColorChoice sender={sender1} updateSenderColor={updateSender1Color} />
-        <ColorChoice sender={sender2} updateSenderColor={updateSender2Color} />
+        <div className="color-component">
+          <ColorChoice
+            sender={sender1}
+            updateSenderColor={updateSender1Color}
+          />
+          <ColorChoice
+            sender={sender2}
+            updateSenderColor={updateSender2Color}
+          />
+        </div>
+
         <ChatLog
           entries={entries}
           sender1={sender1}
