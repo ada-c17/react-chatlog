@@ -9,15 +9,16 @@ const ChatLog = (props) => {
   const entries = props.entries.map(entry => {
     return (
       <section>
-      <ChatEntry
-        id={entry.id}
-        sender={entry.sender}
-        body={entry.body}
-        timeStamp={<TimeStamp time={entry.sender} />}
-        liked={entry.liked}
-      ></ChatEntry>
+        <ChatEntry
+          id={entry.id}
+          sender={entry.sender}
+          body={entry.body}
+          timeStamp={<TimeStamp time={entry.timeStamp} />}
+          liked={entry.liked}
+          onUpdate={props.onUpdateChatLogData}
+        ></ChatEntry>
       </section>
-      // change this return statement to return formatted jsx
+      
     )
   });
 
@@ -35,7 +36,8 @@ ChatLog.propTypes = {
     body: PropTypes.string,
     timeStamp: PropTypes.string.isRequired,
     liked: PropTypes.bool
-  }))
-}
+  })),
+  onUpdateChatLogData: PropTypes.func.isRequired
+};
 
 export default ChatLog;

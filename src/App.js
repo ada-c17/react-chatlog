@@ -8,6 +8,19 @@ import chatJson from './data/messages.json';
 
 
 const App = () => {
+
+  const [chatData, setChatData] = useState(chatJson);
+
+  const updateChatData = updatedMessage => {
+    const messages = chatData.map(message => {
+      if (message.id === updatedMessage.id) {
+        return updatedMessage;
+      } else {
+        return message;
+      }
+    });
+  setChatData(messages)
+  }
   
   return (
     <div id="App">
@@ -21,7 +34,8 @@ const App = () => {
         timeStamp={<TimeStamp time='2016-05-18T22:12:03Z'/>}
         ></ChatEntry> */}
         <ChatLog
-        entries={chatJson}
+        entries={chatData}
+        onUpdateChatLogData={updateChatData}
         ></ChatLog>
       </main>
     </div>
