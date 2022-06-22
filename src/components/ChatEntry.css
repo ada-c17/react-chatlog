@@ -10,6 +10,7 @@ button {
 
 .chat-entry {
   margin: 1rem;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .chat-entry:last-child {
@@ -62,8 +63,12 @@ button {
   text-align: right;
 }
 
+.chat-entry.local .like {
+  text-align: left;
+}
+
 .chat-entry.local .entry-bubble::before {
-  background-color: #ffffe0;
+  background-color: #ffffe0; 
   left: -18px;
 }
 
@@ -88,6 +93,10 @@ button {
 
 .chat-entry.remote .entry-time {
   text-align: left;
+}
+
+.chat-entry.remote #like {
+  text-align: right;
 }
 
 .chat-entry.remote .entry-bubble::before {
