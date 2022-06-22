@@ -5,48 +5,38 @@ import ChatLog from './components/ChatLog';
 import { useState } from 'react';
 
 const App = () => {
-  // const [entries, setEntries] = useState(chatMessages);
-  const [liked, setLiked] = useState(0);
-  // const likeMessage = (id) => {
-  //   const index = entries.findIndex((each) => each.id === id);
-  //   const message = entries[index];
-  //   const nextEntries = [...entries];
-  //   nextEntries[index].liked = !message.liked;
-  //   const inc = nextEntries[index].liked ? 1 : -1;
-  //   setLiked(liked + inc);
-  //   setEntries(nextEntries);
-  //   console.log(id);
-  // };
+  const [entries, setEntries] = useState(chatMessages);
 
-  // const nextEntries = entries.map((item) => [...item]);
+  const updateLikeMessageFn = (id) => {
+    console.log('todo: update like for id');
 
-  // const nextEntries=[];
-  // for (const entry of entries) {
-  //   const nextEntry=[...entry]
-  //   if (nextEntry.id === id) {
-  //     nextEntry.id=!nextEntry.id
-  //   }
-  // }
+    const nextEntriesData = entries.map((entry) => {
+      const nextEntry = { ...entry };
+      if (nextEntry.id === id) {
+        nextEntry.liked = !nextEntry.liked;
+      }
 
-  const updateLikeMessageFn = (clicked, setClicked) => {
-    const increaseLike = clicked ? 1 : -1;
-    setLiked((prv) => prv + increaseLike);
-    setClicked((prv) => !prv);
+      return nextEntry;
+    });
+    setEntries(nextEntriesData);
+  };
+  const countLike = () => {
+    let count = 0;
+    for (let entry of entries) {
+      if (entry.liked) {
+        count += 1;
+      }
+    }
+    return count > 1 ? count + ' ❤️s' : count + ' ❤️';
   };
 
-  const title = () => {
-    return liked ? liked + ' ❤️s' : ' ❤️';
-  };
   return (
     <div id="App">
       <header>
-        <h1> Chat Room {title()} </h1>
+        <h1>{countLike()} </h1>
       </header>
       <main>
-        <ChatLog
-          entries={chatMessages}
-          setLikedCallback={updateLikeMessageFn}
-        />
+        <ChatLog entries={entries} setLikedCallback={updateLikeMessageFn} />
       </main>
     </div>
   );

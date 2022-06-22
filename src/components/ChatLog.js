@@ -13,7 +13,7 @@ const ChatLog = ({ entries, setLikedCallback }) => {
         sender={chat.sender}
         body={chat.body}
         timeStamp={chat.timeStamp}
-        // liked={chat.liked}
+        liked={chat.liked}
         setLikedCallback={setLikedCallback}
       />
     );
