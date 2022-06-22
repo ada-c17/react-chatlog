@@ -49,12 +49,30 @@
   display: inline-block
 }
 
+.circle.remote {
+  height: 25px;
+  width: 25px;
+  /* background-color: rgb(255, 255, 255); */
+  border-radius: 50%;
+  display: inline-block;
+  margin: .25rem;
+}
+
+.circle.local {
+  height: 25px;
+  width: 25px;
+  /* background-color: rgb(255, 255, 255); */
+  border-radius: 50%;
+  display: inline-block;
+  margin: .25rem;
+}
+
 .red {
-  color: #b22222
+  background-color: #b22222;
 }
 
 .orange {
-  color: #e6ac00
+  background-color: #e6ac00
 }
 
 .yellow {

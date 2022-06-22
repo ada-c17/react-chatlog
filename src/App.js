@@ -4,6 +4,7 @@ import chatMessages from './data/messages.json';
 import ChatLog from './components/ChatLog';
 
 const App = () => {
+  // const [dotColors, setDotColors] = useState(#bbb);
   const [newChatMessages, setNewChatMessages] = useState(chatMessages);
 
   const createNewMessage = (updatedMessage) => {
@@ -25,7 +26,15 @@ const App = () => {
     <div id="App">
       <header>
         <h1>Jande's Chat Log</h1>
-        <div>{totalLike} ❤️s</div>
+        <div id="heartWidget">{totalLike} ❤️s</div>
+        <>
+          <div className="circle remote red"></div>
+          <div className="circle local orange"></div>
+          {/* <div className="dot local"></div>
+          <div className="dot local"></div>
+          <div className="dot local"></div>
+          <div className="dot local"></div> */}
+        </>
       </header>
       <main>
         {/* Wave 01: Render one ChatEntry component*/}
