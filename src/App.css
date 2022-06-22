@@ -12,7 +12,12 @@
   text-align: center;
   align-items: center;
 }
+.block {display: grid;
+}
 
+.header-display {
+  display: flex;
+}
 #App main {
   padding-left: 2em;
   padding-right: 2em;
