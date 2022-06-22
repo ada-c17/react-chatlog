@@ -72,3 +72,24 @@
 .purple {
   color: purple
 }
+
+
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+#first{
+  grid-column-start: 1;
+}
+
+#second{
+  grid-column-start: 2;
+  font-size: xx-large;
+  color: black;
+}
+
+#third{
+  grid-column-start: 3;
+}

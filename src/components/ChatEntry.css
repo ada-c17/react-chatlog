@@ -8,9 +8,6 @@ button {
 	outline: inherit;
 }
 
-li{
-  list-style: none;
-}
 .chat-entry {
   margin: 1rem;
 }
