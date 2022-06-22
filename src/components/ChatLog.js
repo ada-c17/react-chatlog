@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 
 const ChatLog = (props) => {
   const chatComponents = props.entries.map((entry) => {
+    // console.log('in chatlog');
+    // console.log(props.liked);
     return (
       <ChatEntry
         key={entry.id}
@@ -13,11 +15,11 @@ const ChatLog = (props) => {
         body={entry.body}
         timeStamp={entry.timeStamp}
         updateLikesCallback={props.updateLikesCallback}
-        addLikesCallback={props.addLikesCallback}
-        removeLikesCallback={props.removeLikesCallback}
-        updateEmojiRed={props.updateEmojiRed}
-        updateEmojiWhite={props.updateEmojiWhite}
-        liked={props.liked}
+        // addLikesCallback={props.addLikesCallback}
+        // removeLikesCallback={props.removeLikesCallback}
+        // updateEmojiRed={props.updateEmojiRed}
+        // updateEmojiWhite={props.updateEmojiWhite}
+        liked={entry.liked}
         senderLocal={props.senderLocal}
         senderRemote={props.senderRemote}
         emoji={props.emoji}

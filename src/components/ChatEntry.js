@@ -2,9 +2,31 @@ import React from 'react';
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp.js';
-// import { useState } from 'react';
+import { useState } from 'react';
 
 const ChatEntry = (props) => {
+  // debugger;
+  const [emoji, setEmoji] = useState(props.emoji);
+
+  const updateEmojiRed = () => {
+    setEmoji('❤️');
+  };
+
+  const updateEmojiWhite = () => {
+    setEmoji('🤍');
+  };
+
+  const updateEmoji = () => {
+    props.updateLikesCallback(props.id);
+    console.log('inside emoji');
+    if (props.liked === true) {
+      updateEmojiRed();
+    } else {
+      updateEmojiWhite();
+    }
+    console.log(props.liked);
+  };
+
   let bubbleSender = 'chat-entry local';
   if (props.sender === props.senderRemote) {
     bubbleSender = 'chat-entry remote';
@@ -18,11 +40,8 @@ const ChatEntry = (props) => {
         <p className="entry-time">
           <TimeStamp time={props.timeStamp} />
         </p>
-        <button
-          className="like"
-          onClick={() => props.updateLikesCallback(props.id)}
-        >
-          {props.emoji}
+        <button className="like" onClick={updateEmoji}>
+          {emoji}
         </button>
       </section>
     </div>
@@ -35,7 +54,6 @@ ChatEntry.propTypes = {
   timeStamp: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   updateLikesCallback: PropTypes.func.isRequired,
-  emoji: PropTypes.string.isRequired,
 };
 
 export default ChatEntry;

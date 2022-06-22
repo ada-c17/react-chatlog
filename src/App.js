@@ -10,13 +10,13 @@ const App = () => {
   const [hearts, setHearts] = useState(0);
   const [emoji, setEmoji] = useState('🤍');
 
-  const updateEmojiRed = (id) => {
-    setEmoji('❤️');
-  };
+  // const updateEmojiRed = () => {
+  //   setEmoji('❤️');
+  // };
 
-  const updateEmojiWhite = (id) => {
-    setEmoji('🤍');
-  };
+  // const updateEmojiWhite = () => {
+  //   setEmoji('🤍');
+  // };
 
   const addLikes = () => {
     setHearts(hearts + 1);
@@ -33,17 +33,20 @@ const App = () => {
       if (id === newEntry.id) {
         if (newEntry.liked) {
           removeLikes();
-          updateEmojiWhite(id);
+          // updateEmojiWhite();
         } else {
           addLikes();
-          updateEmojiRed(id);
+          // updateEmojiRed();
         }
         newEntry.liked = !newEntry.liked;
+        console.log(newEntry.liked);
       }
       newEntries.push(newEntry);
     }
     setEntries(newEntries);
-    console.log(newEntries);
+    // for (let entry in entries) {
+    // debugger;
+    // }
   };
 
   const senderLocal = chatMessages[0].sender;
@@ -51,7 +54,7 @@ const App = () => {
 
   const senderRemote = chatMessages[1].sender;
   console.log(`two: ${senderRemote}`);
-
+  console.log(`entries: ${entries}`);
   return (
     <div id="App">
       <header>
@@ -62,10 +65,10 @@ const App = () => {
         <ChatLog
           entries={entries}
           updateLikesCallback={updateLikes}
-          addLikesCallback={addLikes}
-          removeLikesCallback={removeLikes}
-          updateEmojiRed={updateEmojiRed}
-          updateEmojiWhite={updateEmojiWhite}
+          // addLikesCallback={addLikes}
+          // removeLikesCallback={removeLikes}
+          // updateEmojiRed={updateEmojiRed}
+          // updateEmojiWhite={updateEmojiWhite}
           senderLocal={senderLocal}
           senderRemote={senderRemote}
           emoji={emoji}
