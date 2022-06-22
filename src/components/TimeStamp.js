@@ -10,7 +10,7 @@ const TimeStamp = (props) => {
 };
 
 TimeStamp.propTypes = {
-  timeStamp: PropTypes.string.isRequired,
+  time: PropTypes.string.isRequired,
 };
 
 export default TimeStamp;

@@ -20,13 +20,14 @@ export const ChatLog = (props) => {
 
   return (
     <section>
-      <ul>{messageList}</ul>
+      <ul className="chat-log">{messageList}</ul>
     </section>
   );
 };
 
 ChatLog.propTypes = {
-  messageData: PropTypes.arrayOf(PropTypes.object).isRequired,
+  entries: PropTypes.arrayOf(PropTypes.object).isRequired,
+  updateFunc: PropTypes.func.isRequired,
 };
 
 export default ChatLog;

@@ -19,9 +19,10 @@ const ChatEntry = (props) => {
   };
 
   let likeSymbol = isLiked ? '❤️' : '🤍';
+  let sender = props.sender === 'Estragon' ? 'local' : 'remote';
 
   return (
-    <div className="chat-entry local">
+    <div className={'chat-entry ' + sender}>
       <h2 className="entry-name">{props.sender}</h2>
       <section className="entry-bubble">
         <p>{props.body}</p>
@@ -40,6 +41,9 @@ ChatEntry.propTypes = {
   timeStamp: PropTypes.string.isRequired,
   sender: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  liked: PropTypes.bool.isRequired,
+  updateFunc: PropTypes.func.isRequired,
 };
 
 export default ChatEntry;
