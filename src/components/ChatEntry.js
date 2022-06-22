@@ -4,16 +4,12 @@ import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp';
 
 const ChatEntry = (props) => {
-  const changeHeart = !props.liked ? '🤍' : '❤️';
-  const convertLike = () => {
-    const updatingChatMessage = {
-      id: props.id,
-      sender: props.sender,
-      body: props.body,
-      liked: !props.liked,
-    };
-    props.updateChat(updatingChatMessage);
+  const [liked, setLike] = useState(false);
+  const changeHeart = !liked ? '🤍' : '❤️';
+  const changeLiked = () => {
+    return setLike(!liked);
   };
+
   return (
     <div className="chat-entry local">
       <h2 className="entry-name">{props.sender}</h2>
@@ -22,7 +18,7 @@ const ChatEntry = (props) => {
         <p className="entry-time">
           <TimeStamp time={props.timeStamp}> years ago</TimeStamp>
         </p>
-        <button onClick={convertLike} className="like">
+        <button onClick={changeLiked} className="like">
           {changeHeart}
         </button>
       </section>
