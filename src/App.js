@@ -5,16 +5,34 @@ import ChatLog from './components/ChatLog';
 
 const App = () => {
   console.log(chatMessages);
-  const [liked, setLiked] = useState(0);
-  const countLikes = () => {};
+  const [chats, setChatState] = useState(chatMessages);
+
+  const updateChatLiked = (id) => {
+    const newChats = chats.map((chat) => {
+      if (chat.id === id) {
+        chat.liked = !chat.liked;
+      }
+      return newChats;
+    });
+    setChatState(newChats);
+  };
+
+  const sumLikes = () => {
+    let filteredChats = chats.filter(sumLikesHelper);
+    return filteredChats.length;
+  };
+  function sumLikesHelper(likes) {
+    return chats.likes === true;
+  }
+
   return (
     <div id="App">
       <header>
-        <h1>Chatty chats</h1>
-        <h3> {countLikes} </h3>
+        <h1>Chats</h1>
+        <h3>{sumLikes()} ❤️'s</h3>
       </header>
       <main>
-        <ChatLog entries={chatMessages}></ChatLog>
+        <ChatLog chats={chats} updateChat={updateChatLiked(chats.id)}></ChatLog>
       </main>
     </div>
   );

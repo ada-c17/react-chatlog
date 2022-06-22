@@ -1,8 +1,8 @@
 import React from 'react';
 import ChatEntry from './ChatEntry';
 
-const ChatLog = ({ entries }) => {
-  return entries.map((chat) => {
+const ChatLog = ({ chats }) => {
+  return chats.map((chat) => {
     return (
       <ChatEntry
         sender={chat.sender}
@@ -10,6 +10,8 @@ const ChatLog = ({ entries }) => {
         timeStamp={chat.timeStamp}
         id={chat.id}
         key={chat.id}
+        liked={chat.liked}
+        updateChatState={chat.chatState}
       />
     );
   });
