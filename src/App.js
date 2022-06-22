@@ -8,7 +8,7 @@ const App = () => {
   const [entries, setEntries] = useState(chatMessages);
 
   const updateLikeMessageFn = (id) => {
-    console.log('todo: update like for id');
+    // console.log('todo: update like for id');
 
     const nextEntriesData = entries.map((entry) => {
       const nextEntry = { ...entry };
