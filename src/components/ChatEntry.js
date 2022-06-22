@@ -8,7 +8,7 @@ const ChatEntry = (props) => {
   const sender = props.sender;
   const body = props.body;
   const timeStamp = props.timeStamp;
-  const liked = props.liked;
+  // const liked = props.liked;
 
   // add behavior to like button
   const onLikeButtonClick = () => {
@@ -17,10 +17,13 @@ const ChatEntry = (props) => {
       sender: sender,
       body: body,
       timeStamp: timeStamp,
-      liked: !liked
+      liked: !props.liked
     }
     props.onUpdate(updatedMessage);
+    console.log("i'm in onLikeButtonClick!")
   }
+
+  const likeSymbol = props.liked ? "❤️" : "🤍";
 
   // return statements; check if messages local or remote
   if (props.sender === "Vladimir") {
@@ -30,7 +33,7 @@ const ChatEntry = (props) => {
         <section className="entry-bubble">
           <p>{body}</p>
           <p className="entry-time">{timeStamp}</p>
-          <button className="like">🤍</button>
+          <button className="like" onClick={onLikeButtonClick}>{likeSymbol}</button>
         </section>
       </div>
     );
@@ -41,7 +44,7 @@ const ChatEntry = (props) => {
         <section className="entry-bubble">
           <p>{body}</p>
           <p className="entry-time">{timeStamp}</p>
-          <button className="like">🤍</button>
+          <button className="like" onClick={onLikeButtonClick}>{likeSymbol}</button>
         </section>
       </div>
     );
