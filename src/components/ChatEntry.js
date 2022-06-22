@@ -13,7 +13,9 @@ const ChatEntry = ({ sender, body, timeStamp }) => {
           <TimeStamp time={timeStamp} />
         </p>
         <button className="like">🤍</button>
-        {/* <button onClick={() => printMessage()} className="like">🤍</button> */}
+        {/* <button onClick={() => printMessage()} className="like"> */}
+        🤍
+        {/* </button> */}
       </section>
     </div>
   );
