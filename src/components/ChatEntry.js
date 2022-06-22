@@ -1,22 +1,35 @@
 import React from 'react';
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 
-const ChatEntry = (props) => {
+const ChatEntry = ({id, sender, body, timeStamp, liked, updateLikes, updateHearts}) => {
+  const changeLike = () => {
+    updateLikes(id);
+  }
+
+  const heartType = liked ? '❤️' : '🤍';
+  const messageType = sender === 'Vladimir' ? 'chat-entry local' : 'chat-entry remote';
+  const timeAgo = moment.utc(timeStamp).startOf('day').fromNow();
+
+
   return (
-    <div className="chat-entry local">
-      <h2 className="entry-name">Replace with name of sender</h2>
+    <div className={messageType}>
+      <h2 className="entry-name">{sender}</h2>
       <section className="entry-bubble">
-        <p>Replace with body of ChatEntry</p>
-        <p className="entry-time">Replace with TimeStamp component</p>
-        <button className="like">🤍</button>
+        <p>{body}</p>
+        <p className="entry-time">{timeAgo}</p>
+        <button className="like" onClick={changeLike}>{heartType}</button>
       </section>
     </div>
   );
 };
 
 ChatEntry.propTypes = {
-  //Fill with correct proptypes
+  sender: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  timestamp: PropTypes.string.isRequired,
+  liked: PropTypes.bool.isRequired
 };
 
 export default ChatEntry;
