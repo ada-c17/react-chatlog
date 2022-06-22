@@ -1,16 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
-import chatMessages from './data/messages.json';
+import messages from './data/messages.json';
+import ChatLog from './components/ChatLog.js';
 
 const App = () => {
+  const [likeCount, updateCount] = useState(0);
+
+  const updateCountFunction = (addition) => {
+    updateCount(likeCount + addition);
+  };
+
   return (
     <div id="App">
       <header>
         <h1>Application title</h1>
+        <h2>liked messages: {likeCount} ❤️s</h2>
       </header>
       <main>
-        {/* Wave 01: Render one ChatEntry component
-        Wave 02: Render ChatLog component */}
+        <ChatLog entries={messages} updateFunc={updateCountFunction}></ChatLog>
       </main>
     </div>
   );
