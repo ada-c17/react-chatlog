@@ -13,6 +13,8 @@ const ChatLog = (props) => {
         liked={entry.liked}
         timeStamp={entry.timeStamp}
         setLikeCallback={props.setLikeCallback}
+        localColor={props.localColor}
+        remoteColor={props.remoteColor}
       />
     );
   });
@@ -22,5 +24,7 @@ const ChatLog = (props) => {
 ChatLog.propTypes = {
   entries: PropTypes.array.isRequired,
   setLikeCallback: PropTypes.func.isRequired,
+  localColor: PropTypes.string.isRequired,
+  remoteColor: PropTypes.string.isRequired,
 };
 export default ChatLog;
