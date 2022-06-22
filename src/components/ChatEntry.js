@@ -5,7 +5,7 @@ import TimeStamp from './TimeStamp';
 
 const ChatEntry = (props) => {
   const messageAlign =
-    props.sender === 'Vladimir' ? 'chat-entry local' : 'chat-entry remote';
+    props.sender === 'Estragon' ? 'chat-entry remote' : 'chat-entry local';
 
   const onLikeButtonClick = () => {
     const updatedData = {
