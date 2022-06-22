@@ -17,11 +17,12 @@ const App = () => {
   const handleLikes = (id) => {
     const newEntries = [];
     for (const entry of entries) {
-      if (entry.id === id) {
-        entry.liked = !entry.liked;
-        likeCounter(entry.liked);
+      const newEntry = { ...entry };
+      if (newEntry.id === id) {
+        newEntry.liked = !newEntry.liked;
+        likeCounter(newEntry.liked);
       }
-      newEntries.push(entry);
+      newEntries.push(newEntry);
     }
     setEntries(newEntries);
   };
