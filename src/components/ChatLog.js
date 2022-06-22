@@ -2,12 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ChatEntry from './ChatEntry.js';
 
+/**
+ *
+ * Component for an array[] of all individual chat messages
+ *
+ * @component
+ *
+ */
+
 const ChatLog = (props) => {
   const chatEntryComponents = props.entries.map((entry) => {
     return (
-      <div key={entry.id}>
+      <div>
         <ChatEntry
-          // key={entry.id}
+          key={entry.id}
           id={entry.id}
           sender={entry.sender}
           body={entry.body}
@@ -22,6 +30,9 @@ const ChatLog = (props) => {
 };
 
 ChatLog.propTypes = {
+  /**
+   * entries[] of all chat entries
+   */
   entries: PropTypes.array.isRequired,
 };
 

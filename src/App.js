@@ -4,6 +4,14 @@ import ChatLog from './components/ChatLog.js';
 import chatMessages from './data/messages.json';
 import { useState } from 'react';
 
+/**
+ *
+ * Parent component that renders ChatLog
+ *
+ * @component
+ *
+ */
+
 const App = () => {
   const [entriesData, setEntries] = useState(chatMessages);
 
@@ -32,7 +40,7 @@ const App = () => {
   return (
     <div id="App">
       <header>
-        <h1>Chat Log</h1>
+        <h1>Chat between Vladimir and Estragon</h1>
         <h2>{likeCount()} ❤️s </h2>
       </header>
       <main className="widget">
