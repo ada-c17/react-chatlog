@@ -29,6 +29,9 @@ describe('Wave 03: clicking like button and rendering App', () => {
 
     // click the first button
     fireEvent.click(firstButton)
+
+    console.log(firstButton.innerHTML);
+
     expect(firstButton.innerHTML).toEqual('❤️')
 
     // check that all other buttons haven't changed

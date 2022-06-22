@@ -1,23 +1,49 @@
-import React from 'react';
+// import React from 'react';
 import './App.css';
 import chatMessages from './data/messages.json';
-// import ChatEntry from './components/ChatEntry';
 import ChatLog from './components/ChatLog';
-//import TimeStamp from './components/TimeStamp';
+import {useState} from 'react';
+
 
 const App = () => {
+
+  const [updateLike, setUpdateLike] = useState(chatMessages);
+  
+  const [likeCount, setLikeCount] = useState(0);
+
+  const setLikeUpdateFn = (id) => {
+    console.log('todo: update heart for id', id);
+
+    let likeCount = 0;
+
+    const newLikeData = updateLike.map((entry) => {
+      const newLikes = {...entry};
+      if(newLikes.id === id) {
+        newLikes.liked = !newLikes.liked;
+      }
+
+      if (newLikes.liked) {
+        likeCount += 1;
+      }
+      return newLikes;
+    })
+
+    console.log(likeCount);
+    setLikeCount(likeCount);
+
+    setUpdateLike(newLikeData);
+  };
+
   return (
     <div id="App">
       <header>
-        <h1>2 💙s</h1>
+        <h1>Chat between Vladimir and Estragon</h1>
+        <p>{likeCount} ❤️s</p>
       </header>
       <main>
         {/* Wave 01: Render one ChatEntry component
         Wave 02: Render ChatLog component */}
-        <ChatLog entries={chatMessages}/>
-        {/* <ChatEntry sender={chatMessages[0].sender} body={chatMessages[0].body} timeStamp={chatMessages[0].timeStamp}/> */}
-        {/* <ChatEntry sender={chatMessages[1].sender} body={chatMessages[1].body} timeStamp={chatMessages[1].timeStamp}/> */}
-        {/* <ChatEntry sender={chatMessages[2].sender} body={chatMessages[2].body} timeStamp={chatMessages[2].timeStamp}/> */}
+        <ChatLog entries={updateLike} setLikeUpdateCallBack={setLikeUpdateFn}/>
       </main>
     </div>
   );
