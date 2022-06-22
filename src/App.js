@@ -11,7 +11,7 @@ const App = () => {
         <h1>Chatty chats</h1>
       </header>
       <main>
-        <ChatLog chats={chatMessages}></ChatLog>
+        <ChatLog entries={chatMessages}></ChatLog>
       </main>
     </div>
   );
