@@ -45,6 +45,15 @@
   margin: 1em
 }
 
+#likeCount {
+  background-color: #e0ffff;
+  color: black;
+  font-weight: bold;
+  font-size: 1.1em;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
 #App span {
   display: inline-block
 }
