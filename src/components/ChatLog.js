@@ -8,12 +8,12 @@ import './ChatLog.css';
 const ChatLog = (props) => {
   const entries = props.entries.map(entry => {
     return (
-      <section>
+      <section key={entry.id}>
         <ChatEntry
           id={entry.id}
           sender={entry.sender}
           body={entry.body}
-          timeStamp={<TimeStamp time={entry.timeStamp} />}
+          timeStamp={entry.timeStamp}
           liked={entry.liked}
           onUpdate={props.onUpdateChatLogData}
         ></ChatEntry>

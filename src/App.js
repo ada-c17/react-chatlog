@@ -21,6 +21,19 @@ const App = () => {
     });
   setChatData(messages)
   }
+
+  const getTotalLikes = () => {
+    let totalLikes = 0;
+    for (const message of chatData) {
+      if (message.liked === true) {
+        totalLikes++;
+      }
+    }
+    return totalLikes;
+  }
+
+  const numberOfLikes = getTotalLikes(); 
+  console.log(`number of likes = ${numberOfLikes}`);
   
   return (
     <div id="App">
@@ -28,11 +41,6 @@ const App = () => {
         <h1>Chat between Vladimir and Estragon 🤖</h1>
       </header>
       <main>
-        {/* <ChatEntry
-        sender="Chidi"
-        body="open the door or i'm gonna throw rocks at ur window"
-        timeStamp={<TimeStamp time='2016-05-18T22:12:03Z'/>}
-        ></ChatEntry> */}
         <ChatLog
         entries={chatData}
         onUpdateChatLogData={updateChatData}
