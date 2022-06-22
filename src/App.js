@@ -6,7 +6,6 @@ import ChatLog from './components/ChatLog';
 
 
 const App = () => {
-  console.log('value of chatMessages',chatMessages);
   const [entries, setEntries] = useState(chatMessages);
 
   const updateLike = (id) => {
