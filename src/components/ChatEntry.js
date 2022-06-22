@@ -1,9 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp.js';
 
 const ChatEntry = (props) => {
+  let liked = props.liked;
+  const [isLiked, toggleLike] = useState(props.liked);
+
+  const updateLikeFunction = () => {
+    if (isLiked) {
+      liked = false;
+      props.updateFunc(-1);
+    } else {
+      liked = true;
+      props.updateFunc(+1);
+    }
+    toggleLike(liked);
+  };
+
+  let likeSymbol = isLiked ? '❤️' : '🤍';
+
   return (
     <div className="chat-entry local">
       <h2 className="entry-name">{props.sender}</h2>
@@ -12,7 +28,9 @@ const ChatEntry = (props) => {
         <p className="entry-time">
           <TimeStamp time={props.timeStamp}></TimeStamp>
         </p>
-        <button className="like">🤍</button>
+        <button onClick={updateLikeFunction} className="like">
+          {likeSymbol}
+        </button>
       </section>
     </div>
   );

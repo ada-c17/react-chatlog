@@ -7,9 +7,13 @@ export const ChatLog = (props) => {
   const messageList = props.entries.map((message) => {
     return (
       <ChatEntry
+        key={message.id}
+        id={message.id}
         sender={message.sender}
         timeStamp={message.timeStamp}
         body={message.body}
+        liked={message.liked}
+        updateFunc={props.updateFunc}
       />
     );
   });
