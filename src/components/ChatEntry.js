@@ -2,27 +2,13 @@ import React from 'react';
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp.js';
-import { useState } from 'react';
+// import { useState } from 'react';
 
 const ChatEntry = (props) => {
-  let bubbleSender = 'chat-entry';
-  if (props.sender === props.senderOne) {
-    bubbleSender += ' local';
-  } else {
-    bubbleSender += ' remote';
+  let bubbleSender = 'chat-entry local';
+  if (props.sender === props.senderRemote) {
+    bubbleSender = 'chat-entry remote';
   }
-
-  const [likeStatus, setLikeStatus] = useState('🤍');
-
-  const updateLikes = () => {
-    if (likeStatus === '🤍') {
-      setLikeStatus('❤️');
-      props.addLikesCallback();
-    } else {
-      setLikeStatus('🤍');
-      props.removeLikesCallback();
-    }
-  };
 
   return (
     <div className={bubbleSender}>
@@ -32,8 +18,11 @@ const ChatEntry = (props) => {
         <p className="entry-time">
           <TimeStamp time={props.timeStamp} />
         </p>
-        <button className="like" onClick={updateLikes}>
-          {likeStatus}
+        <button
+          className="like"
+          onClick={() => props.updateLikesCallback(props.id)}
+        >
+          {props.emoji}
         </button>
       </section>
     </div>
@@ -42,10 +31,11 @@ const ChatEntry = (props) => {
 
 ChatEntry.propTypes = {
   sender: PropTypes.string.isRequired,
-  timeStamp: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
-  addLikesCallback: PropTypes.func.isRequired,
-  removeLikesCallback: PropTypes.func.isRequired,
+  timeStamp: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  updateLikesCallback: PropTypes.func.isRequired,
+  emoji: PropTypes.string.isRequired,
 };
 
 export default ChatEntry;

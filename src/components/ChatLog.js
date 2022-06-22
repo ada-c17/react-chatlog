@@ -8,12 +8,19 @@ const ChatLog = (props) => {
     return (
       <ChatEntry
         key={entry.id}
+        id={entry.id}
         sender={entry.sender}
         body={entry.body}
         timeStamp={entry.timeStamp}
+        updateLikesCallback={props.updateLikesCallback}
         addLikesCallback={props.addLikesCallback}
         removeLikesCallback={props.removeLikesCallback}
-        senderOne={props.senderOne}
+        updateEmojiRed={props.updateEmojiRed}
+        updateEmojiWhite={props.updateEmojiWhite}
+        liked={props.liked}
+        senderLocal={props.senderLocal}
+        senderRemote={props.senderRemote}
+        emoji={props.emoji}
       />
     );
   });
@@ -23,8 +30,5 @@ const ChatLog = (props) => {
 
 ChatLog.propTypes = {
   entries: PropTypes.array.isRequired,
-  addLikesCallback: PropTypes.func.isRequired,
-  removeLikesCallback: PropTypes.func.isRequired,
-  senderOne: PropTypes.string.isRequired,
 };
 export default ChatLog;
