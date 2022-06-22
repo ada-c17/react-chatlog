@@ -26,7 +26,7 @@ const ChatEntry = (props) => {
   const likeSymbol = props.liked ? "❤️" : "🤍";
 
   // return statements; check if messages local or remote
-  if (props.sender === "Vladimir") {
+  if (props.sender === "Chidi🐈") {
     return (
       <div className="chat-entry local">
         <h2 className="entry-name">{sender}</h2>

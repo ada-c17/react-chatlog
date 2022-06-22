@@ -1,8 +1,6 @@
 import React from 'react';
 import './App.css';
-import ChatEntry from './components/ChatEntry';
 import ChatLog from './components/ChatLog';
-import TimeStamp from './components/TimeStamp'
 import { useState } from 'react';
 import chatJson from './data/messages.json';
 
@@ -37,7 +35,7 @@ const App = () => {
   return (
     <div id="App">
       <header>
-        <h1>Chat between Vladimir and Estragon 🤖</h1>
+        <h1>Chat between Chidi🐈 and Amel👩🏽‍💻</h1>
         <h2>{numberOfLikes} ❤️s</h2>
       </header>
       <main>
