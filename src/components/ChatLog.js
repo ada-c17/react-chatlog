@@ -30,13 +30,13 @@ const ChatLog = (props) => {
 ChatEntry.propTypes = {
   entries: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.number,
       sender: PropTypes.string.isRequired,
       body: PropTypes.string.isRequired,
       timeStamp: PropTypes.string.isRequired,
       liked: PropTypes.bool.isRequired,
     })
   ),
-  updateHeartColorCallback: PropTypes.func.isRequired,
+  updateHeartColorCallback: PropTypes.func,
 };
 export default ChatLog;
