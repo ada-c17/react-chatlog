@@ -20,13 +20,13 @@ const App = () => {
   };
 
   const countLikes = (messages) => {
-    let count = 0;
+    let likes = 0;
     messages.forEach((message) => {
       if (message.liked) {
-        count += 1;
+        likes++;
       }
     });
-    return count;
+    return likes;
   };
 
   const likes = countLikes(messageData);
