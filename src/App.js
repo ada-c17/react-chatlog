@@ -5,23 +5,21 @@ import ChatLog from './components/ChatLog';
 import { useState } from 'react';
 
 const App = () => {
-  const [likedState, setLikedState] = useState(chatMessages);
+  const [messageState, setMessageState] = useState(chatMessages);
+
   const likeAction = (id) => {
-    const newLikes = [...likedState];
-    for (let likes of newLikes) {
-      if (likes.id === id) {
-        if (likes.liked === true) {
-          likes.liked = false;
-        } else if (likes.liked === false) {
-          likes.liked = true;
-        }
+    const newMsgData = messageState.map((msg) => {
+      const newMsg = { ...msg };
+      if (newMsg.id === id) {
+        newMsg.liked = !newMsg.liked;
       }
-    }
-    setLikedState(newLikes);
+      return newMsg;
+    });
+    setMessageState(newMsgData);
   };
 
   let likedCount = 0;
-  for (const liked of chatMessages) {
+  for (const liked of messageState) {
     if (liked.liked === true) {
       likedCount += 1;
     }
@@ -34,7 +32,7 @@ const App = () => {
         <p>{likedCount} ❤️s</p>
       </header>
       <main>
-        <ChatLog entries={chatMessages} setLikesCallback={likeAction} />
+        <ChatLog entries={messageState} setLikesCallback={likeAction} />
       </main>
     </div>
   );
