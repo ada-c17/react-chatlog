@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp';
@@ -11,13 +11,17 @@ const ChatEntry = (props) => {
   const timeStamp = props.timeStamp;
   const liked = props.liked;
   const setLikedCallback = props.setLikedCallback;
+  const localSender = props.localSender;
 
   const likeMessageFunc = () => {
     setLikedCallback(props.id);
   };
 
+  const senderStatus =
+    sender === localSender ? 'chat-entry local' : 'chat-entry remote';
+
   return (
-    <div className="chat-entry local">
+    <div className={senderStatus}>
       <h2 className="entry-name"> {sender} </h2>
       <section className="entry-bubble">
         <p>{body}</p>

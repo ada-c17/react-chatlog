@@ -29,6 +29,7 @@ const App = () => {
     }
     return count > 1 ? count + ' ❤️s' : count + ' ❤️';
   };
+  const localSender = chatMessages[0].sender;
 
   return (
     <div id="App">
@@ -36,7 +37,11 @@ const App = () => {
         <h1>{countLike()} </h1>
       </header>
       <main>
-        <ChatLog entries={entries} setLikedCallback={updateLikeMessageFn} />
+        <ChatLog
+          entries={entries}
+          setLikedCallback={updateLikeMessageFn}
+          localSender={localSender}
+        />
       </main>
     </div>
   );
