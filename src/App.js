@@ -33,12 +33,12 @@ const App = () => {
   }
 
   const numberOfLikes = getTotalLikes(); 
-  console.log(`number of likes = ${numberOfLikes}`);
   
   return (
     <div id="App">
       <header>
         <h1>Chat between Vladimir and Estragon 🤖</h1>
+        <h2>{numberOfLikes} ❤️s</h2>
       </header>
       <main>
         <ChatLog
