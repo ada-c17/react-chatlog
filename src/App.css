@@ -2,6 +2,10 @@
   background-color: #87cefa;
 }
 
+.likes-count {
+  color: black;
+}
+
 #App header {
   background-color: #222;
   color: #fff;
@@ -71,4 +75,9 @@
 
 .purple {
   color: purple
+}
+
+.color-component {
+  display: flex;
+  justify-content: space-between;
 }
