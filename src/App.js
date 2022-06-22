@@ -39,9 +39,9 @@ const App = () => {
     <div id="App">
       <header>
         <h1>Chat between Vladimir and Estragon</h1>
+        <section>{likesCount} ❤️s</section>
       </header>
       <main>
-        <h2>Number of likes: {likesCount}</h2>
         <ChatLog likesCallback={changeLike} entries={messages}></ChatLog>
       </main>
     </div>
