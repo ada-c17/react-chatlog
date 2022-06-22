@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import { useState } from 'react';
 
 const ColorChoice = ({ setColorCallback, color, sender }) => {
   return (
     <section className="widget">
-      <h3 class={color}>{sender}'s color:</h3>
+      <h3 className={color}>{sender}'s color:</h3>
       <button onClick={() => setColorCallback('red')}>🔴</button>
       <button onClick={() => setColorCallback('orange')}>🟠</button>
       <button onClick={() => setColorCallback('yellow')}>🟡</button>
@@ -18,6 +17,8 @@ const ColorChoice = ({ setColorCallback, color, sender }) => {
 
 ColorChoice.propTypes = {
   setColorCallback: PropTypes.func.isRequired,
+  color: PropTypes.string.isRequired,
+  sender: PropTypes.string.isRequired,
 };
 
 export default ColorChoice;
