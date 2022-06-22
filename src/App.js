@@ -71,7 +71,9 @@ const App = () => {
         </h1>
         <div className="heart-count">
           <div>
-            <div>{`${localUser}'s color:`}</div>
+            <div
+              className={userState ? `${colorSelection}` : ''}
+            >{`${localUser}'s color:`}</div>
             <div className="button-color">
               <ColorChoice
                 userLocal={localUser}
@@ -115,7 +117,9 @@ const App = () => {
           <div>{`${likedCount} ❤️s`}</div>
 
           <div>
-            <div>{`${remoteUser}'s color:`}</div>
+            <div
+              className={!userState ? `${colorSelection}` : ''}
+            >{`${remoteUser}'s color:`}</div>
             <div className="button-color">
               <ColorChoice
                 userLocal={remoteUser}
