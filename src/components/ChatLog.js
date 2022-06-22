@@ -6,17 +6,17 @@ import PropTypes from 'prop-types';
 const ChatLog = (props) => {
   const chatComponents = props.entries.map((entry) => {
     return (
-      // <li key={entry.id}>
-      <ChatEntry
+      <li>
         key={entry.id}
-        id={entry.id}
-        sender={entry.sender}
-        body={entry.body}
-        timeStamp={entry.timeStamp}
-        liked={entry.liked}
-        onLike={props.onLike}
-      />
-      // </li>
+        <ChatEntry
+          id={entry.id}
+          sender={entry.sender}
+          body={entry.body}
+          timeStamp={entry.timeStamp}
+          liked={entry.liked}
+          onLike={props.onLike}
+        />
+      </li>
     );
   });
 
