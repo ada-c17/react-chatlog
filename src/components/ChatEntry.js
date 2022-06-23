@@ -3,7 +3,23 @@ import './ChatEntry.css';
 import TimeStamp from './TimeStamp';
 import PropTypes from 'prop-types';
 
-const ChatEntry = ({ sender, body, timeStamp }) => {
+const ChatEntry = ({ id, sender, body, timeStamp, liked, onUpdate }) => {
+  //Brains
+  const handleChangeHeart = () => {
+    const updatedEntry = {
+      id: id,
+      sender: sender,
+      body: body,
+      timeStamp: timeStamp,
+      liked: !liked,
+    };
+    onUpdate(updatedEntry);
+  };
+
+  //Beauty
+  const renderHeart = () => {
+    return liked ? '❤️' : '🤍';
+  };
   return (
     <div className="chat-entry local">
       <h2 className="entry-name">{sender}</h2>
@@ -12,10 +28,9 @@ const ChatEntry = ({ sender, body, timeStamp }) => {
         <p className="entry-time">
           <TimeStamp time={timeStamp} />
         </p>
-        <button className="like">🤍</button>
-        {/* <button onClick={() => printMessage()} className="like"> */}
-        🤍
-        {/* </button> */}
+        <button onClick={handleChangeHeart} className="like">
+          {renderHeart()}
+        </button>
       </section>
     </div>
   );
