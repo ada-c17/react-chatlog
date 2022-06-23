@@ -1,12 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
+import TimeStamp from './TimeStamp';
 
 const ChatEntry = ({id, sender, body, timeStamp, liked, onUpdate}) => {
+  const [like, setLike] = useState(liked);
+  const heartFill = like?  '❤️': '🤍';
+  
   const upDate=()=>{
-    onUpdate(id)
+    //onUpdate(id)
+    setLike(!like)
   }
-  const like= liked? '❤️': '🤍';
+  //const like = liked?  '🤍': '❤️';
+  // const [like, setLike] = useState(liked);
+  // const heartFill = like === true ? '❤️' : '🤍';
+
   //const passTime= 2022 - timeStamp.getYear();
   return (
     <div className="chat-entry local" key={id}>
@@ -15,8 +23,9 @@ const ChatEntry = ({id, sender, body, timeStamp, liked, onUpdate}) => {
         <p>
           {body}
         </p>
-        <p className="entry-time">{2022-timeStamp.getYear} years ago</p>
-        <button className='like' onClick={upDate}>{like}</button>
+        
+        <p className="entry-time"><TimeStamp time={timeStamp}></TimeStamp></p>
+        <button className='like' onClick={upDate}>{heartFill}</button>
       </section>
     </div>
   );

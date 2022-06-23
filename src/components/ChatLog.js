@@ -21,7 +21,6 @@ const ChatLog = (props) => {
 
     return (
         <>
-            
             <section>
                 <ul className="container">{chatEntryArray}</ul>
             </section>
