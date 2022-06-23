@@ -8,15 +8,30 @@ const ChatEntry = (props) => {
   const onLikeButtonClick = () => {
     const updatedMessage = {
       id: props.id,
-      sender: props.name,
+      sender: props.sender,
       body: props.body,
       timeStamp: props.timeStamp,
       liked: !props.liked,
     }
     props.onUpdate(updatedMessage)
+    console.log(!props.liked, 'I was clicked and am coming from the button')
+    const button = document.getElementById('button');
+    if (!props.liked === true){
+      button.textContent = '🌻'
+    } else {
+      button.textContent = '🤍'
+    }
+    
   }
   // const button = document.getElementById('button');
-  // const like = props.liked ? button.textContent = '🌻' : button.textContent = '🤍';
+
+  // this is not right.....
+  // const emojiChange = props.liked ? button.textContent = '🌻' : button.textContent = '🤍';
+  // experimenting
+  // const emojiChange = props.liked ? 'green' : 'red';
+
+  // this is acting weird
+  // console.log(props.liked, 'I was clicked and am coming from chat entry')
 
   return (
     <div className="chat-entry local">
@@ -24,7 +39,7 @@ const ChatEntry = (props) => {
       <section className="entry-bubble">
         <p>{props.body}</p>
         <p className="entry-time">{props.timeStamp}</p>
-        <button className="like" onClick={onLikeButtonClick} id="button">🤍</button>
+        <button className="emojiChange" onClick={onLikeButtonClick} id="button">🤍</button>
       </section>
     </div>
   );

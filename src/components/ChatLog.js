@@ -4,10 +4,11 @@ import './ChatEntry.css';
 // import PropTypes from 'prop-types';
 import ChatEntry from './ChatEntry';
 
+// changed for entries to props to see if this was the bug
 const ChatLog = (entries) => {
     const messageComponents = entries.messages.map((message,index) => {
         return(
-            <div key={index}>
+            <div key={message.id}>
                 <ChatEntry 
                     id={message.id}
                     sender={message.sender} 
