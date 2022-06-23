@@ -3,14 +3,6 @@ import './ChatEntry.css';
 import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp';
 
-
-// liked boolean prop type needs to be added
-// if liked = true change the state to (❤️)  filled heart
-// else false is empty heart (🤍). which is default
-// count when liked occurs
-
- //  '🤍' : '❤️';
-
 const ChatEntry = (props) => {
   const heartIcon =  (props.liked) ? '❤️' : '🤍';
   const messageAlign = (props.sender === 'Vladimir') ? 'remote' : 'local';
@@ -26,9 +18,7 @@ const ChatEntry = (props) => {
   );
 };
 
-// add id to chatEntry
 ChatEntry.propTypes = {
-  //Fill with correct proptypes
   id: PropTypes.number.isRequired,
   sender: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,

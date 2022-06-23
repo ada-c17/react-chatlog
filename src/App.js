@@ -4,15 +4,10 @@ import chatMessages from './data/messages.json';
 import ChatLog from './components/ChatLog'
 
 const App = () => {
-
-  // if entry id is liked,
-  // change the string of the element by class name 
+  
   const [entries, setEntries] = useState(chatMessages);
-  //  '🤍' : '❤️';
+
   const toggleLike = (id) => {
-    // adjust this function so that id is used
-    // if entry id liked is NOT false, 
-    // then set state of liked.id to '❤️'
     const entriesCopy = entries.map((entry) => {
       if (entry.id === id) {
         return   {

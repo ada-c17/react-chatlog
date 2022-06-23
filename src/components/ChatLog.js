@@ -2,10 +2,8 @@ import React from 'react';
 import ChatEntry from './ChatEntry';
 import PropTypes from 'prop-types';
 
- //  '🤍' : '❤️';
-
 const ChatLog = (props) => {
-    console.log(props)
+
     const chatComponents = props.entries.map((entry) => {
         return (
             <ChatEntry
@@ -23,7 +21,6 @@ const ChatLog = (props) => {
         <section className="chat-log">{chatComponents}</section>
     );
 };
-
 
 ChatLog.propTypes = {
     entries: PropTypes.arrayOf(PropTypes.object).isRequired,
