@@ -24,6 +24,16 @@ const App = () => {
     <div id="App">
       <header>
         <h1>ChatLog</h1>
+        <>
+          <h2>
+            Liked Messages:
+            {messages
+              .map((message) => {
+                return message.liked ? '❤️' : '';
+              })
+              .join('')}
+          </h2>
+        </>
       </header>
       <main>
         <ChatLog
