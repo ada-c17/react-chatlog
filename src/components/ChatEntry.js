@@ -6,8 +6,11 @@ import TimeStamp from './TimeStamp';
 const ChatEntry = (props) => {
   const [liked, setLike] = useState(false);
   const changeHeart = !liked ? '🤍' : '❤️';
-  const changeLiked = () => {
-    return setLike(!liked);
+  const changeLike = (id) => {
+    const likeState = setLike(!liked);
+    props.onChangeLike(id);
+
+    return likeState;
   };
 
   return (
@@ -18,7 +21,12 @@ const ChatEntry = (props) => {
         <p className="entry-time">
           <TimeStamp time={props.timeStamp}> years ago</TimeStamp>
         </p>
-        <button onClick={changeLiked} className="like">
+        <button
+          onClick={() => {
+            changeLike(props.id);
+          }}
+          className="like"
+        >
           {changeHeart}
         </button>
       </section>
@@ -33,7 +41,7 @@ ChatEntry.propTypes = {
   timeStamp: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   liked: PropTypes.bool.isRequired,
-  updateChat: PropTypes.func,
+  onChangeLike: PropTypes.func.isRequired,
 };
 
 export default ChatEntry;

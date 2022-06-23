@@ -1,8 +1,9 @@
-import React from 'react';
+import { React } from 'react';
 import ChatEntry from './ChatEntry';
+import PropTypes from 'prop-types';
 
-const ChatLog = ({ chats }) => {
-  return chats.map((chat) => {
+const ChatLog = (props) => {
+  const chatMessageArray = props.chatsMessages.map((chat) => {
     return (
       <ChatEntry
         sender={chat.sender}
@@ -11,10 +12,16 @@ const ChatLog = ({ chats }) => {
         id={chat.id}
         key={chat.id}
         liked={chat.liked}
-        updateChatState={chat.chatState}
+        onChangeLike={props.onChangeLike}
       />
     );
   });
+  return chatMessageArray;
+};
+
+ChatLog.propTypes = {
+  chatsMessages: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onChangeLike: PropTypes.func.isRequired,
 };
 
 export default ChatLog;
