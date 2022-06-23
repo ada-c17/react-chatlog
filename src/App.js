@@ -17,9 +17,7 @@ const App = () => {
     return setChatState(newData);
   };
   const sumLikes = () => {
-    console.log('Inside sumLikes');
     const likedTrue = chatsMessages.filter((chat) => {
-      //we only want to add the cat to the array if it's id does not equal the id of the cat we want to remove
       return chat.liked === true;
     });
     return likedTrue.length;
