@@ -8,13 +8,28 @@ import { useState } from 'react';
 const App = () => {
   const [messages, setMessages] = useState(messagesJSON);
 
+  const toggleHeartStatus = (id) => {
+    // console.log('In the toggleHeartStatus function!');
+    const newMessages = [];
+    for (const message of messages) {
+      if (message.id === id) {
+        message.liked = !message.liked;
+      }
+      newMessages.push(message);
+    }
+    setMessages(newMessages);
+  };
+
   return (
     <div id="App">
       <header>
         <h1>ChatLog</h1>
       </header>
       <main>
-        <ChatLog entries={messages}></ChatLog>
+        <ChatLog
+          entries={messages}
+          toggleHeartStatusCallback={toggleHeartStatus}
+        ></ChatLog>
       </main>
     </div>
   );

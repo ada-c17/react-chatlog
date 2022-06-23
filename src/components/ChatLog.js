@@ -6,9 +6,12 @@ const ChatLog = (props) => {
     return (
       <ChatEntry
         key={message.id}
+        id={message.id}
         sender={message.sender}
         body={message.body}
+        liked={message.liked}
         timeStamp={message.timeStamp}
+        toggleHeartStatusCallback={props.toggleHeartStatusCallback}
       ></ChatEntry>
     );
   });
