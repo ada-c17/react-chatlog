@@ -1,11 +1,13 @@
 import React from 'react';
 import './App.css';
-import chatMessages from './data/messages.json';
+import messages from './data/messages.json';
 import ChatEntry from './components/ChatEntry';
 import ChatLog from './components/ChatLog';
+import { useState } from 'react';
 
-const App = (props) => {
-  const firstChatMessage = chatMessages[0];
+const App = () => {
+  const firstChatMessage = messages[0];
+  // const [messages, setMessages] = useState(0);
   return (
     <div id="App">
       <header>
@@ -19,7 +21,7 @@ const App = (props) => {
           body={firstChatMessage.body}
           timeStamp={firstChatMessage.timeStamp}
         />
-        <ChatLog entries={chatMessages}></ChatLog>
+        <ChatLog entries={messages}></ChatLog>
       </main>
     </div>
   );
