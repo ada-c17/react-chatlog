@@ -2,7 +2,7 @@ import ChatEntry from './ChatEntry';
 import PropTypes from 'prop-types';
 
 const ChatLog = (props) => {
-  const allMessages = props.entries.map((message) => {
+  const messageComponents = props.entries.map((message) => {
     return (
       <ChatEntry
         key={message.id}
@@ -12,11 +12,11 @@ const ChatLog = (props) => {
       ></ChatEntry>
     );
   });
-  return <section>{allMessages}</section>;
+  return <section>{messageComponents}</section>;
 };
 
 ChatLog.propTypes = {
-  entries: PropTypes.objectOf(
+  entries: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       sender: PropTypes.string.isRequired,
