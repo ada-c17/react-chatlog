@@ -28,6 +28,7 @@ const ChatEntry = (props) => {
 };
 
 ChatEntry.propTypes = {
+  id: PropTypes.number,
   sender: PropTypes.string,
   body: PropTypes.string,
   timeStamp: PropTypes.string,
