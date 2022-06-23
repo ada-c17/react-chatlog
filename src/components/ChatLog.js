@@ -11,6 +11,11 @@ const ChatLog = (props) => {
     //   allMessages[index] = updatedMessage;
     //   props.setMessages(allMessages);
     // };
+
+    //optional: decide local and remote~~~~~~~~~~~~~
+    // console.log('Log', props.local);
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
     return (
       <li key={index}>
         <ChatEntry
@@ -20,6 +25,7 @@ const ChatLog = (props) => {
           timeStamp={chatMessage.timeStamp}
           liked={chatMessage.liked}
           heartToggling={props.heartToggling}
+          local={props.local}
         ></ChatEntry>
       </li>
     );

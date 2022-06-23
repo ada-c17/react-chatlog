@@ -6,8 +6,9 @@ const ChatEntry = (props) => {
   //display tomes as ..years ago
   let currentYear = new Date().getFullYear();
   let pastYear = parseInt(props.timeStamp.slice(0, 4));
-  console.log(pastYear);
+  // console.log(pastYear);
   const agoTime = currentYear - pastYear;
+  console.log(props.sender);
 
   //event handler for like button click
   const handleHeartClick = () => {
@@ -31,8 +32,14 @@ const ChatEntry = (props) => {
     </button>
   );
 
+  //optional decide local and remote~~~~~~~~~~~~~~~~~~~~~
+  const chatEntry = props.sender === props.local ? 'local' : 'remote';
+  // console.log('Entry', props.chatEntry);
+  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
   return (
-    <div className="chat-entry local">
+    // <div className="chat-entry local">
+    <div className={`chat-entry ${chatEntry}`}>
       <h2 className="entry-name">{props.sender}</h2>
       <section className="entry-bubble">
         <p>{props.body}</p>

@@ -24,32 +24,42 @@ const App = () => {
     setMessages(updatedMessages);
   };
 
-  //counting red hearts~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  const countingLikes = (messages) => {
-    let heartCount = 0;
-    for (const eachMessage of messages) {
-      if (eachMessage.liked) {
-        heartCount += 1;
-      }
+  let heartCount = 0;
+  for (const eachMessage of messages) {
+    if (eachMessage.liked) {
+      heartCount += 1;
     }
-    return heartCount;
-  };
-  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  // remove it later !!!!!!!!!!!!!!!!!!!!!
-  // console.log(chatEntryComp);
+  }
+
+  //optional:decide local and remote~~~~~~~~~~~~~~~~~~~~~~~~~
+  const local = chatMessages[0].sender;
+  let remote;
+  for (const eachMessage of chatMessages) {
+    if (eachMessage.sender !== local) {
+      remote = eachMessage.sender;
+    }
+  }
+  // console.log('App', local);
+  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
   return (
     <div id="App">
       <header>
         <h1>
-          Chat between {chatMessages[0]['sender']} and{' '}
-          {chatMessages[1]['sender']}
+          {/* Chat between {chatMessages[0]['sender']} and{' '}
+          {chatMessages[1]['sender']} */}
+          Chat between {local} and {remote}
         </h1>
-        <h2>{countingLikes}❤️s</h2>
+        <h2>{heartCount} ❤️s</h2>
       </header>
       <main>
         {/* Wave 01: Render one ChatEntry component
         // Wave 02: Render ChatLog component */}
-        <ChatLog entries={messages} heartToggling={heartToggling}></ChatLog>
+        <ChatLog
+          entries={messages}
+          heartToggling={heartToggling}
+          local={local}
+        ></ChatLog>
       </main>
     </div>
   );
