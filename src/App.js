@@ -6,7 +6,7 @@ import ChatLog from './components/ChatLog';
 import { useState } from 'react';
 
 const App = () => {
-  const firstChatMessage = messages[0];
+  const firstMessage = messages[0];
   // const [messages, setMessages] = useState(0);
   return (
     <div id="App">
@@ -17,9 +17,9 @@ const App = () => {
         {/* Wave 01: Render one ChatEntry component
         Wave 02: Render ChatLog component */}
         <ChatEntry
-          sender={firstChatMessage.sender}
-          body={firstChatMessage.body}
-          timeStamp={firstChatMessage.timeStamp}
+          sender={firstMessage.sender}
+          body={firstMessage.body}
+          timeStamp={firstMessage.timeStamp}
         />
         <ChatLog entries={messages}></ChatLog>
       </main>
