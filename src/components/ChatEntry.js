@@ -1,16 +1,10 @@
-import React from 'react';
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
-import { DateTime } from 'luxon';
+import TimeStamp from './TimeStamp';
 
 const ChatEntry = (props) => {
-  // const TimeStamp = (props) => {
-  //   const time = DateTime.fromISO(props.timeStamp);
-  //   const relative = time.toRelative();
-  //   return relative;
-  // };
   const heartToggle = () => {
-    console.log('to do: make red/white heart toggle');
+    props.heartCallback(props.id);
   };
 
   return (
@@ -18,8 +12,8 @@ const ChatEntry = (props) => {
       <h2 className="entry-name">{props.sender}</h2>
       <section className="entry-bubble">
         <p>{props.body}</p>
-        <p className="entry-time">{props.timeStamp}</p>
-        <button className="like" onClick={heartToggle}>🤍</button>
+        <TimeStamp className="entry-time" time={props.timeStamp}></TimeStamp>
+        <button className="like" onClick={heartToggle}>{props.liked ? '❤️' : '🤍' }</button>
       </section>
     </div>
   );
@@ -30,7 +24,7 @@ ChatEntry.propTypes = {
   sender: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   timeStamp: PropTypes.string.isRequired,
-  liked: PropTypes.bool
+  liked: PropTypes.bool,
 };
 
 export default ChatEntry;
