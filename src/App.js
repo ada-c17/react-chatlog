@@ -9,14 +9,14 @@ const App = () => {
   const [messages, setMessages] = useState(messagesJSON);
 
   const toggleHeartStatus = (id) => {
-    // console.log('In the toggleHeartStatus function!');
-    const newMessages = [];
-    for (const message of messages) {
+    console.log('In the toggleHeartStatus function!');
+
+    const newMessages = messages.map((message) => {
       if (message.id === id) {
-        message.liked = !message.liked;
+        return { ...message, liked: !message.liked };
       }
-      newMessages.push(message);
-    }
+      return message;
+    });
     setMessages(newMessages);
   };
 
