@@ -16,6 +16,9 @@ const App = () => {
     });
     setMessages(newMessages);
   };
+  const displayNumHearts = messages.filter(
+    (message) => message.liked === true
+  ).length;
 
   return (
     <div id="App">
@@ -23,12 +26,12 @@ const App = () => {
         <h1>ChatLog</h1>
         <>
           <h2>
-            Liked Messages:
-            {messages
+            {displayNumHearts}
+            {/* {messages
               .map((message) => {
                 return message.liked ? '❤️' : '';
               })
-              .join('')}
+              .join('')} */}
           </h2>
         </>
       </header>
