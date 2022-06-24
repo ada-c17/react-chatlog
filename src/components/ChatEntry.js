@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp';
 
 const ChatEntry = ({id, sender, body, timeStamp, liked, onUpdate}) => {
-  const [like, setLike] = useState(liked);
-  const heartFill = like?  '❤️': '🤍';
+  const [like, setLike] = useState(false);
+  const heartFill = like === true?  '❤️': '🤍';
   
-  const upDate=()=>{
-    //onUpdate(id)
+  const upDate=(e)=>{
+    console.log(e.target.innerHTML);
+    onUpdate(id)
     setLike(!like)
   }
   //const like = liked?  '🤍': '❤️';

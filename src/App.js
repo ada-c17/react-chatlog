@@ -5,11 +5,11 @@ import ChatLog from './components/ChatLog';
 
 function App() {
   const [entries, setEntries] = useState(chatData);
-
+  
   const onUpdate=(id) =>{
     const newEntry = entries.map((entry) => {
-      if (entry.id===id){
-        entry.liked= ! entry.liked;
+      if (entry.id === id){
+        entry.liked = !entry.liked;
       }
       return entry;
     });
@@ -28,7 +28,7 @@ function App() {
     <div id="App">
       <header>
         <h1>A ChatLog Demo by Poppy</h1>
-        <h2>{countHeart()}❤️s</h2>
+        <h2>{countHeart()} ❤️s</h2>
       </header>
       <main>
         <ChatLog entries={entries} onUpdate={onUpdate}> </ChatLog>
