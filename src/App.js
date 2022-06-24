@@ -1,16 +1,33 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import chatMessages from './data/messages.json';
+import ChatLog from './components/ChatLog';
 
 const App = () => {
+  const [messageData, setMessageData] = useState(chatMessages)
+
+  const updateMessageData = (updatedMessage) => {
+    const messages = messageData.map((message) => {
+      if (message.id === updatedMessage.id) {
+        return updatedMessage;
+      } else {
+        return message;
+      }
+    });
+
+    setMessageData(messages)
+  }
+
   return (
-    <div id="App">
+    <div id="App" >
       <header>
-        <h1>Application title</h1>
+        <h1>Chatlog</h1>
       </header>
-      <main>
-        {/* Wave 01: Render one ChatEntry component
-        Wave 02: Render ChatLog component */}
+      <main className="chat-log">
+        <ChatLog 
+          messages={messageData}
+          onUpdateMessage={updateMessageData}
+        ></ChatLog>
       </main>
     </div>
   );
