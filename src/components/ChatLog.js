@@ -2,7 +2,7 @@ import ChatEntry from './ChatEntry';
 import PropTypes from 'prop-types';
 
 const ChatLog = (props) => {
-  const messageComponents = props.entries.map((message) => {
+  const messages = props.entries.map((message) => {
     return (
       <ChatEntry
         key={message.id}
@@ -15,7 +15,7 @@ const ChatLog = (props) => {
       ></ChatEntry>
     );
   });
-  return <section>{messageComponents}</section>;
+  return <section>{messages}</section>;
 };
 
 ChatLog.propTypes = {
@@ -28,6 +28,7 @@ ChatLog.propTypes = {
       liked: PropTypes.bool.isRequired,
     })
   ),
+  onToggleHeartStatus: PropTypes.func.isRequired,
 };
 
 export default ChatLog;
