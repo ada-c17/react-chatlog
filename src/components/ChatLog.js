@@ -4,9 +4,11 @@ import './ChatEntry.css';
 // import PropTypes from 'prop-types';
 import ChatEntry from './ChatEntry';
 
-// changed for entries to props to see if this was the bug
-const ChatLog = (entries) => {
-    const messageComponents = entries.messages.map((message,index) => {
+const ChatLog = ({messages, onUpdateMessage}) => {
+    // console.log(messages)
+
+
+    const messageComponents = messages.map((message,index) => {
         return(
             <div key={message.id}>
                 <ChatEntry 
@@ -15,7 +17,7 @@ const ChatLog = (entries) => {
                     body={message.body} 
                     timeStamp={message.timeStamp}
                     liked={message.liked}
-                    onUpdate={entries.onUpdateMessage}
+                    onUpdate={onUpdateMessage}
                 ></ChatEntry>
             </div>
         )

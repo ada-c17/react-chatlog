@@ -3,43 +3,76 @@ import './ChatEntry.css';
 // import PropTypes from 'prop-types';
 
 
-const ChatEntry = (props) => {
+const ChatEntry = ({
+  id,
+  sender,
+  body,
+  timeStamp,
+  liked,
+  onUpdate
+}) => {
+
+
+  // console.log({
+  //   id,
+  //   sender,
+  //   body,
+  //   timeStamp,
+  //   liked,
+  //   onUpdate
+  // })
   // const firstMessage = props.messages[0]
   const onLikeButtonClick = () => {
     const updatedMessage = {
-      id: props.id,
-      sender: props.sender,
-      body: props.body,
-      timeStamp: props.timeStamp,
-      liked: !props.liked,
+      id: id,
+      sender: sender,
+      body: body,
+      timeStamp: timeStamp,
+      liked: !liked,
     }
-    props.onUpdate(updatedMessage)
-    console.log(!props.liked, 'I was clicked and am coming from the button')
-    const button = document.getElementById('button');
-    if (!props.liked === true){
-      button.textContent = '🌻'
-    } else {
-      button.textContent = '🤍'
-    }
+    onUpdate(updatedMessage)
     
-  }
   // const button = document.getElementById('button');
 
+  // if (!props.liked === true){
+  //   button.textContent = '🌻'
+  // } else {
+  //   button.textContent = '🤍'
+  // }
+
+  // const emojiChange = () => {
+  //   if (!props.liked === true){
+  //     button.textContent = '🌻'
+  //   } else {
+  //     button.textContent = '🤍'
+  //   }
+  // }
+
+  }
+
+  // not right
+  // const button = document.getElementById('button');
   // this is not right.....
   // const emojiChange = props.liked ? button.textContent = '🌻' : button.textContent = '🤍';
   // experimenting
   // const emojiChange = props.liked ? 'green' : 'red';
 
-  // this is acting weird
-  // console.log(props.liked, 'I was clicked and am coming from chat entry')
+
+  let icon = ''
+
+  if (liked === true){
+    icon = '🌻'
+  } else {
+    icon = '🤍'
+  }
 
   return (
     <div className="chat-entry local">
-      <h2 className="entry-name">{props.sender}</h2>
+      <h2 className="entry-name">{sender}</h2>
       <section className="entry-bubble">
-        <p>{props.body}</p>
-        <p className="entry-time">{props.timeStamp}</p>
-        <button className="emojiChange" onClick={onLikeButtonClick} id="button">🤍</button>
+        <p>{body}</p>
+        <p className="entry-time">{timeStamp}</p>
+        <button className="emojiChange" onClick={onLikeButtonClick} id="button">{icon}</button>
       </section>
     </div>
   );

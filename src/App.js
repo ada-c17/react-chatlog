@@ -7,7 +7,7 @@ const App = () => {
   const [messageData, setMessageData] = useState(chatMessages)
 
   const updateMessageData = (updatedMessage) => {
-    const messages = chatMessages.map((message) => {
+    const messages = messageData.map((message) => {
       if (message.id === updatedMessage.id) {
         return updatedMessage;
       } else {
