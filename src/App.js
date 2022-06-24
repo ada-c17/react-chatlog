@@ -27,7 +27,7 @@ const App = () => {
     <div id="App">
       <header>
         <h1>Chat Log</h1>
-        <section>{likeCount} ❤️s</section>
+        <h2>{likeCount} ❤️s</h2>
       </header>
       <main>
         <ChatLog
