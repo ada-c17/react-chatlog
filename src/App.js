@@ -36,7 +36,7 @@ const App = () => {
     <div id="App">
       <header>
         <h1>Chat Log</h1>
-        <h2>Count: {countLikes()}</h2>
+        <h2>{countLikes()} ❤️s</h2>
       </header>
       <main>
         <ChatLog 
