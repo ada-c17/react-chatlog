@@ -5,7 +5,7 @@ import TimeStamp from './TimeStamp';
 
 const ChatEntry = (props) => {
   const toggleHeartStatus = () => {
-    props.toggleHeartStatusCallback(props.id);
+    props.onToggleHeartStatus(props.id);
   };
 
   return (

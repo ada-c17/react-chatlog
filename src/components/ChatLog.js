@@ -11,7 +11,7 @@ const ChatLog = (props) => {
         body={message.body}
         liked={message.liked}
         timeStamp={message.timeStamp}
-        toggleHeartStatusCallback={props.toggleHeartStatusCallback}
+        onToggleHeartStatus={props.onToggleHeartStatus}
       ></ChatEntry>
     );
   });
