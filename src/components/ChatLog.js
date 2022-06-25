@@ -7,7 +7,7 @@ const ChatLog = ({ entries, likesCountCallBack }) => {
   const chatComponents = entries.map((chat) => {
     return (
       <ChatEntry
-        key={chat.id}
+        key={chat.timeStamp}
         id={chat.id}
         sender={chat.sender}
         body={chat.body}
@@ -28,12 +28,12 @@ const ChatLog = ({ entries, likesCountCallBack }) => {
 ChatLog.propTypes = {
   chatLogData: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number,
+      // id: PropTypes.number.isRequired,
       sender: PropTypes.string.isRequired,
       body: PropTypes.string.isRequired,
       timeStamp: PropTypes.string.isRequired,
-      liked: PropTypes.bool.isRequired,
-      likesCountCallBack: PropTypes.func.isRequired,
+      liked: PropTypes.bool,
+      likesCountCallBack: PropTypes.func,
     })
   ),
 };
