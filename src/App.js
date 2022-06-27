@@ -45,8 +45,8 @@ const countLikes = (entries) => {
       <main>
         {/* Wave 01: Render one ChatEntry component
         Wave 02: Render ChatLog component */}
-        <ChatLog entries={chatMessages}></ChatLog>
-        <chatLog entries={entries} likedCallback={toggleLiked}></chatLog>
+        {/* <ChatLog entries={chatMessages}></ChatLog> */}
+        <ChatLog entries={entries} likedCallback={toggleLiked}></ChatLog>
 
       </main>
     </div>
