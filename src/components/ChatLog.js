@@ -7,7 +7,7 @@ const ChatLog = (props) => {
   const messageComponents = props.entries.map((message) => {
     return (
       <ChatEntry
-        key={message['id']}
+        key={message['timeStamp']}
         id={message['id']}
         sender={message['sender']}
         body={message['body']}
