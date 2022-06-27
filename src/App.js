@@ -3,14 +3,6 @@ import './App.css';
 import chatMessages from './data/messages.json';
 import ChatLog from './components/ChatLog';
 
-// {
-//   "id": 1,
-//   "sender":"Vladimir",
-//   "body":"why are you arguing with me",
-//   "timeStamp":"2018-05-29T22:49:06+00:00",
-//   "liked": false
-// }
-
 const App = () => {
   const [chatMessagesData, setChatMessagesData] = useState(chatMessages);
   const users = [];

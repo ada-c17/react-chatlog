@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 
 const ChatLog = (props) => {
   const messageComponents = props.entries.map((message) => {
-    // console.log(message.body)
     return (
       <ChatEntry
         key={message['id']}
@@ -22,7 +21,6 @@ const ChatLog = (props) => {
   return (
     <div>{messageComponents}</div>
   );
-
 };
 
 ChatLog.propTypes = {
