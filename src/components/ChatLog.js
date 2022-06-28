@@ -4,7 +4,7 @@ import ChatEntry from './ChatEntry';
 
 // const messageIndex = 0;
 
-const ChatLog = (props) => {
+const ChatLog = (props, onLikeCallback) => {
   const chatComponents = props.entries.map((chat, index) => {
     return (
       <ChatEntry
@@ -14,12 +14,12 @@ const ChatLog = (props) => {
         body={chat.body}
         timeStamp={chat.timeStamp}
         liked={chat.liked}
+        onLike={props.onLike}
       />
     );
   });
   return (
     <div className="chat-entry local">
-      {/* use a ul to render chat entries? */}
       <div>{chatComponents}</div>
     </div>
   );

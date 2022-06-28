@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
-import chatMessages from '../data/messages.json';
+// import chatMessages from '../data/messages.json';
 // import { DateTime } from 'luxon';
 import TimeStamp from './TimeStamp';
 
@@ -18,6 +18,10 @@ import TimeStamp from './TimeStamp';
 // };
 
 const ChatEntry = (props) => {
+  const handleLike = () => {
+    props.onLike(props.id);
+  };
+
   return (
     <div className="chat-entry local">
       <h2 className="entry-name">{props.sender}</h2>
@@ -27,18 +31,21 @@ const ChatEntry = (props) => {
         <p className="entry-time">
           <TimeStamp time={props.timeStamp} />
         </p>
-        <button className="like">{props.liked ? '❤️' : `🤍`}</button>
+        <button className="like" onClick={handleLike}>
+          {props.liked ? '❤️' : `🤍`}
+        </button>
       </section>
     </div>
   );
 };
 
 ChatEntry.propTypes = {
-  id: PropTypes.number,
-  sender: PropTypes.string,
-  body: PropTypes.string,
-  timeStamp: PropTypes.string,
+  id: PropTypes.number.isRequired,
+  sender: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  timeStamp: PropTypes.string.isRequired,
   liked: PropTypes.bool,
+  onLike: PropTypes.func,
 };
 
 export default ChatEntry;
