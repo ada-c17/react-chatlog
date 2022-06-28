@@ -1,15 +1,35 @@
 import React from 'react';
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
+import TimeStamp from './TimeStamp';
 
 const ChatEntry = (props) => {
+  const onLikedButtonClick = () => {
+    const updatedMessage = {
+      id: props.id,
+      sender: props.sender,
+      body: props.body,
+      timeStamp: props.timeStamp,
+      liked: !props.liked,
+    };
+
+    props.updateMessageData(updatedMessage);
+  };
+
+  const localRemote =
+    props.sender === 'Vladimir' ? 'chat-entry local' : 'chat-entry remote';
+
   return (
-    <div className="chat-entry local">
-      <h2 className="entry-name">Replace with name of sender</h2>
+    <div className={localRemote}>
+      <h2 className="entry-name">{props.sender}</h2>
       <section className="entry-bubble">
-        <p>Replace with body of ChatEntry</p>
-        <p className="entry-time">Replace with TimeStamp component</p>
-        <button className="like">🤍</button>
+        <p>{props.body}</p>
+        <p className="entry-time">
+          <TimeStamp time={props.timeStamp} />
+        </p>
+        <button onClick={onLikedButtonClick} className="like">
+          {props.liked ? '❤️' : '🤍'}
+        </button>
       </section>
     </div>
   );
@@ -17,6 +37,12 @@ const ChatEntry = (props) => {
 
 ChatEntry.propTypes = {
   //Fill with correct proptypes
+  id: PropTypes.number,
+  sender: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  liked: PropTypes.bool,
+  timeStamp: PropTypes.string.isRequired,
+  updateMessageData: PropTypes.func,
 };
 
 export default ChatEntry;
