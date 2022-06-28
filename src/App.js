@@ -12,7 +12,7 @@ const App = () => {
     console.log({ id });
     const newHeartCount = heart.map((message) => {
       if (message.id === id) {
-        message.liked = !message.liked;
+        return { ...message, liked: !message.liked };
       }
       return message;
     });
@@ -29,10 +29,7 @@ const App = () => {
         {
           /* Wave 01: Render one ChatEntry component
         Wave 02: Render ChatLog component */
-          <ChatLog
-            entries={chatMessages}
-            toggleHeartCallback={toggleHeart}
-          ></ChatLog>
+          <ChatLog entries={heart} toggleHeartCallback={toggleHeart}></ChatLog>
         }
       </main>
     </div>
