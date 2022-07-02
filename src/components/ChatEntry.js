@@ -5,14 +5,7 @@ import PropTypes from 'prop-types';
 
 const ChatEntry = (props) => {
   const likeClick = () => {
-    const updatedMessage = {
-      id: props.id,
-      sender: props.sender,
-      body: props.body,
-      timeStamp: props.timeStamp,
-      liked: !props.liked,
-    };
-    props.onUpdate(updatedMessage);
+    props.onUpdate(props.id);
   };
 
   const heartIcon = props.liked ? '❤️' : '🤍';
