@@ -5,6 +5,10 @@ import TimeStamp from './TimeStamp';
 
 
 const ChatEntry = (props) => {
+  const likedEntry = () => {
+    props.changeLikes(props.id)
+  }
+
   return (
     <div className="chat-entry local">
       <h2 className="entry-name">{props.sender}</h2>
@@ -13,7 +17,9 @@ const ChatEntry = (props) => {
         <p className="entry-time">
           <TimeStamp time={props.timeStamp} />
         </p>
-        <button className="like">🤍</button>
+        <button onClick={likedEntry} className="like">
+          {props.liked ? '❤️':'🤍'}
+        </button>
       </section>
     </div>
   );
@@ -25,6 +31,8 @@ ChatEntry.propTypes = {
   sender: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   timeStamp: PropTypes.string.isRequired,
+  liked: PropTypes.bool,
+  changeLikes: PropTypes.func
 };
 
 export default ChatEntry;

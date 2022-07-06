@@ -6,10 +6,13 @@ const ChatLog = (props) => {
     const chatEntryComponents = props.entries.map((entry) => {
         return (
             <ChatEntry
+                key={entry.id}
                 id={entry.id}
                 sender={entry.sender}
                 body={entry.body}
                 timeStamp={entry.timeStamp}>
+                liked={entry.liked}
+                changeLikes={props.changeLikes}
             </ChatEntry>
         );
     });
@@ -17,17 +20,5 @@ const ChatLog = (props) => {
         {chatEntryComponents}
     </div>
 };
-
-// import {useState} from 'react';
-// const [petCount, setPetCount] = useState(0);
-// const petCat = () => {
-//     setPetCount(petCount + 1);
-// }
-
-// const studentComponents = studentData.map(student => {
-//   return (
-//       <li><Student name={student.nameData} email={student.emailData}></Student></li>
-//   );
-// });
 
 export default ChatLog;
