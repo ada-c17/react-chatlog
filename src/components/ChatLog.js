@@ -10,9 +10,9 @@ const ChatLog = (props) => {
                 id={entry.id}
                 sender={entry.sender}
                 body={entry.body}
-                timeStamp={entry.timeStamp}>
+                timeStamp={entry.timeStamp}
                 liked={entry.liked}
-                changeLikes={props.changeLikes}
+                changeLikes={props.changeLikes}>
             </ChatEntry>
         );
     });

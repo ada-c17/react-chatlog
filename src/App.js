@@ -6,38 +6,36 @@ import {useState} from 'react';
 
 const App = () => {
   const [entries, setEntries] = useState(chatMessages);
+  const [likesTotal, setLikesTotal] = useState(0);
 
   const changeLikes = (id) => {
-    const newEntry = entries.map((entry) => {
-      if(entry.id === id) {
+    let likeCount = 0;
+    const newEntries = [];
+    for(const e of entries) {
+      const entry = {...e};
+      if(id === entry.id) {
         entry.liked = !entry.liked;
-      }
-      return newEntry
-    });
-    setEntries(newEntry);
-  };
-
-  const likeCount = () => {
-    let likes = 0;
-    for(const entry of entries) {
-      if(entry.liked === true) {
-        likes += 1;
-      }
+        }
+        if (entry.liked === true) {
+          likeCount += 1;
+        }
+        newEntries.push(entry);
     }
-    return likes;
+    setEntries(newEntries);
+    setLikesTotal(likeCount);
   };
 
   return (
     <div id="App">
       <header>
         <h1>Chat Log</h1>
-        <h2>{likeCount()} ❤️s</h2>
+        <h2>{likesTotal} ❤️s</h2>
       </header>
       <main>
         {/* Wave 01: Render one ChatEntry component
         Wave 02: Render ChatLog component */}
         <ChatLog 
-        entries={chatMessages}
+        entries={entries}
         changeLikes={changeLikes}>
         </ChatLog>
       </main>
