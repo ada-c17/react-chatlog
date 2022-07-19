@@ -7,27 +7,24 @@ import { useState} from 'react';
 const ChatEntry = (props) => {
   const[isLiked, setLiked] = useState(false);
 
+  //Function to toggle Liked Heart
   const toggleLiked = () => {
     setLiked(!isLiked);
   }
-
+  // Tenary Operator for Liked Heart change color
   const like = isLiked ? '❤️': ' 🤍 ';
   
-  class LikeButton extends React.Component{
-    state = {
-      likes:0
+  const likedMessage = () => {
+    const updatedMessage = {
+      id: props.id,
+      sender: props.sender,
+      body: props.body,
+      timeStamp: props.timeStamp,
+      liked: !props.liked,
     };
-    render() {
-      return <button> Likes: {this.state.likes}</button>
-    }
+    props.updateLikes(updatedMessage); 
+    setLiked((prevLike) => ! prevLike);
   }
-
-  const addLike = () => {
-    let newCount = this.state.likes +1;
-    this.setState({
-      likes: newCount
-    });
-  };
 
   return (
     <div className="chat-entry local">
@@ -35,7 +32,7 @@ const ChatEntry = (props) => {
       <section className="entry-bubble">
         <p>{props.body}</p>
         <p className="entry-time"><TimeStamp time = {props.timeStamp}/></p>
-        <h2 onClick={() => setLiked((prevLike) => ! prevLike)}>
+        <h2 onClick={likedMessage}>
         {like}
         </h2>
       </section>
@@ -45,8 +42,10 @@ const ChatEntry = (props) => {
 
 ChatEntry.propTypes = {
   //Fill with correct proptypes
+  id: PropTypes.number.isRequired,
   sender: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
+  liked: PropTypes.bool.isRequired
 
 };
 
