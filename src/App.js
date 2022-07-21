@@ -1,16 +1,50 @@
 import React from 'react';
 import './App.css';
+import ChatLog from './components/ChatLog.js';
 import chatMessages from './data/messages.json';
+import { useState } from 'react';
+
+/**
+ *
+ * Parent component that renders ChatLog
+ *
+ * @component
+ *
+ */
 
 const App = () => {
+  const [entriesData, setEntries] = useState(chatMessages);
+
+  const updateLikes = (id) => {
+    const newEntries = [];
+    for (const entry of entriesData) {
+      const updatedEntry = { ...entry };
+      if (updatedEntry.id === id) {
+        updatedEntry.liked = !updatedEntry.liked;
+      }
+      newEntries.push(updatedEntry);
+    }
+    setEntries(newEntries);
+  };
+
+  const likeCount = () => {
+    let count = 0;
+    for (const entry of entriesData) {
+      if (entry.liked) {
+        count += 1;
+      }
+    }
+    return count;
+  };
+
   return (
     <div id="App">
       <header>
-        <h1>Application title</h1>
+        <h1>Chat between Vladimir and Estragon</h1>
+        <h2>{likeCount()} ❤️s </h2>
       </header>
-      <main>
-        {/* Wave 01: Render one ChatEntry component
-        Wave 02: Render ChatLog component */}
+      <main className="widget">
+        <ChatLog entries={entriesData} likedCallback={updateLikes} />
       </main>
     </div>
   );
